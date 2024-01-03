@@ -30,7 +30,7 @@ git clone https://github.com/Belyashik2K/NeuroAI-v2.git
 ```
 * Установите необходимые зависимости
 ```
-pip install aiogram aiosqlite sqlalchemy[asyncio] python-dotenv cachetools
+pip install --upgrade aiogram aiosqlite sqlalchemy[asyncio] python-dotenv cachetools
 ```
 * Переименуйте файл .env.example в .env, откройте его любым текстовым редактором или IDE и установите свои значения
 ```
