@@ -1,4 +1,6 @@
-from sqlalchemy.ext.asyncio import create_async_engine, async_sessionmaker 
+from typing import AsyncGenerator
+
+from sqlalchemy.ext.asyncio import create_async_engine, async_sessionmaker, AsyncSession
 from sqlalchemy import select, update, insert, text
 
 from contextlib import asynccontextmanager
@@ -24,7 +26,7 @@ class Database:
         self.__notify = AdminNotify()
         
     @asynccontextmanager
-    async def session(self) -> None:
+    async def session(self) -> AsyncGenerator[AsyncSession, None]:
         """Generate new session."""
         async with self._session() as session:
             try:
