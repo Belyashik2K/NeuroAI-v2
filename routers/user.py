@@ -235,8 +235,27 @@ async def enchance_image(message: types.Message, user: User, state: FSMContext):
 
 @user_router.callback_query(F.data==IB.Callback.Neuros.sdv, isNeuroActive())
 async def sdv_image(call: types.CallbackQuery, user: User, state: FSMContext):
-    # TODO: add StableDiffusion Video image processing
-    pass
+    neuro_ = getattr(IB.Neuros, call.data.split('_')[1])
+    await call.message.edit_text(UT.Neuros.sdv_video.format(neuro_), reply_markup=await inline.get_back_keyboard(IB.Callback.NeuroCategories.image))
+    await state.update_data(neuro=call.data, message_id=call.message.message_id)
+    await state.set_state(NeuroRequest.sdv)
+
+@user_router.message(NeuroRequest.sdv, F.photo)
+async def sdv_image(message: types.Message, user: User, state: FSMContext):
+    data = await state.get_data()
+    neuro_ = getattr(IB.Neuros, data['neuro'].split('_')[1])
+    await message.delete()
+    await bot.edit_message_text(UT.Neuros.sdv_video_processing.format(neuro_), chat_id=message.chat.id, message_id=data['message_id'])
+    photo = await bot.get_file(message.photo[-1].file_id)
+    url = "https://api.telegram.org/file/bot{}/{}".format(Config.BOT_TOKEN, photo.file_path)
+    result = await neuro.sdv_neuro(neuro=data['neuro'], image_url=url)
+    await bot.delete_message(message.chat.id, data['message_id'])
+    await bot.send_video(chat_id=message.chat.id, 
+                         video=types.URLInputFile(result, filename='video.mp4'),
+                         caption=UT.Neuros.sdv_video_result.format(neuro_),
+                         reply_markup=await inline.get_close_keyboard(),
+                         parse_mode=ParseMode.MARKDOWN)
+    await db.update_user(user_id=user.user_id, request_counter=user.request_counter + 1)
 
 @user_router.callback_query(F.data==IB.Callback.Neuros.whisper, isNeuroActive())
 async def whisper_voice(call: types.CallbackQuery, user: User, state: FSMContext):

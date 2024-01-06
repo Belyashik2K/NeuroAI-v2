@@ -56,7 +56,7 @@ class Database:
                 stmt = select(Neuros).where(Neuros.code_name == neuro)
                 result = await session.execute(stmt)
                 if not result.scalar_one_or_none():
-                    status = False if neuro in ['sdv', 'enhance', 'whisper'] else True
+                    status = False if neuro in ['enhance', 'whisper'] else True
                     stmt = insert(Neuros).values(code_name=neuro, is_active=status)
                     await session.execute(stmt)
                     await session.commit()

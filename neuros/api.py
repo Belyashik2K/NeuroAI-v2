@@ -21,7 +21,7 @@ class Neuros(HTTPClient):
             IB.Callback.Neuros.stable: 'image/sdxl',
             IB.Callback.Neuros.playground: 'image/playgroundv2',
             IB.Callback.Neuros.midjourney: 'image/openjourneyv4',
-            IB.Callback.Neuros.sdv: 'image/svd',
+            IB.Callback.Neuros.sdv: 'svd',
             IB.Callback.Neuros.dalle3: 'image/dalle3',
             IB.Callback.Neuros.enhance: 'enhance-image'
         }
@@ -122,12 +122,11 @@ class Neuros(HTTPClient):
                         neuro: str,
                         image_url: str
                         ) -> str:
-        neuro = self._image_neuros[neuro]
-        uri = self._URI + neuro
+        neuro_name = self._image_neuros[neuro]
+        uri = self._URI + neuro_name
 
-        # Not available now on FutureForge API
-        # TODO: handling result
-        return None 
+        result = await self._request(neuro, self._method, uri, params={'image_url': image_url, 'num_videos': 1})
+        return result['video_links'][0]
     
     async def whisper_neuro(self,
                             neuro: str,

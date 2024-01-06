@@ -6,6 +6,7 @@ class NeuroRequest(StatesGroup):
     image_request = State()
     enchance_image = State()
     whisper = State()
+    sdv = State()
     bender = State()
 
 class AdminPanel(StatesGroup):

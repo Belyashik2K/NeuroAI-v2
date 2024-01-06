@@ -13,6 +13,7 @@ class HTTPClient:
         self._URI = 'https://api.futureforge.dev/'
         # This is not a good idea, but context manager is not working on VDS/VPS.
         self._session = aiohttp.ClientSession()
+        
     async def _request(self, 
                        neuro: str,
                        method: str, 
