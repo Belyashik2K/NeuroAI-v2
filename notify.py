@@ -22,3 +22,11 @@ class AdminNotify:
                                text=AT.new_user.format(user_id=user_id,
                                                        full_name=full_name,
                                                        neuro_id=neuro_id))
+        
+    async def new_chat_notify(self,
+                            chat_id: int,
+                            neuro_id: int
+                            ) -> None:
+        await bot.send_message(chat_id=self.__admin_chat,
+                               text=AT.new_chat.format(chat_id=chat_id,
+                                                       neuro_id=neuro_id))    

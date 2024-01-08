@@ -185,3 +185,14 @@ class InlineKeyboards:
 
         return k.as_markup()
         
+    async def change_autotranscrip_keyboard(self, status) -> InlineKeyboardMarkup:
+        """Generate keyboard for autotranscrip.
+        
+        Args:
+            status (bool): Current status of autotranscrip.
+            
+        Returns:
+            InlineKeyboardMarkup: Keyboard for autotranscrip."""
+        k = InlineKeyboardBuilder()
+        k.button(text=IB.Chat.autotrans[status], callback_data=IB.Callback.Chat.autotrans)
+        return k.as_markup()

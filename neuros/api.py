@@ -8,6 +8,8 @@ class Neuros(HTTPClient):
     def __init__(self) -> None:
         super().__init__()
 
+        self._method = 'POST'
+
         self._neuros = {
             IB.Callback.Neuros.gpt: 'chatgpt',
             IB.Callback.Neuros.claude: 'claude-instant',
@@ -53,10 +55,17 @@ class Neuros(HTTPClient):
         json_data = {'message': message}
         
         if mode == IB.Callback.Mode.one_request:
-            result = await self._request(neuro, self._method, uri + '/create', json=json_data)
+            result = await self._request(self._method,
+                                         neuro, 
+                                         uri + '/create', 
+                                         json=json_data
+                                         )                           
         else:
             json_data['chatCode'] = chat_code
-            result = await self._request(neuro, self._method, uri + '/chat', json=json_data)
+            result = await self._request(self._method,
+                                         neuro, 
+                                         uri + '/chat', 
+                                         json=json_data)
         return result['message'].strip(), result['chatCode']
 
         
@@ -74,7 +83,6 @@ class Neuros(HTTPClient):
         Returns:
             str: Image in base64 format."""
         params = {}
-
         if neuro == IB.Callback.Neuros.playground:
             params['prompt'] = prompt
             params['negative_prompt'] = 'not'
@@ -87,9 +95,15 @@ class Neuros(HTTPClient):
         uri = self._URI + neuro_name
         
         if neuro != IB.Callback.Neuros.dalle3:
-            result = await self._request(neuro, self._method, uri, params=params)
+            result = await self._request(self._method,
+                                         neuro, 
+                                         uri, 
+                                         params=params)
         else:
-            result = await self._request(neuro, self._method, uri, json=params)
+            result = await self._request(self._method,
+                                         neuro, 
+                                         uri, 
+                                         json=params)
         return result['image_base64']
 
     async def bender_neuro(self,
@@ -104,7 +118,11 @@ class Neuros(HTTPClient):
             'accept': 'audio/mpeg', 
             'Content-Type': 'application/json' 
         } 
-        result = await self._voice_request(neuro, self._method, uri, headers=headers, json=json)
+        result = await self._voice_request(self._method,
+                                           neuro, 
+                                           uri, 
+                                           headers=headers, 
+                                           json=json)
         return result
 
     async def enchance_image_neuro(self,
@@ -124,17 +142,25 @@ class Neuros(HTTPClient):
                         ) -> str:
         neuro_name = self._image_neuros[neuro]
         uri = self._URI + neuro_name
+        params = {}
+        params['image_url'] = image_url
+        params['num_videos'] = 1
 
-        result = await self._request(neuro, self._method, uri, params={'image_url': image_url, 'num_videos': 1})
+        result = await self._request(self._method,
+                                     neuro, 
+                                     uri, 
+                                     params=params)
         return result['video_links'][0]
     
     async def whisper_neuro(self,
                             neuro: str,
                             file_url: str
                             ) -> str:
-        neuro = self._voice_neuros[neuro]
-        uri = self._URI + neuro
+        neuro_name = self._voice_neuros[neuro]
+        uri = self._URI + neuro_name
 
-        # Not available now on FutureForge API
-        # TODO: handling result
-        return None
+        result = await self._request(self._method,
+                            neuro, 
+                            uri, 
+                            params={'filepath': file_url})
+        return result['response_data']

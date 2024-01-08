@@ -1,7 +1,7 @@
 import base64
 
 from aiogram import Router, F, types
-from aiogram.filters.command import CommandStart
+from aiogram.filters.command import CommandStart, Command
 from aiogram.fsm.context import FSMContext
 from aiogram.enums import ParseMode
 
@@ -15,8 +15,10 @@ from fsm import *
 from neuros import neuro
 from imageban import imageban
 from filters import isNeuroActive
+from utils import Utils as U
 
 user_router = Router(name=__name__)
+user_router.message.filter(F.chat.type == 'private')
 
 @user_router.message(CommandStart())
 async def start(message: types.Message, user: User, state: FSMContext):
@@ -128,7 +130,7 @@ async def chatting(message: types.Message, user: User, state: FSMContext):
         if message.photo:
             text = message.caption or UT.Neuros.what_on_image
             photo = await bot.get_file(message.photo[-1].file_id)
-            url = "https://api.telegram.org/file/bot{}/{}".format(Config.BOT_TOKEN, photo.file_path)
+            url = U.get_file_url(photo.file_path)
             text += UT.Neuros.image_link.format(await imageban.upload_image(url))
         result = await neuro.text_neuro(neuro=data['neuro'], message=text, mode=data['mode'], chat_code=data['chat_code'])
         try:
@@ -223,7 +225,7 @@ async def enchance_image(message: types.Message, user: User, state: FSMContext):
     await message.delete()
     await bot.edit_message_text(UT.Neuros.enchance_image_processing.format(neuro_), chat_id=message.chat.id, message_id=data['message_id'])
     photo = await bot.get_file(message.photo[-1].file_id)
-    url = "https://api.telegram.org/file/bot{}/{}".format(Config.BOT_TOKEN, photo.file_path)
+    url = U.get_file_url(photo.file_path)
     result = await neuro.enchance_image_neuro(neuro=data['neuro'], image=url)
     await bot.delete_message(message.chat.id, data['message_id'])
     await bot.send_photo(chat_id=message.chat.id, 
@@ -247,11 +249,11 @@ async def sdv_image(message: types.Message, user: User, state: FSMContext):
     await message.delete()
     await bot.edit_message_text(UT.Neuros.sdv_video_processing.format(neuro_), chat_id=message.chat.id, message_id=data['message_id'])
     photo = await bot.get_file(message.photo[-1].file_id)
-    url = "https://api.telegram.org/file/bot{}/{}".format(Config.BOT_TOKEN, photo.file_path)
+    url = U.get_file_url(photo.file_path)
     result = await neuro.sdv_neuro(neuro=data['neuro'], image_url=url)
     await bot.delete_message(message.chat.id, data['message_id'])
     await bot.send_video(chat_id=message.chat.id, 
-                         video=types.URLInputFile(result, filename='video.mp4'),
+                         video=types.URLInputFile(result),
                          caption=UT.Neuros.sdv_video_result.format(neuro_),
                          reply_markup=await inline.get_close_keyboard(),
                          parse_mode=ParseMode.MARKDOWN)
@@ -266,14 +268,13 @@ async def whisper_voice(call: types.CallbackQuery, user: User, state: FSMContext
 
 @user_router.message(NeuroRequest.whisper, F.audio)
 async def whisper_voice(message: types.Message, user: User, state: FSMContext):
-    # TODO: add whisper voice processing
     data = await state.get_data()
     neuro_ = getattr(IB.Neuros, data['neuro'].split('_')[1])
     await message.delete()
     await bot.edit_message_text(UT.Neuros.whisper_voice_processing.format(neuro_), chat_id=message.chat.id, message_id=data['message_id'])
     audio = await bot.get_file(message.audio.file_id)
-    url = "https://api.telegram.org/file/bot{}/{}".format(Config.BOT_TOKEN, audio.file_path)
-    result = await neuro.whisper_neuro(neuro=data['neuro'], file=url)
+    url = U.get_file_url(audio.file_path)
+    result = await neuro.whisper_neuro(neuro=data['neuro'], file_url=url)
     await bot.edit_message_text(chat_id=message.chat.id, message_id=data['message_id'], text=UT.Neuros.whisper_voice_result.format(neuro_, result), reply_markup=await inline.get_close_keyboard(), parse_mode=ParseMode.MARKDOWN)
     await db.update_user(user_id=user.user_id, request_counter=user.request_counter + 1)
 
@@ -307,5 +308,8 @@ async def stop_chatting(message: types.Message, user: User, state: FSMContext):
 
 @user_router.message(F.text)
 async def unknown_command(message: types.Message, user: User, state: FSMContext):
+    if message.text == '/neuroai':
+        await message.answer(ET.command_for_chat, reply_markup=await inline.get_close_keyboard())
+    else:
+        await message.answer(ET.unknown_command, reply_markup=await inline.get_start_keyboard())
     await state.clear()
-    await message.answer(ET.unknown_command, reply_markup=await inline.get_start_keyboard())

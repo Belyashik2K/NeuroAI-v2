@@ -184,3 +184,30 @@ class Database:
                 await session.execute(stmt)
                 await session.commit()
             return settings.is_maintenance
+        
+    async def get_chat(self, chat_id: int) -> Chat:
+        """Get chat from database."""
+        async with self.session() as session:
+            stmt = select(Chat).where(Chat.chat_id == chat_id)
+            result = await session.execute(stmt)
+            return result.scalar_one_or_none()
+        
+    async def add_chat(self, chat_id: int) -> Chat:
+        """Add chat to database."""
+        if not await self.get_chat(chat_id):
+            async with self.session() as session:
+                stmt = insert(Chat).values(
+                    chat_id=chat_id
+                )
+                await session.execute(stmt)
+                await session.commit()
+                chat = await self.get_chat(chat_id)
+                await self.__notify.new_chat_notify(chat.chat_id, chat.id)
+        return await self.get_chat(chat_id)
+    
+    async def update_chat(self, chat_id: int, **kwargs) -> None:
+        """Update chat's info."""
+        async with self.session() as session:
+            stmt = update(Chat).where(Chat.chat_id == chat_id).values(**kwargs)
+            await session.execute(stmt)
+            await session.commit()

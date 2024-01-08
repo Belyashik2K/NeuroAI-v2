@@ -51,6 +51,9 @@ class InlineButtons:
         admins = ["🔥 Добавить администратора", "🧯 Снять администратора"]
         bans = ["🫣 Забанить пользователя", "🥰 Разбанить пользователя"]
     
+    class Chat:
+        autotrans = ['🔊 Включить автоматическую транскрипцию', '🔇 Выключить автоматическую транскрипцию']
+
     class Callback:
         close = 'close'
         back = 'back'
@@ -96,9 +99,12 @@ class InlineButtons:
             find_user = 'find_user'
             change_neuro = 'change_neuro'
             back = 'admin_back'
-            ban='ban_'
-            admin='admin_'
-            maintenance='maintenance'
+            ban = 'ban_'
+            admin = 'admin_'
+            maintenance = 'maintenance'
+
+        class Chat:
+            autotrans = 'autotrans'
         
 class AllNeuros:
     data = {

@@ -1,3 +1,5 @@
+from typing import Union
+
 from aiogram.filters import BaseFilter
 from aiogram.types import CallbackQuery, Update
 
@@ -16,3 +18,12 @@ class isNeuroActive(BaseFilter):
             await call.answer(ET.neuro_on_maintenance, show_alert=True)
             return False
         return True
+    
+class IsUserAdminInChat(BaseFilter):
+    async def __call__(self, update: Update) -> bool:
+        try:
+            chat_id = update.chat.id
+        except:
+            chat_id = update.message.chat.id
+        ids = [user.user.id for user in await update.bot.get_chat_administrators(chat_id=chat_id)]
+        return update.from_user.id in ids

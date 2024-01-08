@@ -10,6 +10,7 @@ class Config(object):
     BOT_TOKEN = os.environ.get("BOT_TOKEN", "") # Bot token from @BotFather
     DB_PATH = os.environ.get("DB_PATH", "") # Path to database
     SECRET_KEY = os.environ.get("SECRET_KEY", "") # Secret key from ImageBan API
+    API_KEY = os.environ.get("API_KEY", "") # Token from @futureforgedev_bot
 
     technical_support = "@Belyashik2K" # Technical support username with @
     ads = "@Belyashik2K" # Ads-manager/creator username with @

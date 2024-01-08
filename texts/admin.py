@@ -37,6 +37,11 @@ class AdminTexts:
 👤 Пользователь >>> <a href="tg://user?id={user_id}">{full_name}</a>
 💬 NeuroID >>> <code>{neuro_id}</code>"""
 
+    new_chat = """🎉 <b>Новый чат в боте!</b>
+    
+👥 ID чата >>> <code>{chat_id}</code>
+💬 NeuroID >>> <code>{neuro_id}</code>"""
+
     neuro_statuses = """<b>🔥 Сменить статус нейросети</b>
 
 Нейросети для генерации текста:

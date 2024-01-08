@@ -8,7 +8,7 @@ from aiogram.fsm.context import FSMContext
 from texts import ET
 from initialization import bot, dp
 from database import database
-from middlewares import register_middlewares
+from factories import Factories
 from keyboards import reply
 from notify import AdminNotify
 from mailing import *
@@ -25,25 +25,29 @@ async def main():
                         datefmt='%d.%m.%Y %H:%M:%S')
     
     notify = AdminNotify()
+    factories = Factories()
 
     from routers import all_routers
     all_routers.insert(0, mailing_router)
     dp.include_routers(*all_routers)
 
-    register_middlewares(dp=dp)
+    factories.middlewares(dp)
 
     @dp.errors()
     async def errors_handler(error: ErrorEvent, state: FSMContext):
+        if error.update.message.chat.type != "private": 
+            return True
         if "message is not modified" in str(error.exception).lower():
             return True
+        
         user = await database.get_user(user_id=error.update.message.from_user.id)
         await error.update.bot.send_message(chat_id=error.update.message.chat.id, 
                                             text=ET.error, 
                                             reply_markup=await reply.get_start_keyboard(user=user))
         await state.clear()
         await notify.error_notify(user_id=user.user_id,
-                                  mention=error.update.message.from_user.mention_html(),
-                                  exception=error.exception)
+                                    mention=error.update.message.from_user.mention_html(),
+                                    exception=error.exception)
         return True
     
     await database.create_tables()

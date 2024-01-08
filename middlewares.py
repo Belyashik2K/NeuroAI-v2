@@ -14,8 +14,8 @@ class UserMiddleware(BaseMiddleware):
                        event: TelegramObject, 
                        data: Dict[str, Any]) -> Any:
         user = await db.add_user(user_id=event.from_user.id, 
-                          username=event.from_user.username, 
-                          full_name=event.from_user.full_name)
+                                username=event.from_user.username, 
+                                full_name=event.from_user.full_name)
         if user.is_banned:
             await event.answer(ET.user_banned)
             return
@@ -25,6 +25,20 @@ class UserMiddleware(BaseMiddleware):
                                  full_name=event.from_user.full_name)
         await db.update_user(user_id=user.user_id, last_activity=datetime.now())
         data['user'] = user
+        return await handler(event, data)
+    
+class ChatMiddleware(BaseMiddleware):
+    async def __call__(self,
+                          handler: Callable[[TelegramObject, Dict[str, Any]], Awaitable[Any]], 
+                          event: TelegramObject, 
+                          data: Dict[str, Any]) -> Any:
+        try:
+            chat_id = event.chat.id
+        except:
+            chat_id = event.message.chat.id
+        chat = await db.add_chat(chat_id=chat_id)
+        data['chat'] = chat
+        await db.update_chat(chat_id=chat.chat_id, last_activity=datetime.now())
         return await handler(event, data)
     
 class ThrottlingMiddleware(BaseMiddleware):
@@ -51,11 +65,3 @@ class MaintenanceMiddleware(BaseMiddleware):
             await event.answer(ET.maintenance)
             return
         return await handler(event, data)
-    
-def register_middlewares(dp: Dispatcher):
-    """Register all middlewares."""
-    dp.message.middleware(UserMiddleware())
-    dp.callback_query.middleware(UserMiddleware())
-    dp.message.middleware(ThrottlingMiddleware())
-    dp.message.middleware(MaintenanceMiddleware())
-    dp.callback_query.middleware(MaintenanceMiddleware())

@@ -7,7 +7,7 @@ from config import Config
 def check_config() -> None:
     params = ["BOT_TOKEN", "DB_PATH", "SECRET_KEY", 
               "technical_support", "ads", "admin_chat", 
-              "channel_link", "admin_id"]
+              "channel_link", "admin_id", "API_KEY"]
     
     for param in params:
         if not getattr(Config, param):

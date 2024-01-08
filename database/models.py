@@ -21,6 +21,7 @@ class User(Base):
         user_id (int): User's id in Telegram.
         full_name (str): User's full name.
         username (str): User's username in Telegram.
+        registered_at (datetime): User's registration date.
         last_activity (datetime): User's last activity.
         request_counter (int): User's request counter.
         is_admin (bool): Have user admin rights?
@@ -68,3 +69,24 @@ class Settings(Base):
 
     def __repr__(self) -> str:
         return f'Settings(id={self.id}, is_maintenance={self.is_maintenance})'
+    
+class Chat(Base):
+    """Chat model.
+    
+    Attributes:
+        id (int): Chat's id in database.
+        chat_id (int): Chat's id in Telegram.
+        registered_at (datetime): Chat's registration date.
+        last_activity (datetime): Chat's last activity.
+        request_counter (int): Chat's request counter.
+    """
+    __tablename__ = 'chats'
+    id = Column(Integer, primary_key=True)
+    chat_id = Column(BigInteger, unique=True, nullable=False)
+    registered_at = Column(DateTime, default=datetime.datetime.now, nullable=False)
+    last_activity = Column(DateTime, default=datetime.datetime.now, nullable=False)
+    request_counter = Column(BigInteger, default=0, nullable=False)
+    automatic_transcription = Column(Boolean, default=True, nullable=False)
+
+    def __repr__(self) -> str:
+        return f'Chat(id={self.id}, chat_id={self.chat_id}, registered_at={self.registered_at}, last_activity={self.last_activity}, request_counter={self.request_counter})'
