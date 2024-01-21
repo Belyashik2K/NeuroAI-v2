@@ -3,7 +3,7 @@ errors-unavailable_page=🫣 Diese Seite ist nicht verfügbar.
 
 errors-user_banned = ⚠️ Sie wurden gesperrt.
 
-    Um den Bot weiterhin zu nutzen, kontaktieren Sie bitte den Administrator { $ technical_support }
+    Um den Bot weiterhin zu nutzen, kontaktieren Sie bitte den Administrator { $technical_support }
 
 errors-error = 😣 Ein <b>Fehler</b> ist aufgetreten, während die Aktion ausgeführt wurde, und <b>wir arbeiten bereits daran</b>, ihn zu beheben.
 

@@ -3,7 +3,7 @@ errors-unavailable_page=🫣 עמוד זה אינו זמין
 
 errors-user_banned = ⚠️ נחסם גישתך.
 
-    כדי להמשיך לעבוד עם הבוט, יש לפנות למנהל { $ technical_support }
+    כדי להמשיך לעבוד עם הבוט, יש לפנות למנהל { $technical_support }
 
 errors-error = 😣 בביצוע הפעולה התרחשה <b>שגיאה</b> ו<b>אנו כבר עובדים</b> על תיקונה.
 

@@ -3,7 +3,7 @@ errors-unavailable_page=🫣 This page is unavailable.
 
 errors-user_banned = ⚠️ You have been banned.
 
-    To continue using the bot, please contact the administrator { $ technical_support }
+    To continue using the bot, please contact the administrator { $technical_support }
 
 errors-error = 😣 An <b>error</b> occurred while performing the action, and <b>we are already working</b> on fixing it.
 
