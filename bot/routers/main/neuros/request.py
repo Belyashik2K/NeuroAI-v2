@@ -39,7 +39,7 @@ async def one_request(message: types.Message, user: User, state: FSMContext, i18
         logging.error(e)
         await message.bot.edit_message_text(chat_id=message.chat.id, 
                                             message_id=data['message_id'], 
-                                            **ExceptionChecker.check_exception(e))
+                                            **ExceptionChecker.check_exception(str(e)))
     await database.update_user(user_id=user.user_id, 
                                request_counter=user.request_counter + 1)
     
@@ -79,7 +79,7 @@ async def chatting(message: types.Message, user: User, state: FSMContext, i18n: 
         logging.error(e)
         await message.bot.edit_message_text(chat_id=message.chat.id, 
                                             message_id=m.message_id, 
-                                            **ExceptionChecker.check_exception(e))
+                                            **ExceptionChecker.check_exception(str(e)))
     await state.set_state(NeuroRequest.chating)
     await database.update_user(user_id=user.user_id, request_counter=user.request_counter + 1)
 
