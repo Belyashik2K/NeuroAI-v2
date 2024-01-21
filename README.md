@@ -22,7 +22,6 @@
     * _StableDiffusionXL_
     * _Playground v2_
     * _Midjourney V4_
-    * _DALL·E 3_
     * _StableDiffusion Video_
     * _TencentARC PhotoMaker_
     * _Whisper V3_
@@ -113,7 +112,6 @@ I express **special thanks** to the [API author](https://t.me/futureforge_channe
     * _StableDiffusionXL_
     * _Playground v2_
     * _Midjourney V4_
-    * _DALL·E 3_
     * _StableDiffusion Video_
     * _TencentARC PhotoMaker_
     * _Whisper V3_
