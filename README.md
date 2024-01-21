@@ -30,7 +30,7 @@
     * _EnhanceImage_
     * _DALL·E 3_
     * _HighResolutionControlnetTile_
-* **Мультиязычность** бота на основе библиотеки **aiogram_i18n** + **fluent****.****runtime**
+* **Мультиязычность** бота на основе библиотеки **aiogram_i18n** + **fluent.runtime**
   * **Доступные языки**
     * _Русский_
     * _Украинский_
