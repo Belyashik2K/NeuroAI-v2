@@ -9,7 +9,7 @@ from ...keyboards import inline, data
 
 router: Final[Router] = Router(name=__name__)
 
-@router.message(F.text==LazyProxy("buttons-my_account"))
+@router.message(F.text == LazyProxy("buttons-my_account"))
 async def profile(message: types.Message, user: User, state: FSMContext, i18n: I18nContext):
     await state.clear()
     data = {
