@@ -24,6 +24,8 @@ class User(Base):
         registered_at (datetime): User's registration date.
         last_activity (datetime): User's last activity.
         request_counter (int): User's request counter.
+        locale (str): User's locale.
+        first_language_set (bool): Is user's set his first language?
         is_admin (bool): Have user admin rights?
         is_banned (bool): Is user banned?
     """
@@ -58,8 +60,10 @@ class User(Base):
     
     @property
     def url(self) -> str:
+        """User's url in Telegram."""
         return create_tg_link("user", id=self.user_id)
     
     @property
     def mention(self) -> str:
+        """User's mention in Telegram."""
         return html.link(value=self.full_name, link=self.url)

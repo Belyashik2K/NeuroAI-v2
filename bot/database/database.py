@@ -3,7 +3,7 @@ import datetime
 from typing import AsyncGenerator, Optional
 
 from sqlalchemy.ext.asyncio import create_async_engine, async_sessionmaker, AsyncSession
-from sqlalchemy import select, update, delete, insert, func
+from sqlalchemy import select, update, insert, func
 
 from contextlib import asynccontextmanager
 
