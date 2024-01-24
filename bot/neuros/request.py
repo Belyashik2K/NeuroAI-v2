@@ -42,6 +42,7 @@ class HTTPClient:
         """Make request to URL, but for voice neuros.
         
         Args:
+            method (str): HTTP method.
             neuro (str): Neuro name.
             uri (str): URL.
             **kwargs: Optional arguments.

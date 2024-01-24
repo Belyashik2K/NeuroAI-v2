@@ -1,3 +1,5 @@
+from typing import Optional
+
 from .request import HTTPClient
 from .errors import *
 
@@ -39,7 +41,7 @@ class Neuros(HTTPClient):
                          neuro: str,
                          message: str,
                          mode: str,
-                         chat_code: str = None
+                         chat_code: Optional[str] = None
                         ) -> list:
         """Generate text with prompt.
         
@@ -82,7 +84,7 @@ class Neuros(HTTPClient):
         Raises:
             FutureForgeError: If error occured.
         Returns:
-            str: Image in base64 format."""
+            str: Image URL."""
         params = {}
         if neuro == data.Neuros.playground:
             params['prompt'] = prompt
@@ -111,6 +113,15 @@ class Neuros(HTTPClient):
                            neuro: str,
                            text: str
                            ) -> str:
+        """Generate voice with prompt.
+        
+        Args:
+            neuro (str): Neuro name.
+            text (str): Prompt.
+        Raises:
+            FutureForgeError: If error occured.
+        Returns:
+            str: Voice URL."""
         neuro_name = self._voice_neuros[neuro]
         uri = self._URI + neuro_name
 
@@ -130,6 +141,15 @@ class Neuros(HTTPClient):
                                    neuro: str,
                                    image_url: str
                                   ) -> str:
+        """Enhance image.
+        
+        Args:
+            neuro (str): Neuro name.
+            image_url (str): Image URL.
+        Raises:
+            FutureForgeError: If error occured.
+        Returns:
+            str: Image URL."""
         neuro = self._image_neuros[neuro]
         uri = self._URI + neuro
 
@@ -141,6 +161,15 @@ class Neuros(HTTPClient):
                         neuro: str,
                         image_url: str
                         ) -> str:
+        """Generate video with prompt.
+        
+        Args:
+            neuro (str): Neuro name.
+            image_url (str): Image URL.
+        Raises:
+            FutureForgeError: If error occured.
+        Returns:
+            str: Video URL."""
         neuro_name = self._image_neuros[neuro]
         uri = self._URI + neuro_name
         params = {}
@@ -157,6 +186,15 @@ class Neuros(HTTPClient):
                             neuro: str,
                             file_url: str
                             ) -> str:
+        """Voice to text.
+        
+        Args:
+            neuro (str): Neuro name.
+            file_url (str): Voice URL.
+        Raises:
+            FutureForgeError: If error occured.
+        Returns:
+            str: Text."""
         neuro_name = self._voice_neuros[neuro]
         uri = self._URI + neuro_name
 
@@ -169,6 +207,15 @@ class Neuros(HTTPClient):
     async def tencentmaker(self,
                          image_url: str,
                          prompt: str) -> str:
+        """Generate image with prompt.
+        
+        Args:   
+            image_url (str): Image URL.
+            prompt (str): Prompt.
+        Raises:
+            FutureForgeError: If error occured.
+        Returns:
+            str: Image URL."""
         neuro_name = self._image_neuros[data.Neuros.tencentmaker]
         uri = self._URI + neuro_name
 
