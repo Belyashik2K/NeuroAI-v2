@@ -1,6 +1,7 @@
 ![NeuroAI v2](https://github.com/Belyashik2K/NeuroAI-v2/assets/126521808/33972e93-4b25-4dae-8a22-1934d753b847)
 > [Telegram-бот](https://t.me/NeuroAItbot) для взаимодействия с нейросетями посредством [FutureForge API](https://api.futureforge.dev/docs#/). Обновлённая версия [NeuroAI](https://t.me/NeuroAIchannel).
 
+# >Russian
 ## О боте
 **Обновлённая** версия [NeuroAI](https://t.me/NeuroAIchannel) - бота, **окончательно** потерявшего шанс на существование после 31 июля 2023 года. Работает на основе **бесплатного** [FutureForge API](https://api.futureforge.dev/docs#/), поэтому распространяется **абсолютно бесплатно** и **не имеет никаких коммерческих целей**.
 
@@ -9,7 +10,7 @@
 Выражаю **отдельную** **благодарность** [автору](https://t.me/futureforge_channel) API за такой **интересный** и **бесплатный** проект. Надеюсь, что **проект** и дальше **продолжит** **существовать** и **развиваться**!
 
 ## Преимущества
-* **17** нейросетей, из которых на данный момент **полностью работают** **13**
+* **17** нейросетей, из которых на данный момент **полностью работают** **14**
   * **Работают**
     * _ChatGPT (GPT 3.5)_
     * _Claude AI_
@@ -21,7 +22,6 @@
     * _StableDiffusionXL_
     * _Playground v2_
     * _Midjourney V4_
-    * _DALL·E 3_
     * _StableDiffusion Video_
     * _TencentARC PhotoMaker_
     * _Whisper V3_
@@ -90,3 +90,94 @@ alembic upgrade head
 * [Автор бота](https://t.me/belyashik2k)
 * [Поставщик API](https://api.futureforge.dev/docs#/)
 * [Пример бота](https://t.me/NeuroAItbot)
+
+# >English
+## About the Bot
+The **updated** version of [NeuroAI](https://t.me/NeuroAIchannel) bot, which has **finally** lost its chance of existence after July 31, 2023. It operates based on the **free** [FutureForge API](https://api.futureforge.dev/docs#/), so it is distributed **completely free** and has **no commercial purposes**.
+
+The bot runs on the **aiogram v3.x.x** version and uses **SQLAlchemy** for database operations, allowing for quick changes to the used database and driver. The bot is **available** in 6 **languages**!
+
+I express **special thanks** to the [API author](https://t.me/futureforge_channel) for such an **interesting** and **free** project. I hope the project will continue to **exist** and **develop**!
+
+## Advantages
+* **17** neural networks, of which **14 are currently fully operational**
+  * **Operational**
+    * _ChatGPT (GPT 3.5)_
+    * _Claude AI_
+    * _Google AI_
+    * _LLaMA AI_
+    * _Mistral AI (Medium)_
+    * _Solar AI_
+    * _Google Gemini Pro_
+    * _StableDiffusionXL_
+    * _Playground v2_
+    * _Midjourney V4_
+    * _StableDiffusion Video_
+    * _TencentARC PhotoMaker_
+    * _Whisper V3_
+    * _RachelVoice_
+  * **Awaiting restoration of functionality on the [FutureForge API](https://api.futureforge.dev/docs#/) side**
+    * _EnhanceImage_
+    * _DALL·E 3_
+    * _HighResolutionControlnetTile_
+* **Multilingual** bot based on the **aiogram_i18n** library + **fluent.runtime**
+  * **Available languages**
+    * _Russian_
+    * _Ukrainian_
+    * _English_
+    * _German_
+    * _Chinese_
+    * _Hebrew_
+* **Chat/single request mode** for text neural networks, **support** and **processing** of **images**
+* Written in the **latest** version of **aiogram - v3.3.0**
+* Fully **asynchronous** operation with [FutureForge API](https://api.futureforge.dev/docs#/) and database using **SQLAlchemy**
+* **Anti-flood** mechanism
+* **Notifications** to **administrators** about **errors** and **new users**
+* **Multifunctional** administrator menu with the ability to **manually disable/enable neural networks**, a system for granting admin **privileges**, the ability to **ban** users, and **enable/disable maintenance mode**, **multifunctional** **broadcast menu**
+
+## Installation
+**1.** **Clone** the project to your device
+```
+git clone https://github.com/Belyashik2K/NeuroAI-v2.git
+```
+**2.** **Install** the necessary **dependencies**
+```python
+pip install -r requirements.txt
+pip install fluent.runtime
+```
+**3.** **Rename** the _.env.example_ file to _.env_, **open** it with any text editor or IDE, and set your values, for example:
+```python
+BOT_TOKEN="XXXXXXXXXXXXXXXXXXX" # Your bot token (@BotFather)
+FUTURE_FORGE_API_KEY = "XXXXXXXXXXX" # Your API-key for FutureForgeAPI (@futureforgedev_bot)
+
+technical_support = "@Belyashik2K" # Technical support username with @
+ads = "@Belyashik2K" # Ads-manager/creator username with @
+
+admin_chat = -1111111111111 # Admin user/chat id for notifications
+admin_id = 123456789 # ID for first admin (for access to "👨‍💻 Панель администратора" button")
+
+channel_link = "https://t.me/NeuroAIchannel" # Channel link for "📢 Наш канал" button
+api_dev = "https://api.futureforge.dev/docs" # Please, don't change this link. Support the work of the author of the API. Thank you!
+
+driver_name="postgresql+asyncpg"
+postgres_user="postgres"
+postgres_password="postgres"
+postgres_host="localhost"
+postgres_port="5432"
+postgres_database="postgres"
+sqlite_database="sqlite+aiosqlite:///bot/database/base.db" # Don't change this if you don't know what you're doing!
+
+is_sqlite = True # If you want to use SQLite, set this to True, otherwise False
+is_debug = False # If you want to use debug mode in logging, set this to True, otherwise False
+```
+
+**4.** **Perform** the necessary **migrations**. If you are using **SQLite**, first **create** the **database file** at the path specified in _sqlite_database_. **Run** the migration.
+```python
+alembic upgrade head
+```
+**5.** **Open** and **run** the _run.py_ file. Bingo, the bot is **running**!
+
+## Links
+* [Bot Author](https://t.me/belyashik2k)
+* [API Provider](https://api.futureforge.dev/docs#/)
+* [Bot Example](https://t.me/NeuroAItbot)
