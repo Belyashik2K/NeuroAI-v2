@@ -1,7 +1,7 @@
 from aiogram.filters import BaseFilter
 from aiogram.types import Update
 
-from ..database import database as db
+from ..database import database
 
 class IsAdmin(BaseFilter):
     def __get_id(self, update: Update) -> int:
@@ -11,7 +11,7 @@ class IsAdmin(BaseFilter):
             return update.message.from_user.id
 
     async def __call__(self, update: Update) -> bool:
-        user = await db.get_user(user_id=self.__get_id(update))
+        user = await database.get_user(user_id=self.__get_id(update))
         return user.is_admin
     
 class IsUserAdminInChat(BaseFilter):
