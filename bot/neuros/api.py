@@ -105,7 +105,7 @@ class Neuros(HTTPClient):
                                          neuro, 
                                          uri, 
                                          json=params)
-        return result['image_base64']
+        return result['image_url']
 
     async def bender_neuro(self,
                            neuro: str,
@@ -174,7 +174,8 @@ class Neuros(HTTPClient):
 
         params = {
             'image_url': image_url,
-            'prompt': prompt
+            'prompt': prompt,
+            'negative_prompt': 'not'
         }
 
         result = await self._request(self._method,

@@ -116,13 +116,13 @@ async def image_request(message: types.Message, user: User, state: FSMContext, i
     result = await func(_data['neuro'], prompt)
     await message.bot.delete_message(message.chat.id, _data['message_id'])
 
-    try:
+    if not result.endswith(".mp4"):
         await message.bot.send_photo(chat_id=message.chat.id, 
-                            photo=types.BufferedInputFile(base64.b64decode(result), filename='photo.png'),
+                            photo=types.URLInputFile(result, filename='photo.png'),
                             caption=i18n.messages.image_result(**formatting),
                             reply_markup=inline.close(),
                             parse_mode=ParseMode.MARKDOWN)
-    except:
+    else:
         await message.bot.send_video(chat_id=message.chat.id,
                                     video=types.URLInputFile(result, filename='video.mp4'),
                                     caption=i18n.messages.other_result(**formatting),

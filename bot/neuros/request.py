@@ -1,7 +1,5 @@
 from aiohttp import ClientSession
 
-from aiogram_i18n import LazyProxy
-
 from ..database import database
 from ..config import config
 
