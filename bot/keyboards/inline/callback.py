@@ -30,6 +30,7 @@ class Callback:
         playground = 'neuro_playground'
         enhance = 'neuro_enhance'
         midjourney = 'neuro_midjourney'
+        midjourneyv6 = 'neuro_midjourneyv6'
         dalle3 = 'neuro_dalle3'
         sdv = 'neuro_sdv'
         tencentmaker = 'neuro_tencentmaker'
@@ -74,6 +75,7 @@ class Neuros:
     playground = '🎮 Playground v2'
     enhance = '✨ EnhanceImage'
     midjourney = '📷 Midjourney V4'
+    midjourneyv6 = '🔥 Midjourney V6'
     dalle3 = '🖼 DALL·E 3'
     tencentmaker = '🖌 TencentARC PhotomaMaker'
     sdv = '📹 StableDiffusion Video'
@@ -84,7 +86,8 @@ class Neuros:
                    'llama', 'gemini', 'stable',
                    'mistral', 'playground', 'enhance', 
                    'midjourney', 'dalle3', 'whisper', 
-                   'bender', 'sdv', 'solar', 'tencentmaker']
+                   'bender', 'sdv', 'solar', 'tencentmaker',
+                   'midjourneyv6']
 
 class AllNeuros:
     data = {
@@ -99,6 +102,7 @@ class AllNeuros:
         Neuros.playground: Callback.Neuros.playground,
         Neuros.enhance: Callback.Neuros.enhance,
         Neuros.midjourney: Callback.Neuros.midjourney,
+        Neuros.midjourneyv6: Callback.Neuros.midjourneyv6,
         Neuros.sdv: Callback.Neuros.sdv,
         Neuros.dalle3: Callback.Neuros.dalle3,
         Neuros.tencentmaker: Callback.Neuros.tencentmaker,

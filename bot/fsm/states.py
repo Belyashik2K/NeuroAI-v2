@@ -6,6 +6,7 @@ class NeuroRequest(StatesGroup):
     bender = State()
     whisper = State()
     tencentmaker = State()
+    midjourneyv6 = State()
     chating = State()
 
 class AdminPanel(StatesGroup):
