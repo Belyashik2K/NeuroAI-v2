@@ -100,9 +100,9 @@ messages-choose_neuro_category = <b>🔥 选择神经网络</b>
     <i>神经网络列表：</i>
     ├ <code>🎨 StableDiffusionXL</code>
     ├ <code>🎮 Playground v2</code>
-    ├ <code>✨ EnhanceImage</code>
     ├ <code>📷 Midjourney V4</code>
     ├ <code>🔥 Midjourney V6</code>
+    ├ <code>✨ EnhanceImage</code>
     ├ <code>📹 StableDiffusion Video</code>
     ├ <code>🖼 DALL·E 3</code>
     └ <code>🖌 TencentARC PhotoMaker</code>

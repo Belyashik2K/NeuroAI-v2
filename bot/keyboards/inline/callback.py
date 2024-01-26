@@ -104,9 +104,9 @@ class AllNeuros:
         "image": {
             Neuros.stable: Callback.Neuros.stable,
             Neuros.playground: Callback.Neuros.playground,
-            Neuros.enhance: Callback.Neuros.enhance,
             Neuros.midjourney: Callback.Neuros.midjourney,
             Neuros.midjourneyv6: Callback.Neuros.midjourneyv6,
+            Neuros.enhance: Callback.Neuros.enhance,
             Neuros.sdv: Callback.Neuros.sdv,
             Neuros.dalle3: Callback.Neuros.dalle3,
             Neuros.tencentmaker: Callback.Neuros.tencentmaker,
