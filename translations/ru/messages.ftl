@@ -68,6 +68,7 @@ messages-about = 💬 <b>О сервисе</b>
     ├ Playground v2: <code>{ $playground }</code>
     ├ EnhanceImage: <code>{ $enhance }</code>
     ├ Midjourney V4: <code>{ $midjourney }</code>
+    ├ Midjourney V6: <code>{ $midjourneyv6 }</code>
     ├ StableDiffusion Video: <code>{ $sdv }</code>
     ├ DALL·E 3: <code>{ $dalle3 }</code>
     └ TencentARC PhotoMaker: <code>{ $tencentmaker }</code>
@@ -101,6 +102,7 @@ messages-choose_neuro_category = <b>🔥 Выбор нейросети</b>
     ├ <code>🎮 Playground v2</code>
     ├ <code>✨ EnhanceImage</code>
     ├ <code>📷 Midjourney V4</code>
+    ├ <code>🔥 Midjourney V6</code>
     ├ <code>📹 StableDiffusion Video</code>
     ├ <code>🖼 DALL·E 3</code>
     └ <code>🖌 TencentARC PhotoMaker</code>
@@ -135,6 +137,8 @@ messages-category_image = <code>🎨 StableDiffusionXL</code> — нейросе
     <code>✨ EnhanceImage</code> — нейросеть, которая способна улучшать качество изображений.
 
     <code>📷 Midjourney V4</code> — нейросеть, которая способна генерировать изображения по заданному запросу. Даёт четкие и качественные изображения при использовании хорошего промпта.
+
+    <code>🔥 Midjourney V6</code> — лучшая нейросеть для генерации изображений на данный момент. Улучшенная версия <code>📷 Midjourney V4</code>
 
     <code>📹 StableDiffusion Video</code> — нейросеть, которая способна генерировать видео по полученной фотографии.
 
@@ -224,7 +228,7 @@ messages-chat_mode = 🎉 <b>Диалог с ботом начат.</b> Для �
 
 messages-in_work = 😌 Один момент, пожалуйста, я обрабатываю ваш запрос...
 
-messages-chat_answer = 🤖 { $answer }
+messages-chat_answer = 🤖  
 
 messages-stop_chatting = 👋 Диалог с ботом завершён, возвращаю Вас в главное меню.
 
