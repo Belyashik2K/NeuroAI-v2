@@ -29,7 +29,8 @@ class Neuros(HTTPClient):
             data.Neuros.sdv: 'svd',
             data.Neuros.dalle3: 'image/dalle3',
             data.Neuros.enhance: 'image/enhance-image',
-            data.Neuros.tencentmaker: 'image/photomaker/'
+            data.Neuros.tencentmaker: 'image/photomaker/',
+            data.Neuros.midjourneyv6: 'midjourney-v6'
         }
 
         self._voice_neuros = {
@@ -230,3 +231,26 @@ class Neuros(HTTPClient):
                                      uri,
                                      params=params)
         return result['image_url']
+    
+    async def midjourneyv6(self,
+                           prompt: str) -> str:
+        """Generate image with prompt.
+        
+        Args:
+            prompt (str): Prompt.
+        Raises:
+            FutureForgeError: If error occured.
+        Returns:
+            str: Image URL."""
+        neuro_name = self._image_neuros[data.Neuros.midjourneyv6]
+        uri = self._URI + neuro_name
+
+        params = {
+            'prompt': prompt,
+        }
+
+        result = await self._request(self._method,
+                                     data.Neuros.midjourneyv6,
+                                     uri,
+                                     params=params)
+        return result['upscaled_image_urls']

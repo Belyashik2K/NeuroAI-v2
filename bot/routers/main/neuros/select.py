@@ -59,7 +59,7 @@ async def one_request_mode(call: types.CallbackQuery, user: User, state: FSMCont
 @router.callback_query(F.data.in_([data.Neuros.stable, data.Neuros.playground,
                                    data.Neuros.midjourney, data.Neuros.dalle3,
                                    data.Neuros.enhance, data.Neuros.sdv,
-                                   data.Neuros.tencentmaker]),
+                                   data.Neuros.tencentmaker, data.Neuros.midjourneyv6]),
                        isNeuroActive())
 async def start_gen_image(call: types.CallbackQuery, user: User, state: FSMContext, i18n: I18nContext):
     neuro = LazyProxy(f"buttons-{call.data.split('_')[1]}").data
@@ -70,15 +70,18 @@ async def start_gen_image(call: types.CallbackQuery, user: User, state: FSMConte
         data.Neuros.tencentmaker: LazyProxy('messages-tencentmaker', neuro=neuro).data
     }
 
+    states = {
+        data.Neuros.tencentmaker: NeuroRequest.tencentmaker,
+        data.Neuros.midjourneyv6: NeuroRequest.midjourneyv6,
+    }
+
     text = choices[call.data] if call.data in choices else i18n.messages.start_gen_image(neuro=neuro)
 
     await call.message.edit_text(text=text,
                                  reply_markup=inline.back(data.NeuroCategories.image),
                                  disable_web_page_preview=True)
     await state.update_data(neuro=call.data, message_id=call.message.message_id)
-    await state.set_state(
-        NeuroRequest.image_request if call.data != data.Neuros.tencentmaker else NeuroRequest.tencentmaker)
-
+    await state.set_state(NeuroRequest.image_request if call.data not in states else states[call.data])
 
 @router.callback_query(F.data.in_([data.Neuros.whisper, data.Neuros.bender]),
                        isNeuroActive())

@@ -18,6 +18,7 @@ class Callback:
         text = 'category_text'
         image = 'category_image'
         audio = 'category_audio'
+        admin = "cat_admin_"
 
     class Neuros:
         start = 'neuro_'
@@ -30,6 +31,7 @@ class Callback:
         playground = 'neuro_playground'
         enhance = 'neuro_enhance'
         midjourney = 'neuro_midjourney'
+        midjourneyv6 = 'neuro_midjourneyv6'
         dalle3 = 'neuro_dalle3'
         sdv = 'neuro_sdv'
         tencentmaker = 'neuro_tencentmaker'
@@ -74,6 +76,7 @@ class Neuros:
     playground = '🎮 Playground v2'
     enhance = '✨ EnhanceImage'
     midjourney = '📷 Midjourney V4'
+    midjourneyv6 = '🔥 Midjourney V6'
     dalle3 = '🖼 DALL·E 3'
     tencentmaker = '🖌 TencentARC PhotomaMaker'
     sdv = '📹 StableDiffusion Video'
@@ -84,24 +87,32 @@ class Neuros:
                    'llama', 'gemini', 'stable',
                    'mistral', 'playground', 'enhance', 
                    'midjourney', 'dalle3', 'whisper', 
-                   'bender', 'sdv', 'solar', 'tencentmaker']
+                   'bender', 'sdv', 'solar', 'tencentmaker',
+                   'midjourneyv6']
 
 class AllNeuros:
     data = {
-        Neuros.gpt: Callback.Neuros.gpt,
-        Neuros.claude: Callback.Neuros.claude,
-        Neuros.google: Callback.Neuros.google,
-        Neuros.llama: Callback.Neuros.llama,
-        Neuros.mistral: Callback.Neuros.mistral,
-        Neuros.solar: Callback.Neuros.solar,
-        Neuros.gemini: Callback.Neuros.gemini,
-        Neuros.stable: Callback.Neuros.stable,
-        Neuros.playground: Callback.Neuros.playground,
-        Neuros.enhance: Callback.Neuros.enhance,
-        Neuros.midjourney: Callback.Neuros.midjourney,
-        Neuros.sdv: Callback.Neuros.sdv,
-        Neuros.dalle3: Callback.Neuros.dalle3,
-        Neuros.tencentmaker: Callback.Neuros.tencentmaker,
-        Neuros.whisper: Callback.Neuros.whisper,
-        Neuros.bender: Callback.Neuros.bender,
+        "text": {
+            Neuros.gpt: Callback.Neuros.gpt,
+            Neuros.claude: Callback.Neuros.claude,
+            Neuros.google: Callback.Neuros.google,
+            Neuros.llama: Callback.Neuros.llama,
+            Neuros.mistral: Callback.Neuros.mistral,
+            Neuros.solar: Callback.Neuros.solar,
+            Neuros.gemini: Callback.Neuros.gemini
+        },
+        "image": {
+            Neuros.stable: Callback.Neuros.stable,
+            Neuros.playground: Callback.Neuros.playground,
+            Neuros.midjourney: Callback.Neuros.midjourney,
+            Neuros.midjourneyv6: Callback.Neuros.midjourneyv6,
+            Neuros.enhance: Callback.Neuros.enhance,
+            Neuros.sdv: Callback.Neuros.sdv,
+            Neuros.dalle3: Callback.Neuros.dalle3,
+            Neuros.tencentmaker: Callback.Neuros.tencentmaker,
+        },
+        "audio": {
+            Neuros.whisper: Callback.Neuros.whisper,
+            Neuros.bender: Callback.Neuros.bender
+        }
     }
