@@ -10,7 +10,7 @@
 Выражаю **отдельную** **благодарность** [автору](https://t.me/futureforge_channel) API за такой **интересный** и **бесплатный** проект. Надеюсь, что **проект** и дальше **продолжит** **существовать** и **развиваться**!
 
 ## Преимущества
-* **17** нейросетей, из которых на данный момент **полностью работают** **14**
+* **18** нейросетей, из которых на данный момент **полностью работают** **15**
   * **Работают**
     * _ChatGPT (GPT 3.5)_
     * _Claude AI_
@@ -22,6 +22,7 @@
     * _StableDiffusionXL_
     * _Playground v2_
     * _Midjourney V4_
+    * _Midjourney V6_
     * _StableDiffusion Video_
     * _TencentARC PhotoMaker_
     * _Whisper V3_
@@ -100,7 +101,7 @@ The bot runs on the **aiogram v3.x.x** version and uses **SQLAlchemy** for datab
 I express **special thanks** to the [API author](https://t.me/futureforge_channel) for such an **interesting** and **free** project. I hope the project will continue to **exist** and **develop**!
 
 ## Advantages
-* **17** neural networks, of which **14 are currently fully operational**
+* **18** neural networks, of which **15 are currently fully operational**
   * **Operational**
     * _ChatGPT (GPT 3.5)_
     * _Claude AI_
@@ -112,6 +113,7 @@ I express **special thanks** to the [API author](https://t.me/futureforge_channe
     * _StableDiffusionXL_
     * _Playground v2_
     * _Midjourney V4_
+    * _Midjourney V6_
     * _StableDiffusion Video_
     * _TencentARC PhotoMaker_
     * _Whisper V3_
