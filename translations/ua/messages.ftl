@@ -68,6 +68,7 @@ messages-about = 💬 <b>Про сервіс</b>
     ├ Playground v2: <code>{ $playground }</code>
     ├ EnhanceImage: <code>{ $enhance }</code>
     ├ Midjourney V4: <code>{ $midjourney }</code>
+    ├ Midjourney V6: <code>{ $midjourneyv6 }</code>
     ├ StableDiffusion Video: <code>{ $sdv }</code>
     ├ DALL·E 3: <code>{ $dalle3 }</code>
     └ TencentARC PhotoMaker: <code>{ $tencentmaker }</code>
@@ -101,6 +102,7 @@ messages-choose_neuro_category = <b>🔥 Вибір нейромережі</b>
     ├ <code>🎮 Playground v2</code>
     ├ <code>✨ EnhanceImage</code>
     ├ <code>📷 Midjourney V4</code>
+    ├ <code>🔥 Midjourney V6</code>
     ├ <code>📹 StableDiffusion Video</code>
     ├ <code>🖼 DALL·E 3</code>
     └ <code>🖌 TencentARC PhotoMaker</code>
@@ -135,6 +137,8 @@ messages-category_image = <code>🎨 StableDiffusionXL</code> — нейроме
     <code>✨ EnhanceImage</code> — нейромереж, яка може покращувати якість зображень.
 
     <code>📷 Midjourney V4</code> — нейромереж, яка може генерувати зображення за вказаним запитом. Надає чіткі і якісні зображення при використанні хорошого промпта.
+
+    <code>🔥 Midjourney V6</code> — найкраща нейромережа для генерації зображень на даний момент. Покращена версія <code>📷 Midjourney V4</code>
 
     <code>📹 StableDiffusion Video</code> — нейромереж, яка може генерувати відео за отриманою фотографією.
 
@@ -265,6 +269,7 @@ messages-admin_neuro_statuses = <b>🔥 Змінити статус нейром
     ├ Playground v2: <code>{ $playground }</code>
     ├ EnhanceImage: <code>{ $enhance }</code>
     ├ Midjourney V4: <code>{ $midjourney }</code>
+    ├ Midjourney V6: <code>{ $midjourneyv6 }</code>
     ├ StableDiffusion Video: <code>{ $sdv }</code>
     ├ DALL·E 3: <code>{ $dalle3 }</code>
     └ TencentARC PhotoMaker: <code>{ $tencentmaker }</code>

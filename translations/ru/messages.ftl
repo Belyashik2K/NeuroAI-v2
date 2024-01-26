@@ -271,6 +271,7 @@ messages-admin_neuro_statuses = <b>🔥 Сменить статус нейрос
     ├ Playground v2: <code>{ $playground }</code>
     ├ EnhanceImage: <code>{ $enhance }</code>
     ├ Midjourney V4: <code>{ $midjourney }</code>
+    ├ Midjourney V6: <code>{ $midjourneyv6 }</code>
     ├ StableDiffusion Video: <code>{ $sdv }</code>
     ├ DALL·E 3: <code>{ $dalle3 }</code>
     └ TencentARC PhotoMaker: <code>{ $tencentmaker }</code>

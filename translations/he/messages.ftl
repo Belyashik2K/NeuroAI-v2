@@ -68,6 +68,7 @@ messages-about = 💬 <b>על השירות</b>
     ├ Playground v2: <code>{ $playground }</code>
     ├ EnhanceImage: <code>{ $enhance }</code>
     ├ Midjourney V4: <code>{ $midjourney }</code>
+    ├ Midjourney V6: <code>{ $midjourneyv6 }</code>
     ├ StableDiffusion Video: <code>{ $sdv }</code>
     ├ DALL·E 3: <code>{ $dalle3 }</code>
     └ TencentARC PhotoMaker: <code>{ $tencentmaker }</code>
@@ -101,6 +102,7 @@ messages-choose_neuro_category = <b>🔥 בחירת רשת עצבים</b>
     ├ <code>🎮 Playground v2</code>
     ├ <code>✨ EnhanceImage</code>
     ├ <code>📷 Midjourney V4</code>
+    ├ <code>🔥 Midjourney V6</code>
     ├ <code>📹 StableDiffusion Video</code>
     ├ <code>🖼 DALL·E 3</code>
     └ <code>🖌 TencentARC PhotoMaker</code>
@@ -135,6 +137,8 @@ messages-category_image = <code>🎨 StableDiffusionXL</code> — רשת עצב�
     <code>✨ EnhanceImage</code> — רשת עצבים שיכולה לשדרג את איכות התמונות.
 
     <code>📷 Midjourney V4</code> — רשת עצבים שיכולה ליצור תמונות לפי בקשה. נותנת תמונות ממוקדות ואיכותיות עם שימוש בפרומפט טוב.
+
+    <code>🔥 Midjourney V6</code> — הרשת העצבים הטובה ביותר ליצירת תמונות כרגע. גרסה משופרת של <code>📷 Midjourney V4</code>
 
     <code>📹 StableDiffusion Video</code> — רשת עצבים שיכולה ליצור וידאו לפי תמונה שהתקבלה.
 
@@ -265,6 +269,7 @@ messages-admin_neuro_statuses = <b>🔥 שנה את מצב הרשת</b>
     ├ Playground v2: <code>{ $playground }</code>
     ├ EnhanceImage: <code>{ $enhance }</code>
     ├ Midjourney V4: <code>{ $midjourney }</code>
+    ├ Midjourney V6: <code>{ $midjourneyv6 }</code>
     ├ StableDiffusion Video: <code>{ $sdv }</code>
     ├ DALL·E 3: <code>{ $dalle3 }</code>
     └ TencentARC PhotoMaker: <code>{ $tencentmaker }</code>

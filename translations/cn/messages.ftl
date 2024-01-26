@@ -68,6 +68,7 @@ messages-about = 💬 <b>关于服务</b>
     ├ Playground v2: <code>{ $playground }</code>
     ├ EnhanceImage: <code>{ $enhance }</code>
     ├ Midjourney V4: <code>{ $midjourney }</code>
+    ├ Midjourney V6: <code>{ $midjourneyv6 }</code>
     ├ StableDiffusion Video: <code>{ $sdv }</code>
     ├ DALL·E 3: <code>{ $dalle3 }</code>
     └ TencentARC PhotoMaker: <code>{ $tencentmaker }</code>
@@ -101,6 +102,7 @@ messages-choose_neuro_category = <b>🔥 选择神经网络</b>
     ├ <code>🎮 Playground v2</code>
     ├ <code>✨ EnhanceImage</code>
     ├ <code>📷 Midjourney V4</code>
+    ├ <code>🔥 Midjourney V6</code>
     ├ <code>📹 StableDiffusion Video</code>
     ├ <code>🖼 DALL·E 3</code>
     └ <code>🖌 TencentARC PhotoMaker</code>
@@ -136,6 +138,8 @@ messages-category_image = <code>🎨 StableDiffusionXL</code> — 能够根据�
 
     <code>📷 Midjourney V4</code> — 能够根据请求生成清晰高质量图像的神经网络。
 
+    <code>🔥 Midjourney V6</code> — 目前最佳的图像生成神经网络。<code>📷 Midjourney V4</code> 的改进版本
+    
     <code>📹 StableDiffusion Video</code> — 能够根据提供的照片生成视频的神经网络。
 
     <code>🖼 DALL·E 3</code> — 由OpenAI推出的最先进的图像生成神经网络之一。
@@ -265,6 +269,7 @@ messages-admin_neuro_statuses = <b>🔥 更改神经网络状态</b>
     ├ Playground v2: <code>{ $playground }</code>
     ├ EnhanceImage: <code>{ $enhance }</code>
     ├ Midjourney V4: <code>{ $midjourney }</code>
+    ├ Midjourney V6: <code>{ $midjourneyv6 }</code>
     ├ StableDiffusion Video: <code>{ $sdv }</code>
     ├ DALL·E 3: <code>{ $dalle3 }</code>
     └ TencentARC PhotoMaker: <code>{ $tencentmaker }</code>

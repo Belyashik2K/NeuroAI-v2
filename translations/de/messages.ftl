@@ -68,6 +68,7 @@ messages-about = 💬 <b>Über den Service</b>
     ├ Playground v2: <code>{ $playground }</code>
     ├ EnhanceImage: <code>{ $enhance }</code>
     ├ Midjourney V4: <code>{ $midjourney }</code>
+    ├ Midjourney V6: <code>{ $midjourneyv6 }</code>
     ├ StableDiffusion Video: <code>{ $sdv }</code>
     ├ DALL·E 3: <code>{ $dalle3 }</code>
     └ TencentARC PhotoMaker: <code>{ $tencentmaker }</code>
@@ -101,6 +102,7 @@ messages-choose_neuro_category = <b>🔥 Auswahl des neuronalen Netzwerks</b>
     ├ <code>🎮 Playground v2</code>
     ├ <code>✨ EnhanceImage</code>
     ├ <code>📷 Midjourney V4</code>
+    ├ <code>🔥 Midjourney V6</code>
     ├ <code>📹 StableDiffusion Video</code>
     ├ <code>🖼 DALL·E 3</code>
     └ <code>🖌 TencentARC PhotoMaker</code>
@@ -136,6 +138,8 @@ messages-category_image = <code>🎨 StableDiffusionXL</code> — ein neuronales
 
     <code>📷 Midjourney V4</code> — ein neuronales Netzwerk, das Bilder auf Anfrage generieren kann. Es liefert klare und qualitativ hochwertige Bilder bei Verwendung einer guten Eingabeaufforderung.
 
+    <code>🔥 Midjourney V6</code> — beste neuronale Netzwerk zur Bildgenerierung derzeit. Verbesserte Version von <code>📷 Midjourney V4</code>
+    
     <code>📹 StableDiffusion Video</code> — ein neuronales Netzwerk, das Videos auf Grundlage eines erhaltenen Fotos generieren kann.
 
     <code>🖼 DALL·E 3</code> — eines der fortschrittlichsten neuronalen Netzwerke zur Bildgenerierung von OpenAI.
@@ -265,6 +269,7 @@ messages-admin_neuro_statuses = <b>🔥 Ändere den Netzwerkstatus</b>
     ├ Playground v2: <code>{ $playground }</code>
     ├ EnhanceImage: <code>{ $enhance }</code>
     ├ Midjourney V4: <code>{ $midjourney }</code>
+    ├ Midjourney V6: <code>{ $midjourneyv6 }</code>
     ├ StableDiffusion Video: <code>{ $sdv }</code>
     ├ DALL·E 3: <code>{ $dalle3 }</code>
     └ TencentARC PhotoMaker: <code>{ $tencentmaker }</code>
