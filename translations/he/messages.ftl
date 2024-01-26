@@ -134,11 +134,11 @@ messages-category_image = <code>🎨 StableDiffusionXL</code> — רשת עצב�
 
     <code>🎮 Playground v2</code> — אחת מהרשתות הטובות ביותר ליצירת תמונות. מסוגלת ליצור תמונות לפי בקשה.
 
-    <code>✨ EnhanceImage</code> — רשת עצבים שיכולה לשדרג את איכות התמונות.
-
     <code>📷 Midjourney V4</code> — רשת עצבים שיכולה ליצור תמונות לפי בקשה. נותנת תמונות ממוקדות ואיכותיות עם שימוש בפרומפט טוב.
 
     <code>🔥 Midjourney V6</code> — הרשת העצבים הטובה ביותר ליצירת תמונות כרגע. גרסה משופרת של <code>📷 Midjourney V4</code>
+
+    <code>✨ EnhanceImage</code> — רשת עצבים שיכולה לשדרג את איכות התמונות.
 
     <code>📹 StableDiffusion Video</code> — רשת עצבים שיכולה ליצור וידאו לפי תמונה שהתקבלה.
 

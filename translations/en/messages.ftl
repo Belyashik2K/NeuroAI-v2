@@ -134,12 +134,12 @@ messages-category_image = <code>🎨 StableDiffusionXL</code> — a network capa
 
     <code>🎮 Playground v2</code> — one of the best networks for image generation. Capable of generating images based on a given prompt.
 
-    <code>✨ EnhanceImage</code> — a network capable of enhancing the quality of images.
-
     <code>📷 Midjourney V4</code> — a network capable of generating images based on a given prompt. Provides clear and high-quality images with a good prompt.
 
     <code>🔥 Midjourney V6</code> — best neural network for image generation currently. Improved version of <code>📷 Midjourney V4</code>
     
+    <code>✨ EnhanceImage</code> — a network capable of enhancing the quality of images.
+
     <code>📹 StableDiffusion Video</code> — a network capable of generating videos based on a received photo.
 
     <code>🖼 DALL·E 3</code> — one of the most advanced networks for image generation from OpenAI.
