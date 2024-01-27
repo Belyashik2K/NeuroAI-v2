@@ -29,3 +29,4 @@ pytz==2023.3.post1
 SQLAlchemy==2.0.25
 typing_extensions==4.9.0
 yarl==1.9.4
+msgspec
