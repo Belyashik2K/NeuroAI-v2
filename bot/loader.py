@@ -1,9 +1,12 @@
 from aiogram import Bot, Dispatcher
+from aiogram.client.session.aiohttp import AiohttpSession
 from aiogram.enums import ParseMode
 from aiogram.fsm.storage.memory import MemoryStorage
 
 from .config import config
 from .factories import Factory
+from .middlewares import RetryRequestMiddleware
+from .utils import msgspec_json
 
 def check_config() -> None:
     params = ["BOT_TOKEN", "FUTURE_FORGE_API_KEY",
@@ -20,6 +23,12 @@ def check_config() -> None:
 
 check_config()
 
-bot = Bot(token=config.BOT_TOKEN.get_secret_value(), parse_mode=ParseMode.HTML)
+session: AiohttpSession = AiohttpSession(json_loads=msgspec_json.decode,
+                                         json_dumps=msgspec_json.encode)
+session.middleware(RetryRequestMiddleware())
+
+bot = Bot(token=config.BOT_TOKEN.get_secret_value(), 
+          session=session,
+          parse_mode=ParseMode.HTML)
 dp = Dispatcher(storage=MemoryStorage())
 factory = Factory(dp=dp)
