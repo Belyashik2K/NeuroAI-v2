@@ -102,7 +102,7 @@ I express **special thanks** to the [API author](https://t.me/futureforge_channe
 
 ## Advantages
 * **18** neural networks, of which **15 are currently fully operational**
-  * **Operational**
+  * **Working**
     * _ChatGPT (GPT 3.5)_
     * _Claude AI_
     * _Google AI_
