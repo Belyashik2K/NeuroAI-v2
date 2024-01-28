@@ -37,6 +37,7 @@ buttons-chat = 👥 聊天机器人
 
 buttons-channel = 📢 我们的频道
 buttons-api_dev = 🧑‍💻 API提供商
+buttons-source = 💻 源代码
 
 buttons-mailing = 📨 邮件订阅
 buttons-find_user = 🔍 查找用户

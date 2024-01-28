@@ -277,3 +277,7 @@ messages-admin_neuro_statuses = <b>🔥 Ändere den Netzwerkstatus</b>
     Netzwerke zur Audiobearbeitung:
     ├ Whisper V3: <code>{ $whisper }</code>
     └ RachelVoice: <code>{ $bender }</code>
+
+```Input field placeholders```
+
+messages-main_menu = Wählen Sie eine Aktion im Menü unten oder geben Sie den Befehl /start ein...

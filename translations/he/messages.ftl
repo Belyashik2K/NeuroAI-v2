@@ -277,3 +277,7 @@ messages-admin_neuro_statuses = <b>🔥 שנה את מצב הרשת</b>
     רשתות לעבוד עם אודיו:
     ├ Whisper V3: <code>{ $whisper }</code>
     └ RachelVoice: <code>{ $bender }</code>
+
+```Input field placeholders```
+
+messages-main_menu = בחר פעולה בתפריט למטה או הקלד את הפקודה /start...
