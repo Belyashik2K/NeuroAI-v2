@@ -37,6 +37,7 @@ buttons-chat = 👥 Чат-бот
 
 buttons-channel = 📢 Наш канал
 buttons-api_dev = 🧑‍💻 Постачальник API
+buttons-source = 💻 Вихідний код
 
 buttons-mailing = 📨 Розсилка
 buttons-find_user = 🔍 Знайти користувача

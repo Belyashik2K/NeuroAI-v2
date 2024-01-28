@@ -277,3 +277,7 @@ messages-admin_neuro_statuses = <b>🔥 Змінити статус нейром
     Нейромережі для роботи з аудіо:
     ├ Whisper V3: <code>{ $whisper }</code>
     └ RachelVoice: <code>{ $bender }</code>
+
+```Input field placeholders```
+
+messages-main_menu = Виберіть дію в меню нижче або напишіть команду /start...

@@ -279,3 +279,7 @@ messages-admin_neuro_statuses = <b>🔥 Сменить статус нейрос
     Нейросети для работы с аудио:
     ├ Whisper V3: <code>{ $whisper }</code>
     └ RachelVoice: <code>{ $bender }</code>
+
+```Input field placeholders```
+
+messages-main_menu = Выберите действие в меню ниже или напишите команду /start...

@@ -164,10 +164,11 @@ class InlineKeyboards:
 
         channel = InlineKeyboardButton(text=LazyProxy('buttons-channel'), url=config.channel_link)
         api_dev = InlineKeyboardButton(text=LazyProxy('buttons-api_dev'), url=config.api_dev)
+        source = InlineKeyboardButton(text=LazyProxy('buttons-source'), url="https://github.com/Belyashik2K/NeuroAI-v2")
 
-        builder.add(channel, api_dev)
+        builder.add(channel, api_dev, source)
         builder.row(self.close(as_button=True))
-        builder.adjust(2, 1)
+        builder.adjust(2, 1, 1)
         return builder.as_markup()
     
     async def admin(self) -> InlineKeyboardMarkup:

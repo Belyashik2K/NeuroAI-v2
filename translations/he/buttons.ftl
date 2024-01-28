@@ -37,6 +37,7 @@ buttons-chat = 👥 צ'אט-בוט
 
 buttons-channel = 📢 הערוץ שלנו
 buttons-api_dev = 🧑‍💻 ספק API
+buttons-source = 💻 קוד מקור
 
 buttons-mailing = 📨 רישום לעדכונים
 buttons-find_user = 🔍 מציאת משתמש

@@ -22,7 +22,7 @@ class ReplyKeyboards:
             admin = KeyboardButton(text=LazyProxy("buttons-admin"))
             builder.row(admin)
 
-        return builder.as_markup(resize_keyboard=True)
+        return builder.as_markup(resize_keyboard=True, input_field_placeholder=LazyProxy("messages-main_menu").data)
 
     def stop_chatting(self) -> ReplyKeyboardMarkup:
         builder = ReplyKeyboardBuilder()

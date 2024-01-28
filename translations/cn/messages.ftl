@@ -277,3 +277,7 @@ messages-admin_neuro_statuses = <b>🔥 更改神经网络状态</b>
     用于音频处理的神经网络：
     ├ Whisper V3: <code>{ $whisper }</code>
     └ RachelVoice: <code>{ $bender }</code>
+
+```Input field placeholders```
+
+messages-main_menu = 在下面的菜单中选择操作或键入命令 /start...

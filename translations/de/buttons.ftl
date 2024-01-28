@@ -37,6 +37,7 @@ buttons-chat = 👥 Chatbot
 
 buttons-channel = 📢 Unser Kanal
 buttons-api_dev = 🧑‍💻 API-Anbieter
+buttons-source = 💻 Quellcode
 
 buttons-mailing = 📨 Rundschreiben
 buttons-find_user = 🔍 Benutzer finden
