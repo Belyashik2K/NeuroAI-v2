@@ -198,7 +198,7 @@ messages-request_processing = <b>您的请求：</b> <code>{ $request }</code>
     😌 <i>处理请求中，请稍候...</i>
 
 messages-request_result = <b>您的请求：</b> <code>{ $request }</code>
-    <i>神经网络回答：</i> { $result }
+    <i>神经网络回答: </i>
 
 messages-image_processing = 🤖 <i>已选择神经网络：</i> <code>{ $neuro }</code>
 

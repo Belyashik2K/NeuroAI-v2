@@ -198,7 +198,7 @@ messages-request_processing = <b>הבקשה שלך:</b> <code>{ $request }</code
     😌 <i>מעבד את הבקשה, אנא המתן...</i>
 
 messages-request_result = <b>הבקשה שלך:</b> <code>{ $request }</code>
-    <i>תשובת הרשת:</i> { $result }
+    <i>תשובת הרשת: </i>
 
 messages-image_processing = 🤖 <i>הרשת הנבחרת:</i> <code>{ $neuro }</code>
 
