@@ -38,7 +38,7 @@ async def one_request(message: types.Message, user: User, state: FSMContext, i18
         result = await client.text_neuro(neuro=data['neuro'], message=message.text, mode=data['mode'])
         formatting['result'] = result[0]
         try:
-            await message.bot.edit_message_text(header + "\n\n" + i18n.messages.request_result(**formatting),
+            await message.bot.edit_message_text(header + "\n\n" + i18n.messages.request_result(**formatting) + result[0],
                                                 chat_id=message.chat.id, message_id=data['message_id'],
                                                 reply_markup=inline.back(data['neuro']))
         except Exception as e:

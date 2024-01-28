@@ -198,7 +198,7 @@ messages-request_processing = <b>Ihre Anfrage:</b> <code>{ $request }</code>
     😌 <i>Verarbeitung der Anfrage, bitte warten...</i>
 
 messages-request_result = <b>Ihre Anfrage:</b> <code>{ $request }</code>
-    <i>Antwort des neuronalen Netzwerks:</i> { $result }
+    <i>Antwort des neuronalen Netzwerks: </i>
 
 messages-image_processing = 🤖 <i>Ausgewähltes neuronales Netzwerk:</i> <code>{ $neuro }</code>
 
