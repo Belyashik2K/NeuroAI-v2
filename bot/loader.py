@@ -7,8 +7,9 @@ from .factories import Factory
 
 def check_config() -> None:
     params = ["BOT_TOKEN", "FUTURE_FORGE_API_KEY",
-              "technical_support", "ads", "admin_chat", 
-              "channel_link", "admin_id"]
+              "technical_support", "ads", 
+              "admin_chat", "admin_id", 
+              "channel_link", "api_dev"]
     
     for param in params:
         if not getattr(config, param):
