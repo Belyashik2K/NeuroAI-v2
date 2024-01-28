@@ -68,6 +68,7 @@ messages-about = 💬 <b>About the service</b>
     ├ Playground v2: <code>{ $playground }</code>
     ├ EnhanceImage: <code>{ $enhance }</code>
     ├ Midjourney V4: <code>{ $midjourney }</code>
+    ├ Midjourney V6: <code>{ $midjourneyv6 }</code>
     ├ StableDiffusion Video: <code>{ $sdv }</code>
     ├ DALL·E 3: <code>{ $dalle3 }</code>
     └ TencentARC PhotoMaker: <code>{ $tencentmaker }</code>
@@ -99,8 +100,9 @@ messages-choose_neuro_category = <b>🔥 Choose Neural Network</b>
     <i>List of networks:</i>
     ├ <code>🎨 StableDiffusionXL</code>
     ├ <code>🎮 Playground v2</code>
-    ├ <code>✨ EnhanceImage</code>
     ├ <code>📷 Midjourney V4</code>
+    ├ <code>🔥 Midjourney V6</code>
+    ├ <code>✨ EnhanceImage</code>
     ├ <code>📹 StableDiffusion Video</code>
     ├ <code>🖼 DALL·E 3</code>
     └ <code>🖌 TencentARC PhotoMaker</code>
@@ -132,9 +134,11 @@ messages-category_image = <code>🎨 StableDiffusionXL</code> — a network capa
 
     <code>🎮 Playground v2</code> — one of the best networks for image generation. Capable of generating images based on a given prompt.
 
-    <code>✨ EnhanceImage</code> — a network capable of enhancing the quality of images.
-
     <code>📷 Midjourney V4</code> — a network capable of generating images based on a given prompt. Provides clear and high-quality images with a good prompt.
+
+    <code>🔥 Midjourney V6</code> — best neural network for image generation currently. Improved version of <code>📷 Midjourney V4</code>
+    
+    <code>✨ EnhanceImage</code> — a network capable of enhancing the quality of images.
 
     <code>📹 StableDiffusion Video</code> — a network capable of generating videos based on a received photo.
 
@@ -265,6 +269,7 @@ messages-admin_neuro_statuses = <b>🔥 Change neural network status</b>
     ├ Playground v2: <code>{ $playground }</code>
     ├ EnhanceImage: <code>{ $enhance }</code>
     ├ Midjourney V4: <code>{ $midjourney }</code>
+    ├ Midjourney V6: <code>{ $midjourneyv6 }</code>
     ├ StableDiffusion Video: <code>{ $sdv }</code>
     ├ DALL·E 3: <code>{ $dalle3 }</code>
     └ TencentARC PhotoMaker: <code>{ $tencentmaker }</code>

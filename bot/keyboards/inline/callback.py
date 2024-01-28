@@ -18,6 +18,7 @@ class Callback:
         text = 'category_text'
         image = 'category_image'
         audio = 'category_audio'
+        admin = "cat_admin_"
 
     class Neuros:
         start = 'neuro_'
@@ -91,21 +92,27 @@ class Neuros:
 
 class AllNeuros:
     data = {
-        Neuros.gpt: Callback.Neuros.gpt,
-        Neuros.claude: Callback.Neuros.claude,
-        Neuros.google: Callback.Neuros.google,
-        Neuros.llama: Callback.Neuros.llama,
-        Neuros.mistral: Callback.Neuros.mistral,
-        Neuros.solar: Callback.Neuros.solar,
-        Neuros.gemini: Callback.Neuros.gemini,
-        Neuros.stable: Callback.Neuros.stable,
-        Neuros.playground: Callback.Neuros.playground,
-        Neuros.enhance: Callback.Neuros.enhance,
-        Neuros.midjourney: Callback.Neuros.midjourney,
-        Neuros.midjourneyv6: Callback.Neuros.midjourneyv6,
-        Neuros.sdv: Callback.Neuros.sdv,
-        Neuros.dalle3: Callback.Neuros.dalle3,
-        Neuros.tencentmaker: Callback.Neuros.tencentmaker,
-        Neuros.whisper: Callback.Neuros.whisper,
-        Neuros.bender: Callback.Neuros.bender,
+        "text": {
+            Neuros.gpt: Callback.Neuros.gpt,
+            Neuros.claude: Callback.Neuros.claude,
+            Neuros.google: Callback.Neuros.google,
+            Neuros.llama: Callback.Neuros.llama,
+            Neuros.mistral: Callback.Neuros.mistral,
+            Neuros.solar: Callback.Neuros.solar,
+            Neuros.gemini: Callback.Neuros.gemini
+        },
+        "image": {
+            Neuros.stable: Callback.Neuros.stable,
+            Neuros.playground: Callback.Neuros.playground,
+            Neuros.midjourney: Callback.Neuros.midjourney,
+            Neuros.midjourneyv6: Callback.Neuros.midjourneyv6,
+            Neuros.enhance: Callback.Neuros.enhance,
+            Neuros.sdv: Callback.Neuros.sdv,
+            Neuros.dalle3: Callback.Neuros.dalle3,
+            Neuros.tencentmaker: Callback.Neuros.tencentmaker,
+        },
+        "audio": {
+            Neuros.whisper: Callback.Neuros.whisper,
+            Neuros.bender: Callback.Neuros.bender
+        }
     }
