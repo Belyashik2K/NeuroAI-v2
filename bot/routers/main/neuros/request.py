@@ -20,7 +20,6 @@ from ....fsm import *
 
 router: Final[Router] = Router(name=__name__)
 
-
 @router.message(NeuroRequest.request, F.text)
 async def one_request(message: types.Message, user: User, state: FSMContext, i18n: I18nContext):
     data = await state.get_data()
@@ -31,24 +30,22 @@ async def one_request(message: types.Message, user: User, state: FSMContext, i18
     }
     header = i18n.messages.header(neuro=formatting['neuro'], mode=formatting['mode'])
     await message.delete()
-    await message.bot.edit_message_text(header + "\n\n" + i18n.messages.request_processing(**formatting),
+    m = await message.bot.edit_message_text(header + "\n\n" + i18n.messages.request_processing(**formatting),
                                         chat_id=message.chat.id, message_id=data['message_id'])
     await state.clear()
     async with ChatActionSender.typing(bot=message.bot, chat_id=message.chat.id):
         result = await client.text_neuro(neuro=data['neuro'], message=message.text, mode=data['mode'])
         formatting['result'] = result[0]
         try:
-            await message.bot.edit_message_text(header + "\n\n" + i18n.messages.request_result(**formatting) + result[0],
-                                                chat_id=message.chat.id, message_id=data['message_id'],
-                                                reply_markup=inline.back(data['neuro']))
+            await message.bot.delete_message(chat_id=message.chat.id,
+                                            message_id=m.message_id)
+            await message.answer(header + "\n\n" + i18n.messages.request_result(**formatting) + result[0],
+                                reply_markup=inline.back(data['neuro']))
         except Exception as e:
             logging.error(e)
-            await message.bot.edit_message_text(chat_id=message.chat.id,
-                                                message_id=data['message_id'],
-                                                **ExceptionChecker.check_exception(str(e)))
+            await message.answer(**ExceptionChecker.check_exception(str(e)))
     await database.update_user(user_id=user.user_id,
                                request_counter=user.request_counter + 1)
-
 
 @router.callback_query(F.data == data.Mode.chat)
 async def chat_mode(call: types.CallbackQuery, user: User, state: FSMContext, i18n: I18nContext):
@@ -64,11 +61,11 @@ async def chat_mode(call: types.CallbackQuery, user: User, state: FSMContext, i1
     m = await call.bot.send_message(call.message.chat.id, i18n.messages.starting_chat())
     _, chat_code = await client.text_neuro(neuro=_data['neuro'], message="Hello!", mode=data.Mode.one_request)
     await call.bot.delete_message(call.message.chat.id, m.message_id)
-    await call.bot.send_message(call.message.chat.id, header + '\n\n' + i18n.messages.chat_mode(
-        end_button=LazyProxy('buttons-stop_chatting').data), reply_markup=reply.stop_chatting())
+    await call.bot.send_message(call.message.chat.id, 
+                                header + '\n\n' + i18n.messages.chat_mode(end_button=LazyProxy('buttons-stop_chatting').data), 
+                                reply_markup=reply.stop_chatting())
     await state.update_data(mode=call.data, chat_code=chat_code)
     await state.set_state(NeuroRequest.chating)
-
 
 @router.message(NeuroRequest.chating, F.text)
 async def chatting(message: types.Message, user: User, state: FSMContext, i18n: I18nContext):
@@ -143,7 +140,6 @@ async def image_request(message: types.Message, user: User, state: FSMContext, i
 
     await database.update_user(user_id=user.user_id, request_counter=user.request_counter + 1)
 
-
 @router.message(NeuroRequest.bender, F.text)
 async def bender_request(message: types.Message, user: User, state: FSMContext, i18n: I18nContext):
     await message.delete()
@@ -167,7 +163,6 @@ async def bender_request(message: types.Message, user: User, state: FSMContext, 
     await database.update_user(user_id=user.user_id, request_counter=user.request_counter + 1)
     await state.clear()
 
-
 @router.message(NeuroRequest.whisper, F.audio)
 async def whisper_voice(message: types.Message, user: User, state: FSMContext, i18n: I18nContext):
     data = await state.get_data()
@@ -187,7 +182,6 @@ async def whisper_voice(message: types.Message, user: User, state: FSMContext, i
                                             result=result),
                                         reply_markup=inline.close())
     await database.update_user(user_id=user.user_id, request_counter=user.request_counter + 1)
-
 
 @router.message(NeuroRequest.tencentmaker, F.photo & F.caption)
 async def tencentmaker(message: types.Message, user: User, state: FSMContext, i18n: I18nContext):
