@@ -1,6 +1,4 @@
 import logging
-import base64
-
 from typing import Final
 
 from aiogram import Router, F, types
