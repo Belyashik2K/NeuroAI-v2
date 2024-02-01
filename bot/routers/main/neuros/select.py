@@ -15,6 +15,7 @@ router: Final[Router] = Router(name=__name__)
 
 @router.message(F.text == LazyProxy("buttons-neuro_choose"))
 async def neuro_category_choose(message: types.Message, user: User, state: FSMContext, i18n: I18nContext):
+    await message.delete()
     await state.clear()
     await message.answer(i18n.messages.choose_neuro_category(), reply_markup=inline.neuro_categories())
 

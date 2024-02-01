@@ -12,6 +12,7 @@ router: Final[Router] = Router(name=__name__)
 
 @router.message(F.text==LazyProxy("buttons-about"))
 async def about_service(message: types.Message, user: User, state: FSMContext, i18n: I18nContext):
+    await message.delete()
     await state.clear()
     await message.answer(i18n.messages.about(**await database.get_neuro_statuses()), reply_markup=inline.about())
 
