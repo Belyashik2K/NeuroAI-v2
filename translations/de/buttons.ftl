@@ -7,6 +7,7 @@ buttons-admin = 👨‍💻 Administrationspanel
 buttons-stop_chatting = ❌ Gespräch beenden
 
 buttons-set_language = 🌐 Sprache ändern
+buttons-again = 🔄 Neue generation
 buttons-close = ❌ Schließen
 buttons-back = ⬅️ Zurück
 
@@ -28,6 +29,9 @@ buttons-midjourney = 📷 Midjourney V4
 buttons-midjourneyv6 = 🔥 Midjourney V6
 buttons-dalle3 = 🖼 DALL·E 3
 buttons-tencentmaker = 🖌 TencentARC PhotoMaker
+buttons-juggernaut = 🦾 JuggernautXL V5
+buttons-dynavision = 👁️ DynaVisionXL
+buttons-animeart = 🧝🏻‍♀️ AnimeArt
 buttons-sdv = 📹 StableDiffusion Video
 buttons-whisper = 🎤 Whisper V3
 buttons-bender = 🗣️ RachelVoice
@@ -36,7 +40,8 @@ buttons-one_request = 🔥 Einzelanfrage
 buttons-chat = 👥 Chatbot
 
 buttons-channel = 📢 Unser Kanal
-buttons-api_dev = 🧑‍💻 API-Anbieter
+buttons-future_forge = 🧑‍💻 FutureForge API
+buttons-vision_craft = 🧑‍💻 VisionCraft API
 buttons-source = 💻 Quellcode
 
 buttons-mailing = 📨 Rundschreiben

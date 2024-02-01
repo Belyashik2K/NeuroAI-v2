@@ -4,6 +4,7 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 class Settings(BaseSettings):
     BOT_TOKEN: SecretStr
     FUTURE_FORGE_API_KEY: SecretStr
+    VISION_CRAFT_API_KEY: SecretStr
 
     technical_support: str
     ads: str
@@ -12,7 +13,6 @@ class Settings(BaseSettings):
     admin_id: int
 
     channel_link: str
-    api_dev: str
 
     driver_name: str
     postgres_user: str

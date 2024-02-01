@@ -14,7 +14,7 @@ messages-info = 🙋 Ласкаво просимо в світ нейромер�
     — Відповідаю на твої питання у форматі <b>діалогу</b> або <b>одиночного повідомлення</b>
     — Генерую <b>фотографії</b> за вказаним запитом
     — Генерую аудіофайли за вказаним запитом і перекладаю їх
-    — <b>Абсолютно безкоштовний</b> і працюю на основі <a href="https://api.futureforge.dev/docs">API FutureForge</a>
+    — <b>Абсолютно безкоштовно</b> та працюю на основі <a href="https://api.futureforge.dev/docs">API FutureForge</a> та <a href="https://visioncraft-rs24.koyeb.app/docs">API VisionCraft</a>
     — Маю <b>відкритий</b> вихідний код, який ти можеш знайти в моєму репозиторії на <a href="https://github.com/Belyashik2K/NeuroAI-v2">GitHub</a>
 
     🆘 Технічна підтримка >>> { $technical_support }
@@ -71,7 +71,10 @@ messages-about = 💬 <b>Про сервіс</b>
     ├ Midjourney V6: <code>{ $midjourneyv6 }</code>
     ├ StableDiffusion Video: <code>{ $sdv }</code>
     ├ DALL·E 3: <code>{ $dalle3 }</code>
-    └ TencentARC PhotoMaker: <code>{ $tencentmaker }</code>
+    ├ TencentARC PhotoMaker: <code>{ $tencentmaker }</code>
+    ├ JuggernautXL V5: <code>{ $juggernaut }</code>
+    ├ DynaVisionXL: <code>{ $dynavision }</code>
+    └ AnimeArt: <code>{ $animeart }</code>
     
     Нейромережі для роботи з аудіо:
     ├ Whisper V3: <code>{ $whisper }</code>
@@ -105,7 +108,10 @@ messages-choose_neuro_category = <b>🔥 Вибір нейромережі</b>
     ├ <code>✨ EnhanceImage</code>
     ├ <code>📹 StableDiffusion Video</code>
     ├ <code>🖼 DALL·E 3</code>
-    └ <code>🖌 TencentARC PhotoMaker</code>
+    ├ <code>🖌 TencentARC PhotoMaker</code>
+    ├ <code>🦾 JuggernautXL V5</code>
+    ├ <code>👁️ DynaVisionXL</code>
+    └ <code>🧝🏻‍♀️ AnimeArt</code>
 
     🎵 <code>Аудіо</code> — нейромережі, які генерують аудіо.
     <i>Список нейромереж:</i>
@@ -145,6 +151,12 @@ messages-category_image = <code>🎨 StableDiffusionXL</code> — нейроме
     <code>🖼 DALL·E 3</code> — одна з найбільш передових нейромереж для генерації зображень від компанії OpenAI.
 
     <code>🖌 TencentARC PhotoMaker</code> — нейромережа, яка може створити будь-яке зображення з будь-яким обличчям за заданим запитом. Фільтр NSFW відсутній.
+
+    <code>🦾 JuggernautXL V5</code> — нейросеть, призначена для генерації пейзажів, фотографій архітектури та дуже деталізованих фотографій.
+
+    <code>👁️ DynaVisionXL</code> — нейросеть, яка може генерувати зображення за вказаним запитом. Надає чіткі та якісні зображення при використанні якісного промпта.
+
+    <code>🧝🏻‍♀️ AnimeArt</code> — нейросеть, спрямована на генерацію аніме-фотографій. Добрий результат при використанні якісного промпта.
 
 messages-category_audio = <code>🎤 Whisper V3</code> — нейромереж, яка може переводити аудіофайл в текст.
 
@@ -272,7 +284,10 @@ messages-admin_neuro_statuses = <b>🔥 Змінити статус нейром
     ├ Midjourney V6: <code>{ $midjourneyv6 }</code>
     ├ StableDiffusion Video: <code>{ $sdv }</code>
     ├ DALL·E 3: <code>{ $dalle3 }</code>
-    └ TencentARC PhotoMaker: <code>{ $tencentmaker }</code>
+    ├ TencentARC PhotoMaker: <code>{ $tencentmaker }</code>
+    ├ JuggernautXL V5: <code>{ $juggernaut }</code>
+    ├ DynaVisionXL: <code>{ $dynavision }</code>
+    └ AnimeArt: <code>{ $animeart }</code>
 
     Нейромережі для роботи з аудіо:
     ├ Whisper V3: <code>{ $whisper }</code>

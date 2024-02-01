@@ -9,6 +9,7 @@ router: Final[Router] = Router(name=__name__)
 
 @router.message(LazyProxy('buttons-admin'))
 async def admin_panel(message: types.Message, user: User, i18n: I18nContext):
+    await message.delete()
     await message.answer(
         i18n.messages.admin_panel(),
         reply_markup=await inline.admin()

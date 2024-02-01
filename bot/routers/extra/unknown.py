@@ -12,6 +12,7 @@ router: Final[Router] = Router(name=__name__)
 
 @router.message()
 async def unknown_command(message: Message, i18n: I18nContext, user: User, state: FSMContext):
+    await message.delete()
     if message.text == LazyProxy("buttons-stop_chatting").data:
         await state.clear()
         await message.delete()

@@ -10,9 +10,10 @@ from .utils import msgspec_json
 
 def check_config() -> None:
     params = ["BOT_TOKEN", "FUTURE_FORGE_API_KEY",
+              "VISION_CRAFT_API_KEY",
               "technical_support", "ads", 
               "admin_chat", "admin_id", 
-              "channel_link", "api_dev"]
+              "channel_link"]
     
     for param in params:
         if not getattr(config, param):

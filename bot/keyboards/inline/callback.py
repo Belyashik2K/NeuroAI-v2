@@ -1,5 +1,6 @@
 class Callback:
     close = 'close'
+    again = 'again_'
 
     class Settings:
         back = "back_settings"
@@ -32,6 +33,9 @@ class Callback:
         enhance = 'neuro_enhance'
         midjourney = 'neuro_midjourney'
         midjourneyv6 = 'neuro_midjourneyv6'
+        juggernaut = 'neuro_juggernaut'
+        dynavision = 'neuro_dynavision'
+        animeart = 'neuro_animeart'
         dalle3 = 'neuro_dalle3'
         sdv = 'neuro_sdv'
         tencentmaker = 'neuro_tencentmaker'
@@ -40,6 +44,8 @@ class Callback:
         mistral = 'neuro_mistral'
         solar= 'neuro_solar'
         switch = 'switch_'
+
+        vision_neuros = [juggernaut, dynavision, animeart]
 
     class Mode:
         start = 'mode_'
@@ -79,6 +85,9 @@ class Neuros:
     midjourneyv6 = '🔥 Midjourney V6'
     dalle3 = '🖼 DALL·E 3'
     tencentmaker = '🖌 TencentARC PhotomaMaker'
+    juggernaut = "🦾 JuggernautXL V5"
+    dynavision = "👁️ DynaVision XL"
+    animeart = '🧝🏻‍♀️ Anime Art'
     sdv = '📹 StableDiffusion Video'
     whisper = '🎤 Whisper V3'
     bender = '🗣️ RachelVoice'
@@ -88,7 +97,9 @@ class Neuros:
                    'mistral', 'playground', 'enhance', 
                    'midjourney', 'dalle3', 'whisper', 
                    'bender', 'sdv', 'solar', 'tencentmaker',
-                   'midjourneyv6']
+                   'midjourneyv6', 'animeart', 'juggernaut',
+                   'dynavision'
+                   ]
 
 class AllNeuros:
     data = {
@@ -110,6 +121,9 @@ class AllNeuros:
             Neuros.sdv: Callback.Neuros.sdv,
             Neuros.dalle3: Callback.Neuros.dalle3,
             Neuros.tencentmaker: Callback.Neuros.tencentmaker,
+            Neuros.juggernaut: Callback.Neuros.juggernaut,
+            Neuros.dynavision: Callback.Neuros.dynavision,
+            Neuros.animeart: Callback.Neuros.animeart
         },
         "audio": {
             Neuros.whisper: Callback.Neuros.whisper,

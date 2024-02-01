@@ -1,3 +1,5 @@
+import logging
+
 from aiogram.enums import ParseMode
 
 from aiogram_i18n import LazyProxy
@@ -6,6 +8,7 @@ class ExceptionChecker:
 
     @staticmethod
     def check_exception(exception: str) -> dict:
+        logging.error(exception)
         data = dict()
         
         if "end of the entity starting" in exception:

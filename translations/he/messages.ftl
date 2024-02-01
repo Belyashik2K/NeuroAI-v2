@@ -14,7 +14,7 @@ messages-info = 🙋 ברוך הבא לעולם הרשתות העצביות, { $
     — מגיב לשאלות שלך בפורמט של <b>דיאלוג</b> או <b>הודעה יחידה</b>
     — יוצר <b>תמונות</b> לפי בקשה
     — יוצר קבצי <b>אודיו</b> לפי בקשה ומתרגם אותם
-    — <b>בחינם לגמרי</b> ופועל על בסיס <a href="https://api.futureforge.dev/docs">API FutureForge</a>
+    — <b>כולא כלום בחינם</b> ופועל על פי <a href="https://api.futureforge.dev/docs">API FutureForge</a> ו-<a href="https://visioncraft-rs24.koyeb.app/docs">API VisionCraft</a>
     — כולל <b>קוד פתוח</b>, שאתה יכול למצוא במאגר הקוד שלי ב- <a href="https://github.com/Belyashik2K/NeuroAI-v2">GitHub</a>
 
     🆘 תמיכה טכנית >>> { $technical_support }
@@ -71,7 +71,10 @@ messages-about = 💬 <b>על השירות</b>
     ├ Midjourney V6: <code>{ $midjourneyv6 }</code>
     ├ StableDiffusion Video: <code>{ $sdv }</code>
     ├ DALL·E 3: <code>{ $dalle3 }</code>
-    └ TencentARC PhotoMaker: <code>{ $tencentmaker }</code>
+    ├ TencentARC PhotoMaker: <code>{ $tencentmaker }</code>
+    ├ JuggernautXL V5: <code>{ $juggernaut }</code>
+    ├ DynaVisionXL: <code>{ $dynavision }</code>
+    └ AnimeArt: <code>{ $animeart }</code>
 
     רשתות לעבודה עם אודיו:
     ├ Whisper V3: <code>{ $whisper }</code>
@@ -105,7 +108,10 @@ messages-choose_neuro_category = <b>🔥 בחירת רשת עצבים</b>
     ├ <code>✨ EnhanceImage</code>
     ├ <code>📹 StableDiffusion Video</code>
     ├ <code>🖼 DALL·E 3</code>
-    └ <code>🖌 TencentARC PhotoMaker</code>
+    ├ <code>🖌 TencentARC PhotoMaker</code>
+    ├ <code>🦾 JuggernautXL V5</code>
+    ├ <code>👁️ DynaVisionXL</code>
+    └ <code>🧝🏻‍♀️ AnimeArt</code>
 
     🎵 <code>אודיו</code> — רשתות שיוצרות אודיו.
     <i>רשימת רשתות:</i>
@@ -145,6 +151,12 @@ messages-category_image = <code>🎨 StableDiffusionXL</code> — רשת עצב�
     <code>🖼 DALL·E 3</code> — אחת מהרשתות המתקדמות ביותר ליצירת תמונות מבית OpenAI.
 
     <code>🖌 TencentARC PhotoMaker</code> — רשת עצבים שיכולה ליצור כל דימוי עם כל פנים על פי בקשה מסוימת. מסנן NSFW אינו קיים.
+
+    <code>🦾 JuggernautXL V5</code> — רשת נוירונים המיועדת ליצירת נופים, תמונות אדריכלות ותמונות מפורטות מאוד.
+
+    <code>👁️ DynaVisionXL</code> — רשת נוירונים שיכולה ליצור תמונות על פי בקשה מסוימת. סופקות תמונות ברורות ובאיכות גבוהה כאשר משתמשים בבקשה טובה.
+
+    <code>🧝🏻‍♀️ AnimeArt</code> — רשת נוירונים המתמקדת ביצירת תמונות אנימה. תוצאות טובות כאשר משתמשים בבקשה באיכות.
 
 messages-category_audio = <code>🎤 Whisper V3</code> — רשת עצבים שיכולה לתרגם קובץ אודיו לטקסט.
 
@@ -272,7 +284,10 @@ messages-admin_neuro_statuses = <b>🔥 שנה את מצב הרשת</b>
     ├ Midjourney V6: <code>{ $midjourneyv6 }</code>
     ├ StableDiffusion Video: <code>{ $sdv }</code>
     ├ DALL·E 3: <code>{ $dalle3 }</code>
-    └ TencentARC PhotoMaker: <code>{ $tencentmaker }</code>
+    ├ TencentARC PhotoMaker: <code>{ $tencentmaker }</code>
+    ├ JuggernautXL V5: <code>{ $juggernaut }</code>
+    ├ DynaVisionXL: <code>{ $dynavision }</code>
+    └ AnimeArt: <code>{ $animeart }</code>
 
     רשתות לעבוד עם אודיו:
     ├ Whisper V3: <code>{ $whisper }</code>
