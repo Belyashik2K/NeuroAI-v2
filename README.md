@@ -7,10 +7,10 @@
 
 Бот **работает** на версии **aiogram v3.x.x**. Для работы с базой данных используется **SQLAlchemy**, что позволяет **быстро** менять используемую базу данных и драйвер. Бот **доступен** на 6 **языках**!
 
-Выражаю **отдельную** **благодарность** [автору](https://t.me/futureforge_channel) API за такой **интересный** и **бесплатный** проект. Надеюсь, что **проект** и дальше **продолжит** **существовать** и **развиваться**!
+Выражаю **отдельную** **благодарность** [автору](https://t.me/futureforge_channel) FutureForge API и [автору](https://t.me/visioncraft_channel)VisionCraft API за разработку таких грандиозных проектов! Спасмбо!
 
 ## Преимущества
-* **18** нейросетей, из которых на данный момент **полностью работают** **15**
+* **21** нейросетей, из которых на данный момент **полностью работают** **18**
   * **Работают**
     * _ChatGPT (GPT 3.5)_
     * _Claude AI_
@@ -25,6 +25,9 @@
     * _Midjourney V6_
     * _StableDiffusion Video_
     * _TencentARC PhotoMaker_
+    * _JuggernautXL V5_
+    * _DynaVisionXL_
+    * _AnimeArt_
     * _Whisper V3_
     * _RachelVoice_
   * **В ожидании восстановления работоспособности на стороне [FutureForge API](https://api.futureforge.dev/docs#/)**
@@ -41,7 +44,7 @@
     * _Иврит_
 * Режим **чата/одиночного запроса** для текстовых нейросетей, **поддержка** и **обработка** **изображений**
 * Написан на **новейшей** версии **aiogram - v3.3.0**
-* Полностью **асинхронная** работа с [FutureForge API](https://api.futureforge.dev/docs#/) и базой данных с помощью **SQLAlchemy**
+* Полностью **асинхронная** работа с [FutureForge API](https://api.futureforge.dev/docs), [VisionCraft API](https://visioncraft-rs24.koyeb.app/docs) и базой данных с помощью **SQLAlchemy**
 * **Анти-флуд**
 * **Уведомления** **администраторам** об **ошибках** и **новых пользователях**
 * **Многофункциональное** меню администратора с возможностью **ручного отключения/включения нейросетей**, системой выдачи админских **привилегий**, возможность **бана** пользователей и **включение/отключение режима технических работ**, **многофункциональное** меню **рассылки**
@@ -64,10 +67,9 @@ technical_support = "@Belyashik2K" # Technical support username with @
 ads = "@Belyashik2K" # Ads-manager/creator username with @
 
 admin_chat = -1111111111111 # Admin user/chat id for notifications
-admin_id = 123456789 # ID for first admin (for access to "👨‍💻 Панель администратора" button")
+admin_id = 123456789 # ID for first admin (for "👨‍💻 Админ-панель" button")
 
 channel_link = "https://t.me/NeuroAIchannel" # Channel link for "📢 Наш канал" button
-api_dev = "https://api.futureforge.dev/docs" # Please, don't change this link. Support the work of the author of the API. Thank you!
 
 driver_name="postgresql+asyncpg"
 postgres_user="postgres"
@@ -89,7 +91,8 @@ alembic upgrade head
 
 ## Ссылки
 * [Автор бота](https://t.me/belyashik2k)
-* [Поставщик API](https://api.futureforge.dev/docs#/)
+* [FutureForge API](https://api.futureforge.dev/docs)
+* [VisionCraft API](https://visioncraft-rs24.koyeb.app/docs)
 * [Пример бота](https://t.me/NeuroAItbot)
 
 # >English
@@ -116,6 +119,9 @@ I express **special thanks** to the [API author](https://t.me/futureforge_channe
     * _Midjourney V6_
     * _StableDiffusion Video_
     * _TencentARC PhotoMaker_
+    * _JuggernautXL V5_
+    * _DynaVisionXL_
+    * _AnimeArt_
     * _Whisper V3_
     * _RachelVoice_
   * **Awaiting restoration of functionality on the [FutureForge API](https://api.futureforge.dev/docs#/) side**
@@ -132,7 +138,7 @@ I express **special thanks** to the [API author](https://t.me/futureforge_channe
     * _Hebrew_
 * **Chat/single request mode** for text neural networks, **support** and **processing** of **images**
 * Written in the **latest** version of **aiogram - v3.3.0**
-* Fully **asynchronous** operation with [FutureForge API](https://api.futureforge.dev/docs#/) and database using **SQLAlchemy**
+* Fully **asynchronous** operation with [FutureForge API](https://api.futureforge.dev/docs), [VisionCraft API](https://visioncraft-rs24.koyeb.app/docs) and database using **SQLAlchemy**
 * **Anti-flood** mechanism
 * **Notifications** to **administrators** about **errors** and **new users**
 * **Multifunctional** administrator menu with the ability to **manually disable/enable neural networks**, a system for granting admin **privileges**, the ability to **ban** users, and **enable/disable maintenance mode**, **multifunctional** **broadcast menu**
@@ -151,15 +157,15 @@ pip install fluent.runtime
 ```python
 BOT_TOKEN="XXXXXXXXXXXXXXXXXXX" # Your bot token (@BotFather)
 FUTURE_FORGE_API_KEY = "XXXXXXXXXXX" # Your API-key for FutureForgeAPI (@futureforgedev_bot)
+VISION_CRAFT_API_KEY = "XXXXXXXXXXX" # Your API-key for VisionCraftAPI (@VisionCraft_bot)
 
 technical_support = "@Belyashik2K" # Technical support username with @
 ads = "@Belyashik2K" # Ads-manager/creator username with @
 
 admin_chat = -1111111111111 # Admin user/chat id for notifications
-admin_id = 123456789 # ID for first admin (for access to "👨‍💻 Панель администратора" button")
+admin_id = 123456789 # ID for first admin (for "👨‍💻 Administrator Panel" button)
 
 channel_link = "https://t.me/NeuroAIchannel" # Channel link for "📢 Наш канал" button
-api_dev = "https://api.futureforge.dev/docs" # Please, don't change this link. Support the work of the author of the API. Thank you!
 
 driver_name="postgresql+asyncpg"
 postgres_user="postgres"
@@ -170,7 +176,7 @@ postgres_database="postgres"
 sqlite_database="sqlite+aiosqlite:///bot/database/base.db" # Don't change this if you don't know what you're doing!
 
 is_sqlite = True # If you want to use SQLite, set this to True, otherwise False
-is_debug = False # If you want to use debug mode in logging, set this to True, otherwise False
+is_debug = False # If you want to use debug mode in logging, set this to True otherwise False
 ```
 
 **4.** **Perform** the necessary **migrations**. If you are using **SQLite**, first **create** the **database file** at the path specified in _sqlite_database_. **Run** the migration.
@@ -181,5 +187,6 @@ alembic upgrade head
 
 ## Links
 * [Bot Author](https://t.me/belyashik2k)
-* [API Provider](https://api.futureforge.dev/docs#/)
+* [FutureForge API](https://api.futureforge.dev/docs)
+* [VisionCraft API](https://visioncraft-rs24.koyeb.app/docs)
 * [Bot Example](https://t.me/NeuroAItbot)
