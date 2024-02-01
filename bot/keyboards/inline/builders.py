@@ -135,7 +135,8 @@ class InlineKeyboards:
                                     InlineKeyboardButton(text=LazyProxy('buttons-enhance'), callback_data=Callback.Neuros.enhance),
                                     InlineKeyboardButton(text=LazyProxy('buttons-sdv'), callback_data=Callback.Neuros.sdv),
                                     InlineKeyboardButton(text=LazyProxy('buttons-dalle3'), callback_data=Callback.Neuros.dalle3),
-                                    InlineKeyboardButton(text=LazyProxy('buttons-tencentmaker'), callback_data=Callback.Neuros.tencentmaker)],
+                                    InlineKeyboardButton(text=LazyProxy('buttons-tencentmaker'), callback_data=Callback.Neuros.tencentmaker),
+                                    InlineKeyboardButton(text=LazyProxy('buttons-animeart'), callback_data=Callback.Neuros.animeart)],
             Callback.NeuroCategories.audio: [InlineKeyboardButton(text=LazyProxy('buttons-whisper'), callback_data=Callback.Neuros.whisper),
                                     InlineKeyboardButton(text=LazyProxy('buttons-bender'), callback_data=Callback.Neuros.bender)]
                 }

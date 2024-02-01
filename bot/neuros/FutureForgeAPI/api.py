@@ -1,16 +1,18 @@
 from typing import Optional
 
-from .request import HTTPClient
+from .request import FutureForgeRequest
 from .errors import *
 
-from ..keyboards import data
+from ...keyboards import data
 
-class Neuros(HTTPClient):
+
+class FutureForge(FutureForgeRequest):
 
     def __init__(self) -> None:
         super().__init__()
 
-        self._method = 'POST'
+        self._URL = 'https://api.futureforge.dev/'
+        self._METHOD = 'POST'
 
         self._neuros = {
             data.Neuros.gpt: 'gpt-3-5',
@@ -60,16 +62,16 @@ class Neuros(HTTPClient):
                      'model': neuro_name}
         
         if mode == data.Mode.one_request:
-            result = await self._request(self._method,
-                                         neuro, 
-                                         self._URI + 'chat/create', 
+            result = await self._request(method=self._METHOD,
+                                         neuro=neuro, 
+                                         uri=self._URL + 'chat/create', 
                                          json=json_data
                                          )                           
         else:
             json_data['chatCode'] = chat_code
-            result = await self._request(self._method,
-                                         neuro, 
-                                         self._URI + 'chat/chat', 
+            result = await self._request(method=self._METHOD,
+                                         neuro=neuro, 
+                                         uri=self._URL + 'chat/chat', 
                                          json=json_data)
         return result['message'].strip(), result['chatCode']
      
@@ -96,17 +98,17 @@ class Neuros(HTTPClient):
             params = {'text': prompt}
 
         neuro_name = self._image_neuros[neuro]
-        uri = self._URI + neuro_name
+        uri = self._URL + neuro_name
         
         if neuro != data.Neuros.dalle3:
-            result = await self._request(self._method,
-                                         neuro, 
-                                         uri, 
+            result = await self._request(method=self._METHOD,
+                                         neuro=neuro, 
+                                         uri=uri, 
                                          params=params)
         else:
-            result = await self._request(self._method,
-                                         neuro, 
-                                         uri, 
+            result = await self._request(method=self._METHOD,
+                                         neuro=neuro, 
+                                         uri=uri, 
                                          json=params)
         return result['image_url']
 
@@ -124,16 +126,16 @@ class Neuros(HTTPClient):
         Returns:
             str: Voice URL."""
         neuro_name = self._voice_neuros[neuro]
-        uri = self._URI + neuro_name
+        uri = self._URL + neuro_name
 
         json = {'text': text[:330]}
         headers = { 
             'accept': 'audio/mpeg', 
             'Content-Type': 'application/json' 
         } 
-        result = await self._voice_request(self._method,
-                                           neuro, 
-                                           uri, 
+        result = await self._voice_request(method=self._METHOD,
+                                           neuro=neuro, 
+                                           uri=uri, 
                                            headers=headers, 
                                            json=json)
         return result
@@ -152,7 +154,7 @@ class Neuros(HTTPClient):
         Returns:
             str: Image URL."""
         neuro = self._image_neuros[neuro]
-        uri = self._URI + neuro
+        uri = self._URL + neuro
 
         # Not available now on FutureForge API
         raise FutureForgeError('Not available now on FutureForge API')
@@ -172,14 +174,14 @@ class Neuros(HTTPClient):
         Returns:
             str: Video URL."""
         neuro_name = self._image_neuros[neuro]
-        uri = self._URI + neuro_name
+        uri = self._URL + neuro_name
         params = {}
         params['image_url'] = image_url
         params['num_videos'] = 1
 
-        result = await self._request(self._method,
-                                     neuro, 
-                                     uri, 
+        result = await self._request(method=self._METHOD,
+                                     neuro=neuro, 
+                                     uri=uri, 
                                      params=params)
         return result['video_links'][0]
     
@@ -197,12 +199,12 @@ class Neuros(HTTPClient):
         Returns:
             str: Text."""
         neuro_name = self._voice_neuros[neuro]
-        uri = self._URI + neuro_name
+        uri = self._URL + neuro_name
 
-        result = await self._request(self._method,
-                            neuro, 
-                            uri, 
-                            params={'filepath': file_url})
+        result = await self._request(method=self._METHOD,
+                                    neuro=neuro, 
+                                    uri=uri, 
+                                    params={'filepath': file_url})
         return result['response_data']
     
     async def tencentmaker(self,
@@ -218,7 +220,7 @@ class Neuros(HTTPClient):
         Returns:
             str: Image URL."""
         neuro_name = self._image_neuros[data.Neuros.tencentmaker]
-        uri = self._URI + neuro_name
+        uri = self._URL + neuro_name
 
         params = {
             'image_url': image_url,
@@ -226,9 +228,9 @@ class Neuros(HTTPClient):
             'negative_prompt': 'not'
         }
 
-        result = await self._request(self._method,
-                                     data.Neuros.tencentmaker,
-                                     uri,
+        result = await self._request(method=self._METHOD,
+                                     neuro=data.Neuros.tencentmaker,
+                                     uri=uri,
                                      params=params)
         return result['image_url']
     
@@ -243,14 +245,14 @@ class Neuros(HTTPClient):
         Returns:
             str: Image URL."""
         neuro_name = self._image_neuros[data.Neuros.midjourneyv6]
-        uri = self._URI + neuro_name
+        uri = self._URL + neuro_name
 
         params = {
             'prompt': prompt,
         }
 
-        result = await self._request(self._method,
-                                     data.Neuros.midjourneyv6,
-                                     uri,
+        result = await self._request(method=self._METHOD,
+                                     neuro=data.Neuros.midjourneyv6,
+                                     uri=uri,
                                      params=params)
         return result['upscaled_image_urls']

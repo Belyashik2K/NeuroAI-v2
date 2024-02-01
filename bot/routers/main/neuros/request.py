@@ -10,7 +10,7 @@ from aiogram_i18n import I18nContext, LazyProxy
 from ....database import database
 from ....database.models import User
 from ....keyboards import inline, data, reply
-from ....neuros import client
+from ....neuros import *
 from ....utils.check_exception import ExceptionChecker
 from ....utils.links import Links
 
@@ -20,7 +20,10 @@ router: Final[Router] = Router(name=__name__)
 
 @router.message(NeuroRequest.request, F.text)
 async def one_request(message: types.Message, user: User, state: FSMContext, i18n: I18nContext):
-    data = await state.get_data()
+    result = await vision.create_image_task(data.Neuros.animeart,
+                                   'Hamster')
+    print(result)
+    # data = await state.get_data()
     formatting = {
         "neuro": LazyProxy(f"buttons-{data['neuro'].split('_')[1]}").data,
         "mode": LazyProxy(f"buttons-{data['mode'].split('_', 1)[1]}").data,
@@ -32,7 +35,7 @@ async def one_request(message: types.Message, user: User, state: FSMContext, i18
                                         chat_id=message.chat.id, message_id=data['message_id'])
     await state.clear()
     async with ChatActionSender.typing(bot=message.bot, chat_id=message.chat.id):
-        result = await client.text_neuro(neuro=data['neuro'], message=message.text, mode=data['mode'])
+        result = await future.text_neuro(neuro=data['neuro'], message=message.text, mode=data['mode'])
         formatting['result'] = result[0]
         try:
             await message.bot.delete_message(chat_id=message.chat.id,
@@ -57,7 +60,7 @@ async def chat_mode(call: types.CallbackQuery, user: User, state: FSMContext, i1
     header = i18n.messages.header(neuro=formatting['neuro'], mode=formatting['mode'])
 
     m = await call.bot.send_message(call.message.chat.id, i18n.messages.starting_chat())
-    _, chat_code = await client.text_neuro(neuro=_data['neuro'], message="Hello!", mode=data.Mode.one_request)
+    _, chat_code = await future.text_neuro(neuro=_data['neuro'], message="Hello!", mode=data.Mode.one_request)
     await call.bot.delete_message(call.message.chat.id, m.message_id)
     await call.bot.send_message(call.message.chat.id, 
                                 header + '\n\n' + i18n.messages.chat_mode(end_button=LazyProxy('buttons-stop_chatting').data), 
@@ -78,7 +81,7 @@ async def chatting(message: types.Message, user: User, state: FSMContext, i18n: 
     text = message.text
     m = await message.bot.send_message(message.chat.id, i18n.messages.in_work(), parse_mode=ParseMode.MARKDOWN)
     async with ChatActionSender.typing(bot=message.bot, chat_id=message.chat.id):
-        result = await client.text_neuro(neuro=data['neuro'], message=text, mode=data['mode'], chat_code=data['chat_code'])
+        result = await future.text_neuro(neuro=data['neuro'], message=text, mode=data['mode'], chat_code=data['chat_code'])
         await message.bot.delete_message(chat_id=message.chat.id, message_id=m.message_id)
         try:
             await message.reply(text=i18n.messages.chat_answer() + " " + result[0],
@@ -102,8 +105,8 @@ async def image_request(message: types.Message, user: User, state: FSMContext, i
     }
 
     neuros = {
-        data.Neuros.sdv: client.sdv_neuro,
-        data.Neuros.enhance: client.enchance_image_neuro,
+        data.Neuros.sdv: future.sdv_neuro,
+        data.Neuros.enhance: future.enchance_image_neuro,
     }
 
     if _data['neuro'] in neuros:
@@ -114,7 +117,7 @@ async def image_request(message: types.Message, user: User, state: FSMContext, i
     else:
         prompt = message.text
         text = i18n.messages.image_processing(neuro=formatting['neuro'], prompt=prompt)
-        func = client.image_neuro
+        func = future.image_neuro if _data['neuro'] != data.Neuros.animeart else vision.image_neuro
     formatting['prompt'] = prompt
 
     await message.bot.edit_message_text(text, chat_id=message.chat.id, message_id=_data['message_id'])
@@ -151,7 +154,7 @@ async def bender_request(message: types.Message, user: User, state: FSMContext, 
     await message.bot.edit_message_text(i18n.messages.image_processing(**formatting),
                                         chat_id=message.chat.id,
                                         message_id=data['message_id'])
-    r = await client.bender_neuro(data['neuro'], message.text)
+    r = await future.bender_neuro(data['neuro'], message.text)
     await message.bot.delete_message(message.chat.id, data['message_id'])
     await message.bot.send_audio(chat_id=message.chat.id,
                                  audio=types.BufferedInputFile(r, filename=f"result_{message.from_user.id}.mp3"),
@@ -173,7 +176,7 @@ async def whisper_voice(message: types.Message, user: User, state: FSMContext, i
                                         message_id=data['message_id'])
     audio = await message.bot.get_file(message.audio.file_id)
     url = Links.get_file_url(audio.file_path)
-    result = await client.whisper_neuro(neuro=data['neuro'], file_url=url)
+    result = await future.whisper_neuro(neuro=data['neuro'], file_url=url)
     await message.bot.edit_message_text(chat_id=message.chat.id,
                                         message_id=data['message_id'],
                                         text=i18n.messages.other_result(**formatting) + '\n\n' + i18n.messages.answer(
@@ -194,7 +197,7 @@ async def tencentmaker(message: types.Message, user: User, state: FSMContext, i1
                                         message_id=data['message_id'])
     photo = await message.bot.get_file(message.photo[-1].file_id)
     url = Links.get_file_url(photo.file_path)
-    result = await client.tencentmaker(image_url=url, prompt=message.caption)
+    result = await future.tencentmaker(image_url=url, prompt=message.caption)
     await message.bot.delete_message(message.chat.id, data['message_id'])
     async with ChatActionSender.upload_photo(bot=message.bot, chat_id=message.chat.id):
         await message.bot.send_photo(chat_id=message.chat.id,
@@ -216,7 +219,7 @@ async def midjourneyv6(message: types.Message, user: User, state: FSMContext, i1
     await message.bot.edit_message_text(i18n.messages.image_processing(**formatting),
                                         chat_id=message.chat.id,
                                         message_id=data['message_id'])
-    result = await client.midjourneyv6(message.text)
+    result = await future.midjourneyv6(message.text)
     await message.bot.delete_message(message.chat.id, data['message_id'])
     
     photos = list()

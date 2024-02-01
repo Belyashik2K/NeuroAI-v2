@@ -4,6 +4,7 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 class Settings(BaseSettings):
     BOT_TOKEN: SecretStr
     FUTURE_FORGE_API_KEY: SecretStr
+    VISION_CRAFT_API_KEY: SecretStr
 
     technical_support: str
     ads: str

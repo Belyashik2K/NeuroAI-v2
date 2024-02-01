@@ -59,7 +59,8 @@ async def one_request_mode(call: types.CallbackQuery, user: User, state: FSMCont
 @router.callback_query(F.data.in_([data.Neuros.stable, data.Neuros.playground,
                                    data.Neuros.midjourney, data.Neuros.dalle3,
                                    data.Neuros.enhance, data.Neuros.sdv,
-                                   data.Neuros.tencentmaker, data.Neuros.midjourneyv6]),
+                                   data.Neuros.tencentmaker, data.Neuros.midjourneyv6,
+                                   data.Neuros.animeart]),
                        isNeuroActive())
 async def start_gen_image(call: types.CallbackQuery, user: User, state: FSMContext, i18n: I18nContext):
     neuro = LazyProxy(f"buttons-{call.data.split('_')[1]}").data
@@ -82,6 +83,7 @@ async def start_gen_image(call: types.CallbackQuery, user: User, state: FSMConte
                                  disable_web_page_preview=True)
     await state.update_data(neuro=call.data, message_id=call.message.message_id)
     await state.set_state(NeuroRequest.image_request if call.data not in states else states[call.data])
+
 
 @router.callback_query(F.data.in_([data.Neuros.whisper, data.Neuros.bender]),
                        isNeuroActive())
