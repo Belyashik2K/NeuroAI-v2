@@ -177,12 +177,13 @@ class InlineKeyboards:
         builder = InlineKeyboardBuilder()
 
         channel = InlineKeyboardButton(text=LazyProxy('buttons-channel'), url=config.channel_link)
-        api_dev = InlineKeyboardButton(text=LazyProxy('buttons-api_dev'), url=config.api_dev)
+        future_forge = InlineKeyboardButton(text=LazyProxy('buttons-future_forge'), url="https://api.futureforge.dev/docs")
+        vision_craft = InlineKeyboardButton(text=LazyProxy('buttons-vision_craft'), url="https://visioncraft-rs24.koyeb.app/docs")
         source = InlineKeyboardButton(text=LazyProxy('buttons-source'), url="https://github.com/Belyashik2K/NeuroAI-v2")
 
-        builder.add(channel, api_dev, source)
+        builder.add(channel, future_forge, vision_craft, source)
         builder.row(self.close(as_button=True))
-        builder.adjust(2, 1, 1)
+        builder.adjust(1, 2, 1)
         return builder.as_markup()
     
     async def admin(self) -> InlineKeyboardMarkup:

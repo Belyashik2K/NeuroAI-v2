@@ -13,7 +13,6 @@ class Settings(BaseSettings):
     admin_id: int
 
     channel_link: str
-    api_dev: str
 
     driver_name: str
     postgres_user: str

@@ -40,7 +40,8 @@ buttons-one_request = 🔥 Одиночный запрос
 buttons-chat = 👥 Чат-бот
 
 buttons-channel = 📢 Наш канал
-buttons-api_dev = 🧑‍💻 Поставщик API
+buttons-future_forge = 🧑‍💻 FutureForge API
+buttons-vision_craft = 🧑‍💻 VisionCraft API
 buttons-source = 💻 Исходный код
 
 buttons-mailing = 📨 Рассылка
