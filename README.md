@@ -1,13 +1,13 @@
 ![NeuroAI v2](https://github.com/Belyashik2K/NeuroAI-v2/assets/126521808/33972e93-4b25-4dae-8a22-1934d753b847)
-> [Telegram-бот](https://t.me/NeuroAItbot) для взаимодействия с нейросетями посредством [FutureForge API](https://api.futureforge.dev/docs#/). Обновлённая версия [NeuroAI](https://t.me/NeuroAIchannel).
+> [Telegram-бот](https://t.me/NeuroAItbot) для взаимодействия с нейросетями посредством [FutureForge API](https://api.futureforge.dev/docs#/) и [VisionCraft API](https://visioncraft-rs24.koyeb.app/docs). Обновлённая версия [NeuroAI](https://t.me/NeuroAIchannel).
 
 # >Russian
 ## О боте
-**Обновлённая** версия [NeuroAI](https://t.me/NeuroAIchannel) - бота, **окончательно** потерявшего шанс на существование после 31 июля 2023 года. Работает на основе **бесплатного** [FutureForge API](https://api.futureforge.dev/docs#/), поэтому распространяется **абсолютно бесплатно** и **не имеет никаких коммерческих целей**.
+**Обновлённая** версия [NeuroAI](https://t.me/NeuroAIchannel) - бота, **окончательно** потерявшего шанс на существование после 31 июля 2023 года. Работает на основе **бесплатного** [FutureForge API](https://api.futureforge.dev/docs#/) и [VisionCraft API](https://visioncraft-rs24.koyeb.app/docs), поэтому распространяется **абсолютно бесплатно** и **не имеет никаких коммерческих целей**.
 
 Бот **работает** на версии **aiogram v3.x.x**. Для работы с базой данных используется **SQLAlchemy**, что позволяет **быстро** менять используемую базу данных и драйвер. Бот **доступен** на 6 **языках**!
 
-Выражаю **отдельную** **благодарность** [автору](https://t.me/futureforge_channel) FutureForge API и [автору](https://t.me/visioncraft_channel)VisionCraft API за разработку таких грандиозных проектов! Спасмбо!
+Выражаю **отдельную** **благодарность** [автору](https://t.me/futureforge_channel) FutureForge API и [авторам](https://t.me/visioncraft_channel) VisionCraft API за разработку таких грандиозных проектов! Спасибо!
 
 ## Преимущества
 * **21** нейросетей, из которых на данный момент **полностью работают** **18**
@@ -104,7 +104,7 @@ The bot runs on the **aiogram v3.x.x** version and uses **SQLAlchemy** for datab
 I express **special thanks** to the [API author](https://t.me/futureforge_channel) for such an **interesting** and **free** project. I hope the project will continue to **exist** and **develop**!
 
 ## Advantages
-* **18** neural networks, of which **15 are currently fully operational**
+* **21** neural networks, of which **18 are currently fully operational**
   * **Working**
     * _ChatGPT (GPT 3.5)_
     * _Claude AI_
