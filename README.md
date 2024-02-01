@@ -97,11 +97,11 @@ alembic upgrade head
 
 # >English
 ## About the Bot
-The **updated** version of [NeuroAI](https://t.me/NeuroAIchannel) bot, which has **finally** lost its chance of existence after July 31, 2023. It operates based on the **free** [FutureForge API](https://api.futureforge.dev/docs#/), so it is distributed **completely free** and has **no commercial purposes**.
+The **updated** version of [NeuroAI](https://t.me/NeuroAIchannel) bot, which has **finally** lost its chance of existence after July 31, 2023. It operates based on the **free** [FutureForge API](https://api.futureforge.dev/docs#/) and [VisionCraft API](https://visioncraft-rs24.koyeb.app/docs), so it is distributed **completely free** and has **no commercial purposes**.
 
 The bot runs on the **aiogram v3.x.x** version and uses **SQLAlchemy** for database operations, allowing for quick changes to the used database and driver. The bot is **available** in 6 **languages**!
 
-I express **special thanks** to the [API author](https://t.me/futureforge_channel) for such an **interesting** and **free** project. I hope the project will continue to **exist** and **develop**!
+I express **special** **gratitude** to the [author](https://t.me/futureforge_channel) of the FutureForge API and the [authors](https://t.me/visioncraft_channel) of the VisionCraft API for developing such grand projects! Thank you!
 
 ## Advantages
 * **21** neural networks, of which **18 are currently fully operational**
