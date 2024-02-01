@@ -14,7 +14,7 @@ messages-info = 🙋 欢迎来到神经网络世界，{ $name }！
     — 以<b>对话</b>或<b>单一消息</b>格式回答你的问题
     — 根据指定的请求生成<b>照片</b>
     — 根据指定的请求生成音频文件并翻译它们
-    — <b>完全免费</b>，基于 <a href="https://api.futureforge.dev/docs">FutureForge API</a> 运行
+    — <b>绝对免费</b>，基于 <a href="https://api.futureforge.dev/docs">API FutureForge</a> 和 <a href="https://visioncraft-rs24.koyeb.app/docs">API VisionCraft</a> 运行
     — 具有 <b>开放源代码</b>，你可以在我的 <a href="https://github.com/Belyashik2K/NeuroAI-v2">GitHub 仓库</a> 中找到
 
     🆘 技术支持 >>> { $technical_support }
@@ -71,7 +71,10 @@ messages-about = 💬 <b>关于服务</b>
     ├ Midjourney V6: <code>{ $midjourneyv6 }</code>
     ├ StableDiffusion Video: <code>{ $sdv }</code>
     ├ DALL·E 3: <code>{ $dalle3 }</code>
-    └ TencentARC PhotoMaker: <code>{ $tencentmaker }</code>
+    ├ TencentARC PhotoMaker: <code>{ $tencentmaker }</code>
+    ├ JuggernautXL V5: <code>{ $juggernaut }</code>
+    ├ DynaVisionXL: <code>{ $dynavision }</code>
+    └ AnimeArt: <code>{ $animeart }</code>
 
     用于音频处理的神经网络:
     ├ Whisper V3: <code>{ $whisper }</code>
@@ -105,7 +108,10 @@ messages-choose_neuro_category = <b>🔥 选择神经网络</b>
     ├ <code>✨ EnhanceImage</code>
     ├ <code>📹 StableDiffusion Video</code>
     ├ <code>🖼 DALL·E 3</code>
-    └ <code>🖌 TencentARC PhotoMaker</code>
+    ├ <code>🖌 TencentARC PhotoMaker</code>
+    ├ <code>🦾 JuggernautXL V5</code>
+    ├ <code>👁️ DynaVisionXL</code>
+    └ <code>🧝🏻‍♀️ AnimeArt</code>
 
     🎵 <code>音频</code> — 生成音频的神经网络。
     <i>神经网络列表：</i>
@@ -145,6 +151,12 @@ messages-category_image = <code>🎨 StableDiffusionXL</code> — 能够根据�
     <code>🖼 DALL·E 3</code> — 由OpenAI推出的最先进的图像生成神经网络之一。
 
     <code>🖌 腾讯ARC PhotoMaker</code> — 一种神经网络，能够根据给定的请求生成带有任何面孔的任何图像。不包含NSFW过滤器。
+
+    <code>🦾 JuggernautXL V5</code> — 面向生成风景、建筑照片和高度详细图像的神经网络。
+
+    <code>👁️ DynaVisionXL</code> — 能够根据特定请求生成图像的神经网络。在使用良好提示时提供清晰且高质量的图像。
+
+    <code>🧝🏻‍♀️ AnimeArt</code> — 面向生成动漫照片的神经网络。在使用良好提示时获得良好的结果。
 
 messages-category_audio = <code>🎤 Whisper V3</code> — 能够将音频文件转换为文本的神经网络。
 
@@ -272,7 +284,10 @@ messages-admin_neuro_statuses = <b>🔥 更改神经网络状态</b>
     ├ Midjourney V6: <code>{ $midjourneyv6 }</code>
     ├ StableDiffusion Video: <code>{ $sdv }</code>
     ├ DALL·E 3: <code>{ $dalle3 }</code>
-    └ TencentARC PhotoMaker: <code>{ $tencentmaker }</code>
+    ├ TencentARC PhotoMaker: <code>{ $tencentmaker }</code>
+    ├ JuggernautXL V5: <code>{ $juggernaut }</code>
+    ├ DynaVisionXL: <code>{ $dynavision }</code>
+    └ AnimeArt: <code>{ $animeart }</code>
 
     用于音频处理的神经网络：
     ├ Whisper V3: <code>{ $whisper }</code>

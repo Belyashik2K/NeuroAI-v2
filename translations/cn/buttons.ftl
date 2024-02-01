@@ -7,6 +7,7 @@ buttons-admin = 👨‍💻 管理员面板
 buttons-stop_chatting = ❌ 结束对话
 
 buttons-set_language = 🌐 切换语言
+buttons-again = 🔄 新一代
 buttons-close = ❌ 关闭
 buttons-back = ⬅️ 返回
 
@@ -28,6 +29,9 @@ buttons-midjourney = 📷 Midjourney V4
 buttons-midjourneyv6 = 🔥 Midjourney V6
 buttons-dalle3 = 🖼 DALL·E 3
 buttons-tencentmaker = 🖌 TencentARC PhotoMaker
+buttons-juggernaut = 🦾 JuggernautXL V5
+buttons-dynavision = 👁️ DynaVisionXL
+buttons-animeart = 🧝🏻‍♀️ AnimeArt
 buttons-sdv = 📹 StableDiffusion Video
 buttons-whisper = 🎤 Whisper V3
 buttons-bender = 🗣️ RachelVoice
@@ -36,7 +40,8 @@ buttons-one_request = 🔥 单次请求
 buttons-chat = 👥 聊天机器人
 
 buttons-channel = 📢 我们的频道
-buttons-api_dev = 🧑‍💻 API提供商
+buttons-future_forge = 🧑‍💻 FutureForge API
+buttons-vision_craft = 🧑‍💻 VisionCraft API
 buttons-source = 💻 源代码
 
 buttons-mailing = 📨 邮件订阅

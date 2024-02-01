@@ -14,7 +14,7 @@ messages-info = 🙋 Welcome to the world of neural networks, { $name }!
     — I answer your questions in a <b>dialogue</b> or <b>single-message</b> format
     — I generate <b>photos</b> based on a given request
     — I generate audio files based on a given request and translate them
-    — <b>Absolutely free</b> and operates on the <a href="https://api.futureforge.dev/docs">FutureForge API</a>
+    — <b>Absolutely free</b> and operates based on <a href="https://api.futureforge.dev/docs">API FutureForge</a> and <a href="https://visioncraft-rs24.koyeb.app/docs">API VisionCraft</a>
     — I have <b>open-source</b> code that you can find in my repository on <a href="https://github.com/Belyashik2K/NeuroAI-v2">GitHub</a>
 
     🆘 Technical Support >>> { $technical_support }
@@ -71,7 +71,10 @@ messages-about = 💬 <b>About the service</b>
     ├ Midjourney V6: <code>{ $midjourneyv6 }</code>
     ├ StableDiffusion Video: <code>{ $sdv }</code>
     ├ DALL·E 3: <code>{ $dalle3 }</code>
-    └ TencentARC PhotoMaker: <code>{ $tencentmaker }</code>
+    ├ TencentARC PhotoMaker: <code>{ $tencentmaker }</code>
+    ├ JuggernautXL V5: <code>{ $juggernaut }</code>
+    ├ DynaVisionXL: <code>{ $dynavision }</code>
+    └ AnimeArt: <code>{ $animeart }</code>
 
     Audio-related neural networks:
     ├ Whisper V3: <code>{ $whisper }</code>
@@ -105,7 +108,10 @@ messages-choose_neuro_category = <b>🔥 Choose Neural Network</b>
     ├ <code>✨ EnhanceImage</code>
     ├ <code>📹 StableDiffusion Video</code>
     ├ <code>🖼 DALL·E 3</code>
-    └ <code>🖌 TencentARC PhotoMaker</code>
+    ├ <code>🖌 TencentARC PhotoMaker</code>
+    ├ <code>🦾 JuggernautXL V5</code>
+    ├ <code>👁️ DynaVisionXL</code>
+    └ <code>🧝🏻‍♀️ AnimeArt</code>
 
     🎵 <code>Audio</code> — networks that generate audio.
     <i>List of networks:</i>
@@ -144,7 +150,13 @@ messages-category_image = <code>🎨 StableDiffusionXL</code> — a network capa
 
     <code>🖼 DALL·E 3</code> — one of the most advanced networks for image generation from OpenAI.
 
-    <code>🖌 TencentARC PhotoMaker</code> — A neural network capable of generating any image with any face based on the given request. NSFW filter is not present.
+    <code>🖌 TencentARC PhotoMaker</code> — a neural network capable of generating any image with any face based on the given request. NSFW filter is not present.
+
+    <code>🦾 JuggernautXL V5</code> — a neural network designed to generate landscapes, architectural photos, and highly detailed images.
+
+    <code>👁️ DynaVisionXL</code> — a neural network capable of generating images based on a given request. Provides clear and high-quality images when using a good prompt.
+
+    <code>🧝🏻‍♀️ AnimeArt</code> — a neural network focused on generating anime photos. Good results when using a quality prompt.
 
 messages-category_audio = <code>🎤 Whisper V3</code> — a network capable of translating audio files into text.
 
@@ -272,7 +284,10 @@ messages-admin_neuro_statuses = <b>🔥 Change neural network status</b>
     ├ Midjourney V6: <code>{ $midjourneyv6 }</code>
     ├ StableDiffusion Video: <code>{ $sdv }</code>
     ├ DALL·E 3: <code>{ $dalle3 }</code>
-    └ TencentARC PhotoMaker: <code>{ $tencentmaker }</code>
+    ├ TencentARC PhotoMaker: <code>{ $tencentmaker }</code>
+    ├ JuggernautXL V5: <code>{ $juggernaut }</code>
+    ├ DynaVisionXL: <code>{ $dynavision }</code>
+    └ AnimeArt: <code>{ $animeart }</code>
 
     Audio-related neural networks:
     ├ Whisper V3: <code>{ $whisper }</code>
