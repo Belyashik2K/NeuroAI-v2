@@ -7,6 +7,7 @@ from ...keyboards import data
 class VisionCraft(VisionCraftRequest):
     def __init__(self) -> None:
         super().__init__()
+
         self._URL = 'https://visioncraft-rs24.koyeb.app/'
         self._METHOD = 'POST'
         
@@ -22,7 +23,9 @@ class VisionCraft(VisionCraftRequest):
                             Low resolution, Morbid."""
 
         self._image_neuros = {
-            data.Neuros.animeart: "anime-art-diffusion-xl"
+            data.Neuros.animeart: "anime-art-diffusion-xl",
+            data.Neuros.juggernaut: "juggernaut-xl-V5",
+            data.Neuros.dynavision: "dynavision-xl-all-in-one-stylized"
         }
 
     async def image_neuro(self,

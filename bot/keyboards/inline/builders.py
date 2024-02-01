@@ -61,6 +61,17 @@ class InlineKeyboards:
         builder.add(close)
         return builder.as_markup()
     
+    def close_or_again(self,
+                       neuro: str) -> InlineKeyboardMarkup:
+        builder = InlineKeyboardBuilder()
+        again = InlineKeyboardButton(text=LazyProxy('buttons-again'),
+                                     callback_data=neuro)
+        close = self.close(as_button=True)
+
+        builder.add(again, close)
+        builder.adjust(1, 1)
+        return builder.as_markup()
+    
     def back(self, 
              callback_data: str,
              as_button: bool = False) -> InlineKeyboardMarkup:
@@ -136,6 +147,8 @@ class InlineKeyboards:
                                     InlineKeyboardButton(text=LazyProxy('buttons-sdv'), callback_data=Callback.Neuros.sdv),
                                     InlineKeyboardButton(text=LazyProxy('buttons-dalle3'), callback_data=Callback.Neuros.dalle3),
                                     InlineKeyboardButton(text=LazyProxy('buttons-tencentmaker'), callback_data=Callback.Neuros.tencentmaker),
+                                    InlineKeyboardButton(text=LazyProxy('buttons-juggernaut'), callback_data=Callback.Neuros.juggernaut),
+                                    InlineKeyboardButton(text=LazyProxy('buttons-dynavision'), callback_data=Callback.Neuros.dynavision),
                                     InlineKeyboardButton(text=LazyProxy('buttons-animeart'), callback_data=Callback.Neuros.animeart)],
             Callback.NeuroCategories.audio: [InlineKeyboardButton(text=LazyProxy('buttons-whisper'), callback_data=Callback.Neuros.whisper),
                                     InlineKeyboardButton(text=LazyProxy('buttons-bender'), callback_data=Callback.Neuros.bender)]

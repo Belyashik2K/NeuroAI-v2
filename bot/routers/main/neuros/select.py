@@ -60,7 +60,8 @@ async def one_request_mode(call: types.CallbackQuery, user: User, state: FSMCont
                                    data.Neuros.midjourney, data.Neuros.dalle3,
                                    data.Neuros.enhance, data.Neuros.sdv,
                                    data.Neuros.tencentmaker, data.Neuros.midjourneyv6,
-                                   data.Neuros.animeart]),
+                                   data.Neuros.animeart, data.Neuros.dynavision,
+                                   data.Neuros.juggernaut]),
                        isNeuroActive())
 async def start_gen_image(call: types.CallbackQuery, user: User, state: FSMContext, i18n: I18nContext):
     neuro = LazyProxy(f"buttons-{call.data.split('_')[1]}").data
@@ -77,10 +78,16 @@ async def start_gen_image(call: types.CallbackQuery, user: User, state: FSMConte
     }
 
     text = choices[call.data] if call.data in choices else i18n.messages.start_gen_image(neuro=neuro)
-
-    await call.message.edit_text(text=text,
-                                 reply_markup=inline.back(data.NeuroCategories.image),
-                                 disable_web_page_preview=True)
+    if not call.message.photo and not call.message.video:
+        await call.message.edit_text(text=text,
+                                    reply_markup=inline.back(data.NeuroCategories.image),
+                                    disable_web_page_preview=True)
+    else:
+        await call.answer()
+        await call.bot.send_message(chat_id=call.message.chat.id,
+                                    text=text,
+                                    reply_markup=inline.back(data.NeuroCategories.image),
+                                    disable_web_page_preview=True)
     await state.update_data(neuro=call.data, message_id=call.message.message_id)
     await state.set_state(NeuroRequest.image_request if call.data not in states else states[call.data])
 
