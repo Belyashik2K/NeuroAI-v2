@@ -62,12 +62,13 @@ pip install fluent.runtime
 ```python
 BOT_TOKEN="XXXXXXXXXXXXXXXXXXX" # Your bot token (@BotFather)
 FUTURE_FORGE_API_KEY = "XXXXXXXXXXX" # Your API-key for FutureForgeAPI (@futureforgedev_bot)
+VISION_CRAFT_API_KEY = "XXXXXXXXXXX" # Your API-key for VisionCraftAPI (@VisionCraft_bot)
 
 technical_support = "@Belyashik2K" # Technical support username with @
 ads = "@Belyashik2K" # Ads-manager/creator username with @
 
 admin_chat = -1111111111111 # Admin user/chat id for notifications
-admin_id = 123456789 # ID for first admin (for "👨‍💻 Админ-панель" button")
+admin_id = 123456789 # ID for first admin (for "👨‍💻 Administrator Panel" button)
 
 channel_link = "https://t.me/NeuroAIchannel" # Channel link for "📢 Наш канал" button
 
@@ -80,7 +81,7 @@ postgres_database="postgres"
 sqlite_database="sqlite+aiosqlite:///bot/database/base.db" # Don't change this if you don't know what you're doing!
 
 is_sqlite = True # If you want to use SQLite, set this to True, otherwise False
-is_debug = False # If you want to use debug mode in logging, set this to True, otherwise False
+is_debug = False # If you want to use debug mode in logging, set this to True otherwise False
 ```
 
 **4.** **Совершите** необходимые **миграции**. Если вы используете **SQLite** - сначала **создайте** **файл** базы данных по пути из значения _sqlite_database_. **Запустите** миграцию.
