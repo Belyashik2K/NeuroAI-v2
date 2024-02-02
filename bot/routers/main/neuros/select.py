@@ -37,7 +37,7 @@ async def neuro_choose(call: types.CallbackQuery, user: User, state: FSMContext,
                                    data.Neuros.google, data.Neuros.llama,
                                    data.Neuros.gemini, data.Neuros.mistral,
                                    data.Neuros.solar]),
-                       isNeuroActive())
+                                    isNeuroActive())
 async def text_mode_choose(call: types.CallbackQuery, user: User, state: FSMContext, i18n: I18nContext):
     await state.clear()
     neuro = LazyProxy(f"buttons-{call.data.split('_')[1]}").data
@@ -83,13 +83,14 @@ async def start_gen_image(call: types.CallbackQuery, user: User, state: FSMConte
         await call.message.edit_text(text=text,
                                     reply_markup=inline.back(data.NeuroCategories.image),
                                     disable_web_page_preview=True)
+        await state.update_data(neuro=call.data, message_id=call.message.message_id)
     else:
         await call.answer()
-        await call.bot.send_message(chat_id=call.message.chat.id,
+        m = await call.bot.send_message(chat_id=call.message.chat.id,
                                     text=text,
                                     reply_markup=inline.back(data.NeuroCategories.image),
                                     disable_web_page_preview=True)
-    await state.update_data(neuro=call.data, message_id=call.message.message_id)
+        await state.update_data(neuro=call.data, message_id=m.message_id)
     await state.set_state(NeuroRequest.image_request if call.data not in states else states[call.data])
 
 
