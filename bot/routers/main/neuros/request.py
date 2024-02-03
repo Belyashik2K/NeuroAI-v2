@@ -138,6 +138,30 @@ async def image_request(message: types.Message, user: User, state: FSMContext, i
 
     await database.update_user(user_id=user.user_id, request_counter=user.request_counter + 1)
 
+@router.message(NeuroRequest.enchance_image, F.photo)
+async def enchance_image(message: types.Message, user: User, state: FSMContext, i18n: I18nContext):
+    await message.delete()
+    data = await state.get_data()
+
+    formatting = {
+        "neuro": LazyProxy(f"buttons-{data['neuro'].split('_')[1]}").data,
+    }
+
+    await message.bot.edit_message_text(i18n.messages.other_processing(**formatting),
+                                        chat_id=message.chat.id,
+                                        message_id=data['message_id'])
+    photo = await message.bot.get_file(message.photo[-1].file_id)
+    url = Links.get_file_url(photo.file_path)
+    image = await vision.enchance_image(neuro=data['neuro'],
+                                        photo_url=url)
+    await message.bot.delete_message(message.chat.id, data['message_id'])
+    await message.bot.send_photo(chat_id=message.chat.id,
+                                 photo=types.BufferedInputFile(image, filename='photo.png'),
+                                 caption=i18n.messages.other_result(**formatting),
+                                 reply_markup=inline.close_or_again(data['neuro']))
+    await database.update_user(user_id=user.user_id, request_counter=user.request_counter + 1)
+    await state.clear()
+
 @router.message(NeuroRequest.bender, F.text)
 async def bender_request(message: types.Message, user: User, state: FSMContext, i18n: I18nContext):
     await message.delete()

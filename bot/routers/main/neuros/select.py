@@ -77,6 +77,7 @@ async def start_gen_image(call: types.CallbackQuery, user: User, state: FSMConte
     states = {
         data.Neuros.tencentmaker: NeuroRequest.tencentmaker,
         data.Neuros.midjourneyv6: NeuroRequest.midjourneyv6,
+        data.Neuros.enhance: NeuroRequest.enchance_image
     }
 
     text = choices[call.data] if call.data in choices else i18n.messages.start_gen_image(neuro=neuro)

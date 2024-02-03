@@ -10,6 +10,8 @@ class VisionCraft(VisionCraftRequest):
 
         self._URL = 'https://visioncraft-rs24.koyeb.app/'
         self._METHOD = 'POST'
+
+        self.__KEY = config.VISION_CRAFT_API_KEY.get_secret_value()
         
         self.__negative = """Ugly, Disfigured, Deformed, Low quality,
                             Pixelated, Blurry, Grains, Text, 
@@ -36,7 +38,7 @@ class VisionCraft(VisionCraftRequest):
             "model": neuro_name,
             "prompt": prompt,
             "negative_prompt": self.__negative,
-            "token": config.VISION_CRAFT_API_KEY.get_secret_value(),
+            "token": self.__KEY,
             "height": 1024,
             "width": 1024,
             "steps": 30,
@@ -56,6 +58,21 @@ class VisionCraft(VisionCraftRequest):
             return image             
         return False
     
+    async def enchance_image(self,
+                             neuro: str,
+                             photo_url: str) -> bytes:
+
+        data = {
+            "image": photo_url,
+            "token": self.__KEY,
+        }
+
+        result = await self._upscale_request(method=self._METHOD,
+                                             neuro=neuro,
+                                             uri=self._URL + 'upscale',
+                                             json=data)
+        return result
+
     async def check_job_status(self,
                                neuro: str,
                                job_id: str) -> str:
