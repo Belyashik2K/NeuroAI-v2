@@ -6,9 +6,9 @@ from bot.database import database
 from bot.routers import admin, extra, main
 
 async def startup() -> None:
-    dp.include_routers(admin.router, 
-                       main.router, 
+    dp.include_routers(main.router, 
                        mailing.router, 
+                       admin.router,
                        extra.router)
 
     factory.middlewares()
