@@ -1,3 +1,5 @@
+from asyncio import sleep
+
 from .request import VisionCraftRequest
 
 from ...config import config
@@ -52,11 +54,12 @@ class VisionCraft(VisionCraftRequest):
         if result['job_id']:
             image = await self.check_job_status(neuro=neuro,
                                                 job_id=result['job_id'])
+            await sleep(1.5)
             while not image:
                 image = await self.check_job_status(neuro=neuro,
                                                     job_id=result['job_id'])
-            return image             
-        return False
+                await sleep(1.5)
+        return image             
     
     async def enchance_image(self,
                              neuro: str,
