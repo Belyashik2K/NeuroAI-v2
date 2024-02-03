@@ -2,6 +2,7 @@ from typing import Final
 
 from aiogram import Router, F, types
 from aiogram.fsm.context import FSMContext
+from aiogram.fsm.state import any_state
 from aiogram_i18n import I18nContext, LazyProxy
 
 from ....database.models import User
@@ -13,7 +14,7 @@ from ....fsm import *
 router: Final[Router] = Router(name=__name__)
 
 
-@router.message(F.text == LazyProxy("buttons-neuro_choose"))
+@router.message(any_state, F.text == LazyProxy("buttons-neuro_choose"))
 async def neuro_category_choose(message: types.Message, user: User, state: FSMContext, i18n: I18nContext):
     await message.delete()
     await state.clear()

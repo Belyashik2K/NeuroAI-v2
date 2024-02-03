@@ -2,6 +2,7 @@ from typing import Final
 
 from aiogram import Router, F, types
 from aiogram.fsm.context import FSMContext
+from aiogram.fsm.state import any_state
 from aiogram.filters.command import CommandStart
 from aiogram_i18n import I18nContext
 
@@ -13,7 +14,7 @@ from ...config import config
 
 router: Final[Router] = Router(name=__name__)
 
-@router.message(CommandStart())
+@router.message(any_state, CommandStart())
 async def start(message: types.Message, user: User,  i18n: I18nContext, state: FSMContext):
     await state.clear()
     if not user.first_language_set:
