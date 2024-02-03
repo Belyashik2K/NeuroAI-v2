@@ -29,7 +29,8 @@ class VisionCraft(VisionCraftRequest):
         self._image_neuros = {
             data.Neuros.animeart: "anime-art-diffusion-xl",
             data.Neuros.juggernaut: "juggernaut-xl-V5",
-            data.Neuros.dynavision: "dynavision-xl-all-in-one-stylized"
+            data.Neuros.dynavision: "dynavision-xl-all-in-one-stylized",
+            data.Neuros.stable: "sdxl-base"
         }
 
     async def image_neuro(self,

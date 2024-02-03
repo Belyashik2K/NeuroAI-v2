@@ -94,7 +94,7 @@ async def image_request(message: types.Message, user: User, state: FSMContext, i
     await message.delete()
     _data = await state.get_data()
 
-    if _data['neuro'] not in [data.Neuros.sdv, data.Neuros.enhance] and message.photo:
+    if _data['neuro'] not in [data.Neuros.sdv] and message.photo:
         return
 
     formatting = {
@@ -103,7 +103,6 @@ async def image_request(message: types.Message, user: User, state: FSMContext, i
 
     neuros = {
         data.Neuros.sdv: future.sdv_neuro,
-        data.Neuros.enhance: future.enchance_image_neuro,
     }
 
     if _data['neuro'] in neuros:
@@ -155,10 +154,11 @@ async def enchance_image(message: types.Message, user: User, state: FSMContext, 
     image = await vision.enchance_image(neuro=data['neuro'],
                                         photo_url=url)
     await message.bot.delete_message(message.chat.id, data['message_id'])
-    await message.bot.send_photo(chat_id=message.chat.id,
-                                 photo=types.BufferedInputFile(image, filename='photo.png'),
-                                 caption=i18n.messages.other_result(**formatting),
-                                 reply_markup=inline.close_or_again(data['neuro']))
+    async with ChatActionSender.upload_photo(bot=message.bot, chat_id=message.chat.id):
+        await message.bot.send_photo(chat_id=message.chat.id,
+                                    photo=types.BufferedInputFile(image, filename='photo.png'),
+                                    caption=i18n.messages.other_result(**formatting),
+                                    reply_markup=inline.close_or_again(data['neuro']))
     await database.update_user(user_id=user.user_id, request_counter=user.request_counter + 1)
     await state.clear()
 

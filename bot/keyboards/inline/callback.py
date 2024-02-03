@@ -45,7 +45,7 @@ class Callback:
         solar= 'neuro_solar'
         switch = 'switch_'
 
-        vision_neuros = [juggernaut, dynavision, animeart]
+        vision_neuros = [juggernaut, dynavision, animeart, stable]
 
     class Mode:
         start = 'mode_'
