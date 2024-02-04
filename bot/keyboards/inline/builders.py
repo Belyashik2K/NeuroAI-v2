@@ -118,7 +118,7 @@ class InlineKeyboards:
 
         builder.add(*buttons)
         builder.adjust(2, repeat=True)
-        builder.row(self.back(Callback.Profile.back, as_button=True))
+        builder.row(self.back(Callback.StartMenu.my_account, as_button=True))
         return builder.as_markup()
 
     async def neuro_categories(self,
@@ -130,16 +130,17 @@ class InlineKeyboards:
 
         for category in categories:
             text = LazyProxy(f'buttons-{category}')
-            callback_data = Callback.Category(name=category).pack()
+            callback_data = Callback.Category(name=category).pack() if not is_admin else Callback.AdminCategory(name=category).pack()
             builder.add(InlineKeyboardButton(text=text, callback_data=callback_data))
 
-        builder.row(self.close(as_button=True) if not is_admin else self.back(Callback.AdminPanel.back, as_button=True))
+        builder.row(self.close(as_button=True) if not is_admin else self.back(Callback.StartMenu.admin, as_button=True))
         builder.adjust(2, 1, 1)
 
         return builder.as_markup()
     
     async def neuros(self,
-                     category: str) -> InlineKeyboardMarkup:
+                     category: str,
+                     is_admin: bool = False) -> InlineKeyboardMarkup:
 
         builder = InlineKeyboardBuilder()
 
@@ -148,13 +149,16 @@ class InlineKeyboards:
 
         for neuro in neuros:
             text = LazyProxy(f'buttons-{neuro.code_name}')
-            callback_data = Callback.Neuro(provider=neuro.provider,
-                                           category=neuro.category,
-                                           name=neuro.code_name).pack()
+            if not is_admin:
+                callback_data = Callback.Neuro(provider=neuro.provider,
+                                            category=neuro.category,
+                                            name=neuro.code_name).pack()
+            else:
+                callback_data = Callback.Switch(neuro_name=neuro.code_name).pack()
             builder.add(InlineKeyboardButton(text=text, callback_data=callback_data))
         
         builder.adjust(2, repeat=True)
-        builder.row(self.back(Callback.StartMenu.choose_neuro, as_button=True))
+        builder.row(self.back(Callback.StartMenu.choose_neuro, as_button=True) if not is_admin else self.back(Callback.AdminPanel.change_neuro, as_button=True))
 
         return builder.as_markup()
     
@@ -231,8 +235,8 @@ class InlineKeyboards:
             LazyProxy('buttons-admins-remove'),
         ]
 
-        ban = InlineKeyboardButton(text=bans[user.is_banned], callback_data=Callback.AdminPanel.ban + str(user.user_id))
-        admin = InlineKeyboardButton(text=admins[user.is_admin], callback_data=Callback.AdminPanel.admin + str(user.user_id))
+        ban = InlineKeyboardButton(text=bans[user.is_banned], callback_data=Callback.BanUser(user_id=user.user_id).pack())
+        admin = InlineKeyboardButton(text=admins[user.is_admin], callback_data=Callback.AdminUser(user_id=user.user_id).pack())
         builder.add(ban, admin)
 
         info = await instance.bot.get_chat(user.user_id)
@@ -240,7 +244,7 @@ class InlineKeyboards:
             mention = InlineKeyboardButton(text=LazyProxy('buttons-mention'), url=user.url)
             builder.add(mention)
             
-        builder.row(self.back(Callback.AdminPanel.back, as_button=True))
+        builder.row(self.back(Callback.StartMenu.admin, as_button=True))
         builder.adjust(1, repeat=True)
 
         return builder.as_markup()

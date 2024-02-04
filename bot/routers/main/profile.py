@@ -22,7 +22,7 @@ async def profile(message: types.Message, user: User, state: FSMContext, i18n: I
     }
     await message.answer(i18n.messages.my_profile(**data), reply_markup=inline.my_profile())
 
-@router.callback_query(F.data.in_([data.Profile.back, data.StartMenu.my_account]))
+@router.callback_query(F.data == data.StartMenu.my_account)
 async def back(call: types.CallbackQuery, i18n: I18nContext, user: User, state: FSMContext):
     await state.clear()
     data = {

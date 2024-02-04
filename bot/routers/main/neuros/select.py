@@ -31,8 +31,8 @@ async def neuro_category_choose_callback(call: types.CallbackQuery, user: User, 
 async def neuro_choose(call: types.CallbackQuery, callback_data: data.Category,
                        user: User, state: FSMContext, i18n: I18nContext):
     await call.message.edit_text(i18n.messages.choose_neuro() + '\n\n' + LazyProxy(f'messages-{call.data}').data,
-                                 reply_markup=await inline.neuros(category=call.data))
-    await state.update_data(category=call.data)
+                                 reply_markup=await inline.neuros(category=callback_data.name))
+    await state.update_data(category=callback_data.name)
 
 
 @router.callback_query(data.Neuro.filter(F.category == Category.TEXT), isNeuroActive())

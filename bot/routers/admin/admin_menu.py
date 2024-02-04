@@ -15,7 +15,7 @@ async def admin_panel(message: types.Message, user: User, i18n: I18nContext):
         reply_markup=await inline.admin()
     )
     
-@router.callback_query(F.data == data.AdminPanel.back)
+@router.callback_query(F.data == data.StartMenu.admin)
 async def back(call: types.CallbackQuery, i18n: I18nContext):
     await call.message.edit_text(
         i18n.messages.admin_panel(),

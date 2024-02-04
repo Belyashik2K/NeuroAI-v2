@@ -69,14 +69,6 @@ class Database:
                                                         is_active=name not in AllNeuros.not_working)
                             await session.execute(stmt)
                             await session.commit()
-            # for neuro in self.__neuros:
-            #     stmt = select(Neuro).where(Neuro.code_name == neuro)
-            #     result = await session.execute(stmt)
-            #     if not result.scalar_one_or_none():
-            #         status = False if neuro in ['enhance', 'dalle3', 'bender'] else True
-            #         stmt = insert(Neuro).values(code_name=neuro, is_active=status)
-            #         await session.execute(stmt)
-            #         await session.commit()
             stmt = select(Settings)
             result = await session.execute(stmt)
             if not result.scalar_one_or_none():
@@ -210,7 +202,7 @@ class Database:
                                      category: str) -> list[Neuro]:
         """Get all neuros from database."""
         async with self.session() as session:
-            stmt = select(Neuro).where(Neuro.category == category.split("_")[1])
+            stmt = select(Neuro).where(Neuro.category == category)
             result = await session.execute(stmt)
             return result.scalars().all()
     
