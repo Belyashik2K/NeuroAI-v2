@@ -54,31 +54,17 @@ messages-about = 💬 <b>על השירות</b>
     🥀 שותפות: { $ads }
 
     🤔 <b>מצבי הרשתות העצביות</b>
-    רשתות ליצירת טקסט:
-    ├ ChatGPT: <code>{ $gpt }</code>
-    ├ Claude AI: <code>{ $claude }</code>
-    ├ Google AI: <code>{ $google }</code>
-    ├ LLaMA AI: <code>{ $llama }</code>
-    ├ Mistral AI (Medium): <code>{ $mistral }</code>
-    ├ Solar AI: <code>{ $solar }</code>
-    └ Google Gemini Pro: <code>{ $gemini }</code>
+    רשתות עצב ליצירת טקסט:
+    ├ רשתות עצב פעילות: <code>{ $text_working }</code>
+    └ בתחזוקה טכנית: <code>{ $text_not_working }</code>
 
-    רשתות ליצירת ועיבוד תמונות:
-    ├ StableDiffusionXL: <code>{ $stable }</code>
-    ├ Playground v2: <code>{ $playground }</code>
-    ├ EnhanceImage: <code>{ $enhance }</code>
-    ├ Midjourney V4: <code>{ $midjourney }</code>
-    ├ Midjourney V6: <code>{ $midjourneyv6 }</code>
-    ├ StableDiffusion Video: <code>{ $sdv }</code>
-    ├ DALL·E 3: <code>{ $dalle3 }</code>
-    ├ TencentARC PhotoMaker: <code>{ $tencentmaker }</code>
-    ├ JuggernautXL V5: <code>{ $juggernaut }</code>
-    ├ DynaVisionXL: <code>{ $dynavision }</code>
-    └ AnimeArt: <code>{ $animeart }</code>
+    רשתות עצב ליצירת ועיבוד תמונות:
+    ├ רשתות עצב פעילות: <code>{ $image_working }</code>
+    └ בתחזוקה טכנית: <code>{ $image_not_working }</code>
 
-    רשתות לעבודה עם אודיו:
-    ├ Whisper V3: <code>{ $whisper }</code>
-    └ RachelVoice: <code>{ $bender }</code>
+    רשתות עצב לעבוד עם שמע:
+    ├ רשתות עצב פעילות: <code>{ $audio_working }</code>
+    └ בתחזוקה טכנית: <code>{ $audio_not_working }</code>
 
 messages-working = פעיל
 
@@ -90,77 +76,20 @@ messages-choose_neuro_category = <b>🔥 בחירת רשת עצבים</b>
     ❓ <i>בחר קטגוריה של רשת עצבים</i>
         
     📝 <code>טקסט</code> — רשתות שיוצרות טקסט.
-    <i>רשימת רשתות:</i>
-    ├ <code>💭 ChatGPT (GPT 3.5)</code>
-    ├ <code>☁️ Claude AI</code>
-    ├ <code>📱 Google AI</code>
-    ├ <code>🦙 LLaMA AI</code>
-    ├ <code>💻 Mistral AI (Medium)</code>
-    ├ <code>🌤 Solar AI</code>
-    └ <code>📚 Google Gemini Pro</code>
 
     🖼 <code>תמונות</code> — רשתות שיוצרות תמונות.
-    <i>רשימת רשתות:</i>
-    ├ <code>🎨 StableDiffusionXL</code>
-    ├ <code>🎮 Playground v2</code>
-    ├ <code>📷 Midjourney V4</code>
-    ├ <code>🔥 Midjourney V6</code>
-    ├ <code>✨ EnhanceImage</code>
-    ├ <code>📹 StableDiffusion Video</code>
-    ├ <code>🖼 DALL·E 3</code>
-    ├ <code>🖌 TencentARC PhotoMaker</code>
-    ├ <code>🦾 JuggernautXL V5</code>
-    ├ <code>👁️ DynaVisionXL</code>
-    └ <code>🧝🏻‍♀️ AnimeArt</code>
 
     🎵 <code>אודיו</code> — רשתות שיוצרות אודיו.
-    <i>רשימת רשתות:</i>
-    ├ <code>🎤 Whisper V3</code>
-    └ <code>🗣️ RachelVoice</code>
 
 ```Neuro choose```
 
 messages-choose_neuro = ❓ <b>בחר רשת עצבים</b>
 
-messages-category_text = <code>💭 ChatGPT (GPT 3.5)</code> — אחת מהרשתות הכי יציבות ליצירת טקסט. היא מסוגלת ליצור טקסט, לכתוב קוד, לענות על שאלות ועוד. יכולה לעבד קישורים לאתרים.
+messages-category_text = <i>בחרו אחת מהרשתות העצביות המוצגות למטה</i>
 
-    <code>☁️ Claude AI</code> — מסייע AI מדור של Anthropic המבוסס על המחקרים שלהם בהכשרת מערכות AI שימושיות, כנונות ולא מזיקות. Claude מסוגל לבצע מגוון רחב של משימות עיבוד שפה וטקסט כשהוא שומר על רמה גבוהה של אמינות והיחס שלו. פועל בעיקר עם שפה אנגלית.
+messages-category_image = <i>בחרו אחת מהרשתות העצביות המוצגות למטה</i>
 
-    <code>📱 Google AI</code> — רשת עצבים מ-Google שיכולה ליצור טקסטים, בעיקר באנגלית.
-
-    <code>🦙 LLaMA AI</code> — מודל שפה גדול (LLM) באתר Meta AI בגודל של שבעה מיליארד פרמטרים. נלמדו מודלים בגדלים שונים בטווח של 7 עד 65 מיליארד פרמטרים.
-
-    <code>💻 Mistral AI (Medium)</code> — מודל שפה גדול בלמידת מכונה בפרמטרים של שבעה מיליארדים. תשובות ברמה של ChatGPT, אך עם איכות גבוהה יותר. פועל בעיקר עם שפה אנגלית.
-
-    <code>🌤 Solar AI</code> - המודל של Upstage מתפרסם במקום הראשון בדירוג HuggingFace Open LLM והוא גרסה משופרת של המודל LLaMA 2.
-
-    <code>📚 Google Gemini Pro</code> — אחת מהרשתות המתקדמות ביותר, שהושקה על ידי Google. היא מסוגלת ליצור טקסטים, לצפות בתמונות ולענות על שאלות גם באנגלית וגם ברוסית.
-
-messages-category_image = <code>🎨 StableDiffusionXL</code> — רשת עצבים שיכולה ליצור תמונות לפי בקשה. נותנת תמונות ממוקדות ואיכותיות עם שימוש בפרומפט טוב.
-
-    <code>🎮 Playground v2</code> — אחת מהרשתות הטובות ביותר ליצירת תמונות. מסוגלת ליצור תמונות לפי בקשה.
-
-    <code>📷 Midjourney V4</code> — רשת עצבים שיכולה ליצור תמונות לפי בקשה. נותנת תמונות ממוקדות ואיכותיות עם שימוש בפרומפט טוב.
-
-    <code>🔥 Midjourney V6</code> — הרשת העצבים הטובה ביותר ליצירת תמונות כרגע. גרסה משופרת של <code>📷 Midjourney V4</code>
-
-    <code>✨ EnhanceImage</code> — רשת עצבים שיכולה לשדרג את איכות התמונות.
-
-    <code>📹 StableDiffusion Video</code> — רשת עצבים שיכולה ליצור וידאו לפי תמונה שהתקבלה.
-
-    <code>🖼 DALL·E 3</code> — אחת מהרשתות המתקדמות ביותר ליצירת תמונות מבית OpenAI.
-
-    <code>🖌 TencentARC PhotoMaker</code> — רשת עצבים שיכולה ליצור כל דימוי עם כל פנים על פי בקשה מסוימת. מסנן NSFW אינו קיים.
-
-    <code>🦾 JuggernautXL V5</code> — רשת נוירונים המיועדת ליצירת נופים, תמונות אדריכלות ותמונות מפורטות מאוד.
-
-    <code>👁️ DynaVisionXL</code> — רשת נוירונים שיכולה ליצור תמונות על פי בקשה מסוימת. סופקות תמונות ברורות ובאיכות גבוהה כאשר משתמשים בבקשה טובה.
-
-    <code>🧝🏻‍♀️ AnimeArt</code> — רשת נוירונים המתמקדת ביצירת תמונות אנימה. תוצאות טובות כאשר משתמשים בבקשה באיכות.
-
-messages-category_audio = <code>🎤 Whisper V3</code> — רשת עצבים שיכולה לתרגם קובץ אודיו לטקסט.
-
-    <code>🗣 RachelVoice</code> — רשת עצבים שיכולה ליצור קבצי אודיו לפי טקסט מסוים.
+messages-category_audio = <i>בחרו אחת מהרשתות העצביות המוצגות למטה</i>
 
 messages-mode = 🤖 <i>הרשת הנבחרת:</i> <code>{ $neuro }</code>
 
@@ -265,33 +194,20 @@ messages-admin_success = ✅ מעמד הרשת עודכן בהצלחה.
 
 messages-admin_success_maintenance = ✅ מצב התחזוקה טכנית עודכן בהצלחה.
 
-messages-admin_neuro_statuses = <b>🔥 שנה את מצב הרשת</b>
+messages-admin_neuro_statuses = <b>🔥 לשנות את מצב הרשת העצבית</b>
 
-    רשתות ליצירת טקסט:
-    ├ ChatGPT: <code>{ $gpt }</code>
-    ├ Claude AI: <code>{ $claude }</code>
-    ├ Google AI: <code>{ $google }</code>
-    ├ LLaMA AI: <code>{ $llama }</code>
-    ├ Mistral AI (Medium): <code>{ $mistral }</code>
-    ├ Solar AI: <code>{ $solar }</code>
-    └ Google Gemini Pro: <code>{ $gemini }</code>
+    רשתות עצב ליצירת טקסט:
+    ├ רשתות עצב פעילות: <code>{ $text_working }</code>
+    └ בתחזוקה טכנית: <code>{ $text_not_working }</code>
 
-    רשתות ליצירת ועיבוד תמונות:
-    ├ StableDiffusionXL: <code>{ $stable }</code>
-    ├ Playground v2: <code>{ $playground }</code>
-    ├ EnhanceImage: <code>{ $enhance }</code>
-    ├ Midjourney V4: <code>{ $midjourney }</code>
-    ├ Midjourney V6: <code>{ $midjourneyv6 }</code>
-    ├ StableDiffusion Video: <code>{ $sdv }</code>
-    ├ DALL·E 3: <code>{ $dalle3 }</code>
-    ├ TencentARC PhotoMaker: <code>{ $tencentmaker }</code>
-    ├ JuggernautXL V5: <code>{ $juggernaut }</code>
-    ├ DynaVisionXL: <code>{ $dynavision }</code>
-    └ AnimeArt: <code>{ $animeart }</code>
+    רשתות עצב ליצירת ועיבוד תמונות:
+    ├ רשתות עצב פעילות: <code>{ $image_working }</code>
+    └ בתחזוקה טכנית: <code>{ $image_not_working }</code>
 
-    רשתות לעבוד עם אודיו:
-    ├ Whisper V3: <code>{ $whisper }</code>
-    └ RachelVoice: <code>{ $bender }</code>
+    רשתות עצב לעבוד עם שמע:
+    ├ רשתות עצב פעילות: <code>{ $audio_working }</code>
+    └ בתחזוקה טכנית: <code>{ $audio_not_working }</code>
+
 
 ```Input field placeholders```
 

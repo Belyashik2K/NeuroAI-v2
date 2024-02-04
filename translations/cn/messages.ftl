@@ -54,31 +54,17 @@ messages-about = 💬 <b>关于服务</b>
     🥀 合作: { $ads }
 
     🤔 <b>神经网络状态</b>
-    用于文本生成的神经网络:
-    ├ ChatGPT: <code>{ $gpt }</code>
-    ├ Claude AI: <code>{ $claude }</code>
-    ├ Google AI: <code>{ $google }</code>
-    ├ LLaMA AI: <code>{ $llama }</code>
-    ├ Mistral AI (Medium): <code>{ $mistral }</code>
-    ├ Solar AI: <code>{ $solar }</code>
-    └ Google Gemini Pro: <code>{ $gemini }</code>
+    用于文本生成的神经网络：
+    ├ 工作中的神经网络：<code>{ $text_working }</code>
+    └ 技术维护中的神经网络：<code>{ $text_not_working }</code>
 
-    用于图像生成和处理的神经网络:
-    ├ StableDiffusionXL: <code>{ $stable }</code>
-    ├ Playground v2: <code>{ $playground }</code>
-    ├ EnhanceImage: <code>{ $enhance }</code>
-    ├ Midjourney V4: <code>{ $midjourney }</code>
-    ├ Midjourney V6: <code>{ $midjourneyv6 }</code>
-    ├ StableDiffusion Video: <code>{ $sdv }</code>
-    ├ DALL·E 3: <code>{ $dalle3 }</code>
-    ├ TencentARC PhotoMaker: <code>{ $tencentmaker }</code>
-    ├ JuggernautXL V5: <code>{ $juggernaut }</code>
-    ├ DynaVisionXL: <code>{ $dynavision }</code>
-    └ AnimeArt: <code>{ $animeart }</code>
+    用于图像生成和处理的神经网络：
+    ├ 工作中的神经网络：<code>{ $image_working }</code>
+    └ 技术维护中的神经网络：<code>{ $image_not_working }</code>
 
-    用于音频处理的神经网络:
-    ├ Whisper V3: <code>{ $whisper }</code>
-    └ RachelVoice: <code>{ $bender }</code>
+    用于音频处理的神经网络：
+    ├ 工作中的神经网络：<code>{ $audio_working }</code>
+    └ 技术维护中的神经网络：<code>{ $audio_not_working }</code>
 
 messages-working = 工作中
 
@@ -90,77 +76,20 @@ messages-choose_neuro_category = <b>🔥 选择神经网络</b>
     ❓ <i>选择神经网络类别</i>
         
     📝 <code>文本</code> — 生成文本的神经网络。
-    <i>神经网络列表：</i>
-    ├ <code>💭 ChatGPT (GPT 3.5)</code>
-    ├ <code>☁️ Claude AI</code>
-    ├ <code>📱 Google AI</code>
-    ├ <code>🦙 LLaMA AI</code>
-    ├ <code>💻 Mistral AI (Medium)</code>
-    ├ <code>🌤 Solar AI</code>
-    └ <code>📚 Google Gemini Pro</code>
 
     🖼 <code>图像</code> — 生成图像的神经网络。
-    <i>神经网络列表：</i>
-    ├ <code>🎨 StableDiffusionXL</code>
-    ├ <code>🎮 Playground v2</code>
-    ├ <code>📷 Midjourney V4</code>
-    ├ <code>🔥 Midjourney V6</code>
-    ├ <code>✨ EnhanceImage</code>
-    ├ <code>📹 StableDiffusion Video</code>
-    ├ <code>🖼 DALL·E 3</code>
-    ├ <code>🖌 TencentARC PhotoMaker</code>
-    ├ <code>🦾 JuggernautXL V5</code>
-    ├ <code>👁️ DynaVisionXL</code>
-    └ <code>🧝🏻‍♀️ AnimeArt</code>
 
     🎵 <code>音频</code> — 生成音频的神经网络。
-    <i>神经网络列表：</i>
-    ├ <code>🎤 Whisper V3</code>
-    └ <code>🗣️ RachelVoice</code>
 
 ```Neuro choose```
 
 messages-choose_neuro = ❓ <b>选择神经网络</b>
 
-messages-category_text = <code>💭 ChatGPT (GPT 3.5)</code> — 生成文本的稳定神经网络之一。能够生成文本、编写代码、回答问题等。可以处理网站链接。
+messages-category_text = <i>请选择以下列出的其中一个神经网络</i>
 
-    <code>☁️ Claude AI</code> — 下一代基于Anthropic研究的AI系统的助手。Claude能够处理各种对话和文本处理任务，并保持高可靠性和可预测性。主要使用英语。
+messages-category_image = <i>请选择以下列出的其中一个神经网络</i>
 
-    <code>📱 Google AI</code> — 谷歌推出的神经网络，主要能够生成英语文本。
-
-    <code>🦙 LLaMA AI</code> — 由Meta AI于2023年2月发布的大型语言模型（LLM）。从7亿到65亿个参数的不同规模的模型都进行了训练。
-
-    <code>💻 Mistral AI (Medium)</code> — 具有70亿参数的大型语言模型。在ChatGPT水平上回答，但质量更高。主要使用英语。
-
-    <code>🌤 Solar AI</code> - 由Upstage公司推出的模型在HuggingFace Open LLM排行榜上名列前茅，是LLaMA 2模型的升级版。
-
-    <code>📚 Google Gemini Pro</code> — 谷歌推出的最先进的神经网络之一。能够生成文本，查看图像并用英语和俄语回答问题。
-
-messages-category_image = <code>🎨 StableDiffusionXL</code> — 能够根据请求生成清晰高质量图像的神经网络。
-
-    <code>🎮 Playground v2</code> — 生成图像的最佳神经网络之一。能够根据请求生成图像。
-
-    <code>📷 Midjourney V4</code> — 能够根据请求生成清晰高质量图像的神经网络。
-
-    <code>🔥 Midjourney V6</code> — 目前最佳的图像生成神经网络。<code>📷 Midjourney V4</code> 的改进版本
-
-    <code>✨ EnhanceImage</code> — 能够提高图像质量的神经网络。
-
-    <code>📹 StableDiffusion Video</code> — 能够根据提供的照片生成视频的神经网络。
-
-    <code>🖼 DALL·E 3</code> — 由OpenAI推出的最先进的图像生成神经网络之一。
-
-    <code>🖌 腾讯ARC PhotoMaker</code> — 一种神经网络，能够根据给定的请求生成带有任何面孔的任何图像。不包含NSFW过滤器。
-
-    <code>🦾 JuggernautXL V5</code> — 面向生成风景、建筑照片和高度详细图像的神经网络。
-
-    <code>👁️ DynaVisionXL</code> — 能够根据特定请求生成图像的神经网络。在使用良好提示时提供清晰且高质量的图像。
-
-    <code>🧝🏻‍♀️ AnimeArt</code> — 面向生成动漫照片的神经网络。在使用良好提示时获得良好的结果。
-
-messages-category_audio = <code>🎤 Whisper V3</code> — 能够将音频文件转换为文本的神经网络。
-
-    <code>🗣 RachelVoice</code> — 能够根据提供的文本生成音频文件的神经网络。
+messages-category_audio = <i>请选择以下列出的其中一个神经网络</i>
 
 messages-mode = 🤖 <i>已选择神经网络：</i> <code>{ $neuro }</code>
 
@@ -268,30 +197,16 @@ messages-admin_success_maintenance = ✅ 技术维护状态已成功更改。
 messages-admin_neuro_statuses = <b>🔥 更改神经网络状态</b>
 
     用于文本生成的神经网络：
-    ├ ChatGPT: <code>{ $gpt }</code>
-    ├ Claude AI: <code>{ $claude }</code>
-    ├ Google AI: <code>{ $google }</code>
-    ├ LLaMA AI: <code>{ $llama }</code>
-    ├ Mistral AI (Medium): <code>{ $mistral }</code>
-    ├ Solar AI: <code>{ $solar }</code>
-    └ Google Gemini Pro: <code>{ $gemini }</code>
+    ├ 工作中的神经网络：<code>{ $text_working }</code>
+    └ 技术维护中的神经网络：<code>{ $text_not_working }</code>
 
     用于图像生成和处理的神经网络：
-    ├ StableDiffusionXL: <code>{ $stable }</code>
-    ├ Playground v2: <code>{ $playground }</code>
-    ├ EnhanceImage: <code>{ $enhance }</code>
-    ├ Midjourney V4: <code>{ $midjourney }</code>
-    ├ Midjourney V6: <code>{ $midjourneyv6 }</code>
-    ├ StableDiffusion Video: <code>{ $sdv }</code>
-    ├ DALL·E 3: <code>{ $dalle3 }</code>
-    ├ TencentARC PhotoMaker: <code>{ $tencentmaker }</code>
-    ├ JuggernautXL V5: <code>{ $juggernaut }</code>
-    ├ DynaVisionXL: <code>{ $dynavision }</code>
-    └ AnimeArt: <code>{ $animeart }</code>
+    ├ 工作中的神经网络：<code>{ $image_working }</code>
+    └ 技术维护中的神经网络：<code>{ $image_not_working }</code>
 
     用于音频处理的神经网络：
-    ├ Whisper V3: <code>{ $whisper }</code>
-    └ RachelVoice: <code>{ $bender }</code>
+    ├ 工作中的神经网络：<code>{ $audio_working }</code>
+    └ 技术维护中的神经网络：<code>{ $audio_not_working }</code>
 
 ```Input field placeholders```
 
