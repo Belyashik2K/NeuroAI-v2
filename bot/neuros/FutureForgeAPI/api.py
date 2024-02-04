@@ -230,7 +230,7 @@ class FutureForge(FutureForgeRequest):
         }
 
         result = await self._request(method=self._METHOD,
-                                     neuro=data.Neuros.tencentmaker,
+                                     neuro=Neuro.TENCENTMAKER,
                                      uri=uri,
                                      params=params)
         return result['image_url']
@@ -253,7 +253,7 @@ class FutureForge(FutureForgeRequest):
         }
 
         result = await self._request(method=self._METHOD,
-                                     neuro=data.Neuros.midjourneyv6,
+                                     neuro=Neuro.MIDJOURNEYV6,
                                      uri=uri,
                                      params=params)
         return result['upscaled_image_urls']

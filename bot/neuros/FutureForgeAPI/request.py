@@ -41,7 +41,6 @@ class FutureForgeRequest(HTTPClient):
                                  uri: str,
                                  kwargs: dict) -> None:
         if status_code != 200:
-            neuro = neuro.replace(data.Neuros.start, '')
             await database.switch_neuro_status(neuro)
             raise FutureForgeError(f"Error (status code >>> {status_code}) while requesting {uri} with {kwargs}")
 
