@@ -12,7 +12,7 @@ from aiogram_i18n import LazyProxy
 from ..config import config
 from ..enums import Locale
 from .models import User, Neuro, Settings, Chat
-from ..keyboards.inline.callback import AllNeuros
+from ..keyboards.inline.callback import NeuroInfo
 
 class Database:
     def __init__(self) -> None:
@@ -57,7 +57,7 @@ class Database:
     async def prepare_tables(self) -> None:
         """Add neuro statuses and settings to database."""
         async with self.session() as session:
-            for provider, categories in AllNeuros.data_1.items():
+            for provider, categories in NeuroInfo.neuros_alph.items():
                 for category, names in categories.items():
                     for name in names:
                         stmt = select(Neuro).where(Neuro.code_name == name)
@@ -66,7 +66,7 @@ class Database:
                             stmt = insert(Neuro).values(code_name=name,
                                                         provider=provider,
                                                         category=category,
-                                                        is_active=name not in AllNeuros.not_working)
+                                                        is_active=name not in NeuroInfo.not_working)
                             await session.execute(stmt)
                             await session.commit()
             stmt = select(Settings)

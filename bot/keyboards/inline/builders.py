@@ -9,7 +9,7 @@ from ...enums import Locale, Mode, Category
 from ...database.models import User
 from ...config import config
 
-from .callback import Callback, AllNeuros
+from .callback import Callback
 
 class InlineKeyboards:
 
@@ -207,19 +207,6 @@ class InlineKeyboards:
         builder.row(self.close(as_button=True))
         return builder.as_markup()
         
-    def all_neuros(self,
-                   category: str) -> InlineKeyboardMarkup:
-        builder = InlineKeyboardBuilder()
-
-        for neuro, data in AllNeuros.data[category].items():
-            callback_data = Callback.Neuros.switch + data.replace(Callback.Neuros.start, '')
-            builder.button(text=neuro, callback_data=callback_data)
-        
-        builder.adjust(2, repeat=True)
-        builder.row(self.back(Callback.AdminPanel.change_neuro, as_button=True))
-
-        return builder.as_markup()
-    
     async def user_actions(self, 
                      user: User,
                      instance: Union[Message, CallbackQuery]) -> InlineKeyboardMarkup:

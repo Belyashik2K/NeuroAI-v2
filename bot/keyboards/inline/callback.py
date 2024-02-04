@@ -1,5 +1,7 @@
 from aiogram.filters.callback_data import CallbackData
 
+from ...enums import *
+
 class Callback:
     close = 'close'
 
@@ -51,17 +53,22 @@ class Callback:
     class AdminUser(CallbackData, prefix="admin"):
         user_id: int
 
-class AllNeuros:
-    not_working = ['enhance', 'dalle3', 'bender']
-
-    data_1 = {
-        "futureforge": {
-            "text": ['gpt', 'claude', 'google', 'llama', 'gemini', 'mistral', 'solar'],
-            "image": ['playground', 'enhance', 'midjourney', 'dalle3', 'sdv', 'stable', 'tencentmaker', 'midjourneyv6'],
-            "audio": ['whisper', 'bender'],
+class NeuroInfo:
+    not_working = [Neuro.ENHANCE, Neuro.DALLE3, Neuro.BENDER]
+    neuros_alph = {
+        Provider.FUTUREFORGE: {
+            Category.TEXT: [Neuro.CHATGPT, Neuro.CLAUDE, Neuro.GOOGLE, 
+                            Neuro.LLAMA, Neuro.MISTRAL, Neuro.SOLAR, 
+                            Neuro.GEMINI],
+            Category.IMAGE: [Neuro.SDXL, Neuro.PLAYGROUND, 
+                             Neuro.MIDJOURNEYV4, Neuro.MIDJOURNEYV6,
+                             Neuro.ENHANCE, Neuro.VIDEODIFFUSION,
+                             Neuro.DALLE3, Neuro.TENCENTMAKER],
+            Category.AUDIO: [Neuro.WHISPER, Neuro.BENDER],
         },
-        "visioncraft": {
-            "text": ['capybara'],
-            "image": ['juggernaut', 'dynavision', 'animeart']
+        Provider.VISIONCRAFT: {
+            Category.TEXT: [Neuro.CAPYBARA],
+            Category.IMAGE: [Neuro.JUGGERNAUT, Neuro.DYNAVISION,
+                             Neuro.ANIMEART]
         }
     }
