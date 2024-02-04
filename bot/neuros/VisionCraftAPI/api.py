@@ -1,6 +1,6 @@
 from asyncio import sleep
 
-from .request import VisionCraftRequest
+from .request import VisionCraftRequest, VisionCraftError
 
 from ...config import config
 from ...keyboards import data
@@ -52,7 +52,7 @@ class VisionCraft(VisionCraftRequest):
                                     uri=self._URL + 'generate-xl',
                                     method=self._METHOD,
                                     json=data)
-        if result['job_id']:
+        if result['job_id'] != None:
             image = await self.check_job_status(neuro=neuro,
                                                 job_id=result['job_id'])
             await sleep(1.5)
@@ -60,7 +60,9 @@ class VisionCraft(VisionCraftRequest):
                 image = await self.check_job_status(neuro=neuro,
                                                     job_id=result['job_id'])
                 await sleep(1.5)
-        return image             
+            return image 
+        else:
+            raise VisionCraftError(f"Error (JobID is none) while requesting {self._URL + 'generate-xl'} with {data}")            
     
     async def enchance_image(self,
                              neuro: str,
