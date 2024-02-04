@@ -11,6 +11,8 @@ class Neuro(Base):
     Attributes:
         id (int): Neuro's id in database.
         code_name (str): Neuro's code name.
+        category (str): Neuro's category.
+        provider (str): Neuro's API provider.
         is_active (bool): Is neuro active?
     """
     __tablename__ = 'neuros'
