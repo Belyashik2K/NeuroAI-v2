@@ -10,7 +10,7 @@ from contextlib import asynccontextmanager
 from aiogram_i18n import LazyProxy
 
 from ..config import config
-from ..enums import Locale
+from ..enums import Locale, Category
 from .models import User, Neuro, Settings, Chat
 from ..keyboards.inline.callback import NeuroInfo
 
@@ -219,15 +219,28 @@ class Database:
     async def get_neuro_statuses(self) -> dict[str, str]:
         """Get neuro statuses from database."""
         async with self.session() as session:
-            stmt = select(Neuro)
+            data = {}
+
+            stmt = select(func.count()).select_from(Neuro)
             result = await session.execute(stmt)
-            neuros = {}
-            for neuro in result.scalars().all():
-                status = LazyProxy("messages-working").data if neuro.is_active else LazyProxy("messages-not_working").data
-                neuros[neuro.code_name] = status
-            neuros['support'] = config.technical_support
-            neuros['ads'] = config.ads
-            return neuros
+            data['neuro_count'] = result.scalar_one_or_none()
+
+            categories = [Category.TEXT, Category.IMAGE, Category.AUDIO]
+            for category in categories:
+                stmt = select(func.count()).select_from(Neuro).where(Neuro.category == category)
+                result = await session.execute(stmt)
+                neuro_count = result.scalar_one_or_none()
+
+                stmt = select(func.count()).select_from(Neuro).where(Neuro.category == category).where(Neuro.is_active)
+                result = await session.execute(stmt)
+                neuro_active = result.scalar_one_or_none()
+
+                data[f'{category}_working'] = neuro_active
+                data[f'{category}_not_working'] = neuro_count - neuro_active
+
+            data['support'] = config.technical_support
+            data['ads'] = config.ads
+            return data
 
     async def get_neuro(self, code_name: str) -> Neuro:
         """Get neuro from database."""

@@ -92,7 +92,7 @@ async def start_gen_image(call: types.CallbackQuery, callback_data: data.Neuro,
     }
 
     text = choices[callback_data.name] if callback_data.name in choices else i18n.messages.start_gen_image(neuro=neuro)
-    if not call.message.photo and not call.message.video:
+    if not call.message.photo and not call.message.video and not call.message.reply_to_message:
         await call.message.edit_text(text=text,
                                     reply_markup=inline.back(callback_data=data.Category(name=Category.IMAGE,
                                                                                          page=page).pack()),

@@ -150,16 +150,21 @@ class InlineKeyboards:
         neuros, pages_count = await database.get_neuros_by_category(category=category, 
                                                                     page=page, 
                                                                     per_page=6)
-
+        status = {
+            True: LazyProxy('messages-working').data,
+            False: LazyProxy('messages-not_working').data
+                  }
         for neuro in neuros:
-            text = LazyProxy(f'buttons-{neuro.code_name}')
+            text = LazyProxy(f'buttons-{neuro.code_name}').data
             if not is_admin:
                 callback_data = Callback.Neuro(provider=neuro.provider,
                                                 category=neuro.category,
                                                 name=neuro.code_name).pack()
             else:
+                text += f" ({status[neuro.is_active]})"
                 callback_data = Callback.Switch(neuro_name=neuro.code_name).pack()
-            builder.add(InlineKeyboardButton(text=text, callback_data=callback_data))
+            if neuro.is_active or is_admin:
+                builder.add(InlineKeyboardButton(text=text, callback_data=callback_data))
         builder.adjust(2, repeat=True)
 
         pagination = self._pagination(data_object=Callback.Category if not is_admin else Callback.AdminCategory,
