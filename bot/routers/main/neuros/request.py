@@ -34,7 +34,12 @@ async def one_request(message: types.Message, user: User, state: FSMContext, i18
                                             chat_id=message.chat.id, message_id=_data['message_id'])
     await state.clear()
     async with ChatActionSender.typing(bot=message.bot, chat_id=message.chat.id):
-        result = await future.text_neuro(neuro=_data['neuro'], message=message.text, mode=_data['mode'])
+        if _data['provider'] == Provider.FUTUREFORGE:
+            result = await future.text_neuro(neuro=_data['neuro'], message=message.text, mode=_data['mode'])
+        else:
+            result = await vision.chatting(neuro=_data['neuro'], messages=Chatting.prepare_messages(content=message.text,
+                                                                                                   role=Role.USER,
+                                                                                                   message_list=[]))
         formatting['result'] = result[0]
         try:
             await message.bot.delete_message(chat_id=message.chat.id,
@@ -97,7 +102,7 @@ async def chatting(message: types.Message, user: User, state: FSMContext, i18n: 
         try:
             await message.reply(text=i18n.messages.chat_answer() + " " + result[0],
                                 parse_mode=ParseMode.MARKDOWN)
-            if _data['neuro'] in data.Neuros.vision_neuros:
+            if _data['provider'] == Provider.VISIONCRAFT:
                 with_assistant = Chatting.prepare_messages(content=result[0],
                                                            role=Role.ASSISTANT,
                                                            message_list=messages)

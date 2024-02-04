@@ -69,7 +69,10 @@ class NeuroInfo:
             Category.AUDIO: [Neuro.WHISPER, Neuro.BENDER],
         },
         Provider.VISIONCRAFT: {
-            Category.TEXT: [Neuro.CAPYBARA],
+            Category.TEXT: [Neuro.CAPYBARA, Neuro.ZEPHYR,
+                            Neuro.OPENCHAT, Neuro.MYTHOMIST,
+                            Neuro.CINEMATIKA, Neuro.RWKV5WORLD,
+                            Neuro.RWKV5AITOWN],
             Category.IMAGE: [Neuro.JUGGERNAUT, Neuro.DYNAVISION,
                              Neuro.ANIMEART]
         }

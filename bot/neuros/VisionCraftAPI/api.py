@@ -3,7 +3,6 @@ from asyncio import sleep
 from .request import VisionCraftRequest, VisionCraftError
 
 from ...config import config
-from ...keyboards import data
 from ...enums import Neuro
 
 
@@ -36,13 +35,17 @@ class VisionCraft(VisionCraftRequest):
 
         self._llm_neuros = {
             Neuro.CAPYBARA: "nous-capybara-7b",
-            2: "zephyr-7b-beta",
-            3: "openchat-7b",
-            4: "mythomist-7b",
-            5: "cinematika-7b",
-            6: "rwkv-5-world-3b",
-            7: "rwkv-5-3b-ai-town"
+            Neuro.ZEPHYR: "zephyr-7b-beta",
+            Neuro.OPENCHAT: "openchat-7b",
+            Neuro.MYTHOMIST: "mythomist-7b",
+            Neuro.CINEMATIKA: "cinematika-7b",
+            Neuro.RWKV5WORLD: "rwkv-5-world-3b",
+            Neuro.RWKV5AITOWN: "rwkv-5-3b-ai-town"
         }
+
+    @staticmethod
+    def prepare_answer(answer: str) -> str:
+        return answer.replace('USER:','').strip()
 
     async def chatting(self,
                        neuro: str,
@@ -59,8 +62,7 @@ class VisionCraft(VisionCraftRequest):
                                      uri=self._URL + 'llm',
                                      method=self._METHOD,
                                      json=data)
-        
-        return [result['choices'][0]['message']['content']]
+        return [self.prepare_answer(answer=result['choices'][0]['message']['content'])]
 
     async def image_neuro(self,
                                 neuro: str,

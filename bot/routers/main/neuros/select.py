@@ -43,9 +43,13 @@ async def neuro_choose(call: types.CallbackQuery, callback_data: data.Category,
 async def text_mode_choose(call: types.CallbackQuery, callback_data: data.Neuro,
                            user: User, state: FSMContext, i18n: I18nContext):
     _data = await state.get_data()
+    try:
+        page = _data['page']
+    except KeyError:
+        page = 1
     await state.clear()
     neuro = LazyProxy(f"buttons-{callback_data.name}").data
-    await call.message.edit_text(i18n.messages.mode(neuro=neuro), reply_markup=inline.mode(page=_data['page']))
+    await call.message.edit_text(i18n.messages.mode(neuro=neuro), reply_markup=inline.mode(page=page))
     await state.update_data(neuro=callback_data.name, provider=callback_data.provider)
 
 
