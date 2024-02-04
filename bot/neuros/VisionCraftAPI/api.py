@@ -107,7 +107,6 @@ class VisionCraft(VisionCraftRequest):
                             neuro: str,
                             prompt: str) -> str:
         neuro_name = self._image_neuros[neuro]
-        print(neuro_name)
         data = {"model": neuro_name,
                 "sampler": "DPM++ 2M",
                 "prompt": prompt,
