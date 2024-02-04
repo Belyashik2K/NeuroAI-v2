@@ -4,6 +4,7 @@ from .request import VisionCraftRequest, VisionCraftError
 
 from ...config import config
 from ...keyboards import data
+from ...enums import Neuro
 
 
 class VisionCraft(VisionCraftRequest):
@@ -27,14 +28,14 @@ class VisionCraft(VisionCraftRequest):
                             Low resolution, Morbid."""
 
         self._image_neuros = {
-            data.Neuros.animeart: "anime-art-diffusion-xl",
-            data.Neuros.juggernaut: "juggernaut-xl-V5",
-            data.Neuros.dynavision: "dynavision-xl-all-in-one-stylized",
-            data.Neuros.stable: "sdxl-base"
+            Neuro.ANIMEART: "anime-art-diffusion-xl",
+            Neuro.JUGGERNAUT: "juggernaut-xl-V5",
+            Neuro.DYNAVISION: "dynavision-xl-all-in-one-stylized",
+            Neuro.SDXL: "sdxl-base"
         }
 
         self._llm_neuros = {
-            data.Neuros.capybara: "nous-capybara-7b",
+            Neuro.CAPYBARA: "nous-capybara-7b",
             2: "zephyr-7b-beta",
             3: "openchat-7b",
             4: "mythomist-7b",

@@ -1,8 +1,8 @@
 """Create all tables
 
-Revision ID: 98bd04862338
+Revision ID: 336939776aac
 Revises: 
-Create Date: 2024-01-21 21:47:57.488850
+Create Date: 2024-02-04 14:58:08.637202
 
 """
 from typing import Sequence, Union
@@ -12,7 +12,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision: str = '98bd04862338'
+revision: str = '336939776aac'
 down_revision: Union[str, None] = None
 branch_labels: Union[str, Sequence[str], None] = None
 depends_on: Union[str, Sequence[str], None] = None
@@ -33,6 +33,8 @@ def upgrade() -> None:
     op.create_table('neuros',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('code_name', sa.String(length=255), nullable=False),
+    sa.Column('category', sa.String(length=255), nullable=False),
+    sa.Column('provider', sa.String(length=255), nullable=False),
     sa.Column('is_active', sa.Boolean(), nullable=False),
     sa.PrimaryKeyConstraint('id'),
     sa.UniqueConstraint('code_name')
@@ -46,7 +48,7 @@ def upgrade() -> None:
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('user_id', sa.BigInteger(), nullable=False),
     sa.Column('full_name', sa.String(length=255), nullable=False),
-    sa.Column('username', sa.String(length=255)),
+    sa.Column('username', sa.String(length=255), nullable=True),
     sa.Column('registered_at', sa.DateTime(), server_default=sa.text('(CURRENT_TIMESTAMP)'), nullable=False),
     sa.Column('last_activity', sa.DateTime(), server_default=sa.text('(CURRENT_TIMESTAMP)'), nullable=False),
     sa.Column('request_counter', sa.BigInteger(), nullable=False),

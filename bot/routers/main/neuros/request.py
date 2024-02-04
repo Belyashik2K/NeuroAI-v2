@@ -14,7 +14,7 @@ from ....neuros import *
 from ....utils.check_exception import ExceptionChecker
 from ....utils.links import Links
 from ....utils.chatting import Chatting
-from ....enums import Role
+from ....enums import *
 
 from ....fsm import *
 
@@ -22,45 +22,46 @@ router: Final[Router] = Router(name=__name__)
 
 @router.message(NeuroRequest.request, F.text)
 async def one_request(message: types.Message, user: User, state: FSMContext, i18n: I18nContext):
-    data = await state.get_data()
+    _data = await state.get_data()
     formatting = {
-        "neuro": LazyProxy(f"buttons-{data['neuro'].split('_')[1]}").data,
-        "mode": LazyProxy(f"buttons-{data['mode'].split('_', 1)[1]}").data,
+        "neuro": LazyProxy(f"buttons-{_data['neuro']}").data,
+        "mode": LazyProxy(f"buttons-{_data['mode']}").data,
         "request": message.text
     }
     header = i18n.messages.header(neuro=formatting['neuro'], mode=formatting['mode'])
     await message.delete()
     m = await message.bot.edit_message_text(header + "\n\n" + i18n.messages.request_processing(**formatting),
-                                        chat_id=message.chat.id, message_id=data['message_id'])
+                                            chat_id=message.chat.id, message_id=_data['message_id'])
     await state.clear()
     async with ChatActionSender.typing(bot=message.bot, chat_id=message.chat.id):
-        result = await future.text_neuro(neuro=data['neuro'], message=message.text, mode=data['mode'])
+        result = await future.text_neuro(neuro=_data['neuro'], message=message.text, mode=_data['mode'])
         formatting['result'] = result[0]
         try:
             await message.bot.delete_message(chat_id=message.chat.id,
                                             message_id=m.message_id)
             await message.answer(header + "\n\n" + i18n.messages.request_result(**formatting) + result[0],
-                                reply_markup=inline.close_or_again(data['neuro']))
+                                reply_markup=await inline.close_or_again(_data['neuro']))
         except Exception as e:
             logging.error(e)
             await message.answer(**ExceptionChecker.check_exception(str(e)))
     await database.update_user(user_id=user.user_id,
                                request_counter=user.request_counter + 1)
 
-@router.callback_query(F.data == data.Mode.chat)
-async def chat_mode(call: types.CallbackQuery, user: User, state: FSMContext, i18n: I18nContext):
+@router.callback_query(data.Mode.filter(F.type_ == Mode.CHAT))
+async def chat_mode(call: types.CallbackQuery, callback_data: data.Mode,
+                    user: User, state: FSMContext, i18n: I18nContext):
     await call.message.delete()
     _data = await state.get_data()
 
     formatting = {
-        "neuro": LazyProxy(f"buttons-{_data['neuro'].split('_')[1]}").data,
-        "mode": LazyProxy(f"buttons-{call.data.split('_', 1)[1]}").data,
+        "neuro": LazyProxy(f"buttons-{_data['neuro']}").data,
+        "mode": LazyProxy(f"buttons-{callback_data.type_}").data,
     }
     header = i18n.messages.header(neuro=formatting['neuro'], mode=formatting['mode'])
 
     m = await call.bot.send_message(call.message.chat.id, i18n.messages.starting_chat())
-    if _data['neuro'] not in data.Neuros.vision_neuros:
-        _, chat_code = await future.text_neuro(neuro=_data['neuro'], message="Hello!", mode=data.Mode.one_request)
+    if _data['provider'] == Provider.FUTUREFORGE:
+        _, chat_code = await future.text_neuro(neuro=_data['neuro'], message="Hello!", mode=Mode.ONE)
     else:
         chat_code = None
         await state.update_data(chat_cache=[])
@@ -68,7 +69,7 @@ async def chat_mode(call: types.CallbackQuery, user: User, state: FSMContext, i1
     await call.bot.send_message(call.message.chat.id, 
                                 header + '\n\n' + i18n.messages.chat_mode(end_button=LazyProxy('buttons-stop_chatting').data), 
                                 reply_markup=reply.stop_chatting())
-    await state.update_data(mode=call.data, chat_code=chat_code)
+    await state.update_data(mode=callback_data.type_, chat_code=chat_code)
     await state.set_state(NeuroRequest.chating)
 
 @router.message(NeuroRequest.chating, F.text)
@@ -84,7 +85,7 @@ async def chatting(message: types.Message, user: User, state: FSMContext, i18n: 
     text = message.text
     m = await message.bot.send_message(message.chat.id, i18n.messages.in_work(), parse_mode=ParseMode.MARKDOWN)
     async with ChatActionSender.typing(bot=message.bot, chat_id=message.chat.id):
-        if _data['neuro'] not in data.Neuros.vision_neuros:
+        if _data['provider'] == Provider.FUTUREFORGE:
             result = await future.text_neuro(neuro=_data['neuro'], message=text, mode=_data['mode'], chat_code=_data['chat_code'])
         else:
             messages = Chatting.prepare_messages(content=message.text,
@@ -112,15 +113,15 @@ async def image_request(message: types.Message, user: User, state: FSMContext, i
     await message.delete()
     _data = await state.get_data()
 
-    if _data['neuro'] not in [data.Neuros.sdv] and message.photo:
+    if _data['neuro'] != Neuro.VIDEODIFFUSION and message.photo:
         return
 
     formatting = {
-        'neuro': LazyProxy(f"buttons-{_data['neuro'].split('_')[1]}").data,
+        'neuro': LazyProxy(f"buttons-{_data['neuro']}").data,
     }
 
     neuros = {
-        data.Neuros.sdv: future.sdv_neuro,
+        Neuro.VIDEODIFFUSION: future.sdv_neuro,
     }
 
     if _data['neuro'] in neuros:
@@ -131,7 +132,7 @@ async def image_request(message: types.Message, user: User, state: FSMContext, i
     else:
         prompt = message.text
         text = i18n.messages.image_processing(neuro=formatting['neuro'], prompt=prompt)
-        func = future.image_neuro if _data['neuro'] not in data.Neuros.vision_neuros else vision.image_neuro
+        func = future.image_neuro if _data['provider'] == Provider.FUTUREFORGE else vision.image_neuro
     formatting['prompt'] = prompt
 
     await message.bot.edit_message_text(text, chat_id=message.chat.id, message_id=_data['message_id'])
@@ -144,39 +145,39 @@ async def image_request(message: types.Message, user: User, state: FSMContext, i
             await message.bot.send_photo(chat_id=message.chat.id,
                                         photo=types.URLInputFile(result, filename='photo.png'),
                                         caption=i18n.messages.image_result(**formatting),
-                                        reply_markup=inline.close_or_again(_data['neuro']),
+                                        reply_markup=await inline.close_or_again(_data['neuro']),
                                         parse_mode=ParseMode.MARKDOWN)
     else:
         async with ChatActionSender.upload_video(bot=message.bot, chat_id=message.chat.id):
             await message.bot.send_video(chat_id=message.chat.id,
                                         video=types.URLInputFile(result, filename='video.mp4'),
                                         caption=i18n.messages.other_result(**formatting),
-                                        reply_markup=inline.close_or_again(_data['neuro']))
+                                        reply_markup=await inline.close_or_again(_data['neuro']))
 
     await database.update_user(user_id=user.user_id, request_counter=user.request_counter + 1)
 
 @router.message(NeuroRequest.enchance_image, F.photo)
 async def enchance_image(message: types.Message, user: User, state: FSMContext, i18n: I18nContext):
     await message.delete()
-    data = await state.get_data()
+    _data = await state.get_data()
 
     formatting = {
-        "neuro": LazyProxy(f"buttons-{data['neuro'].split('_')[1]}").data,
+        "neuro": LazyProxy(f"buttons-{_data['neuro']}").data,
     }
 
     await message.bot.edit_message_text(i18n.messages.other_processing(**formatting),
                                         chat_id=message.chat.id,
-                                        message_id=data['message_id'])
+                                        message_id=_data['message_id'])
     photo = await message.bot.get_file(message.photo[-1].file_id)
     url = Links.get_file_url(photo.file_path)
-    image = await vision.enchance_image(neuro=data['neuro'],
+    image = await vision.enchance_image(neuro=_data['neuro'],
                                         photo_url=url)
-    await message.bot.delete_message(message.chat.id, data['message_id'])
+    await message.bot.delete_message(message.chat.id, _data['message_id'])
     async with ChatActionSender.upload_photo(bot=message.bot, chat_id=message.chat.id):
         await message.bot.send_photo(chat_id=message.chat.id,
                                     photo=types.BufferedInputFile(image, filename='photo.png'),
                                     caption=i18n.messages.other_result(**formatting),
-                                    reply_markup=inline.close_or_again(data['neuro']))
+                                    reply_markup=await inline.close_or_again(_data['neuro']))
     await database.update_user(user_id=user.user_id, request_counter=user.request_counter + 1)
     await state.clear()
 
@@ -186,7 +187,7 @@ async def bender_request(message: types.Message, user: User, state: FSMContext, 
     data = await state.get_data()
 
     formatting = {
-        "neuro": LazyProxy(f"buttons-{data['neuro'].split('_')[1]}").data,
+        "neuro": LazyProxy(f"buttons-{data['neuro']}").data,
         'prompt': message.text[:330]
     }
 
@@ -207,7 +208,7 @@ async def bender_request(message: types.Message, user: User, state: FSMContext, 
 async def whisper_voice(message: types.Message, user: User, state: FSMContext, i18n: I18nContext):
     data = await state.get_data()
     formatting = {
-        "neuro": LazyProxy(f"buttons-{data['neuro'].split('_')[1]}").data,
+        "neuro": LazyProxy(f"buttons-{data['neuro']}").data,
     }
     await message.delete()
     await message.bot.edit_message_text(i18n.messages.other_processing(**formatting),
@@ -220,7 +221,7 @@ async def whisper_voice(message: types.Message, user: User, state: FSMContext, i
                                         message_id=data['message_id'],
                                         text=i18n.messages.other_result(**formatting) + '\n\n' + i18n.messages.answer(
                                         result=result),
-                                        reply_markup=inline.close_or_again(data['neuro']))
+                                        reply_markup=await inline.close_or_again(data['neuro']))
     await database.update_user(user_id=user.user_id, request_counter=user.request_counter + 1)
 
 @router.message(NeuroRequest.tencentmaker, F.photo & F.caption)
@@ -228,7 +229,7 @@ async def tencentmaker(message: types.Message, user: User, state: FSMContext, i1
     await message.delete()
     data = await state.get_data()
     formatting = {
-        "neuro": LazyProxy(f"buttons-{data['neuro'].split('_')[1]}").data,
+        "neuro": LazyProxy(f"buttons-{data['neuro']}").data,
         'prompt': message.caption
     }
     await message.bot.edit_message_text(i18n.messages.image_processing(**formatting),
@@ -242,7 +243,7 @@ async def tencentmaker(message: types.Message, user: User, state: FSMContext, i1
         await message.bot.send_photo(chat_id=message.chat.id,
                                     photo=types.URLInputFile(result, filename='photo.png'),
                                     caption=i18n.messages.image_result(**formatting),
-                                    reply_markup=inline.close_or_again(data['neuro']),
+                                    reply_markup=await inline.close_or_again(data['neuro']),
                                     parse_mode=ParseMode.MARKDOWN)
     await database.update_user(user_id=user.user_id, request_counter=user.request_counter + 1)
     await state.clear()
@@ -252,7 +253,7 @@ async def midjourneyv6(message: types.Message, user: User, state: FSMContext, i1
     await message.delete()
     data = await state.get_data()
     formatting = {
-        "neuro": LazyProxy(f"buttons-{data['neuro'].split('_')[1]}").data,
+        "neuro": LazyProxy(f"buttons-{data['neuro']}").data,
         'prompt': message.text
     }
     await message.bot.edit_message_text(i18n.messages.image_processing(**formatting),
@@ -271,7 +272,7 @@ async def midjourneyv6(message: types.Message, user: User, state: FSMContext, i1
                                                 media=photos)
     await message.answer(reply_to_message_id=m[-1].message_id,
                         text=i18n.messages.image_result(**formatting),
-                        reply_markup=inline.close_or_again(data['neuro']),
+                        reply_markup=await inline.close_or_again(data['neuro']),
                         parse_mode=ParseMode.MARKDOWN)
     await database.update_user(user_id=user.user_id, 
                                request_counter=user.request_counter + 1)

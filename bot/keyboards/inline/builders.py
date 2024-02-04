@@ -5,7 +5,7 @@ from aiogram_i18n import LazyProxy
 from aiogram.types import Message, CallbackQuery
 from aiogram_i18n.types import InlineKeyboardButton, InlineKeyboardMarkup
 
-from ...enums import Locale
+from ...enums import Locale, Mode, Category
 from ...database.models import User
 from ...config import config
 
@@ -61,11 +61,17 @@ class InlineKeyboards:
         builder.add(close)
         return builder.as_markup()
     
-    def close_or_again(self,
+    async def close_or_again(self,
                        neuro: str) -> InlineKeyboardMarkup:
+        
+        from ...database import database
+        neuro_info = await database.get_neuro(neuro)
+
         builder = InlineKeyboardBuilder()
         again = InlineKeyboardButton(text=LazyProxy('buttons-again'),
-                                     callback_data=neuro)
+                                     callback_data=Callback.Neuro(provider=neuro_info.provider,
+                                                                  category=neuro_info.category,
+                                                                  name=neuro_info.code_name).pack())
         close = self.close(as_button=True)
 
         builder.add(again, close)
@@ -115,63 +121,51 @@ class InlineKeyboards:
         builder.row(self.back(Callback.Profile.back, as_button=True))
         return builder.as_markup()
 
-    def neuro_categories(self,
-                         is_admin: bool = False) -> InlineKeyboardMarkup:
+    async def neuro_categories(self,
+                               is_admin: bool = False) -> InlineKeyboardMarkup:
         builder = InlineKeyboardBuilder()
 
-        text = InlineKeyboardButton(text=LazyProxy('buttons-text'), callback_data=Callback.NeuroCategories.text if not is_admin else Callback.NeuroCategories.admin + Callback.NeuroCategories.text)
-        image = InlineKeyboardButton(text=LazyProxy('buttons-image'), callback_data=Callback.NeuroCategories.image if not is_admin else Callback.NeuroCategories.admin + Callback.NeuroCategories.image)
-        audio = InlineKeyboardButton(text=LazyProxy('buttons-audio'), callback_data=Callback.NeuroCategories.audio if not is_admin else Callback.NeuroCategories.admin + Callback.NeuroCategories.audio)
+        from ...database import database
+        categories = await database.get_all_categories()
 
-        builder.add(text, image, audio)
+        for category in categories:
+            text = LazyProxy(f'buttons-{category}')
+            callback_data = Callback.Category(name=category).pack()
+            builder.add(InlineKeyboardButton(text=text, callback_data=callback_data))
+
         builder.row(self.close(as_button=True) if not is_admin else self.back(Callback.AdminPanel.back, as_button=True))
         builder.adjust(2, 1, 1)
+
         return builder.as_markup()
     
-    def neuros(self,
-               category: str) -> InlineKeyboardMarkup:
+    async def neuros(self,
+                     category: str) -> InlineKeyboardMarkup:
+
         builder = InlineKeyboardBuilder()
 
-        categories = {
-            Callback.NeuroCategories.text: [InlineKeyboardButton(text=LazyProxy('buttons-gpt'), callback_data=Callback.Neuros.gpt),
-                                    InlineKeyboardButton(text=LazyProxy('buttons-claude'), callback_data=Callback.Neuros.claude),
-                                    InlineKeyboardButton(text=LazyProxy('buttons-google'), callback_data=Callback.Neuros.google),
-                                    InlineKeyboardButton(text=LazyProxy('buttons-llama'), callback_data=Callback.Neuros.llama),
-                                    InlineKeyboardButton(text=LazyProxy('buttons-mistral'), callback_data=Callback.Neuros.mistral),
-                                    InlineKeyboardButton(text=LazyProxy('buttons-solar'), callback_data=Callback.Neuros.solar),     
-                                    InlineKeyboardButton(text=LazyProxy('buttons-gemini'), callback_data=Callback.Neuros.gemini),
-                                    InlineKeyboardButton(text=LazyProxy('buttons-capybara'), callback_data=Callback.Neuros.capybara)],
-            Callback.NeuroCategories.image: [InlineKeyboardButton(text=LazyProxy('buttons-stable'), callback_data=Callback.Neuros.stable),
-                                    InlineKeyboardButton(text=LazyProxy('buttons-playground'), callback_data=Callback.Neuros.playground),
-                                    InlineKeyboardButton(text=LazyProxy('buttons-midjourney'), callback_data=Callback.Neuros.midjourney),
-                                    InlineKeyboardButton(text=LazyProxy('buttons-midjourneyv6'), callback_data=Callback.Neuros.midjourneyv6),
-                                    InlineKeyboardButton(text=LazyProxy('buttons-enhance'), callback_data=Callback.Neuros.enhance),
-                                    InlineKeyboardButton(text=LazyProxy('buttons-sdv'), callback_data=Callback.Neuros.sdv),
-                                    InlineKeyboardButton(text=LazyProxy('buttons-dalle3'), callback_data=Callback.Neuros.dalle3),
-                                    InlineKeyboardButton(text=LazyProxy('buttons-tencentmaker'), callback_data=Callback.Neuros.tencentmaker),
-                                    InlineKeyboardButton(text=LazyProxy('buttons-juggernaut'), callback_data=Callback.Neuros.juggernaut),
-                                    InlineKeyboardButton(text=LazyProxy('buttons-dynavision'), callback_data=Callback.Neuros.dynavision),
-                                    InlineKeyboardButton(text=LazyProxy('buttons-animeart'), callback_data=Callback.Neuros.animeart)],
-            Callback.NeuroCategories.audio: [InlineKeyboardButton(text=LazyProxy('buttons-whisper'), callback_data=Callback.Neuros.whisper),
-                                    InlineKeyboardButton(text=LazyProxy('buttons-bender'), callback_data=Callback.Neuros.bender)]
-                }
-        for button in categories[category]:
-            builder.add(button)
+        from ...database import database
+        neuros = await database.get_neuros_by_category(category=category)
 
+        for neuro in neuros:
+            text = LazyProxy(f'buttons-{neuro.code_name}')
+            callback_data = Callback.Neuro(provider=neuro.provider,
+                                           category=neuro.category,
+                                           name=neuro.code_name).pack()
+            builder.add(InlineKeyboardButton(text=text, callback_data=callback_data))
+        
         builder.adjust(2, repeat=True)
-
-        builder.row(self.back(Callback.NeuroCategories.back, as_button=True))
+        builder.row(self.back(Callback.StartMenu.choose_neuro, as_button=True))
 
         return builder.as_markup()
     
     def mode(self) -> InlineKeyboardMarkup:
         builder = InlineKeyboardBuilder()
 
-        one_request = InlineKeyboardButton(text=LazyProxy('buttons-one_request'), callback_data=Callback.Mode.one_request)
-        chat = InlineKeyboardButton(text=LazyProxy('buttons-chat'), callback_data=Callback.Mode.chat)
+        one_request = InlineKeyboardButton(text=LazyProxy('buttons-one_request'), callback_data=Callback.Mode(type_=Mode.ONE).pack())
+        chat = InlineKeyboardButton(text=LazyProxy('buttons-chat'), callback_data=Callback.Mode(type_=Mode.CHAT).pack())
 
         builder.add(one_request, chat)
-        builder.row(self.back(Callback.NeuroCategories.text, as_button=True))
+        builder.row(self.back(Callback.Category(name=Category.TEXT).pack(), as_button=True))
         builder.adjust(2, 1)
         return builder.as_markup()
 

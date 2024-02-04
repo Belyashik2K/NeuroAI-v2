@@ -4,6 +4,7 @@ from .request import FutureForgeRequest
 from .errors import *
 
 from ...keyboards import data
+from ...enums import *
 
 
 class FutureForge(FutureForgeRequest):
@@ -15,29 +16,29 @@ class FutureForge(FutureForgeRequest):
         self._METHOD = 'POST'
 
         self._neuros = {
-            data.Neuros.gpt: 'gpt-3-5',
-            data.Neuros.claude: 'claude-instant',
-            data.Neuros.google: 'google-palm',
-            data.Neuros.llama: 'llama-2-70b',
-            data.Neuros.gemini: 'gemini-pro',
-            data.Neuros.mistral: 'mistral-medium',
-            data.Neuros.solar: 'solar-0-70b'
+            Neuro.CHATGPT: 'gpt-3-5',
+            Neuro.CLAUDE: 'claude-instant',
+            Neuro.GOOGLE: 'google-palm',
+            Neuro.LLAMA: 'llama-2-70b',
+            Neuro.GEMINI: 'gemini-pro',
+            Neuro.MISTRAL: 'mistral-medium',
+            Neuro.SOLAR: 'solar-0-70b'
         }
 
         self._image_neuros = {
-            data.Neuros.stable: 'image/sdxl',
-            data.Neuros.playground: 'image/playgroundv2',
-            data.Neuros.midjourney: 'image/openjourneyv4',
-            data.Neuros.sdv: 'svd',
-            data.Neuros.dalle3: 'image/dalle3',
-            data.Neuros.enhance: 'image/enhance-image',
-            data.Neuros.tencentmaker: 'image/photomaker/',
-            data.Neuros.midjourneyv6: 'midjourney-v6'
+            Neuro.SDXL: 'image/sdxl',
+            Neuro.PLAYGROUND: 'image/playgroundv2',
+            Neuro.MIDJOURNEYV4: 'image/openjourneyv4',
+            Neuro.VIDEODIFFUSION: 'svd',
+            Neuro.DALLE3: 'image/dalle3',
+            Neuro.ENHANCE: 'image/enhance-image',
+            Neuro.TENCENTMAKER: 'image/photomaker/',
+            Neuro.MIDJOURNEYV6: 'midjourney-v6'
         }
 
         self._voice_neuros = {
-            data.Neuros.whisper: 'voice/take/whisperv3',
-            data.Neuros.bender: 'voice/rachel',
+            Neuro.WHISPER: 'whisper',
+            Neuro.BENDER: 'bender'
         }
 
     async def text_neuro(self,
@@ -61,7 +62,7 @@ class FutureForge(FutureForgeRequest):
         json_data = {'message': message, 
                      'model': neuro_name}
         
-        if mode == data.Mode.one_request:
+        if mode == Mode.ONE:
             result = await self._request(method=self._METHOD,
                                          neuro=neuro, 
                                          uri=self._URL + 'chat/create', 
@@ -89,10 +90,10 @@ class FutureForge(FutureForgeRequest):
         Returns:
             str: Image URL."""
         params = {}
-        if neuro == data.Neuros.playground:
+        if neuro == Neuro.PLAYGROUND:
             params['prompt'] = prompt
             params['negative_prompt'] = 'not'
-        elif neuro == data.Neuros.dalle3:
+        elif neuro == Neuro.DALLE3:
             params['prompt'] = prompt
         else:
             params = {'text': prompt}
@@ -100,7 +101,7 @@ class FutureForge(FutureForgeRequest):
         neuro_name = self._image_neuros[neuro]
         uri = self._URL + neuro_name
         
-        if neuro != data.Neuros.dalle3:
+        if neuro != Neuro.DALLE3:
             result = await self._request(method=self._METHOD,
                                          neuro=neuro, 
                                          uri=uri, 
@@ -219,7 +220,7 @@ class FutureForge(FutureForgeRequest):
             FutureForgeError: If error occured.
         Returns:
             str: Image URL."""
-        neuro_name = self._image_neuros[data.Neuros.tencentmaker]
+        neuro_name = self._image_neuros[Neuro.TENCENTMAKER]
         uri = self._URL + neuro_name
 
         params = {
@@ -244,7 +245,7 @@ class FutureForge(FutureForgeRequest):
             FutureForgeError: If error occured.
         Returns:
             str: Image URL."""
-        neuro_name = self._image_neuros[data.Neuros.midjourneyv6]
+        neuro_name = self._image_neuros[Neuro.MIDJOURNEYV6]
         uri = self._URL + neuro_name
 
         params = {

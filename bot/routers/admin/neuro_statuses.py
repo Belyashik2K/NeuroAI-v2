@@ -14,9 +14,9 @@ router: Final[Router] = Router(name=__name__)
 async def select_category(call: types.CallbackQuery, user: User, state: FSMContext, i18n: I18nContext):
     statuses = await database.get_neuro_statuses()
     await call.message.edit_text(i18n.messages.admin_neuro_statuses(**statuses), 
-                                 reply_markup=inline.neuro_categories(True))
+                                 reply_markup=await inline.neuro_categories(True))
 
-@router.callback_query(F.data.startswith(data.NeuroCategories.admin + data.NeuroCategories.start))
+@router.callback_query(F.data.startswith(data.NeuroCategories.admin + data.NeuroCategories.admin))
 async def select_neuro(call: types.CallbackQuery, user: User, state: FSMContext, i18n: I18nContext):
     category = call.data.split("_")[3]
     await state.update_data(category=category)

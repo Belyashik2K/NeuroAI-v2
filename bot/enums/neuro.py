@@ -1,0 +1,25 @@
+class Neuro:
+    CHATGPT = 'gpt'
+    CLAUDE = 'claude'
+    GOOGLE = 'google'
+    LLAMA = 'llama'
+    GEMINI = 'gemini'
+    MISTRAL = 'mistral'
+    SOLAR = 'solar'
+    # From VisionCraftAPI
+    CAPYBARA = 'capybara'
+
+    PLAYGROUND = 'playground'
+    ENHANCE = 'enhance'
+    MIDJOURNEYV4 = 'midjourney'
+    DALLE3 = 'dalle3'
+    VIDEODIFFUSION = 'sdv'
+    SDXL = 'stable'
+    TENCENTMAKER = 'tencentmaker'
+    MIDJOURNEYV6 = 'midjourneyv6'
+    ANIMEART = 'animeart'
+    JUGGERNAUT = 'juggernaut'
+    DYNAVISION = 'dynavision'
+
+    WHISPER = 'whisper'
+    BENDER = 'bender'

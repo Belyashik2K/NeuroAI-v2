@@ -1,3 +1,5 @@
+from aiogram.filters.callback_data import CallbackData
+
 class Callback:
     close = 'close'
     again = 'again_'
@@ -14,12 +16,15 @@ class Callback:
         back = "back_profile"
 
     class NeuroCategories:
-        start = 'category_'
-        back = 'category_back'
-        text = 'category_text'
-        image = 'category_image'
-        audio = 'category_audio'
         admin = "cat_admin_"
+
+    class Category(CallbackData, prefix="category", sep="_"):
+        name: str
+
+    class Neuro(CallbackData, prefix="neuro"):
+        provider: str
+        category: str
+        name: str
 
     class Neuros:
         start = 'neuro_'
@@ -51,10 +56,8 @@ class Callback:
         vision_neuros = [juggernaut, dynavision, animeart, stable, 
                          capybara]
 
-    class Mode:
-        start = 'mode_'
-        one_request = 'mode_one_request'
-        chat = 'mode_chat'
+    class Mode(CallbackData, prefix="mode"):
+        type_: str
 
     class StartMenu:
         choose_neuro = 'choose_neuro'
@@ -99,16 +102,22 @@ class Neuros:
     whisper = '🎤 Whisper V3'
     bender = '🗣️ RachelVoice'
 
-    neuro_names = ['gpt', 'claude', 'google',
-                   'llama', 'gemini', 'stable',
-                   'mistral', 'playground', 'enhance', 
-                   'midjourney', 'dalle3', 'whisper', 
-                   'bender', 'sdv', 'solar', 'tencentmaker',
-                   'midjourneyv6', 'animeart', 'juggernaut',
-                   'dynavision', 'capybara'
-                   ]
-
 class AllNeuros:
+
+    not_working = ['enhance', 'dalle3', 'bender']
+
+    data_1 = {
+        "futureforge": {
+            "text": ['gpt', 'claude', 'google', 'llama', 'gemini', 'mistral', 'solar'],
+            "image": ['playground', 'enhance', 'midjourney', 'dalle3', 'sdv', 'stable', 'tencentmaker', 'midjourneyv6'],
+            "audio": ['whisper', 'bender'],
+        },
+        "visioncraft": {
+            "text": ['capybara'],
+            "image": ['juggernaut', 'dynavision', 'animeart']
+        }
+    }
+
     data = {
         "text": {
             Neuros.gpt: Callback.Neuros.gpt,

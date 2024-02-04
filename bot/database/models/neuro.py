@@ -17,7 +17,9 @@ class Neuro(Base):
     
     id: Mapped[int] = Column(Integer, primary_key=True)
     code_name: Mapped[str] = Column(String(255), nullable=False, unique=True)
+    category: Mapped[str] = Column(String(255), nullable=False, unique=False)
+    provider: Mapped[str] = Column(String(255), nullable=False, unique=False)
     is_active: Mapped[bool] = Column(Boolean, default=False, nullable=False)
 
     def __repr__(self) -> str:
-        return f'Neuro(id={self.id}, code_name={self.code_name}, is_active={self.is_active})'
+        return f'Neuro(id={self.id}, code_name={self.code_name}, category={self.category}, provider={self.provider}, is_active={self.is_active})'
