@@ -37,8 +37,8 @@ async def neuro_choose(call: types.CallbackQuery, user: User, state: FSMContext,
 @router.callback_query(F.data.in_([data.Neuros.gpt, data.Neuros.claude,
                                    data.Neuros.google, data.Neuros.llama,
                                    data.Neuros.gemini, data.Neuros.mistral,
-                                   data.Neuros.solar]),
-                                    isNeuroActive())
+                                   data.Neuros.solar, data.Neuros.capybara]),
+                                   isNeuroActive())
 async def text_mode_choose(call: types.CallbackQuery, user: User, state: FSMContext, i18n: I18nContext):
     await state.clear()
     neuro = LazyProxy(f"buttons-{call.data.split('_')[1]}").data

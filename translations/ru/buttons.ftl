@@ -22,6 +22,9 @@ buttons-llama = 🦙 LLaMA AI
 buttons-mistral = 💻 Mistral AI (Medium)
 buttons-solar = 🌤 Solar AI
 buttons-gemini = 📚 Google Gemini Pro
+
+buttons-capybara = 💧 Capybara AI
+
 buttons-stable = 🎨 StableDiffusionXL
 buttons-playground = 🎮 Playground v2
 buttons-enhance = ✨ EnhanceImage

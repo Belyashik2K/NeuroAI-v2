@@ -28,6 +28,9 @@ class Callback:
         google = 'neuro_google'
         llama = 'neuro_llama'
         gemini = 'neuro_gemini'
+
+        capybara = 'neuro_capybara'
+
         stable = 'neuro_stable'
         playground = 'neuro_playground'
         enhance = 'neuro_enhance'
@@ -45,7 +48,8 @@ class Callback:
         solar= 'neuro_solar'
         switch = 'switch_'
 
-        vision_neuros = [juggernaut, dynavision, animeart, stable]
+        vision_neuros = [juggernaut, dynavision, animeart, stable, 
+                         capybara]
 
     class Mode:
         start = 'mode_'
@@ -78,6 +82,9 @@ class Neuros:
     mistral = '💻 Mistral AI (Medium)'
     solar = '🌤 Solar AI'
     gemini = '📚 Google Gemini Pro'
+
+    capybara = '💧 Capybara AI'
+
     stable = '🎨 StableDiffusionXL'
     playground = '🎮 Playground v2'
     enhance = '✨ EnhanceImage'
@@ -98,7 +105,7 @@ class Neuros:
                    'midjourney', 'dalle3', 'whisper', 
                    'bender', 'sdv', 'solar', 'tencentmaker',
                    'midjourneyv6', 'animeart', 'juggernaut',
-                   'dynavision'
+                   'dynavision', 'capybara'
                    ]
 
 class AllNeuros:
@@ -110,7 +117,8 @@ class AllNeuros:
             Neuros.llama: Callback.Neuros.llama,
             Neuros.mistral: Callback.Neuros.mistral,
             Neuros.solar: Callback.Neuros.solar,
-            Neuros.gemini: Callback.Neuros.gemini
+            Neuros.gemini: Callback.Neuros.gemini,
+            Neuros.capybara: Callback.Neuros.capybara
         },
         "image": {
             Neuros.stable: Callback.Neuros.stable,

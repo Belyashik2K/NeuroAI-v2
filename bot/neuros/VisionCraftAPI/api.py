@@ -33,6 +33,34 @@ class VisionCraft(VisionCraftRequest):
             data.Neuros.stable: "sdxl-base"
         }
 
+        self._llm_neuros = {
+            data.Neuros.capybara: "nous-capybara-7b",
+            2: "zephyr-7b-beta",
+            3: "openchat-7b",
+            4: "mythomist-7b",
+            5: "cinematika-7b",
+            6: "rwkv-5-world-3b",
+            7: "rwkv-5-3b-ai-town"
+        }
+
+    async def chatting(self,
+                       neuro: str,
+                       messages: list
+                       ) -> str:
+        neuro_name = self._llm_neuros[neuro]
+        data = {
+            "token": self.__KEY,
+            "model": neuro_name,
+            "messages": messages
+            }
+
+        result = await self._request(neuro=neuro,
+                                     uri=self._URL + 'llm',
+                                     method=self._METHOD,
+                                     json=data)
+        
+        return [result['choices'][0]['message']['content']]
+
     async def image_neuro(self,
                                 neuro: str,
                                 prompt: str) -> str:

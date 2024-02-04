@@ -13,6 +13,8 @@ from ....keyboards import inline, data, reply
 from ....neuros import *
 from ....utils.check_exception import ExceptionChecker
 from ....utils.links import Links
+from ....utils.chatting import Chatting
+from ....enums import Role
 
 from ....fsm import *
 
@@ -57,7 +59,11 @@ async def chat_mode(call: types.CallbackQuery, user: User, state: FSMContext, i1
     header = i18n.messages.header(neuro=formatting['neuro'], mode=formatting['mode'])
 
     m = await call.bot.send_message(call.message.chat.id, i18n.messages.starting_chat())
-    _, chat_code = await future.text_neuro(neuro=_data['neuro'], message="Hello!", mode=data.Mode.one_request)
+    if _data['neuro'] not in data.Neuros.vision_neuros:
+        _, chat_code = await future.text_neuro(neuro=_data['neuro'], message="Hello!", mode=data.Mode.one_request)
+    else:
+        chat_code = None
+        await state.update_data(chat_cache=[])
     await call.bot.delete_message(call.message.chat.id, m.message_id)
     await call.bot.send_message(call.message.chat.id, 
                                 header + '\n\n' + i18n.messages.chat_mode(end_button=LazyProxy('buttons-stop_chatting').data), 
@@ -74,15 +80,27 @@ async def chatting(message: types.Message, user: User, state: FSMContext, i18n: 
                                        reply_markup=reply.menu(user=user))
         return
 
-    data = await state.get_data()
+    _data = await state.get_data()
     text = message.text
     m = await message.bot.send_message(message.chat.id, i18n.messages.in_work(), parse_mode=ParseMode.MARKDOWN)
     async with ChatActionSender.typing(bot=message.bot, chat_id=message.chat.id):
-        result = await future.text_neuro(neuro=data['neuro'], message=text, mode=data['mode'], chat_code=data['chat_code'])
+        if _data['neuro'] not in data.Neuros.vision_neuros:
+            result = await future.text_neuro(neuro=_data['neuro'], message=text, mode=_data['mode'], chat_code=_data['chat_code'])
+        else:
+            messages = Chatting.prepare_messages(content=message.text,
+                                                 role=Role.USER,
+                                                 message_list=_data['chat_cache'])
+            result = await vision.chatting(neuro=_data['neuro'],
+                                           messages=messages)
         await message.bot.delete_message(chat_id=message.chat.id, message_id=m.message_id)
         try:
             await message.reply(text=i18n.messages.chat_answer() + " " + result[0],
                                 parse_mode=ParseMode.MARKDOWN)
+            if _data['neuro'] in data.Neuros.vision_neuros:
+                with_assistant = Chatting.prepare_messages(content=result[0],
+                                                           role=Role.ASSISTANT,
+                                                           message_list=messages)
+                await state.update_data(chat_cache=with_assistant)
         except Exception as e:
             logging.error(e)
             await message.reply(**ExceptionChecker.check_exception(str(e)))
