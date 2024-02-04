@@ -12,7 +12,7 @@ from aiogram_i18n import LazyProxy
 from ..config import config
 from ..enums import Locale, Category
 from .models import User, Neuro, Settings, Chat
-from ..keyboards.inline.callback import NeuroInfo
+from ..neuros.neuros_info import NeuroInfo
 
 class Database:
     def __init__(self) -> None:
