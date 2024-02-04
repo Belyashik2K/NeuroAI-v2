@@ -54,31 +54,17 @@ messages-about = 💬 <b>About the service</b>
     🥀 Collaboration: { $ads }
 
     🤔 <b>Neural Network Statuses</b>
-    Text generation neural networks:
-    ├ ChatGPT: <code>{ $gpt }</code>
-    ├ Claude AI: <code>{ $claude }</code>
-    ├ Google AI: <code>{ $google }</code>
-    ├ LLaMA AI: <code>{ $llama }</code>
-    ├ Mistral AI (Medium): <code>{ $mistral }</code>
-    ├ Solar AI: <code>{ $solar }</code>
-    └ Google Gemini Pro: <code>{ $gemini }</code>
+    Neural networks for text generation:
+    ├ Working neural networks: <code>{ $text_working }</code>
+    └ Under technical maintenance: <code>{ $text_not_working }</code>
 
-    Image generation and processing neural networks:
-    ├ StableDiffusionXL: <code>{ $stable }</code>
-    ├ Playground v2: <code>{ $playground }</code>
-    ├ EnhanceImage: <code>{ $enhance }</code>
-    ├ Midjourney V4: <code>{ $midjourney }</code>
-    ├ Midjourney V6: <code>{ $midjourneyv6 }</code>
-    ├ StableDiffusion Video: <code>{ $sdv }</code>
-    ├ DALL·E 3: <code>{ $dalle3 }</code>
-    ├ TencentARC PhotoMaker: <code>{ $tencentmaker }</code>
-    ├ JuggernautXL V5: <code>{ $juggernaut }</code>
-    ├ DynaVisionXL: <code>{ $dynavision }</code>
-    └ AnimeArt: <code>{ $animeart }</code>
+    Neural networks for image generation and processing:
+    ├ Working neural networks: <code>{ $image_working }</code>
+    └ Under technical maintenance: <code>{ $image_not_working }</code>
 
-    Audio-related neural networks:
-    ├ Whisper V3: <code>{ $whisper }</code>
-    └ RachelVoice: <code>{ $bender }</code>
+    Neural networks for audio processing:
+    ├ Working neural networks: <code>{ $audio_working }</code>
+    └ Under technical maintenance: <code>{ $audio_not_working }</code>
 
 messages-working = Working
 
@@ -90,77 +76,20 @@ messages-choose_neuro_category = <b>🔥 Choose Neural Network</b>
     ❓ <i>Choose the neural network category</i>
         
     📝 <code>Text</code> — networks that generate text.
-    <i>List of networks:</i>
-    ├ <code>💭 ChatGPT (GPT 3.5)</code>
-    ├ <code>☁️ Claude AI</code>
-    ├ <code>📱 Google AI</code>
-    ├ <code>🦙 LLaMA AI</code>
-    ├ <code>💻 Mistral AI (Medium)</code>
-    ├ <code>🌤 Solar AI</code>
-    └ <code>📚 Google Gemini Pro</code>
 
     🖼 <code>Images</code> — networks that generate images.
-    <i>List of networks:</i>
-    ├ <code>🎨 StableDiffusionXL</code>
-    ├ <code>🎮 Playground v2</code>
-    ├ <code>📷 Midjourney V4</code>
-    ├ <code>🔥 Midjourney V6</code>
-    ├ <code>✨ EnhanceImage</code>
-    ├ <code>📹 StableDiffusion Video</code>
-    ├ <code>🖼 DALL·E 3</code>
-    ├ <code>🖌 TencentARC PhotoMaker</code>
-    ├ <code>🦾 JuggernautXL V5</code>
-    ├ <code>👁️ DynaVisionXL</code>
-    └ <code>🧝🏻‍♀️ AnimeArt</code>
 
     🎵 <code>Audio</code> — networks that generate audio.
-    <i>List of networks:</i>
-    ├ <code>🎤 Whisper V3</code>
-    └ <code>🗣️ RachelVoice</code>
 
 ```Neuro choose```
 
 messages-choose_neuro = ❓ <b>Choose the neural network</b>
 
-messages-category_text = <code>💭 ChatGPT (GPT 3.5)</code> — one of the most stable text generation networks. It can generate texts, write code, answer questions, and more. Can process links to websites.
+messages-category_text = <i>Choose one of the neural networks listed below</i>
 
-    <code>☁️ Claude AI</code> — next-generation AI assistant based on Anthropic's research on training useful, honest, and harmless AI systems. Claude can perform a wide range of tasks in conversation and text processing, maintaining high reliability and predictability. Primarily works with the English language.
+messages-category_image = <i>Choose one of the neural networks listed below</i>
 
-    <code>📱 Google AI</code> — Google's neural network capable of generating texts, primarily in English.
-
-    <code>🦙 LLaMA AI</code> — a large language model (LLM) released by Meta AI in February 2023. Models of various sizes were trained ranging from 7 to 65 billion parameters.
-
-    <code>💻 Mistral AI (Medium)</code> — a large language model with seven billion parameters. Answers at the level of ChatGPT but with higher quality. Primarily works with the English language.
-
-    <code>🌤 Solar AI</code> - a model from Upstage that holds leading positions in the HuggingFace Open LLM ranking and is an improved version of the LLaMA 2 model.
-
-    <code>📚 Google Gemini Pro</code> — one of the most advanced neural networks released by Google. It can generate texts, analyze images, and answer questions in both English and Russian.
-
-messages-category_image = <code>🎨 StableDiffusionXL</code> — a network capable of generating images based on a given prompt. Provides clear and high-quality images with a good prompt.
-
-    <code>🎮 Playground v2</code> — one of the best networks for image generation. Capable of generating images based on a given prompt.
-
-    <code>📷 Midjourney V4</code> — a network capable of generating images based on a given prompt. Provides clear and high-quality images with a good prompt.
-
-    <code>🔥 Midjourney V6</code> — best neural network for image generation currently. Improved version of <code>📷 Midjourney V4</code>
-    
-    <code>✨ EnhanceImage</code> — a network capable of enhancing the quality of images.
-
-    <code>📹 StableDiffusion Video</code> — a network capable of generating videos based on a received photo.
-
-    <code>🖼 DALL·E 3</code> — one of the most advanced networks for image generation from OpenAI.
-
-    <code>🖌 TencentARC PhotoMaker</code> — a neural network capable of generating any image with any face based on the given request. NSFW filter is not present.
-
-    <code>🦾 JuggernautXL V5</code> — a neural network designed to generate landscapes, architectural photos, and highly detailed images.
-
-    <code>👁️ DynaVisionXL</code> — a neural network capable of generating images based on a given request. Provides clear and high-quality images when using a good prompt.
-
-    <code>🧝🏻‍♀️ AnimeArt</code> — a neural network focused on generating anime photos. Good results when using a quality prompt.
-
-messages-category_audio = <code>🎤 Whisper V3</code> — a network capable of translating audio files into text.
-
-    <code>🗣 RachelVoice</code> — a network capable of generating audio files based on a given text.
+messages-category_audio = <i>Choose one of the neural networks listed below</i>
 
 messages-mode = 🤖 <i>Selected network:</i> <code>{ $neuro }</code>
 
@@ -267,31 +196,17 @@ messages-admin_success_maintenance = ✅ Technical maintenance status successful
 
 messages-admin_neuro_statuses = <b>🔥 Change neural network status</b>
 
-    Text generation neural networks:
-    ├ ChatGPT: <code>{ $gpt }</code>
-    ├ Claude AI: <code>{ $claude }</code>
-    ├ Google AI: <code>{ $google }</code>
-    ├ LLaMA AI: <code>{ $llama }</code>
-    ├ Mistral AI (Medium): <code>{ $mistral }</code>
-    ├ Solar AI: <code>{ $solar }</code>
-    └ Google Gemini Pro: <code>{ $gemini }</code>
+    Neural networks for text generation:
+    ├ Working neural networks: <code>{ $text_working }</code>
+    └ Under technical maintenance: <code>{ $text_not_working }</code>
 
-    Image generation and processing neural networks:
-    ├ StableDiffusionXL: <code>{ $stable }</code>
-    ├ Playground v2: <code>{ $playground }</code>
-    ├ EnhanceImage: <code>{ $enhance }</code>
-    ├ Midjourney V4: <code>{ $midjourney }</code>
-    ├ Midjourney V6: <code>{ $midjourneyv6 }</code>
-    ├ StableDiffusion Video: <code>{ $sdv }</code>
-    ├ DALL·E 3: <code>{ $dalle3 }</code>
-    ├ TencentARC PhotoMaker: <code>{ $tencentmaker }</code>
-    ├ JuggernautXL V5: <code>{ $juggernaut }</code>
-    ├ DynaVisionXL: <code>{ $dynavision }</code>
-    └ AnimeArt: <code>{ $animeart }</code>
+    Neural networks for image generation and processing:
+    ├ Working neural networks: <code>{ $image_working }</code>
+    └ Under technical maintenance: <code>{ $image_not_working }</code>
 
-    Audio-related neural networks:
-    ├ Whisper V3: <code>{ $whisper }</code>
-    └ RachelVoice: <code>{ $bender }</code>
+    Neural networks for audio processing:
+    ├ Working neural networks: <code>{ $audio_working }</code>
+    └ Under technical maintenance: <code>{ $audio_not_working }</code>
 
 ```Input field placeholders```
 

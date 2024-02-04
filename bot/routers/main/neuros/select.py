@@ -5,10 +5,11 @@ from aiogram.fsm.context import FSMContext
 from aiogram.fsm.state import any_state
 from aiogram_i18n import I18nContext, LazyProxy
 
+from ....database import database
 from ....database.models import User
 from ....keyboards import inline, data
 from ....filters import isNeuroActive
-
+from ....enums import *
 from ....fsm import *
 
 router: Final[Router] = Router(name=__name__)
@@ -18,94 +19,112 @@ router: Final[Router] = Router(name=__name__)
 async def neuro_category_choose(message: types.Message, user: User, state: FSMContext, i18n: I18nContext):
     await message.delete()
     await state.clear()
-    await message.answer(i18n.messages.choose_neuro_category(), reply_markup=inline.neuro_categories())
+    await message.answer(i18n.messages.choose_neuro_category(), reply_markup=await inline.neuro_categories())
 
 
-@router.callback_query(F.data.in_([data.NeuroCategories.back, data.StartMenu.choose_neuro]))
+@router.callback_query(F.data == data.StartMenu.choose_neuro)
 async def neuro_category_choose_callback(call: types.CallbackQuery, user: User, state: FSMContext, i18n: I18nContext):
     await state.clear()
-    await call.message.edit_text(i18n.messages.choose_neuro_category(), reply_markup=inline.neuro_categories())
+    await call.message.edit_text(i18n.messages.choose_neuro_category(), reply_markup=await inline.neuro_categories())
 
 
-@router.callback_query(F.data.startswith(data.NeuroCategories.start))
-async def neuro_choose(call: types.CallbackQuery, user: User, state: FSMContext, i18n: I18nContext):
-    await call.message.edit_text(i18n.messages.choose_neuro() + '\n\n' + LazyProxy(f'messages-{call.data}').data,
-                                 reply_markup=inline.neuros(category=call.data))
-    await state.update_data(category=call.data)
+@router.callback_query(data.Category.filter())
+async def neuro_choose(call: types.CallbackQuery, callback_data: data.Category,
+                       user: User, state: FSMContext, i18n: I18nContext):
+    await state.update_data(page=callback_data.page)
+    _data = await state.get_data()
+    page = _data['page']
+    await call.message.edit_text(i18n.messages.choose_neuro() + '\n\n' + LazyProxy(f'messages-{call.data.rsplit("_", 1)[0]}').data,
+                                 reply_markup=await inline.neuros(category=callback_data.name, page=page))
+    await state.update_data(category=callback_data.name, page=page)
 
 
-@router.callback_query(F.data.in_([data.Neuros.gpt, data.Neuros.claude,
-                                   data.Neuros.google, data.Neuros.llama,
-                                   data.Neuros.gemini, data.Neuros.mistral,
-                                   data.Neuros.solar]),
-                                    isNeuroActive())
-async def text_mode_choose(call: types.CallbackQuery, user: User, state: FSMContext, i18n: I18nContext):
+@router.callback_query(data.Neuro.filter(F.category == Category.TEXT), isNeuroActive())
+async def text_mode_choose(call: types.CallbackQuery, callback_data: data.Neuro,
+                           user: User, state: FSMContext, i18n: I18nContext):
+    _data = await state.get_data()
+    try:
+        page = _data['page']
+    except KeyError:
+        page = 1
     await state.clear()
-    neuro = LazyProxy(f"buttons-{call.data.split('_')[1]}").data
-    await call.message.edit_text(i18n.messages.mode(neuro=neuro), reply_markup=inline.mode())
-    await state.update_data(neuro=call.data)
+    neuro = LazyProxy(f"buttons-{callback_data.name}").data
+    await call.message.edit_text(i18n.messages.mode(neuro=neuro), reply_markup=inline.mode(page=page))
+    await state.update_data(neuro=callback_data.name, provider=callback_data.provider)
 
 
-@router.callback_query(F.data == data.Mode.one_request)
-async def one_request_mode(call: types.CallbackQuery, user: User, state: FSMContext, i18n: I18nContext):
-    data = await state.get_data()
-    neuro = LazyProxy(f"buttons-{data['neuro'].split('_')[1]}").data
-    mode = LazyProxy(f"buttons-{call.data.split('_', 1)[1]}").data
+@router.callback_query(data.Mode.filter(F.type_ == Mode.ONE))
+async def one_request_mode(call: types.CallbackQuery, callback_data: data.Mode,
+                           user: User, state: FSMContext, i18n: I18nContext):
+    _data = await state.get_data()
+    neuro = LazyProxy(f"buttons-{_data['neuro']}").data
+    mode = LazyProxy(f"buttons-{callback_data.type_}").data
+    neuro_info = await database.get_neuro(_data['neuro'])
     await call.message.edit_text(
         i18n.messages.header(neuro=neuro, mode=mode) + "\n\n" + i18n.messages.one_request_mode(),
-        reply_markup=inline.back(data['neuro']))
-    await state.update_data(mode=call.data, message_id=call.message.message_id)
+        reply_markup=inline.back(callback_data=data.Neuro(provider=neuro_info.provider, 
+                                                          category=neuro_info.category,
+                                                          name=neuro_info.code_name).pack()))
+    await state.update_data(mode=callback_data.type_, message_id=call.message.message_id)
     await state.set_state(NeuroRequest.request)
 
 
-@router.callback_query(F.data.in_([data.Neuros.stable, data.Neuros.playground,
-                                   data.Neuros.midjourney, data.Neuros.dalle3,
-                                   data.Neuros.enhance, data.Neuros.sdv,
-                                   data.Neuros.tencentmaker, data.Neuros.midjourneyv6,
-                                   data.Neuros.animeart, data.Neuros.dynavision,
-                                   data.Neuros.juggernaut]),
-                       isNeuroActive())
-async def start_gen_image(call: types.CallbackQuery, user: User, state: FSMContext, i18n: I18nContext):
-    neuro = LazyProxy(f"buttons-{call.data.split('_')[1]}").data
+@router.callback_query(data.Neuro.filter(F.category == Category.IMAGE), isNeuroActive())
+async def start_gen_image(call: types.CallbackQuery, callback_data: data.Neuro,
+                          user: User, state: FSMContext, i18n: I18nContext):
+    _data = await state.get_data()
+    try:
+        page = _data['page']
+    except KeyError:
+        page = 1
+    neuro = LazyProxy(f"buttons-{callback_data.name}").data
 
     choices = {
-        data.Neuros.enhance: LazyProxy('messages-enchance_image', neuro=neuro).data,
-        data.Neuros.sdv: LazyProxy('messages-sdv_video', neuro=neuro).data,
-        data.Neuros.tencentmaker: LazyProxy('messages-tencentmaker', neuro=neuro).data
+        Neuro.ENHANCE: LazyProxy('messages-enchance_image', neuro=neuro).data,
+        Neuro.VIDEODIFFUSION: LazyProxy('messages-sdv_video', neuro=neuro).data,
+        Neuro.TENCENTMAKER: LazyProxy('messages-tencentmaker', neuro=neuro).data
     }
 
     states = {
-        data.Neuros.tencentmaker: NeuroRequest.tencentmaker,
-        data.Neuros.midjourneyv6: NeuroRequest.midjourneyv6,
-        data.Neuros.enhance: NeuroRequest.enchance_image
+        Neuro.TENCENTMAKER: NeuroRequest.tencentmaker,
+        Neuro.MIDJOURNEYV6: NeuroRequest.midjourneyv6,
+        Neuro.ENHANCE: NeuroRequest.enchance_image
     }
 
-    text = choices[call.data] if call.data in choices else i18n.messages.start_gen_image(neuro=neuro)
-    if not call.message.photo and not call.message.video:
+    text = choices[callback_data.name] if callback_data.name in choices else i18n.messages.start_gen_image(neuro=neuro)
+    if not call.message.photo and not call.message.video and not call.message.reply_to_message:
         await call.message.edit_text(text=text,
-                                    reply_markup=inline.back(data.NeuroCategories.image),
+                                    reply_markup=inline.back(callback_data=data.Category(name=Category.IMAGE,
+                                                                                         page=page).pack()),
                                     disable_web_page_preview=True)
-        await state.update_data(neuro=call.data, message_id=call.message.message_id)
+        await state.update_data(neuro=callback_data.name, 
+                                provider=callback_data.provider,
+                                message_id=call.message.message_id)
     else:
         await call.answer()
         m = await call.bot.send_message(chat_id=call.message.chat.id,
                                     text=text,
-                                    reply_markup=inline.back(data.NeuroCategories.image),
+                                    reply_markup=inline.back(callback_data=data.Category(name=Category.IMAGE,
+                                                                                         page=page).pack()),
                                     disable_web_page_preview=True)
-        await state.update_data(neuro=call.data, message_id=m.message_id)
-    await state.set_state(NeuroRequest.image_request if call.data not in states else states[call.data])
+        await state.update_data(neuro=callback_data.name, 
+                                provider=callback_data.provider,
+                                message_id=m.message_id)
+    await state.set_state(NeuroRequest.image_request if callback_data.name not in states else states[callback_data.name])
 
 
-@router.callback_query(F.data.in_([data.Neuros.whisper, data.Neuros.bender]),
-                       isNeuroActive())
-async def start_gen_audio(call: types.CallbackQuery, user: User, state: FSMContext, i18n: I18nContext):
-    neuro = LazyProxy(f"buttons-{call.data.split('_')[1]}").data
+@router.callback_query(data.Neuro.filter(F.category == Category.AUDIO), isNeuroActive())
+async def start_gen_audio(call: types.CallbackQuery, callback_data: data.Neuro,
+                          user: User, state: FSMContext, i18n: I18nContext):
+    _data = await state.get_data()
+    neuro = LazyProxy(f"buttons-{callback_data.name}").data
 
     choices = {
-        data.Neuros.bender: LazyProxy('messages-bender_voice', neuro=neuro).data,
-        data.Neuros.whisper: LazyProxy('messages-whisper_voice', neuro=neuro).data,
+        Neuro.BENDER: LazyProxy('messages-bender_voice', neuro=neuro).data,
+        Neuro.WHISPER: LazyProxy('messages-whisper_voice', neuro=neuro).data,
     }
 
-    await call.message.edit_text(choices[call.data], reply_markup=inline.back(data.NeuroCategories.audio))
-    await state.update_data(neuro=call.data, message_id=call.message.message_id)
-    await state.set_state(NeuroRequest.bender if call.data == data.Neuros.bender else NeuroRequest.whisper)
+    await call.message.edit_text(choices[callback_data.name], reply_markup=inline.back(callback_data=data.Category(name=Category.AUDIO,
+                                                                                                                   page=_data['page']).pack()))
+    await state.update_data(neuro=callback_data.name, message_id=call.message.message_id)
+    await state.set_state(NeuroRequest.bender if callback_data.name == Neuro.BENDER else NeuroRequest.whisper)

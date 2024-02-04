@@ -10,9 +10,9 @@ from contextlib import asynccontextmanager
 from aiogram_i18n import LazyProxy
 
 from ..config import config
-from ..enums import Locale
+from ..enums import Locale, Category
 from .models import User, Neuro, Settings, Chat
-from ..keyboards import Neuros
+from ..neuros.neuros_info import NeuroInfo
 
 class Database:
     def __init__(self) -> None:
@@ -26,8 +26,6 @@ class Database:
             self._engine, 
             expire_on_commit=False
             )
-        
-        self.__neuros = Neuros.neuro_names
     
     @asynccontextmanager
     async def session(self) -> AsyncGenerator[AsyncSession, None]:
@@ -59,14 +57,18 @@ class Database:
     async def prepare_tables(self) -> None:
         """Add neuro statuses and settings to database."""
         async with self.session() as session:
-            for neuro in self.__neuros:
-                stmt = select(Neuro).where(Neuro.code_name == neuro)
-                result = await session.execute(stmt)
-                if not result.scalar_one_or_none():
-                    status = False if neuro in ['enhance', 'dalle3', 'bender'] else True
-                    stmt = insert(Neuro).values(code_name=neuro, is_active=status)
-                    await session.execute(stmt)
-                    await session.commit()
+            for provider, categories in NeuroInfo.neuros_alph.items():
+                for category, names in categories.items():
+                    for name in names:
+                        stmt = select(Neuro).where(Neuro.code_name == name)
+                        result = await session.execute(stmt)
+                        if not result.scalar_one_or_none():
+                            stmt = insert(Neuro).values(code_name=name,
+                                                        provider=provider,
+                                                        category=category,
+                                                        is_active=name not in NeuroInfo.not_working)
+                            await session.execute(stmt)
+                            await session.commit()
             stmt = select(Settings)
             result = await session.execute(stmt)
             if not result.scalar_one_or_none():
@@ -189,18 +191,56 @@ class Database:
                 "users_count": users_count,
                 "requests_count": requests_count}
     
+    async def get_all_categories(self) -> list[str]:
+        """Get all categories from database."""
+        async with self.session() as session:
+            stmt = select(Neuro.category).distinct()
+            result = await session.execute(stmt)
+            return result.scalars().all()
+    
+    async def get_neuros_by_category(self,
+                                     category: str,
+                                     page: int,
+                                     per_page: int) -> list[list[Neuro], int]:
+        """Get all neuros from database."""
+        async with self.session() as session:
+            stmt = select(Neuro).where(Neuro.category == category).offset((page - 1) * per_page).limit(per_page).order_by(Neuro.provider, Neuro.code_name)
+            result = await session.execute(stmt)
+            on_page = result.scalars().all()
+
+            stmt = select(func.count()).select_from(Neuro).where(Neuro.category == category)
+            result = await session.execute(stmt)
+            count = result.scalar_one_or_none()
+
+            pages_count = count // per_page + 1 if (count % per_page and count) else count // per_page
+
+            return on_page, pages_count
+    
     async def get_neuro_statuses(self) -> dict[str, str]:
         """Get neuro statuses from database."""
         async with self.session() as session:
-            stmt = select(Neuro)
+            data = {}
+
+            stmt = select(func.count()).select_from(Neuro)
             result = await session.execute(stmt)
-            neuros = {}
-            for neuro in result.scalars().all():
-                status = LazyProxy("messages-working").data if neuro.is_active else LazyProxy("messages-not_working").data
-                neuros[neuro.code_name] = status
-            neuros['support'] = config.technical_support
-            neuros['ads'] = config.ads
-            return neuros
+            data['neuro_count'] = result.scalar_one_or_none()
+
+            categories = [Category.TEXT, Category.IMAGE, Category.AUDIO]
+            for category in categories:
+                stmt = select(func.count()).select_from(Neuro).where(Neuro.category == category)
+                result = await session.execute(stmt)
+                neuro_count = result.scalar_one_or_none()
+
+                stmt = select(func.count()).select_from(Neuro).where(Neuro.category == category).where(Neuro.is_active)
+                result = await session.execute(stmt)
+                neuro_active = result.scalar_one_or_none()
+
+                data[f'{category}_working'] = neuro_active
+                data[f'{category}_not_working'] = neuro_count - neuro_active
+
+            data['support'] = config.technical_support
+            data['ads'] = config.ads
+            return data
 
     async def get_neuro(self, code_name: str) -> Neuro:
         """Get neuro from database."""
@@ -212,9 +252,7 @@ class Database:
     async def switch_neuro_status(self, neuro_name: str) -> None:
         """Switch neuro status in database."""
         async with self.session() as session:
-            stmt = select(Neuro).where(Neuro.code_name == neuro_name)
-            result = await session.execute(stmt)
-            neuro = result.scalar_one_or_none()
+            neuro = await self.get_neuro(neuro_name)
             stmt = update(Neuro).where(Neuro.code_name == neuro_name).values(is_active=not neuro.is_active)
             await session.execute(stmt)
             await session.commit()

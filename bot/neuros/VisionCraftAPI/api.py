@@ -1,9 +1,9 @@
 from asyncio import sleep
 
-from .request import VisionCraftRequest
+from .request import VisionCraftRequest, VisionCraftError
 
 from ...config import config
-from ...keyboards import data
+from ...enums import Neuro
 
 
 class VisionCraft(VisionCraftRequest):
@@ -27,40 +27,104 @@ class VisionCraft(VisionCraftRequest):
                             Low resolution, Morbid."""
 
         self._image_neuros = {
-            data.Neuros.animeart: "anime-art-diffusion-xl",
-            data.Neuros.juggernaut: "juggernaut-xl-V5",
-            data.Neuros.dynavision: "dynavision-xl-all-in-one-stylized"
+            Neuro.GOUFENG: "3guofeng3_v3.4",
+            Neuro.ABSOLUTEREALITY: "absolutereality_v1.8.1",
+            Neuro.AMIREAL: "amIReal_v4.1",
+            Neuro.ANALOGDIFFUSION: "analog_diffusion_v1",
+            Neuro.ANYTHING: "anything_V5",
+            Neuro.ABYSSORANGEMIX: "abyss_orangemix_v3",
+            Neuro.BLAZINGDRIVE: "blazing_drive_v10g",
+            Neuro.CETUSMIX: "cetusmix_v35",
+            Neuro.CHILDRENSSTORIES3D: "childrensStories_v1_3D",
+            Neuro.CHILDRENSSTORIESSEMI: "childrensStories_v1_SemiReal",
+            Neuro.CHILDRENSSTORIESTOON: "childrensStories_v1_ToonAnime",
+            Neuro.COUNTERFEIT: "Counterfeit_v3.0",
+            Neuro.CUTEYUKIMIX: "cuteyukimix_midchapter3",
+            Neuro.CYBERREALISTIC: "cyberrealistic_v3.3",
+            Neuro.DALCEFO: "dalcefo_v4",
+            Neuro.DELIBERATE2: "deliberate_v3",
+            Neuro.DREAMLIKEANIME: "dreamlike_anime_v1.0",
+            Neuro.DREAMLIKEDIFFUSION: "dreamlike_diffusion_v1.0",
+            Neuro.DREAMLIKEPHOTOREAL: "dreamlike_photoreal_v2.0",
+            Neuro.DREAMSHAPER: "dreamshaper_v8",
+            Neuro.EOR: "edgeOfRealism_eor_v2.0",
+            Neuro.EIMISANIMEDIFFUSION: "EimisAnimeDiffusion_v1",
+            Neuro.ELLDRETHS: "elldreths-vivid",
+            Neuro.EPICREALISM: "epicrealism_natural_Sin_RC1",
+            Neuro.CANTBELIEVE: "ICantBelieveItsNotPhotography_seco",
+            Neuro.JUGGERNAUTAFTERMATH: "juggernaut_aftermath",
+            Neuro.LOFI: "lofi_v4",
+            Neuro.LYRIEL: "lyriel_v1.6",
+            Neuro.MAJICMIXREALISTIC: "majicmixRealistic_v4",
+            Neuro.MECHAMIX: "mechamix_v1.0",
+            Neuro.MEJINAMIX: "meinamix_v11",
+            Neuro.NEVERENDINGDREAM: "neverendingDream_v1.22",
+            Neuro.PASTELMIXSTYLIZED: "pastelMixStylizedAnime_pruned",
+            Neuro.PORTRAITPLUS: "portraitplus_v1.0",
+            Neuro.PROTOGEN: "protogen_x3.4",
+            Neuro.REALISTICVISION: "Realistic_Vision_v5.0",
+            Neuro.REDSHIFTDIFFUSION: "redshift_diffusion_v1.0",
+            Neuro.REVANIMATED: "revAnimated_v1.2.2",
+            Neuro.RUNDIFFUSIONFX: "rundiffusionFX_photorealistic_v1.0",
+            Neuro.SHONINSBEAUTIFUL: "shoninsBeautiful_v1.0",
+            Neuro.THEALLYSMIX: "theallys_mix_v2",
+            Neuro.TIMELESS: "timeless_v1.0",
+            Neuro.TOONYOU: "toonyou_beta6"
         }
 
-    async def image_neuro(self,
-                                neuro: str,
-                                prompt: str) -> str:
-        neuro_name = self._image_neuros[neuro]
+        self._llm_neuros = {
+            Neuro.CAPYBARA: "nous-capybara-7b",
+            Neuro.ZEPHYR: "zephyr-7b-beta",
+            Neuro.OPENCHAT: "openchat-7b",
+            Neuro.MYTHOMIST: "mythomist-7b",
+            Neuro.CINEMATIKA: "cinematika-7b",
+            Neuro.RWKV5WORLD: "rwkv-5-world-3b",
+            Neuro.RWKV5AITOWN: "rwkv-5-3b-ai-town"
+        }
+
+    @staticmethod
+    def prepare_answer(answer: str) -> str:
+        return answer.replace('USER:','').strip()
+
+    async def chatting(self,
+                       neuro: str,
+                       messages: list
+                       ) -> str:
+        neuro_name = self._llm_neuros[neuro]
         data = {
-            "model": neuro_name,
-            "prompt": prompt,
-            "negative_prompt": self.__negative,
             "token": self.__KEY,
-            "height": 1024,
-            "width": 1024,
-            "steps": 30,
-            "cfg_scale": 10
+            "model": neuro_name,
+            "messages": messages
             }
-        
+
         result = await self._request(neuro=neuro,
-                                    uri=self._URL + 'generate-xl',
+                                     uri=self._URL + 'llm',
+                                     method=self._METHOD,
+                                     json=data)
+        return [self.prepare_answer(answer=result['choices'][0]['message']['content'])]
+
+    async def image_neuro(self,
+                            neuro: str,
+                            prompt: str) -> str:
+        neuro_name = self._image_neuros[neuro]
+        data = {"model": neuro_name,
+                "sampler": "DPM++ 2M",
+                "prompt": prompt,
+                "negative_prompt": self.__negative,
+                "image_count": 4,
+                "token": self.__KEY,
+                "cfg_scale": 10,
+                "steps": 30,
+                "loras": {"more_details_v10": "more_details_v10"},
+                "watermark": False,
+                "nsfw_filter": False
+                }
+        result = await self._request(neuro=neuro,
+                                    uri=self._URL + 'generate',
                                     method=self._METHOD,
                                     json=data)
-        if result['job_id']:
-            image = await self.check_job_status(neuro=neuro,
-                                                job_id=result['job_id'])
-            await sleep(1.5)
-            while not image:
-                image = await self.check_job_status(neuro=neuro,
-                                                    job_id=result['job_id'])
-                await sleep(1.5)
-        return image             
-    
+        return result['images'] 
+       
     async def enchance_image(self,
                              neuro: str,
                              photo_url: str) -> bytes:

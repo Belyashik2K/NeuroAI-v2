@@ -13,7 +13,7 @@ router: Final[Router] = Router(name=__name__)
 @router.callback_query(F.data==data.AdminPanel.find_user)
 async def find_user(call: types.CallbackQuery, user: User, state: FSMContext, i18n: I18nContext):
     await call.message.edit_text(i18n.messages.admin_find_user(), 
-                                 reply_markup=inline.back(data.AdminPanel.back))
+                                 reply_markup=inline.back(data.StartMenu.admin))
     await state.set_state(AdminPanel.find_user)
     await state.update_data(message_id=call.message.message_id)
 
@@ -26,7 +26,7 @@ async def find_user_message(message: types.Message, user: User, state: FSMContex
         await message.bot.edit_message_text(chat_id=message.chat.id, 
                                             message_id=state_data['message_id'], 
                                             text=i18n.errors.user_not_found(), 
-                                            reply_markup=inline.back(data.AdminPanel.back))
+                                            reply_markup=inline.back(data.StartMenu.admin))
         return
     formatting = {
         'name': f'<a href="tg://user?id={info.user_id}">{info.full_name}</a>',
@@ -40,9 +40,10 @@ async def find_user_message(message: types.Message, user: User, state: FSMContex
                                         reply_markup=await inline.user_actions(info, message))
     await state.clear()
 
-@router.callback_query(F.data.startswith(data.AdminPanel.ban))
-async def ban_user(call: types.CallbackQuery, user: User, state: FSMContext, i18n: I18nContext):
-    user_id = int(call.data.split('_')[1])
+@router.callback_query(data.BanUser.filter())
+async def ban_user(call: types.CallbackQuery, callback_data: data.BanUser,
+                   user: User, state: FSMContext, i18n: I18nContext):
+    user_id = callback_data.user_id
     if user_id == call.from_user.id:
         await call.answer(i18n.errors.no())
         return
@@ -51,9 +52,10 @@ async def ban_user(call: types.CallbackQuery, user: User, state: FSMContext, i18
     await call.answer(i18n.messages.admin_success_edit())
     await call.message.edit_reply_markup(reply_markup=await inline.user_actions(new, call))
 
-@router.callback_query(F.data.startswith(data.AdminPanel.admin))
-async def add_admin(call: types.CallbackQuery, user: User, state: FSMContext, i18n: I18nContext):
-    user_id = int(call.data.split('_')[1])
+@router.callback_query(data.AdminUser.filter())
+async def add_admin(call: types.CallbackQuery, callback_data: data.AdminUser,
+                    user: User, state: FSMContext, i18n: I18nContext):
+    user_id = callback_data.user_id
     if user_id == call.from_user.id:
         await call.answer(i18n.errors.no())
         return

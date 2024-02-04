@@ -5,7 +5,7 @@ class Config:
     # Set your own callback data for you mailing button here
     # If you don't know what you're doing, don't change this
     # and create new buttons with the same callback data
-    admin_menu_data = "admin_back" # Callback data for back to admin menu button
+    admin_menu_data = "admin" # Callback data for back to admin menu button
     mailing_button_data = "mailing" # Callback data for mailing menu button 
 
     class DB:

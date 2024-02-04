@@ -14,22 +14,31 @@ router: Final[Router] = Router(name=__name__)
 async def select_category(call: types.CallbackQuery, user: User, state: FSMContext, i18n: I18nContext):
     statuses = await database.get_neuro_statuses()
     await call.message.edit_text(i18n.messages.admin_neuro_statuses(**statuses), 
-                                 reply_markup=inline.neuro_categories(True))
+                                 reply_markup=await inline.neuro_categories(True))
 
-@router.callback_query(F.data.startswith(data.NeuroCategories.admin + data.NeuroCategories.start))
-async def select_neuro(call: types.CallbackQuery, user: User, state: FSMContext, i18n: I18nContext):
-    category = call.data.split("_")[3]
-    await state.update_data(category=category)
+@router.callback_query(data.AdminCategory.filter())
+async def select_neuro(call: types.CallbackQuery, callback_data: data.AdminCategory,
+                       user: User, state: FSMContext, i18n: I18nContext):
+    await state.update_data(page=callback_data.page)
+    _data = await state.get_data()
+    page = _data['page']
+    category = callback_data.name
+    await state.update_data(category=category, page=page)
     statuses = await database.get_neuro_statuses()
     await call.message.edit_text(i18n.messages.admin_neuro_statuses(**statuses), 
-                                 reply_markup=inline.all_neuros(category))
+                                 reply_markup=await inline.neuros(category=category,
+                                                                  page=page,
+                                                                  is_admin=True))
 
-@router.callback_query(F.data.startswith(data.Neuros.switch))
-async def switch_neuro_status(call: types.CallbackQuery, user: User, state: FSMContext, i18n: I18nContext):
-    neuro_name = call.data.split('_', 1)[1]
+@router.callback_query(data.Switch.filter())
+async def switch_neuro_status(call: types.CallbackQuery, callback_data: data.Switch,
+                              user: User, state: FSMContext, i18n: I18nContext):
+    neuro_name = callback_data.neuro_name
     data = await state.get_data()
     await database.switch_neuro_status(neuro_name=neuro_name)
     await call.answer(i18n.messages.admin_success())
     statuses = await database.get_neuro_statuses()
     await call.message.edit_text(i18n.messages.admin_neuro_statuses(**statuses), 
-                                 reply_markup=inline.all_neuros(data['category']))
+                                 reply_markup=await inline.neuros(category=data['category'],
+                                                                  page=data['page'],
+                                                                  is_admin=True))

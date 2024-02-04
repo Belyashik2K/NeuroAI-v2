@@ -54,31 +54,17 @@ messages-about = 💬 <b>Über den Service</b>
     🥀 Zusammenarbeit: { $ads }
 
     🤔 <b>Status der neuronalen Netze</b>
-    Neuronale Netze für die Textgenerierung:
-    ├ ChatGPT: <code>{ $gpt }</code>
-    ├ Claude AI: <code>{ $claude }</code>
-    ├ Google AI: <code>{ $google }</code>
-    ├ LLaMA AI: <code>{ $llama }</code>
-    ├ Mistral AI (Medium): <code>{ $mistral }</code>
-    ├ Solar AI: <code>{ $solar }</code>
-    └ Google Gemini Pro: <code>{ $gemini }</code>
+    Neuronale Netzwerke zur Textgenerierung:
+    ├ Arbeitende neuronale Netzwerke: <code>{ $text_working }</code>
+    └ In technischer Wartung: <code>{ $text_not_working }</code>
 
-    Neuronale Netze für die Bildgenerierung und -verarbeitung:
-    ├ StableDiffusionXL: <code>{ $stable }</code>
-    ├ Playground v2: <code>{ $playground }</code>
-    ├ EnhanceImage: <code>{ $enhance }</code>
-    ├ Midjourney V4: <code>{ $midjourney }</code>
-    ├ Midjourney V6: <code>{ $midjourneyv6 }</code>
-    ├ StableDiffusion Video: <code>{ $sdv }</code>
-    ├ DALL·E 3: <code>{ $dalle3 }</code>
-    ├ TencentARC PhotoMaker: <code>{ $tencentmaker }</code>
-    ├ JuggernautXL V5: <code>{ $juggernaut }</code>
-    ├ DynaVisionXL: <code>{ $dynavision }</code>
-    └ AnimeArt: <code>{ $animeart }</code>
+    Neuronale Netzwerke zur Bildgenerierung und -verarbeitung:
+    ├ Arbeitende neuronale Netzwerke: <code>{ $image_working }</code>
+    └ In technischer Wartung: <code>{ $image_not_working }</code>
 
-    Neuronale Netze für die Audiobearbeitung:
-    ├ Whisper V3: <code>{ $whisper }</code>
-    └ RachelVoice: <code>{ $bender }</code>
+    Neuronale Netzwerke zur Audiobearbeitung:
+    ├ Arbeitende neuronale Netzwerke: <code>{ $audio_working }</code>
+    └ In technischer Wartung: <code>{ $audio_not_working }</code>
 
 messages-working = Funktioniert
 
@@ -90,77 +76,20 @@ messages-choose_neuro_category = <b>🔥 Auswahl des neuronalen Netzwerks</b>
     ❓ <i>Wählen Sie die Kategorie des neuronalen Netzwerks aus</i>
         
     📝 <code>Text</code> — neuronale Netzwerke, die Text generieren.
-    <i>Liste der neuronalen Netzwerke:</i>
-    ├ <code>💭 ChatGPT (GPT 3.5)</code>
-    ├ <code>☁️ Claude AI</code>
-    ├ <code>📱 Google AI</code>
-    ├ <code>🦙 LLaMA AI</code>
-    ├ <code>💻 Mistral AI (Medium)</code>
-    ├ <code>🌤 Solar AI</code>
-    └ <code>📚 Google Gemini Pro</code>
 
     🖼 <code>Bilder</code> — neuronale Netzwerke, die Bilder generieren.
-    <i>Liste der neuronalen Netzwerke:</i>
-    ├ <code>🎨 StableDiffusionXL</code>
-    ├ <code>🎮 Playground v2</code>
-    ├ <code>📷 Midjourney V4</code>
-    ├ <code>🔥 Midjourney V6</code>
-    ├ <code>✨ EnhanceImage</code>
-    ├ <code>📹 StableDiffusion Video</code>
-    ├ <code>🖼 DALL·E 3</code>
-    ├ <code>🖌 TencentARC PhotoMaker</code>
-    ├ <code>🦾 JuggernautXL V5</code>
-    ├ <code>👁️ DynaVisionXL</code>
-    └ <code>🧝🏻‍♀️ AnimeArt</code>
 
     🎵 <code>Audio</code> — neuronale Netzwerke, die Audio generieren.
-    <i>Liste der neuronalen Netzwerke:</i>
-    ├ <code>🎤 Whisper V3</code>
-    └ <code>🗣️ RachelVoice</code>
 
 ```Neuro choose```
 
 messages-choose_neuro = ❓ <b>Wählen Sie das neuronale Netzwerk aus</b>
 
-messages-category_text = <code>💭 ChatGPT (GPT 3.5)</code> — eines der stabilsten neuronalen Netzwerke für die Textgenerierung. Es kann Texte generieren, Code schreiben, Fragen beantworten und vieles mehr. Kann Links zu Websites verarbeiten.
+messages-category_text = <i>Wählen Sie eines der unten aufgeführten neuronalen Netzwerke</i>
 
-    <code>☁️ Claude AI</code> — ein KI-Assistent der neuen Generation, basierend auf Anthropic-Forschung zur Schulung nützlicher, ehrlicher und harmloser KI-Systeme. Claude kann eine Vielzahl von Aufgaben bei der Verarbeitung von Gesprächen und Texten ausführen und dabei eine hohe Zuverlässigkeit und Vorhersagbarkeit beibehalten. Funktioniert hauptsächlich auf Englisch.
+messages-category_image = <i>Wählen Sie eines der unten aufgeführten neuronalen Netzwerke</i>
 
-    <code>📱 Google AI</code> — ein neuronales Netzwerk von Google, das Texte generieren kann, hauptsächlich in Englisch.
-
-    <code>🦙 LLaMA AI</code> — ein großes Sprachmodell (LLM), das von Meta AI im Februar 2023 veröffentlicht wurde. Modelle unterschiedlicher Größe im Bereich von 7 bis 65 Milliarden Gewichten wurden trainiert.
-
-    <code>💻 Mistral AI (Medium)</code> — ein großes maschinelles Lernsprachmodell mit sieben Milliarden Parametern. Antworten auf dem Niveau von ChatGPT, aber mit höherer Qualität. Arbeitet hauptsächlich auf Englisch.
-
-    <code>🌤 Solar AI</code> - ein Modell von Upstage, das führend in der HuggingFace Open LLM-Rangliste ist und eine verbesserte Version des LLaMA 2-Modells darstellt.
-
-    <code>📚 Google Gemini Pro</code> — eines der fortschrittlichsten neuronalen Netzwerke, das von Google veröffentlicht wurde. Es kann Texte generieren, Bilder betrachten und Fragen auf Englisch und Russisch beantworten.
-
-messages-category_image = <code>🎨 StableDiffusionXL</code> — ein neuronales Netzwerk, das Bilder auf Anfrage generieren kann. Es liefert klare und qualitativ hochwertige Bilder bei Verwendung einer guten Eingabeaufforderung.
-
-    <code>🎮 Playground v2</code> — eines der besten neuronalen Netzwerke zur Bildgenerierung. Es kann Bilder auf Anfrage generieren.
-
-    <code>📷 Midjourney V4</code> — ein neuronales Netzwerk, das Bilder auf Anfrage generieren kann. Es liefert klare und qualitativ hochwertige Bilder bei Verwendung einer guten Eingabeaufforderung.
-
-    <code>🔥 Midjourney V6</code> — beste neuronale Netzwerk zur Bildgenerierung derzeit. Verbesserte Version von <code>📷 Midjourney V4</code>
-    
-    <code>✨ EnhanceImage</code> — ein neuronales Netzwerk, das die Qualität von Bildern verbessern kann.
-
-    <code>📹 StableDiffusion Video</code> — ein neuronales Netzwerk, das Videos auf Grundlage eines erhaltenen Fotos generieren kann.
-
-    <code>🖼 DALL·E 3</code> — eines der fortschrittlichsten neuronalen Netzwerke zur Bildgenerierung von OpenAI.
-
-    <code>🖌 TencentARC PhotoMaker</code> — Ein neuronales Netzwerk, das in der Lage ist, jedes Bild mit einem beliebigen Gesicht gemäß der gegebenen Anfrage zu generieren. Ein NSFW-Filter fehlt.
-
-    <code>🦾 JuggernautXL V5</code> — Ein neuronales Netzwerk, das darauf ausgerichtet ist, Landschaften, Architekturfotos und sehr detaillierte Bilder zu generieren.
-
-    <code>👁️ DynaVisionXL</code> — Ein neuronales Netzwerk, das Bilder auf Grundlage einer bestimmten Anfrage generieren kann. Liefert klare und hochwertige Bilder bei Verwendung einer guten Anfrage.
-
-    <code>🧝🏻‍♀️ AnimeArt</code> — Ein neuronales Netzwerk, das auf die Generierung von Anime-Fotos ausgerichtet ist. Gute Ergebnisse bei Verwendung einer qualitativen Anfrage.
-
-messages-category_audio = <code>🎤 Whisper V3</code> — ein neuronales Netzwerk, das Audio in Text übersetzen kann.
-
-    <code>🗣 RachelVoice</code> — ein neuronales Netzwerk, das Audio basierend auf einem gegebenen Text generieren kann.
+messages-category_audio = <i>Wählen Sie eines der unten aufgeführten neuronalen Netzwerke</i>
 
 messages-mode = 🤖 <i>Ausgewähltes neuronales Netzwerk:</i> <code>{ $neuro }</code>
 
@@ -267,31 +196,19 @@ messages-admin_success_maintenance = ✅ Wartungsstatus erfolgreich geändert.
 
 messages-admin_neuro_statuses = <b>🔥 Ändere den Netzwerkstatus</b>
 
-    Netzwerke zur Textgenerierung:
-    ├ ChatGPT: <code>{ $gpt }</code>
-    ├ Claude AI: <code>{ $claude }</code>
-    ├ Google AI: <code>{ $google }</code>
-    ├ LLaMA AI: <code>{ $llama }</code>
-    ├ Mistral AI (Medium): <code>{ $mistral }</code>
-    ├ Solar AI: <code>{ $solar }</code>
-    └ Google Gemini Pro: <code>{ $gemini }</code>
+messages-admin_neuro_statuses = <b>🔥 Den Status des neuronalen Netzwerks ändern</b>
 
-    Netzwerke zur Generierung und Verarbeitung von Bildern:
-    ├ StableDiffusionXL: <code>{ $stable }</code>
-    ├ Playground v2: <code>{ $playground }</code>
-    ├ EnhanceImage: <code>{ $enhance }</code>
-    ├ Midjourney V4: <code>{ $midjourney }</code>
-    ├ Midjourney V6: <code>{ $midjourneyv6 }</code>
-    ├ StableDiffusion Video: <code>{ $sdv }</code>
-    ├ DALL·E 3: <code>{ $dalle3 }</code>
-    ├ TencentARC PhotoMaker: <code>{ $tencentmaker }</code>
-    ├ JuggernautXL V5: <code>{ $juggernaut }</code>
-    ├ DynaVisionXL: <code>{ $dynavision }</code>
-    └ AnimeArt: <code>{ $animeart }</code>
+    Neuronale Netzwerke zur Textgenerierung:
+    ├ Arbeitende neuronale Netzwerke: <code>{ $text_working }</code>
+    └ In technischer Wartung: <code>{ $text_not_working }</code>
 
-    Netzwerke zur Audiobearbeitung:
-    ├ Whisper V3: <code>{ $whisper }</code>
-    └ RachelVoice: <code>{ $bender }</code>
+    Neuronale Netzwerke zur Bildgenerierung und -verarbeitung:
+    ├ Arbeitende neuronale Netzwerke: <code>{ $image_working }</code>
+    └ In technischer Wartung: <code>{ $image_not_working }</code>
+
+    Neuronale Netzwerke zur Audiobearbeitung:
+    ├ Arbeitende neuronale Netzwerke: <code>{ $audio_working }</code>
+    └ In technischer Wartung: <code>{ $audio_not_working }</code>
 
 ```Input field placeholders```
 
