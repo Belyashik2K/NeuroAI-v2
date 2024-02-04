@@ -144,21 +144,32 @@ async def image_request(message: types.Message, user: User, state: FSMContext, i
     await state.clear()
     result = await func(_data['neuro'], prompt)
     await message.bot.delete_message(message.chat.id, _data['message_id'])
-
-    if not result.endswith(".mp4"):
-        async with ChatActionSender.upload_photo(bot=message.bot, chat_id=message.chat.id):
-            await message.bot.send_photo(chat_id=message.chat.id,
-                                        photo=types.URLInputFile(result, filename='photo.png'),
-                                        caption=i18n.messages.image_result(**formatting),
-                                        reply_markup=await inline.close_or_again(_data['neuro']),
-                                        parse_mode=ParseMode.MARKDOWN)
+    if type(result) == str:
+        if not result.endswith(".mp4"):
+            async with ChatActionSender.upload_photo(bot=message.bot, chat_id=message.chat.id):
+                
+                    await message.bot.send_photo(chat_id=message.chat.id,
+                                                photo=types.URLInputFile(result, filename='photo.png'),
+                                                caption=i18n.messages.image_result(**formatting),
+                                                reply_markup=await inline.close_or_again(_data['neuro']),
+                                                parse_mode=ParseMode.MARKDOWN)
+        else:
+            async with ChatActionSender.upload_video(bot=message.bot, chat_id=message.chat.id):
+                await message.bot.send_video(chat_id=message.chat.id,
+                                            video=types.URLInputFile(result, filename='video.mp4'),
+                                            caption=i18n.messages.other_result(**formatting),
+                                            reply_markup=await inline.close_or_again(_data['neuro']))
     else:
-        async with ChatActionSender.upload_video(bot=message.bot, chat_id=message.chat.id):
-            await message.bot.send_video(chat_id=message.chat.id,
-                                        video=types.URLInputFile(result, filename='video.mp4'),
-                                        caption=i18n.messages.other_result(**formatting),
-                                        reply_markup=await inline.close_or_again(_data['neuro']))
-
+        async with ChatActionSender.upload_photo(bot=message.bot, chat_id=message.chat.id):
+            photos = list()
+            for url in result:
+                photos.append(types.InputMediaPhoto(media=types.URLInputFile(url, filename='photo.png')))
+            m = await message.bot.send_media_group(chat_id=message.chat.id,
+                                                    media=photos)
+            await message.answer(reply_to_message_id=m[-1].message_id,
+                                text=i18n.messages.image_result(**formatting),
+                                reply_markup=await inline.close_or_again(_data['neuro']),
+                                parse_mode=ParseMode.MARKDOWN)
     await database.update_user(user_id=user.user_id, request_counter=user.request_counter + 1)
 
 @router.message(NeuroRequest.enchance_image, F.photo)

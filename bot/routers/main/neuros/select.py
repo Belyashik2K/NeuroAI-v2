@@ -73,6 +73,10 @@ async def one_request_mode(call: types.CallbackQuery, callback_data: data.Mode,
 async def start_gen_image(call: types.CallbackQuery, callback_data: data.Neuro,
                           user: User, state: FSMContext, i18n: I18nContext):
     _data = await state.get_data()
+    try:
+        page = _data['page']
+    except KeyError:
+        page = 1
     neuro = LazyProxy(f"buttons-{callback_data.name}").data
 
     choices = {
@@ -91,7 +95,7 @@ async def start_gen_image(call: types.CallbackQuery, callback_data: data.Neuro,
     if not call.message.photo and not call.message.video:
         await call.message.edit_text(text=text,
                                     reply_markup=inline.back(callback_data=data.Category(name=Category.IMAGE,
-                                                                                         page=_data['page']).pack()),
+                                                                                         page=page).pack()),
                                     disable_web_page_preview=True)
         await state.update_data(neuro=callback_data.name, 
                                 provider=callback_data.provider,
@@ -101,7 +105,7 @@ async def start_gen_image(call: types.CallbackQuery, callback_data: data.Neuro,
         m = await call.bot.send_message(chat_id=call.message.chat.id,
                                     text=text,
                                     reply_markup=inline.back(callback_data=data.Category(name=Category.IMAGE,
-                                                                                         page=_data['page']).pack()),
+                                                                                         page=page).pack()),
                                     disable_web_page_preview=True)
         await state.update_data(neuro=callback_data.name, 
                                 provider=callback_data.provider,

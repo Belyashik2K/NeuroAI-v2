@@ -24,6 +24,12 @@ buttons-solar = 🌤 Solar AI
 buttons-gemini = 📚 Google Gemini Pro
 
 buttons-capybara = 💧 Capybara AI
+buttons-zephyr = 💝 Zephyr [BETA]
+buttons-openchat = 🗽 OpenChat
+buttons-mythomist = 🌌 Mythomist
+buttons-cinematika = 🎬 Cinematika
+buttons-rwkv5world = 🌍 RWKV5 World
+buttons-rwkv5aitown = 🏙 RWKV5 AITown
 
 buttons-stable = 🎨 StableDiffusionXL
 buttons-playground = 🎮 Playground v2
@@ -32,9 +38,6 @@ buttons-midjourney = 📷 Midjourney V4
 buttons-midjourneyv6 = 🔥 Midjourney V6
 buttons-dalle3 = 🖼 DALL·E 3
 buttons-tencentmaker = 🖌 TencentARC PhotoMaker
-buttons-juggernaut = 🦾 JuggernautXL V5
-buttons-dynavision = 👁️ DynaVisionXL
-buttons-animeart = 🧝🏻‍♀️ AnimeArt
 buttons-sdv = 📹 StableDiffusion Video
 buttons-whisper = 🎤 Whisper V3
 buttons-bender = 🗣️ RachelVoice
