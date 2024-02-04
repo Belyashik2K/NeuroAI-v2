@@ -199,12 +199,22 @@ class Database:
             return result.scalars().all()
     
     async def get_neuros_by_category(self,
-                                     category: str) -> list[Neuro]:
+                                     category: str,
+                                     page: int,
+                                     per_page: int) -> list[list[Neuro], int]:
         """Get all neuros from database."""
         async with self.session() as session:
-            stmt = select(Neuro).where(Neuro.category == category)
+            stmt = select(Neuro).where(Neuro.category == category).offset((page - 1) * per_page).limit(per_page).order_by(Neuro.id)
             result = await session.execute(stmt)
-            return result.scalars().all()
+            on_page = result.scalars().all()
+
+            stmt = select(func.count()).select_from(Neuro).where(Neuro.category == category)
+            result = await session.execute(stmt)
+            count = result.scalar_one_or_none()
+
+            pages_count = count // per_page + 1 if (count % per_page and count) else count // per_page
+
+            return on_page, pages_count
     
     async def get_neuro_statuses(self) -> dict[str, str]:
         """Get neuro statuses from database."""

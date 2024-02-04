@@ -19,11 +19,16 @@ async def select_category(call: types.CallbackQuery, user: User, state: FSMConte
 @router.callback_query(data.AdminCategory.filter())
 async def select_neuro(call: types.CallbackQuery, callback_data: data.AdminCategory,
                        user: User, state: FSMContext, i18n: I18nContext):
+    await state.update_data(page=callback_data.page)
+    _data = await state.get_data()
+    page = _data['page']
     category = callback_data.name
-    await state.update_data(category=category)
+    await state.update_data(category=category, page=page)
     statuses = await database.get_neuro_statuses()
     await call.message.edit_text(i18n.messages.admin_neuro_statuses(**statuses), 
-                                 reply_markup=await inline.neuros(category, True))
+                                 reply_markup=await inline.neuros(category=category,
+                                                                  page=page,
+                                                                  is_admin=True))
 
 @router.callback_query(data.Switch.filter())
 async def switch_neuro_status(call: types.CallbackQuery, callback_data: data.Switch,
@@ -34,4 +39,6 @@ async def switch_neuro_status(call: types.CallbackQuery, callback_data: data.Swi
     await call.answer(i18n.messages.admin_success())
     statuses = await database.get_neuro_statuses()
     await call.message.edit_text(i18n.messages.admin_neuro_statuses(**statuses), 
-                                 reply_markup=await inline.neuros(data['category'], True))
+                                 reply_markup=await inline.neuros(category=data['category'],
+                                                                  page=data['page'],
+                                                                  is_admin=True))

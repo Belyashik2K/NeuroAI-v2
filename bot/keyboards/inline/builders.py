@@ -20,19 +20,20 @@ class InlineKeyboards:
         self.__last_page = ">>>"
 
     def _pagination(self, 
-                   buttons_data: str, 
+                   data_object: object, 
                    pages_count: int, 
-                   current_page: int) -> list[InlineKeyboardButton] | list:
+                   current_page: int,
+                   **kwargs) -> list[InlineKeyboardButton] | list:
         if pages_count > 1:   
             buttons = [
-                InlineKeyboardButton(text=self.__previous_page, callback_data=buttons_data + str(current_page - 1) if current_page > 1 else Callback.Pagination.unavailable_page),
+                InlineKeyboardButton(text=self.__previous_page, callback_data=data_object(**kwargs, page=current_page - 1).pack() if current_page > 1 else Callback.Pagination.unavailable_page),
                 InlineKeyboardButton(text=LazyProxy("buttons-pages_count", current=current_page, count=pages_count), callback_data=Callback.Pagination.show_page),
-                InlineKeyboardButton(text=self.__next_page, callback_data=buttons_data + str(current_page + 1) if current_page < pages_count else Callback.Pagination.unavailable_page)
+                InlineKeyboardButton(text=self.__next_page, callback_data=data_object(**kwargs, page=current_page + 1).pack() if current_page < pages_count else Callback.Pagination.unavailable_page)
             ]
 
             if pages_count > 2:
-                buttons.insert(0, InlineKeyboardButton(text=self.__first_page, callback_data=buttons_data + str(1) if current_page != 1 else Callback.Pagination.unavailable_page))
-                buttons.append(InlineKeyboardButton(text=self.__last_page, callback_data=buttons_data + str(pages_count) if current_page != pages_count else Callback.Pagination.unavailable_page))
+                buttons.insert(0, InlineKeyboardButton(text=self.__first_page, callback_data=data_object(**kwargs, page=1).pack() if current_page != 1 else Callback.Pagination.unavailable_page))
+                buttons.append(InlineKeyboardButton(text=self.__last_page, callback_data=data_object(**kwargs, page=pages_count).pack() if current_page != pages_count else Callback.Pagination.unavailable_page))
 
             return buttons
         return []
@@ -130,7 +131,7 @@ class InlineKeyboards:
 
         for category in categories:
             text = LazyProxy(f'buttons-{category}')
-            callback_data = Callback.Category(name=category).pack() if not is_admin else Callback.AdminCategory(name=category).pack()
+            callback_data = Callback.Category(name=category, page=1).pack() if not is_admin else Callback.AdminCategory(name=category, page=1).pack()
             builder.add(InlineKeyboardButton(text=text, callback_data=callback_data))
 
         builder.row(self.close(as_button=True) if not is_admin else self.back(Callback.StartMenu.admin, as_button=True))
@@ -140,36 +141,46 @@ class InlineKeyboards:
     
     async def neuros(self,
                      category: str,
+                     page: int,
                      is_admin: bool = False) -> InlineKeyboardMarkup:
 
         builder = InlineKeyboardBuilder()
 
         from ...database import database
-        neuros = await database.get_neuros_by_category(category=category)
+        neuros, pages_count = await database.get_neuros_by_category(category=category, 
+                                                                    page=page, 
+                                                                    per_page=6)
 
         for neuro in neuros:
             text = LazyProxy(f'buttons-{neuro.code_name}')
             if not is_admin:
                 callback_data = Callback.Neuro(provider=neuro.provider,
-                                            category=neuro.category,
-                                            name=neuro.code_name).pack()
+                                                category=neuro.category,
+                                                name=neuro.code_name).pack()
             else:
                 callback_data = Callback.Switch(neuro_name=neuro.code_name).pack()
             builder.add(InlineKeyboardButton(text=text, callback_data=callback_data))
-        
         builder.adjust(2, repeat=True)
+
+        pagination = self._pagination(data_object=Callback.Category if not is_admin else Callback.AdminCategory,
+                                      pages_count=pages_count,
+                                      current_page=page,
+                                      name=category)
+
+        builder.row(*pagination)
         builder.row(self.back(Callback.StartMenu.choose_neuro, as_button=True) if not is_admin else self.back(Callback.AdminPanel.change_neuro, as_button=True))
 
         return builder.as_markup()
     
-    def mode(self) -> InlineKeyboardMarkup:
+    def mode(self,
+             page: int) -> InlineKeyboardMarkup:
         builder = InlineKeyboardBuilder()
 
         one_request = InlineKeyboardButton(text=LazyProxy('buttons-one_request'), callback_data=Callback.Mode(type_=Mode.ONE).pack())
         chat = InlineKeyboardButton(text=LazyProxy('buttons-chat'), callback_data=Callback.Mode(type_=Mode.CHAT).pack())
 
         builder.add(one_request, chat)
-        builder.row(self.back(Callback.Category(name=Category.TEXT).pack(), as_button=True))
+        builder.row(self.back(Callback.Category(name=Category.TEXT, page=page).pack(), as_button=True))
         builder.adjust(2, 1)
         return builder.as_markup()
 

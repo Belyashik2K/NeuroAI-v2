@@ -32,6 +32,7 @@ class Callback:
 
     class Category(CallbackData, prefix="category", sep="_"):
         name: str
+        page: int
 
     class Neuro(CallbackData, prefix="neuro"):
         provider: str
@@ -43,6 +44,7 @@ class Callback:
 
     class AdminCategory(CallbackData, prefix="admin_category"):
         name: str
+        page: int
 
     class Switch(CallbackData, prefix="switch"):
         neuro_name: str
