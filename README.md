@@ -10,7 +10,7 @@
 Выражаю **отдельную** **благодарность** [автору](https://t.me/futureforge_channel) FutureForge API и [авторам](https://t.me/visioncraft_channel) VisionCraft API за разработку таких грандиозных проектов! Спасибо!
 
 ## Преимущества
-* **21** нейросетей, из которых на данный момент **полностью работают** **18**
+* **66** нейросетей, из которых на данный момент **полностью работают** **62**
   * **Работают**
     * _ChatGPT (GPT 3.5)_
     * _Claude AI_
@@ -25,11 +25,8 @@
     * _Midjourney V6_
     * _StableDiffusion Video_
     * _TencentARC PhotoMaker_
-    * _JuggernautXL V5_
-    * _DynaVisionXL_
-    * _AnimeArt_
     * _Whisper V3_
-    * _RachelVoice_
+    * **_И многие другие..._**
   * **В ожидании восстановления работоспособности на стороне [FutureForge API](https://api.futureforge.dev/docs#/)**
     * _EnhanceImage_
     * _DALL·E 3_
@@ -105,7 +102,7 @@ The bot runs on the **aiogram v3.x.x** version and uses **SQLAlchemy** for datab
 I express **special** **gratitude** to the [author](https://t.me/futureforge_channel) of the FutureForge API and the [authors](https://t.me/visioncraft_channel) of the VisionCraft API for developing such grand projects! Thank you!
 
 ## Advantages
-* **21** neural networks, of which **18 are currently fully operational**
+* **66** neural networks, of which **62 are currently fully operational**
   * **Working**
     * _ChatGPT (GPT 3.5)_
     * _Claude AI_
@@ -120,11 +117,8 @@ I express **special** **gratitude** to the [author](https://t.me/futureforge_cha
     * _Midjourney V6_
     * _StableDiffusion Video_
     * _TencentARC PhotoMaker_
-    * _JuggernautXL V5_
-    * _DynaVisionXL_
-    * _AnimeArt_
     * _Whisper V3_
-    * _RachelVoice_
+    * **_And many others..._**
   * **Awaiting restoration of functionality on the [FutureForge API](https://api.futureforge.dev/docs#/) side**
     * _EnhanceImage_
     * _DALL·E 3_
