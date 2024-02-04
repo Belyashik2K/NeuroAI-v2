@@ -5,8 +5,6 @@ from typing import Any, Optional
 from .errors import FutureForgeError
 from ..base_request import HTTPClient
 from ...config import config
-from ...database import database
-from ...keyboards import data
 
 
 class FutureForgeRequest(HTTPClient):
@@ -41,6 +39,7 @@ class FutureForgeRequest(HTTPClient):
                                  uri: str,
                                  kwargs: dict) -> None:
         if status_code != 200:
+            from ...database import database
             await database.switch_neuro_status(neuro)
             raise FutureForgeError(f"Error (status code >>> {status_code}) while requesting {uri} with {kwargs}")
 

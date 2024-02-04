@@ -6,8 +6,6 @@ from typing import Any, Optional
 
 from .errors import VisionCraftError
 from ..base_request import HTTPClient
-from ...database import database
-from ...keyboards import data
 
 
 class VisionCraftRequest(HTTPClient):
@@ -46,22 +44,9 @@ class VisionCraftRequest(HTTPClient):
                                  uri: str,
                                  kwargs: dict) -> None:
         if status_code != 200:
+            from ...database import database
             await database.switch_neuro_status(neuro)
             raise VisionCraftError(f"Error (status code >>> {status_code}) while requesting {uri} with {kwargs}")
 
     def _check_api_key(self, kwargs: dict) -> dict:
         ...
-
-    async def _check_exception(self,
-                                result: bytes,
-                                neuro: str, 
-                                uri: str,
-                                kwargs: dict):
-        if "code" in str(result):
-            json_string = result.decode('utf-8')
-            json_data = json.loads(json_string)
-            if json_data[0]['code'] == 0:
-                neuro = neuro.replace(data.Neuros.start, '')
-                await database.switch_neuro_status(neuro)
-                raise VisionCraftError(f"Error (message >>> {json_data[0]['message']}) while requesting {uri} with {kwargs}")
-        return result
