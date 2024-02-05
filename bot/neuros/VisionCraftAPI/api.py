@@ -82,6 +82,13 @@ class VisionCraft(VisionCraftRequest):
             Neuro.RWKV5AITOWN: "rwkv-5-3b-ai-town"
         }
 
+        self._xl_neuros = {
+            Neuro.SDXL: "sdxl-base",
+            Neuro.JUGGERNAUT: "juggernaut-xl-V7",
+            Neuro.DYNAVISION: "dynavision-xl-all-in-one-stylized",
+            Neuro.ANIMEART: "anime-art-diffusion-xl"
+        }
+
     @staticmethod
     def prepare_answer(answer: str) -> str:
         return answer.replace('USER:','').strip()
@@ -104,9 +111,12 @@ class VisionCraft(VisionCraftRequest):
         return [self.prepare_answer(answer=result['choices'][0]['message']['content'])]
 
     async def image_neuro(self,
-                            neuro: str,
-                            prompt: str) -> str:
-        neuro_name = self._image_neuros[neuro]
+                          neuro: str, 
+                          prompt: str) -> str:
+        if neuro in self._image_neuros:
+            neuro_name = self._image_neuros[neuro]
+        else:
+            return await self.xl_image_neuro(neuro=neuro, prompt=prompt)
         data = {"model": neuro_name,
                 "sampler": "DPM++ 2M",
                 "prompt": prompt,
@@ -124,6 +134,29 @@ class VisionCraft(VisionCraftRequest):
                                     method=self._METHOD,
                                     json=data)
         return result['images'] 
+    
+    async def xl_image_neuro(self,
+                             neuro: str,
+                             prompt: str) -> str:
+        neuro_name = self._xl_neuros[neuro]
+        data = {
+            "model": neuro_name,
+            "prompt": prompt,
+            "negative_prompt": self.__negative,
+            "token": self.__KEY,
+            "height": 1024,
+            "width": 1024,
+            "steps": 30,
+            "cfg_scale": 10,
+            "watermark": False,
+            "nsfw_filter": False
+            }
+
+        result = await self._request(neuro=neuro,
+                                    uri=self._URL + 'generate-xl',
+                                    method=self._METHOD,
+                                    json=data)
+        return result['images'][0]
        
     async def enchance_image(self,
                              neuro: str,

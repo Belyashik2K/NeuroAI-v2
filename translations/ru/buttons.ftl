@@ -31,6 +31,9 @@ buttons-cinematika = 🎬 Cinematika
 buttons-rwkv5world = 🌍 RWKV5 World
 buttons-rwkv5aitown = 🏙 RWKV5 AITown
 
+buttons-juggernaut = 🦾 JuggernautXL V7
+buttons-dynavision = 👁️ DynaVisionXL
+buttons-animeart = 🧝🏻‍♀️ AnimeArt
 buttons-guofeng3 = 🌅 Guofeng 3
 buttons-absolutereality = 👱‍♂️ AbsoluteReality
 buttons-amIReal = 🤖 amIReal
