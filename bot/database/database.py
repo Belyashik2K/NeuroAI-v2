@@ -204,7 +204,7 @@ class Database:
                                      per_page: int) -> list[list[Neuro], int]:
         """Get all neuros from database."""
         async with self.session() as session:
-            stmt = select(Neuro).where(Neuro.category == category).offset((page - 1) * per_page).limit(per_page).order_by(Neuro.provider, Neuro.code_name)
+            stmt = select(Neuro).where(Neuro.category == category).offset((page - 1) * per_page).limit(per_page).order_by(Neuro.priority, Neuro.provider, Neuro.code_name)
             result = await session.execute(stmt)
             on_page = result.scalars().all()
 

@@ -7,7 +7,7 @@ class NeuroInfo:
             Category.TEXT: [Neuro.CHATGPT, Neuro.CLAUDE, Neuro.GOOGLE,
                             Neuro.LLAMA, Neuro.MISTRAL, Neuro.SOLAR,
                             Neuro.GEMINI],
-            Category.IMAGE: [Neuro.SDXL, Neuro.PLAYGROUND,
+            Category.IMAGE: [Neuro.PLAYGROUND,
                              Neuro.MIDJOURNEYV4, Neuro.MIDJOURNEYV6,
                              Neuro.ENHANCE, Neuro.VIDEODIFFUSION,
                              Neuro.DALLE3, Neuro.TENCENTMAKER],
@@ -37,6 +37,8 @@ class NeuroInfo:
                              Neuro.PROTOGEN, Neuro.REALISTICVISION,
                              Neuro.REDSHIFTDIFFUSION, Neuro.REVANIMATED,
                              Neuro.RUNDIFFUSIONFX, Neuro.SHONINSBEAUTIFUL,
-                             Neuro.THEALLYSMIX, Neuro.TIMELESS, Neuro.TOONYOU]
+                             Neuro.THEALLYSMIX, Neuro.TIMELESS, Neuro.TOONYOU,
+                             Neuro.ANIMEART, Neuro.DYNAVISION, Neuro.JUGGERNAUT,
+                             Neuro.SDXL],
                              }
     }

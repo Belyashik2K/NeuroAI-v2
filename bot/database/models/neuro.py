@@ -13,6 +13,7 @@ class Neuro(Base):
         code_name (str): Neuro's code name.
         category (str): Neuro's category.
         provider (str): Neuro's API provider.
+        priority (int): Neuro's priority.
         is_active (bool): Is neuro active?
     """
     __tablename__ = 'neuros'
@@ -21,6 +22,7 @@ class Neuro(Base):
     code_name: Mapped[str] = Column(String(255), nullable=False, unique=True)
     category: Mapped[str] = Column(String(255), nullable=False, unique=False)
     provider: Mapped[str] = Column(String(255), nullable=False, unique=False)
+    priority: Mapped[int] = Column(Integer, nullable=False, default=1, server_default='1')
     is_active: Mapped[bool] = Column(Boolean, default=False, nullable=False)
 
     def __repr__(self) -> str:
