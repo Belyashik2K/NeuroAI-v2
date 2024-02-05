@@ -10,7 +10,7 @@
 Выражаю **отдельную** **благодарность** [автору](https://t.me/futureforge_channel) FutureForge API и [авторам](https://t.me/visioncraft_channel) VisionCraft API за разработку таких грандиозных проектов! Спасибо!
 
 ## Преимущества
-* **66** нейросетей, из которых на данный момент **полностью работают** **62**
+* **69** нейросетей, из которых на данный момент **полностью работают** **65**
   * **Работают**
     * _ChatGPT (GPT 3.5)_
     * _Claude AI_
@@ -102,7 +102,7 @@ The bot runs on the **aiogram v3.x.x** version and uses **SQLAlchemy** for datab
 I express **special** **gratitude** to the [author](https://t.me/futureforge_channel) of the FutureForge API and the [authors](https://t.me/visioncraft_channel) of the VisionCraft API for developing such grand projects! Thank you!
 
 ## Advantages
-* **66** neural networks, of which **62 are currently fully operational**
+* **69** neural networks, of which **65 are currently fully operational**
   * **Working**
     * _ChatGPT (GPT 3.5)_
     * _Claude AI_
