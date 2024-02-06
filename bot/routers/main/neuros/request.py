@@ -107,9 +107,13 @@ async def chatting(message: types.Message, user: User, state: FSMContext, i18n: 
                                                            role=Role.ASSISTANT,
                                                            message_list=messages)
                 await state.update_data(chat_cache=with_assistant)
-        except Exception as e:
-            logging.error(e)
-            await message.reply(**ExceptionChecker.check_exception(str(e)))
+        except Exception:
+            try:
+                await message.reply(text=i18n.messages.chat_answer() + " " + result[0],
+                                    parse_mode=ParseMode.HTML)
+            except Exception as e:
+                logging.error(e)
+                await message.reply(**ExceptionChecker.check_exception(str(e)))
     await state.set_state(NeuroRequest.chating)
     await database.update_user(user_id=user.user_id, request_counter=user.request_counter + 1)
 
