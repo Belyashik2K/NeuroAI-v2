@@ -1,5 +1,3 @@
-import json
-
 from aiohttp import ClientSession
 
 from typing import Any, Optional
@@ -38,9 +36,9 @@ class VisionCraftRequest(HTTPClient):
                                                    uri=uri,
                                                    kwargs=kwargs)
 
-    async def _check_status_code(self, 
-                                 status_code: dict,
-                                 neuro: str, 
+    async def _check_status_code(self,
+                                 status_code: int,
+                                 neuro: str,
                                  uri: str,
                                  kwargs: dict) -> None:
         if status_code != 200:

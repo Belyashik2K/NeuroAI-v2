@@ -1,4 +1,4 @@
-from typing import Union, Callable, Type
+from typing import Union, Callable, Type, Awaitable
 
 from aiogram.filters.callback_data import CallbackData
 from aiogram.utils.keyboard import InlineKeyboardBuilder
@@ -22,7 +22,7 @@ class InlineKeyboards:
         self.__last_page = ">>>"
 
     def _pagination(self,
-                    data_object: Callable[[Type[CallbackData]], CallbackData],
+                    data_object: Callable[[Type[CallbackData]], Awaitable[CallbackData]],
                     pages_count: int,
                     current_page: int,
                     **kwargs: object) -> list[InlineKeyboardButton] | list:
@@ -76,7 +76,7 @@ class InlineKeyboards:
              as_button: bool = False) -> InlineKeyboardMarkup | InlineKeyboardButton:
         builder = InlineKeyboardBuilder()
 
-        back = InlineKeyboardButton(text=LazyProxy('buttons-back'), 
+        back = InlineKeyboardButton(text=LazyProxy('buttons-back'),
                                     callback_data=callback_data)
         if as_button:
             return back
@@ -277,9 +277,9 @@ class InlineKeyboards:
                                             callback_data=Callback.StartMenu.choose_neuro)
         my_account = InlineKeyboardButton(text=LazyProxy('buttons-my_account'),
                                           callback_data=Callback.StartMenu.my_account)
-        stats = InlineKeyboardButton(text=LazyProxy('buttons-stats'), 
+        stats = InlineKeyboardButton(text=LazyProxy('buttons-stats'),
                                      callback_data=Callback.StartMenu.stats)
-        about = InlineKeyboardButton(text=LazyProxy('buttons-about'), 
+        about = InlineKeyboardButton(text=LazyProxy('buttons-about'),
                                      callback_data=Callback.StartMenu.about)
 
         builder.add(choose_neuro, my_account, stats, about)

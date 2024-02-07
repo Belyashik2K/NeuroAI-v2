@@ -1,6 +1,6 @@
 from aiohttp import ClientSession
 
-from typing import Any, Optional
+from typing import Optional
 
 from .errors import FutureForgeError
 from ..base_request import HTTPClient
@@ -23,19 +23,19 @@ class FutureForgeRequest(HTTPClient):
                 return await response.json()
 
     async def _voice_request(self,
-                            method: str, 
-                            neuro: str,
-                            uri: str, 
-                            **kwargs) -> bytes:
+                             method: str,
+                             neuro: str,
+                             uri: str,
+                             **kwargs) -> bytes:
         kwargs = self._check_api_key(kwargs)
         async with ClientSession() as session:
             async with session.request(method, uri, **kwargs) as response:
                 await self._check_status_code(response.status, neuro, uri, kwargs)
                 return await response.read()
 
-    async def _check_status_code(self, 
-                                 status_code: dict,
-                                 neuro: str, 
+    async def _check_status_code(self,
+                                 status_code: int,
+                                 neuro: str,
                                  uri: str,
                                  kwargs: dict) -> None:
         if status_code != 200:
@@ -49,5 +49,3 @@ class FutureForgeRequest(HTTPClient):
         except KeyError:
             kwargs['params'] = {'apikey': config.FUTURE_FORGE_API_KEY.get_secret_value()}
         return kwargs
-    
-    

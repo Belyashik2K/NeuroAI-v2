@@ -5,7 +5,7 @@ from .settings import Settings
 from .chat import Chat
 
 __all__ = [
-    "User"
+    "User",
     "Neuro",
     "Settings",
     "Chat"

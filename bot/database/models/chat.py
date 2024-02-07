@@ -9,6 +9,7 @@ from sqlalchemy.orm import Mapped, mapped_column as Column
 
 from .base import Base
 
+
 class Chat(Base):
     """Chat model.
     
@@ -23,14 +24,14 @@ class Chat(Base):
     __tablename__ = 'chats'
     id: Mapped[int] = Column(Integer, primary_key=True)
     chat_id: Mapped[int] = Column(BigInteger, unique=True, nullable=False)
-    registered_at: Mapped[DateTime] = Column(DateTime, 
-                            server_default=func.now(),
-                            default=datetime.datetime.now,
-                            nullable=False)
-    last_activity: Mapped[DateTime] = Column(DateTime, 
-                            server_default=func.now(),
-                            default=datetime.datetime.now, 
-                            nullable=False)
+    registered_at: Mapped[DateTime] = Column(DateTime,
+                                             server_default=func.now(),
+                                             default=datetime.datetime.now,
+                                             nullable=False)
+    last_activity: Mapped[DateTime] = Column(DateTime,
+                                             server_default=func.now(),
+                                             default=datetime.datetime.now,
+                                             nullable=False)
     request_counter: Mapped[int] = Column(BigInteger, default=0, nullable=False)
     automatic_transcription: Mapped[bool] = Column(Boolean, default=True, nullable=False)
 

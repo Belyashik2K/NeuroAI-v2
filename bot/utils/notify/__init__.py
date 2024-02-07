@@ -2,4 +2,6 @@ from .sender import AdminNotify
 
 sender = AdminNotify()
 
-__all__ = ['sender']
+__all__ = [
+    'sender'
+]

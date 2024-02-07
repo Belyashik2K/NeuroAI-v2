@@ -10,12 +10,14 @@ from ...fsm import *
 
 router: Final[Router] = Router(name=__name__)
 
-@router.callback_query(F.data==data.AdminPanel.find_user)
+
+@router.callback_query(F.data == data.AdminPanel.find_user)
 async def find_user(call: types.CallbackQuery, user: User, state: FSMContext, i18n: I18nContext):
-    await call.message.edit_text(i18n.messages.admin_find_user(), 
+    await call.message.edit_text(i18n.messages.admin_find_user(),
                                  reply_markup=inline.back(data.StartMenu.admin))
     await state.set_state(AdminPanel.find_user)
     await state.update_data(message_id=call.message.message_id)
+
 
 @router.message(AdminPanel.find_user)
 async def find_user_message(message: types.Message, user: User, state: FSMContext, i18n: I18nContext):
@@ -23,9 +25,9 @@ async def find_user_message(message: types.Message, user: User, state: FSMContex
     await message.delete()
     info = await database.get_user(message.text, True)
     if not info:
-        await message.bot.edit_message_text(chat_id=message.chat.id, 
-                                            message_id=state_data['message_id'], 
-                                            text=i18n.errors.user_not_found(), 
+        await message.bot.edit_message_text(chat_id=message.chat.id,
+                                            message_id=state_data['message_id'],
+                                            text=i18n.errors.user_not_found(),
                                             reply_markup=inline.back(data.StartMenu.admin))
         return
     formatting = {
@@ -34,11 +36,12 @@ async def find_user_message(message: types.Message, user: User, state: FSMContex
         'request_counter': info.request_counter,
         'join_date': info.registered_at.strftime('%d.%m.%Y %H:%M:%S'),
     }
-    await message.bot.edit_message_text(chat_id=message.chat.id, 
-                                        message_id=state_data['message_id'], 
-                                        text=i18n.messages.admin_user_info(**formatting), 
+    await message.bot.edit_message_text(chat_id=message.chat.id,
+                                        message_id=state_data['message_id'],
+                                        text=i18n.messages.admin_user_info(**formatting),
                                         reply_markup=await inline.user_actions(info, message))
     await state.clear()
+
 
 @router.callback_query(data.BanUser.filter())
 async def ban_user(call: types.CallbackQuery, callback_data: data.BanUser,
@@ -51,6 +54,7 @@ async def ban_user(call: types.CallbackQuery, callback_data: data.BanUser,
     new = await database.update_user(user_id=user_id, is_banned=not user.is_banned)
     await call.answer(i18n.messages.admin_success_edit())
     await call.message.edit_reply_markup(reply_markup=await inline.user_actions(new, call))
+
 
 @router.callback_query(data.AdminUser.filter())
 async def add_admin(call: types.CallbackQuery, callback_data: data.AdminUser,

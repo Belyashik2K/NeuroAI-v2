@@ -8,9 +8,11 @@ from ...keyboards import data
 
 router: Final[Router] = Router(name=__name__)
 
+
 @router.callback_query(F.data == data.Pagination.unavailable_page)
 async def unavailable_page(call: CallbackQuery, i18n: I18nContext):
     await call.answer(i18n.errors.unavailable_page())
+
 
 @router.callback_query(F.data == data.Pagination.show_page)
 async def show_page(call: CallbackQuery, i18n: I18nContext):

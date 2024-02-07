@@ -1,5 +1,6 @@
 from ..config import config
 
+
 class Links:
 
     @staticmethod

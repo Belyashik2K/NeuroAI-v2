@@ -6,10 +6,11 @@ from aiogram_i18n import LazyProxy
 
 from ...database import database
 
+
 class MaintenanceMiddleware(BaseMiddleware):
-    async def __call__(self, 
-                       handler: Callable[[TelegramObject, Dict[str, Any]], Awaitable[Any]], 
-                       event: TelegramObject, 
+    async def __call__(self,
+                       handler: Callable[[TelegramObject, Dict[str, Any]], Awaitable[Any]],
+                       event: TelegramObject,
                        data: Dict[str, Any]) -> Any:
         user_event = event.message or event.callback_query
         user = await database.get_user(user_id=user_event.from_user.id)

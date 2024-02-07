@@ -7,6 +7,7 @@ from ...keyboards import inline, data
 
 router: Final[Router] = Router(name=__name__)
 
+
 @router.message(LazyProxy('buttons-admin'))
 async def admin_panel(message: types.Message, user: User, i18n: I18nContext):
     await message.delete()
@@ -14,7 +15,8 @@ async def admin_panel(message: types.Message, user: User, i18n: I18nContext):
         i18n.messages.admin_panel(),
         reply_markup=await inline.admin()
     )
-    
+
+
 @router.callback_query(F.data == data.StartMenu.admin)
 async def back(call: types.CallbackQuery, i18n: I18nContext):
     await call.message.edit_text(

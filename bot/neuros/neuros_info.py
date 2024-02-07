@@ -1,5 +1,6 @@
 from ..enums import Neuro, Provider, Category
 
+
 class NeuroInfo:
     not_working = [Neuro.ENHANCE, Neuro.DALLE3, Neuro.BENDER]
     neuros_alph = {
@@ -40,5 +41,5 @@ class NeuroInfo:
                              Neuro.THEALLYSMIX, Neuro.TIMELESS, Neuro.TOONYOU,
                              Neuro.ANIMEART, Neuro.DYNAVISION, Neuro.JUGGERNAUT,
                              Neuro.SDXL],
-                             }
+        }
     }

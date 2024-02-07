@@ -6,6 +6,7 @@ from aiogram_i18n import LazyProxy
 from ..database import database
 from ..keyboards import data
 
+
 class isNeuroActive(BaseFilter):
     async def __call__(self, call: CallbackQuery, callback_data: data.Neuro) -> bool:
         neuro = await database.get_neuro(callback_data.name)

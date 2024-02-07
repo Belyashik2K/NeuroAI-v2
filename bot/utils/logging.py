@@ -3,10 +3,11 @@ import os
 
 from ..config import config
 
+
 async def setup():
     from ..loader import bot
     bot_info = await bot.get_me()
-    
+
     if not os.path.exists('./logging'):
         os.mkdir('./logging')
 

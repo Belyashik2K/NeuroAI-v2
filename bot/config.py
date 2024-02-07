@@ -1,6 +1,7 @@
 from pydantic import SecretStr
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
+
 class Settings(BaseSettings):
     BOT_TOKEN: SecretStr
     FUTURE_FORGE_API_KEY: SecretStr
@@ -37,5 +38,6 @@ class Settings(BaseSettings):
     @property
     def sqlite_dsn(self) -> str:
         return self.sqlite_database
+
 
 config: Settings = Settings()

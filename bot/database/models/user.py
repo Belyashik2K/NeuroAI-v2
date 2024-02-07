@@ -13,6 +13,7 @@ from ...enums import Locale
 
 from .base import Base
 
+
 class User(Base):
     """User model.
     
@@ -35,34 +36,34 @@ class User(Base):
     user_id: Mapped[int] = Column(BigInteger(), unique=True, nullable=False)
     full_name: Mapped[str] = Column(String(255), nullable=False)
     username: Mapped[str] = Column(String(255))
-    registered_at: Mapped[datetime] = Column(DateTime, 
+    registered_at: Mapped[datetime] = Column(DateTime,
                                              server_default=func.now(),
-                                             default=datetime.now, 
+                                             default=datetime.now,
                                              nullable=False)
-    last_activity: Mapped[datetime] = Column(DateTime, 
+    last_activity: Mapped[datetime] = Column(DateTime,
                                              server_default=func.now(),
-                                             default=datetime.now, 
+                                             default=datetime.now,
                                              nullable=False)
     request_counter: Mapped[int] = Column(BigInteger(), default=0, nullable=False)
-    locale: Mapped[str] = Column(String(2), 
+    locale: Mapped[str] = Column(String(2),
                                  server_default=Locale.DEFAULT,
-                                 default=Locale.DEFAULT, 
+                                 default=Locale.DEFAULT,
                                  nullable=False)
-    first_language_set: Mapped[bool] = Column(Boolean, 
+    first_language_set: Mapped[bool] = Column(Boolean,
                                               server_default="0",
-                                              default=False, 
+                                              default=False,
                                               nullable=False)
     is_admin: Mapped[bool] = Column(Boolean, default=False, nullable=False)
     is_banned: Mapped[bool] = Column(Boolean, default=False, nullable=False)
 
     def __repr__(self) -> str:
         return f"<User(id={self.id}, user_id={self.user_id}, full_name={self.full_name}, username={self.username}, last_activity={self.last_activity}, locale={self.locale}, is_admin={self.is_admin})>"
-    
+
     @property
     def url(self) -> str:
         """User's url in Telegram."""
         return create_tg_link("user", id=self.user_id)
-    
+
     @property
     def mention(self) -> str:
         """User's mention in Telegram."""
