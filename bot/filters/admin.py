@@ -3,6 +3,7 @@ from aiogram.types import Update
 
 from ..database import database
 
+
 class IsAdmin(BaseFilter):
     def __get_id(self, update: Update) -> int:
         try:
@@ -13,7 +14,8 @@ class IsAdmin(BaseFilter):
     async def __call__(self, update: Update) -> bool:
         user = await database.get_user(user_id=self.__get_id(update))
         return user.is_admin
-    
+
+
 class IsUserAdminInChat(BaseFilter):
     async def __call__(self, update: Update) -> bool:
         try:

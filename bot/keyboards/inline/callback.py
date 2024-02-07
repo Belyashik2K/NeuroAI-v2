@@ -1,5 +1,6 @@
 from aiogram.filters.callback_data import CallbackData
 
+
 class Callback:
     close = 'close'
 
@@ -23,7 +24,7 @@ class Callback:
         change_neuro = 'change_neuro'
         maintenance = 'maintenance'
 
-    class Chat: # TODO: remove
+    class Chat:  # TODO: remove
         autotrans = 'autotrans'
 
     # Factories for CallbackData

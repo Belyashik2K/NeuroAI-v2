@@ -7,11 +7,12 @@ from datetime import datetime
 
 from ...database import database
 
+
 class ChatMiddleware(BaseMiddleware):
     async def __call__(self,
-                          handler: Callable[[TelegramObject, Dict[str, Any]], Awaitable[Any]], 
-                          event: TelegramObject, 
-                          data: Dict[str, Any]) -> Any:
+                       handler: Callable[[TelegramObject, Dict[str, Any]], Awaitable[Any]],
+                       event: TelegramObject,
+                       data: Dict[str, Any]) -> Any:
         try:
             chat_id = event.chat.id
         except:

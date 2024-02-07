@@ -1,5 +1,4 @@
 class NotifyTexts:
-
     error = """😣 <b>An error occurred</b>
 
 👤 User Information

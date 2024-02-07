@@ -21,6 +21,7 @@ from aiogram.utils.backoff import Backoff, BackoffConfig
 logger: logging.Logger = logging.getLogger(__name__)
 DEFAULT_MAX_RETRIES: Final[int] = 7
 
+
 class RetryRequestMiddleware(BaseRequestMiddleware):
     backoff_config: BackoffConfig
     max_retries: int
@@ -28,18 +29,18 @@ class RetryRequestMiddleware(BaseRequestMiddleware):
     __slots__ = ("backoff_config", "max_retries")
 
     def __init__(
-        self,
-        backoff_config: BackoffConfig = DEFAULT_BACKOFF_CONFIG,
-        max_retries: int = DEFAULT_MAX_RETRIES,
+            self,
+            backoff_config: BackoffConfig = DEFAULT_BACKOFF_CONFIG,
+            max_retries: int = DEFAULT_MAX_RETRIES,
     ) -> None:
         self.backoff_config = backoff_config
         self.max_retries = max_retries
 
     async def __call__(
-        self,
-        make_request: NextRequestMiddlewareType[TelegramType],
-        bot: Bot,
-        method: TelegramMethod[TelegramType],
+            self,
+            make_request: NextRequestMiddlewareType[TelegramType],
+            bot: Bot,
+            method: TelegramMethod[TelegramType],
     ) -> Response[TelegramType]:
         backoff: Backoff = Backoff(config=self.backoff_config)
         retries: int = 0

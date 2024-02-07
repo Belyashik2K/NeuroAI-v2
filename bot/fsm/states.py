@@ -1,5 +1,6 @@
 from aiogram.fsm.state import State, StatesGroup
 
+
 class NeuroRequest(StatesGroup):
     request = State()
     image_request = State()
@@ -9,6 +10,7 @@ class NeuroRequest(StatesGroup):
     midjourneyv6 = State()
     enchance_image = State()
     chating = State()
+
 
 class AdminPanel(StatesGroup):
     find_user = State()

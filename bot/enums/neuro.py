@@ -13,8 +13,8 @@ class Neuro:
     OPENCHAT = 'openchat'
     MYTHOMIST = 'mythomist'
     CINEMATIKA = 'cinematika'
-    RWKV5WORLD= 'rwkv5world'
-    RWKV5AITOWN= 'rwkv5aitown'
+    RWKV5WORLD = 'rwkv5world'
+    RWKV5AITOWN = 'rwkv5aitown'
 
     # From FutureForgeAPI
     PLAYGROUND = 'playground'
@@ -72,7 +72,7 @@ class Neuro:
     THEALLYSMIX = 'theallysmix'
     TIMELESS = 'timeless'
     TOONYOU = 'toonyou'
-    
+
     # From FutureForgeAPI
     WHISPER = 'whisper'
     BENDER = 'bender'

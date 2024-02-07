@@ -1,3 +1,5 @@
 from .retry import RetryRequestMiddleware
 
-__all__ = ["RetryRequestMiddleware"]
+__all__ = [
+    "RetryRequestMiddleware"
+]

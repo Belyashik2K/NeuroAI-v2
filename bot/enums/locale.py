@@ -1,5 +1,6 @@
 from typing import Optional
 
+
 class Locale:
     EN = "en"
     RU = "ru"

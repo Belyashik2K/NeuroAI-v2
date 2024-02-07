@@ -1,9 +1,8 @@
-from typing import Optional
+from typing import Optional, Tuple, Any
 
 from .request import FutureForgeRequest
 from .errors import *
 
-from ...keyboards import data
 from ...enums import *
 
 
@@ -46,7 +45,7 @@ class FutureForge(FutureForgeRequest):
                          message: str,
                          mode: str,
                          chat_code: Optional[str] = None
-                        ) -> list:
+                         ) -> tuple[str, str]:
         """Generate text with prompt.
         
         Args:
@@ -59,27 +58,27 @@ class FutureForge(FutureForgeRequest):
         Returns:
             list: Generated text and chat code."""
         neuro_name = self._neuros[neuro]
-        json_data = {'message': message, 
+        json_data = {'message': message,
                      'model': neuro_name}
-        
+
         if mode == Mode.ONE:
             result = await self._request(method=self._METHOD,
-                                         neuro=neuro, 
-                                         uri=self._URL + 'chat/create', 
+                                         neuro=neuro,
+                                         uri=self._URL + 'chat/create',
                                          json=json_data
-                                         )                           
+                                         )
         else:
             json_data['chatCode'] = chat_code
             result = await self._request(method=self._METHOD,
-                                         neuro=neuro, 
-                                         uri=self._URL + 'chat/chat', 
+                                         neuro=neuro,
+                                         uri=self._URL + 'chat/chat',
                                          json=json_data)
         return result['message'].strip(), result['chatCode']
-     
+
     async def image_neuro(self,
                           neuro: str,
                           prompt: str
-                         ) -> str:
+                          ) -> str:
         """Generate image with prompt.
         
         Args:
@@ -100,16 +99,16 @@ class FutureForge(FutureForgeRequest):
 
         neuro_name = self._image_neuros[neuro]
         uri = self._URL + neuro_name
-        
+
         if neuro != Neuro.DALLE3:
             result = await self._request(method=self._METHOD,
-                                         neuro=neuro, 
-                                         uri=uri, 
+                                         neuro=neuro,
+                                         uri=uri,
                                          params=params)
         else:
             result = await self._request(method=self._METHOD,
-                                         neuro=neuro, 
-                                         uri=uri, 
+                                         neuro=neuro,
+                                         uri=uri,
                                          json=params)
         return result['image_url']
 
@@ -130,21 +129,21 @@ class FutureForge(FutureForgeRequest):
         uri = self._URL + neuro_name
 
         json = {'text': text[:330]}
-        headers = { 
-            'accept': 'audio/mpeg', 
-            'Content-Type': 'application/json' 
-        } 
+        headers = {
+            'accept': 'audio/mpeg',
+            'Content-Type': 'application/json'
+        }
         result = await self._voice_request(method=self._METHOD,
-                                           neuro=neuro, 
-                                           uri=uri, 
-                                           headers=headers, 
+                                           neuro=neuro,
+                                           uri=uri,
+                                           headers=headers,
                                            json=json)
         return result
 
     async def enchance_image_neuro(self,
                                    neuro: str,
                                    image_url: str
-                                  ) -> str:
+                                   ) -> str:
         """Enhance image.
         
         Args:
@@ -159,8 +158,8 @@ class FutureForge(FutureForgeRequest):
 
         # Not available now on FutureForge API
         raise FutureForgeError('Not available now on FutureForge API')
-        return None 
-    
+        return None
+
     async def sdv_neuro(self,
                         neuro: str,
                         image_url: str
@@ -181,11 +180,11 @@ class FutureForge(FutureForgeRequest):
         params['num_videos'] = 1
 
         result = await self._request(method=self._METHOD,
-                                     neuro=neuro, 
-                                     uri=uri, 
+                                     neuro=neuro,
+                                     uri=uri,
                                      params=params)
         return result['video_links'][0]
-    
+
     async def whisper_neuro(self,
                             neuro: str,
                             file_url: str
@@ -203,14 +202,14 @@ class FutureForge(FutureForgeRequest):
         uri = self._URL + neuro_name
 
         result = await self._request(method=self._METHOD,
-                                    neuro=neuro, 
-                                    uri=uri, 
-                                    params={'filepath': file_url})
+                                     neuro=neuro,
+                                     uri=uri,
+                                     params={'filepath': file_url})
         return result['response_data']
-    
+
     async def tencentmaker(self,
-                         image_url: str,
-                         prompt: str) -> str:
+                           image_url: str,
+                           prompt: str) -> str:
         """Generate image with prompt.
         
         Args:   
@@ -234,7 +233,7 @@ class FutureForge(FutureForgeRequest):
                                      uri=uri,
                                      params=params)
         return result['image_url']
-    
+
     async def midjourneyv6(self,
                            prompt: str) -> str:
         """Generate image with prompt.

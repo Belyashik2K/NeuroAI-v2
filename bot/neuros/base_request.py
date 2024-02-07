@@ -4,7 +4,7 @@ from typing import TYPE_CHECKING, Callable, Awaitable, Any
 
 class HTTPClient(ABC):
     """Base class for HTTP clients."""
-        
+
     if TYPE_CHECKING:
         _request: Callable[..., Awaitable[dict]]
         _voice_request: Callable[..., Awaitable[bytes]]

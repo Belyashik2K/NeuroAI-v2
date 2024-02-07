@@ -4,6 +4,7 @@ from sqlalchemy.orm import Mapped, mapped_column as Column
 
 from .base import Base
 
+
 class Settings(Base):
     """Settings model.
     

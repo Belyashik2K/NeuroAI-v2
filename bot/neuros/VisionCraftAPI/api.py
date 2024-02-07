@@ -1,7 +1,6 @@
-from asyncio import sleep
+from typing import List
 
-from .request import VisionCraftRequest, VisionCraftError
-
+from .request import VisionCraftRequest
 from ...config import config
 from ...enums import Neuro
 
@@ -14,7 +13,7 @@ class VisionCraft(VisionCraftRequest):
         self._METHOD = 'POST'
 
         self.__KEY = config.VISION_CRAFT_API_KEY.get_secret_value()
-        
+
         self.__negative = """Ugly, Disfigured, Deformed, Low quality,
                             Pixelated, Blurry, Grains, Text, 
                             Watermark, Signature, Out of frame, 
@@ -91,18 +90,18 @@ class VisionCraft(VisionCraftRequest):
 
     @staticmethod
     def prepare_answer(answer: str) -> str:
-        return answer.replace('USER:','').strip()
+        return answer.replace('USER:', '').strip()
 
     async def chatting(self,
                        neuro: str,
                        messages: list
-                       ) -> str:
+                       ) -> list[str]:
         neuro_name = self._llm_neuros[neuro]
         data = {
             "token": self.__KEY,
             "model": neuro_name,
             "messages": messages
-            }
+        }
 
         result = await self._request(neuro=neuro,
                                      uri=self._URL + 'llm',
@@ -111,7 +110,7 @@ class VisionCraft(VisionCraftRequest):
         return [self.prepare_answer(answer=result['choices'][0]['message']['content'])]
 
     async def image_neuro(self,
-                          neuro: str, 
+                          neuro: str,
                           prompt: str) -> str:
         if neuro in self._image_neuros:
             neuro_name = self._image_neuros[neuro]
@@ -130,11 +129,11 @@ class VisionCraft(VisionCraftRequest):
                 "nsfw_filter": False
                 }
         result = await self._request(neuro=neuro,
-                                    uri=self._URL + 'generate',
-                                    method=self._METHOD,
-                                    json=data)
-        return result['images'] 
-    
+                                     uri=self._URL + 'generate',
+                                     method=self._METHOD,
+                                     json=data)
+        return result['images']
+
     async def xl_image_neuro(self,
                              neuro: str,
                              prompt: str) -> str:
@@ -150,14 +149,14 @@ class VisionCraft(VisionCraftRequest):
             "cfg_scale": 10,
             "watermark": False,
             "nsfw_filter": False
-            }
+        }
 
         result = await self._request(neuro=neuro,
-                                    uri=self._URL + 'generate-xl',
-                                    method=self._METHOD,
-                                    json=data)
+                                     uri=self._URL + 'generate-xl',
+                                     method=self._METHOD,
+                                     json=data)
         return result['images'][0]
-       
+
     async def enchance_image(self,
                              neuro: str,
                              photo_url: str) -> bytes:
@@ -175,12 +174,12 @@ class VisionCraft(VisionCraftRequest):
 
     async def check_job_status(self,
                                neuro: str,
-                               job_id: str) -> str:
+                               job_id: str) -> str | bool:
         data = {
             "job_id": job_id,
             "nsfw_filter": False,
             "watermark": False
-            }
+        }
         result = await self._request(neuro=neuro,
                                      uri=self._URL + 'job-status',
                                      method=self._METHOD,

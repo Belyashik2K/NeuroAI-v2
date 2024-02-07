@@ -14,8 +14,9 @@ from ...config import config
 
 router: Final[Router] = Router(name=__name__)
 
+
 @router.message(any_state, CommandStart())
-async def start(message: types.Message, user: User,  i18n: I18nContext, state: FSMContext):
+async def start(message: types.Message, user: User, i18n: I18nContext, state: FSMContext):
     await state.clear()
     if not user.first_language_set:
         await message.answer(
@@ -33,6 +34,7 @@ async def start(message: types.Message, user: User,  i18n: I18nContext, state: F
             i18n.messages.info(**formatting),
             reply_markup=reply.menu(user)
         )
+
 
 @router.callback_query(F.data.in_(Locale.DATA_LIST))
 async def menu(call: types.CallbackQuery, user: User, i18n: I18nContext):

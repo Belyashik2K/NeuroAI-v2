@@ -1,5 +1,6 @@
 from typing import Optional
 
+
 class Chatting:
 
     @staticmethod
@@ -10,7 +11,7 @@ class Chatting:
         message = {
             "role": role,
             "content": content
-            }
+        }
         message_list.append(message)
 
         return message_list if len(message_list) <= max_len else message_list[1:]

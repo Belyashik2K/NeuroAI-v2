@@ -1,7 +1,9 @@
 from ..enums import Neuro, Provider, Category
 
+
 class NeuroInfo:
-    not_working = [Neuro.ENHANCE, Neuro.DALLE3, Neuro.BENDER]
+    not_working = [Neuro.ENHANCE, Neuro.DALLE3, Neuro.BENDER,
+                   Neuro.MIDJOURNEYV6]
     neuros_alph = {
         Provider.FUTUREFORGE: {
             Category.TEXT: [Neuro.CHATGPT, Neuro.CLAUDE, Neuro.GOOGLE,
@@ -40,5 +42,5 @@ class NeuroInfo:
                              Neuro.THEALLYSMIX, Neuro.TIMELESS, Neuro.TOONYOU,
                              Neuro.ANIMEART, Neuro.DYNAVISION, Neuro.JUGGERNAUT,
                              Neuro.SDXL],
-                             }
+        }
     }

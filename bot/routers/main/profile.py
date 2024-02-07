@@ -10,6 +10,7 @@ from ...keyboards import inline, data
 
 router: Final[Router] = Router(name=__name__)
 
+
 @router.message(any_state, F.text == LazyProxy("buttons-my_account"))
 async def profile(message: types.Message, user: User, state: FSMContext, i18n: I18nContext):
     await message.delete()
@@ -21,6 +22,7 @@ async def profile(message: types.Message, user: User, state: FSMContext, i18n: I
         "join_date": user.registered_at.strftime('%d.%m.%Y %H:%M'),
     }
     await message.answer(i18n.messages.my_profile(**data), reply_markup=inline.my_profile())
+
 
 @router.callback_query(F.data == data.StartMenu.my_account)
 async def back(call: types.CallbackQuery, i18n: I18nContext, user: User, state: FSMContext):
