@@ -81,10 +81,12 @@ is_sqlite = True # If you want to use SQLite, set this to True, otherwise False
 is_debug = False # If you want to use debug mode in logging, set this to True otherwise False
 ```
 
-**4.** **Совершите** необходимые **миграции**. Если вы используете **SQLite** - сначала **создайте** **файл** базы данных по пути из значения _sqlite_database_. **Запустите** миграцию.
+**4.** **Совершите** необходимые **миграции**. 
 ```python
 alembic upgrade head
 ```
+**_Внимание!_** Если вы используете **базу данных**, **отличную** от _SQLite_ - для начала **удалите** все **файлы** из папки _migrations/versions_, **создайте** новую **ревизию** с помощью **команды** <code>alembic revision --autogenerate -m 'Название ревизии'</code> и только **после** этого **совершайте** **миграцию**!
+
 **5.** **Откройте** и **запустите** файл _run.py_. **Бинго**, бот **работает**!
 
 ## Ссылки
@@ -174,10 +176,12 @@ is_sqlite = True # If you want to use SQLite, set this to True, otherwise False
 is_debug = False # If you want to use debug mode in logging, set this to True otherwise False
 ```
 
-**4.** **Perform** the necessary **migrations**. If you are using **SQLite**, first **create** the **database file** at the path specified in _sqlite_database_. **Run** the migration.
+**4.** **Perform** the necessary **migrations**.
 ```python
 alembic upgrade head
 ```
+**_Attention!_** If you are using a **database** that is **different** from _SQLite_ - first **delete** all **files** from the _migrations/versions_ folder, **create** a new **revision** using the **command** <code>alembic revision --autogenerate -m 'Revision name'</code> and only **after** this **make** **migration**!
+
 **5.** **Open** and **run** the _run.py_ file. Bingo, the bot is **running**!
 
 ## Links
