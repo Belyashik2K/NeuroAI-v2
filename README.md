@@ -48,6 +48,7 @@
 * **Уведомления** **администраторам** об **ошибках** и **новых пользователях**
 * **Многофункциональное** меню администратора с возможностью **ручного отключения/включения нейросетей**, системой выдачи админских **привилегий**, возможность **бана** пользователей и **включение/отключение режима технических работ**, **многофункциональное** меню **рассылки**
 ## Установка
+### > Вручную (SQLite или PostgreSQL)
 **1.** **Клонируйте** проект к себе на устройство
 ```
 git clone https://github.com/Belyashik2K/NeuroAI-v2.git
@@ -90,6 +91,42 @@ alembic upgrade head
 **_Внимание!_** Если вы используете **базу данных**, **отличную** от _SQLite_ - для начала **удалите** все **файлы** из папки _migrations/versions_, **создайте** новую **ревизию** с помощью **команды** <code>alembic revision --autogenerate -m 'Название ревизии'</code> и только **после** этого **совершайте** **миграцию**!
 
 **5.** **Откройте** и **запустите** файл _run.py_. **Бинго**, бот **работает**!
+
+### Через Docker (только SQLite)
+
+**1.** **Клонируйте** проект к себе на устройство
+```
+git clone https://github.com/Belyashik2K/NeuroAI-v2.git
+```
+**2.** **Переименуйте** файл _.env.example_ в _.env_, **откройте** его любым текстовым редактором или IDE и **установите** свои значения, **например**:
+```python
+BOT_TOKEN="XXXXXXXXXXXXXXXXXXX" # Your bot token (@BotFather)
+FUTURE_FORGE_API_KEY = "XXXXXXXXXXX" # Your API-key for FutureForgeAPI (@futureforgedev_bot)
+VISION_CRAFT_API_KEY = "XXXXXXXXXXX" # Your API-key for VisionCraftAPI (@VisionCraft_bot)
+
+technical_support = "@Belyashik2K" # Technical support username with @
+ads = "@Belyashik2K" # Ads-manager/creator username with @
+
+admin_chat = -1111111111111 # Admin user/chat id for notifications
+admin_id = 123456789 # ID for first admin (for "👨‍💻 Administrator Panel" button)
+
+channel_link = "https://t.me/NeuroAIchannel" # Channel link for "📢 Наш канал" button
+
+driver_name="postgresql+asyncpg"
+postgres_user="postgres"
+postgres_password="postgres"
+postgres_host="localhost"
+postgres_port="5432"
+postgres_database="postgres"
+sqlite_database="sqlite+aiosqlite:///bot/database/base.db" # Don't change this if you don't know what you're doing!
+
+is_sqlite = True # Don't edit it if you are using Docker
+is_debug = False # If you want to use debug mode in logging, set this to True otherwise False
+```
+**3.** **Запустите** контейнер. Бинго, бот работает!
+```docker
+docker-compose up
+```
 
 ## Ссылки
 * [Автор бота](https://t.me/belyashik2k)
@@ -145,6 +182,7 @@ I express **special** **gratitude** to the [author](https://t.me/futureforge_cha
 * **Multifunctional** administrator menu with the ability to **manually disable/enable neural networks**, a system for granting admin **privileges**, the ability to **ban** users, and **enable/disable maintenance mode**, **multifunctional** **broadcast menu**
 
 ## Installation
+### > Manual (SQLite or PostgreSQL)
 **1.** **Clone** the project to your device
 ```
 git clone https://github.com/Belyashik2K/NeuroAI-v2.git
@@ -187,6 +225,42 @@ alembic upgrade head
 **_Attention!_** If you are using a **database** that is **different** from _SQLite_ - first **delete** all **files** from the _migrations/versions_ folder, **create** a new **revision** using the **command** <code>alembic revision --autogenerate -m 'Revision name'</code> and only **after** this **make** **migration**!
 
 **5.** **Open** and **run** the _run.py_ file. Bingo, the bot is **running**!
+
+### Via Docker (only SQLite)
+
+**1.** **Clone** the project to your device
+```
+git clone https://github.com/Belyashik2K/NeuroAI-v2.git
+```
+**2.** **Rename** the _.env.example_ file to _.env_, **open** it with any text editor or IDE, and set your values, for **example**:
+```python
+BOT_TOKEN="XXXXXXXXXXXXXXXXXXX" # Your bot token (@BotFather)
+FUTURE_FORGE_API_KEY = "XXXXXXXXXXX" # Your API-key for FutureForgeAPI (@futureforgedev_bot)
+VISION_CRAFT_API_KEY = "XXXXXXXXXXX" # Your API-key for VisionCraftAPI (@VisionCraft_bot)
+
+technical_support = "@Belyashik2K" # Technical support username with @
+ads = "@Belyashik2K" # Ads-manager/creator username with @
+
+admin_chat = -1111111111111 # Admin user/chat id for notifications
+admin_id = 123456789 # ID for first admin (for "👨‍💻 Administrator Panel" button)
+
+channel_link = "https://t.me/NeuroAIchannel" # Channel link for "📢 Наш канал" button
+
+driver_name="postgresql+asyncpg"
+postgres_user="postgres"
+postgres_password="postgres"
+postgres_host="localhost"
+postgres_port="5432"
+postgres_database="postgres"
+sqlite_database="sqlite+aiosqlite:///bot/database/base.db" # Don't change this if you don't know what you're doing!
+
+is_sqlite = True # Don't edit it if you are using Docker
+is_debug = False # If you want to use debug mode in logging, set this to True otherwise False
+```
+**3.** **Run** container. Bingo, the bot is **running**!
+```docker
+docker-compose up
+```
 
 ## Links
 * [Bot Author](https://t.me/belyashik2k)
