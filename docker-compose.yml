@@ -1,0 +1,10 @@
+version: '3.7'
+
+services:
+
+  bot:
+    build: .
+    command: sh -c "alembic upgrade head && python run.py"
+    env_file:
+      - .env
+    restart: always
