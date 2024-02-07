@@ -10,7 +10,7 @@
 Выражаю **отдельную** **благодарность** [автору](https://t.me/futureforge_channel) FutureForge API и [авторам](https://t.me/visioncraft_channel) VisionCraft API за разработку таких грандиозных проектов! Спасибо!
 
 ## Преимущества
-* **69** нейросетей, из которых на данный момент **полностью работают** **65**
+* **69** нейросетей, из которых на данный момент **полностью работают** **64**
   * **Работают**
     * _ChatGPT (GPT 3.5)_
     * _Claude AI_
@@ -22,7 +22,6 @@
     * _StableDiffusionXL_
     * _Playground v2_
     * _Midjourney V4_
-    * _Midjourney V6_
     * _StableDiffusion Video_
     * _TencentARC PhotoMaker_
     * _Whisper V3_
@@ -31,6 +30,7 @@
     * _EnhanceImage_
     * _DALL·E 3_
     * _HighResolutionControlnetTile_
+    * _Midjourney V6_
 * **Мультиязычность** бота на основе библиотеки **aiogram_i18n** + **fluent.runtime**
   * **Доступные языки**
     * _Русский_
@@ -102,7 +102,7 @@ The bot runs on the **aiogram v3.x.x** version and uses **SQLAlchemy** for datab
 I express **special** **gratitude** to the [author](https://t.me/futureforge_channel) of the FutureForge API and the [authors](https://t.me/visioncraft_channel) of the VisionCraft API for developing such grand projects! Thank you!
 
 ## Advantages
-* **69** neural networks, of which **65 are currently fully operational**
+* **69** neural networks, of which **64 are currently fully operational**
   * **Working**
     * _ChatGPT (GPT 3.5)_
     * _Claude AI_
@@ -114,7 +114,6 @@ I express **special** **gratitude** to the [author](https://t.me/futureforge_cha
     * _StableDiffusionXL_
     * _Playground v2_
     * _Midjourney V4_
-    * _Midjourney V6_
     * _StableDiffusion Video_
     * _TencentARC PhotoMaker_
     * _Whisper V3_
@@ -123,6 +122,7 @@ I express **special** **gratitude** to the [author](https://t.me/futureforge_cha
     * _EnhanceImage_
     * _DALL·E 3_
     * _HighResolutionControlnetTile_
+    * _Midjourney V6_
 * **Multilingual** bot based on the **aiogram_i18n** library + **fluent.runtime**
   * **Available languages**
     * _Russian_
