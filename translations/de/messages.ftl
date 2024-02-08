@@ -167,7 +167,7 @@ messages-chat_mode = 🎉 <b>Dialog mit dem Bot gestartet.</b> Um den Dialog zu 
 
 messages-in_work = 😌 Einen Moment bitte, ich bearbeite Ihre Anfrage...
 
-messages-chat_answer = 🤖 { $answer }
+messages-chat_answer = 🤖 
 
 messages-stop_chatting = 👋 Der Dialog mit dem Bot wurde beendet, Sie werden zum Hauptmenü zurückgebracht.
 

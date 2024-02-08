@@ -167,7 +167,7 @@ messages-chat_mode = 🎉 <b>与机器人的对话已开始。</b> 要结束对�
 
 messages-in_work = 😌 请稍等，我正在处理您的请求...
 
-messages-chat_answer = 🤖 { $answer }
+messages-chat_answer = 🤖 
 
 messages-stop_chatting = 👋 与机器人的对话已结束，正在返回主菜单。
 
