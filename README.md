@@ -1,7 +1,7 @@
 ![NeuroAI v2](https://github.com/Belyashik2K/NeuroAI-v2/assets/126521808/33972e93-4b25-4dae-8a22-1934d753b847)
 > [Telegram-бот](https://t.me/NeuroAItbot) для взаимодействия с нейросетями посредством [FutureForge API](https://api.futureforge.dev/docs#/) и [VisionCraft API](https://visioncraft-rs24.koyeb.app/docs). Обновлённая версия [NeuroAI](https://t.me/NeuroAIchannel).
 
-# >Russian
+# > Russian
 ## О боте
 **Обновлённая** версия [NeuroAI](https://t.me/NeuroAIchannel) - бота, **окончательно** потерявшего шанс на существование после 31 июля 2023 года. Работает на основе **бесплатного** [FutureForge API](https://api.futureforge.dev/docs#/) и [VisionCraft API](https://visioncraft-rs24.koyeb.app/docs), поэтому распространяется **абсолютно бесплатно** и **не имеет никаких коммерческих целей**.
 
@@ -92,7 +92,7 @@ alembic upgrade head
 
 **5.** **Откройте** и **запустите** файл _run.py_. **Бинго**, бот **работает**!
 
-### Через Docker (только SQLite)
+### > Через Docker (только SQLite)
 
 **1.** **Клонируйте** проект к себе на устройство
 ```
@@ -134,7 +134,7 @@ docker-compose up
 * [VisionCraft API](https://visioncraft-rs24.koyeb.app/docs)
 * [Пример бота](https://t.me/NeuroAItbot)
 
-# >English
+# > English
 ## About the Bot
 The **updated** version of [NeuroAI](https://t.me/NeuroAIchannel) bot, which has **finally** lost its chance of existence after July 31, 2023. It operates based on the **free** [FutureForge API](https://api.futureforge.dev/docs#/) and [VisionCraft API](https://visioncraft-rs24.koyeb.app/docs), so it is distributed **completely free** and has **no commercial purposes**.
 
@@ -226,7 +226,7 @@ alembic upgrade head
 
 **5.** **Open** and **run** the _run.py_ file. Bingo, the bot is **running**!
 
-### Via Docker (only SQLite)
+### > Via Docker (only SQLite)
 
 **1.** **Clone** the project to your device
 ```
