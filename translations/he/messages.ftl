@@ -167,7 +167,7 @@ messages-chat_mode = 🎉 <b>הדיאלוג עם הבוט התחיל.</b> כדי
 
 messages-in_work = 😌 רגע, אנא המתן, אני מעבד את הבקשה שלך...
 
-messages-chat_answer = 🤖 { $answer }
+messages-chat_answer = 🤖 
 
 messages-stop_chatting = 👋 סיום דיאלוג עם הבוט, אני מחזיר אותך לתפריט הראשי.
 
