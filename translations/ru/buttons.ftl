@@ -34,9 +34,7 @@ buttons-rwkv5aitown = 🏙 RWKV5 AITown
 buttons-LZLV = ☺️ LZLV 70B
 buttons-pygmalion = 🐽 Pygmalion
 buttons-airoboros = 💨 Airboros
-buttons-yichat = 🌸 YiChat
 buttons-dolphin = 🐬 Dolphin
-buttons-chronoshermes = 🧡 ChronosHermes
 
 buttons-juggernaut = 🦾 JuggernautXL V7
 buttons-dynavision = 👁️ DynaVisionXL
