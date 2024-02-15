@@ -15,6 +15,12 @@ class Neuro:
     CINEMATIKA = 'cinematika'
     RWKV5WORLD = 'rwkv5world'
     RWKV5AITOWN = 'rwkv5aitown'
+    LZLV = 'LZLV'
+    PYGMALION = 'pygmalion'
+    AIRBOROS = 'airoboros'
+    YICHAT = 'yichat'
+    DOLPHIN = 'dolphin'
+    CHRONOSHERMES = "chronoshermes"
 
     # From FutureForgeAPI
     PLAYGROUND = 'playground'

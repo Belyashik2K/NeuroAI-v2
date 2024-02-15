@@ -78,7 +78,13 @@ class VisionCraft(VisionCraftRequest):
             Neuro.MYTHOMIST: "mythomist-7b",
             Neuro.CINEMATIKA: "cinematika-7b",
             Neuro.RWKV5WORLD: "rwkv-5-world-3b",
-            Neuro.RWKV5AITOWN: "rwkv-5-3b-ai-town"
+            Neuro.RWKV5AITOWN: "rwkv-5-3b-ai-town",
+            Neuro.LZLV: "lzlv_70b_fp16_hf",
+            Neuro.PYGMALION: "pygmalion-13b-4bit-128g",
+            Neuro.AIRBOROS: "airoboros-l2-70b-gpt4-1.4.1",
+            Neuro.YICHAT: "Yi-34B-Chat",
+            Neuro.DOLPHIN: "dolphin-2.6-mixtral-8x7b",
+            Neuro.CHRONOSHERMES: "chronos-hermes-13b-v2"
         }
 
         self._xl_neuros = {
