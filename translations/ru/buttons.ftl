@@ -15,6 +15,7 @@ buttons-text = 📝 Текст
 buttons-image = 🖼 Изображения
 buttons-audio = 🎵 Аудио
 
+buttons-gpt4 = 🔥 ChatGPT (GPT 4)
 buttons-gpt = 💭 ChatGPT (GPT 3.5)
 buttons-claude = ☁️ Claude AI
 buttons-google = 📱 Google AI
@@ -30,6 +31,10 @@ buttons-mythomist = 🌌 Mythomist
 buttons-cinematika = 🎬 Cinematika
 buttons-rwkv5world = 🌍 RWKV5 World
 buttons-rwkv5aitown = 🏙 RWKV5 AITown
+buttons-LZLV = ☺️ LZLV 70B
+buttons-pygmalion = 🐽 Pygmalion
+buttons-airoboros = 💨 Airboros
+buttons-dolphin = 🐬 Dolphin
 
 buttons-juggernaut = 🦾 JuggernautXL V7
 buttons-dynavision = 👁️ DynaVisionXL
