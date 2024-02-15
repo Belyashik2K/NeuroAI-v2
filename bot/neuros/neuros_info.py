@@ -9,7 +9,7 @@ class NeuroInfo:
         Provider.FUTUREFORGE: {
             Category.TEXT: [Neuro.CHATGPT, Neuro.CLAUDE, Neuro.GOOGLE,
                             Neuro.LLAMA, Neuro.MISTRAL, Neuro.SOLAR,
-                            Neuro.GEMINI],
+                            Neuro.GEMINI, Neuro.GPT4],
             Category.IMAGE: [Neuro.PLAYGROUND,
                              Neuro.MIDJOURNEYV4, Neuro.MIDJOURNEYV6,
                              Neuro.ENHANCE, Neuro.VIDEODIFFUSION,

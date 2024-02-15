@@ -7,6 +7,7 @@ class Neuro:
     GEMINI = 'gemini'
     MISTRAL = 'mistral'
     SOLAR = 'solar'
+    GPT4 = 'gpt4'
     # From VisionCraftAPI
     CAPYBARA = 'capybara'
     ZEPHYR = 'zephyr'

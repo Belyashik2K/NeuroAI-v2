@@ -15,6 +15,7 @@ buttons-text = 📝 Текст
 buttons-image = 🖼 Изображения
 buttons-audio = 🎵 Аудио
 
+buttons-gpt4 = 🔥 ChatGPT (GPT 4)
 buttons-gpt = 💭 ChatGPT (GPT 3.5)
 buttons-claude = ☁️ Claude AI
 buttons-google = 📱 Google AI
