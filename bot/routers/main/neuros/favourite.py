@@ -43,7 +43,8 @@ async def favourite_neuro_list_pagination(call: types.CallbackQuery, callback_da
     
         await call.message.edit_text(text, reply_markup=await inline.favourite(user_id=user.user_id,
                                                                                 page=page))
-
+        await state.update_data(from_fav=True)
+        
 @router.callback_query(data.Favourite.filter())
 async def favourite_neuro(call: types.CallbackQuery, callback_data: data.Favourite,
                           user: User, state: FSMContext, i18n: I18nContext):
