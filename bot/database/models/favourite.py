@@ -1,6 +1,7 @@
 import datetime
 
 from sqlalchemy import (Integer,
+                        String,
                         BigInteger)
 from sqlalchemy.orm import Mapped, mapped_column as Column
 
@@ -17,6 +18,6 @@ class Favourite(Base):
     __tablename__ = 'favourites'
     id: Mapped[int] = Column(Integer, primary_key=True)
     user_id: Mapped[int] = Column(BigInteger, nullable=False)
-    neuro_name: Mapped[str] = Column(Integer, nullable=False)
+    neuro_name: Mapped[str] = Column(String(255), nullable=False)
     
     

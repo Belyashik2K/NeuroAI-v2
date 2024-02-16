@@ -33,7 +33,7 @@ def upgrade() -> None:
     op.create_table('favourites',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('user_id', sa.BigInteger(), nullable=False),
-    sa.Column('neuro_name', sa.Integer(), nullable=False),
+    sa.Column('neuro_name', sa.String(length=255), nullable=False),
     sa.PrimaryKeyConstraint('id')
     )
     op.create_table('neuros',
