@@ -14,6 +14,10 @@ buttons-back = ⬅️ Zurück
 buttons-text = 📝 Text
 buttons-image = 🖼 Bilder
 buttons-audio = 🎵 Audio
+buttons-favourite = 🌟 Favorisierte neuronale Netzwerke
+
+buttons-add_fav = ➕ Zu Favoriten hinzufügen
+buttons-remove_fav = ➖ Aus Favoriten entfernen
 
 buttons-capybara = 💧 Capybara AI
 buttons-zephyr = 💝 Zephyr [BETA]

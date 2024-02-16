@@ -26,6 +26,16 @@ messages-choose_language = 🌐 <b>שינוי שפה</b>
 
 messages-lang_set = 🎉 שפה שונתה בהצלחה!
 
+```Favourite neuros```
+
+messages-favourite_neuro = 🌟 <b>נוירוסים מועדפים</b>
+    <i>בחרו אחד מהנוירוסים המועדפים עליכם</i>
+
+messages-no_favourite = 🌟 <b>נוירוסים מועדפים</b>
+    😕 <i>אין לך נוירוסים מועדפים כרגע</i>
+
+    <i>כדי להוסיף נוירוס למועדפים, בחרו אותו בתפריט <code>{ $select_neuro }</code> ולחצו על הכפתור</i> <code>{ $favourite_button }</code>
+
 ```Profile info```
 
 messages-my_profile = 👤 <b>החשבון שלי</b>

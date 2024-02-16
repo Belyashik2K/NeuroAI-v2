@@ -26,6 +26,16 @@ messages-choose_language = 🌐 <b>Change language</b>
 
 messages-lang_set = 🎉 Language successfully changed!
 
+```Favourite neuros```
+
+messages-favourite_neuro = 🌟 <b>Favorite neural networks</b>
+    <i>Choose one of your favorite neural networks</i>
+
+messages-no_favourite = 🌟 <b>Favorite neural networks</b>
+    😕 <i>You currently have no favorite neural networks</i>
+
+    <i>To add a neural network to favorites, select it in the menu <code>{ $select_neuro }</code> and press the button</i> <code>{ $favourite_button }</code>
+
 ```Profile info```
 
 messages-my_profile = 👤 <b>My Account</b>

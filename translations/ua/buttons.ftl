@@ -14,6 +14,10 @@ buttons-back = ⬅️ Назад
 buttons-text = 📝 Текст
 buttons-image = 🖼 Зображення
 buttons-audio = 🎵 Аудіо
+buttons-favourite = 🌟 Обрані нейромережі
+
+buttons-add_fav = ➕ Додати до обраних
+buttons-remove_fav = ➖ Видалити з обраних
 
 buttons-capybara = 💧 Capybara AI
 buttons-zephyr = 💝 Zephyr [BETA]

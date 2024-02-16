@@ -48,9 +48,15 @@ async def text_mode_choose(call: types.CallbackQuery, callback_data: data.Neuro,
         page = _data['page']
     except KeyError:
         page = 1
+        
+    in_favorite = await database.is_favourite(user.user_id, callback_data.name)
+        
     await state.clear()
     neuro = LazyProxy(f"buttons-{callback_data.name}").data
-    await call.message.edit_text(i18n.messages.mode(neuro=neuro), reply_markup=inline.mode(page=page))
+    await call.message.edit_text(i18n.messages.mode(neuro=neuro), reply_markup=inline.mode(page=page,
+                                                                                           neuro_name=callback_data.name,
+                                                                                           in_favourite=in_favorite,
+                                                                                           from_fav=_data.get('from_fav', False)))
     await state.update_data(neuro=callback_data.name, provider=callback_data.provider)
 
 
@@ -95,8 +101,11 @@ async def start_gen_image(call: types.CallbackQuery, callback_data: data.Neuro,
     text = choices[callback_data.name] if callback_data.name in choices else i18n.messages.start_gen_image(neuro=neuro)
     if not call.message.photo and not call.message.video and not call.message.reply_to_message:
         await call.message.edit_text(text=text,
-                                     reply_markup=inline.back(callback_data=data.Category(name=Category.IMAGE,
-                                                                                          page=page).pack()),
+                                     reply_markup=inline.image_or_voice(category=Category.IMAGE,
+                                                                        neuro_name=callback_data.name,
+                                                                        in_favourite=await database.is_favourite(user.user_id, callback_data.name),
+                                                                        page=page,
+                                                                        from_fav=_data.get('from_fav', False)),
                                      disable_web_page_preview=True)
         await state.update_data(neuro=callback_data.name,
                                 provider=callback_data.provider,
@@ -105,8 +114,11 @@ async def start_gen_image(call: types.CallbackQuery, callback_data: data.Neuro,
         await call.answer()
         m = await call.bot.send_message(chat_id=call.message.chat.id,
                                         text=text,
-                                        reply_markup=inline.back(callback_data=data.Category(name=Category.IMAGE,
-                                                                                             page=page).pack()),
+                                        reply_markup=inline.image_or_voice(category=Category.IMAGE,
+                                                                            neuro_name=callback_data.name,
+                                                                            in_favourite=await database.is_favourite(user.user_id, callback_data.name),
+                                                                            page=page,
+                                                                            from_fav=_data.get('from_fav', False)),
                                         disable_web_page_preview=True)
         await state.update_data(neuro=callback_data.name,
                                 provider=callback_data.provider,
@@ -127,7 +139,10 @@ async def start_gen_audio(call: types.CallbackQuery, callback_data: data.Neuro,
     }
 
     await call.message.edit_text(choices[callback_data.name],
-                                 reply_markup=inline.back(callback_data=data.Category(name=Category.AUDIO,
-                                                                                      page=_data['page']).pack()))
+                                 reply_markup=inline.image_or_voice(category=Category.AUDIO,
+                                                                    neuro_name=callback_data.name,
+                                                                    in_favourite=await database.is_favourite(user.user_id, callback_data.name),
+                                                                    page=_data.get('page', 1),
+                                                                    from_fav=_data.get('from_fav', False)))
     await state.update_data(neuro=callback_data.name, message_id=call.message.message_id)
     await state.set_state(NeuroRequest.bender if callback_data.name == Neuro.BENDER else NeuroRequest.whisper)
