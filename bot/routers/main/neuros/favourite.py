@@ -2,15 +2,12 @@ from typing import Final
 
 from aiogram import Router, F, types
 from aiogram.fsm.context import FSMContext
-from aiogram.fsm.state import any_state
 from aiogram_i18n import I18nContext, LazyProxy
 
 from ....database import database
 from ....database.models import User
 from ....keyboards import inline, data
-from ....filters import isNeuroActive
 from ....enums import *
-from ....fsm import *
 
 router: Final[Router] = Router(name=__name__)
 

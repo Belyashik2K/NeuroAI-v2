@@ -146,7 +146,8 @@ class InlineKeyboards:
 
         favourite = InlineKeyboardButton(text=LazyProxy('buttons-favourite'), callback_data=Callback.StartMenu.favourite)
 
-        builder.add(favourite)
+        if not is_admin:
+            builder.add(favourite)
         builder.row(self.close(as_button=True) if not is_admin else self.back(Callback.StartMenu.admin, as_button=True))
         builder.adjust(2, 1, 1)
 
