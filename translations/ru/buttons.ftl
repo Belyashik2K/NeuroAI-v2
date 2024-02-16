@@ -14,6 +14,10 @@ buttons-back = ⬅️ Назад
 buttons-text = 📝 Текст
 buttons-image = 🖼 Изображения
 buttons-audio = 🎵 Аудио
+buttons-favourite = 🌟 Избранные нейросети
+
+buttons-add_fav = ➕ Добавить в избранное
+buttons-remove_fav = ➖ Удалить из избранного
 
 buttons-gpt4 = 🔥 ChatGPT (GPT 4)
 buttons-gpt = 💭 ChatGPT (GPT 3.5)

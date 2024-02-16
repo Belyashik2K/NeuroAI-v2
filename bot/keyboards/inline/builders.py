@@ -6,7 +6,7 @@ from aiogram_i18n import LazyProxy
 from aiogram.types import Message, CallbackQuery
 from aiogram_i18n.types import InlineKeyboardButton, InlineKeyboardMarkup
 
-from ...enums import Locale, Mode, Category
+from ...enums import Locale, Mode, Category, Actions
 from ...database.models import User
 from ...config import config
 
@@ -144,6 +144,9 @@ class InlineKeyboards:
                 name=category, page=1).pack()
             builder.add(InlineKeyboardButton(text=text, callback_data=callback_data))
 
+        favourite = InlineKeyboardButton(text=LazyProxy('buttons-favourite'), callback_data=Callback.StartMenu.favourite)
+
+        builder.add(favourite)
         builder.row(self.close(as_button=True) if not is_admin else self.back(Callback.StartMenu.admin, as_button=True))
         builder.adjust(2, 1, 1)
 
@@ -187,16 +190,58 @@ class InlineKeyboards:
         return builder.as_markup()
 
     def mode(self,
-             page: int) -> InlineKeyboardMarkup:
+             neuro_name: str,
+             page: int,
+             in_favourite: bool,
+             from_fav: bool) -> InlineKeyboardMarkup:
         builder = InlineKeyboardBuilder()
+        
+        fav = {
+            True: (LazyProxy('buttons-remove_fav'), Actions.REMOVE),
+            False: (LazyProxy('buttons-add_fav'), Actions.ADD)
+        }
 
         one_request = InlineKeyboardButton(text=LazyProxy('buttons-one_request'),
                                            callback_data=Callback.Mode(type_=Mode.ONE).pack())
         chat = InlineKeyboardButton(text=LazyProxy('buttons-chat'), callback_data=Callback.Mode(type_=Mode.CHAT).pack())
 
         builder.add(one_request, chat)
-        builder.row(self.back(Callback.Category(name=Category.TEXT, page=page).pack(), as_button=True))
+        builder.add(InlineKeyboardButton(text=fav[in_favourite][0], 
+                                         callback_data=Callback.Favourite(neuro_name=neuro_name,
+                                                                          category=Category.TEXT,
+                                                                          action=fav[in_favourite][1]
+                                                                          ).pack())) 
+        if from_fav:
+            builder.row(self.back(Callback.FavouritePagination(page=page).pack(), as_button=True))
+        else:
+            builder.row(self.back(Callback.Category(name=Category.TEXT, page=page).pack(), as_button=True))
         builder.adjust(2, 1)
+        return builder.as_markup()
+    
+    def image_or_voice(self, 
+                       category: str,
+                       neuro_name: str,
+                       in_favourite: bool,
+                       from_fav: bool,
+                       page: int) -> InlineKeyboardMarkup:
+        builder = InlineKeyboardBuilder()
+        
+        fav = {
+            True: (LazyProxy('buttons-remove_fav'), Actions.REMOVE),
+            False: (LazyProxy('buttons-add_fav'), Actions.ADD)
+        }
+        
+        builder.add(InlineKeyboardButton(text=fav[in_favourite][0],
+                                         callback_data=Callback.Favourite(neuro_name=neuro_name,
+                                                                          category=category,
+                                                                          action=fav[in_favourite][1]
+                                                                          ).pack()))
+        if from_fav:
+            builder.row(self.back(Callback.FavouritePagination(page=page).pack(), as_button=True))
+        else:
+            builder.row(self.back(Callback.Category(name=category, 
+                                                    page=page
+                                                    ).pack(), as_button=True))
         return builder.as_markup()
 
     def about(self) -> InlineKeyboardMarkup:
@@ -286,4 +331,41 @@ class InlineKeyboards:
         builder.row(self.close(as_button=True))
         builder.adjust(1, 2, 1, 1)
 
+        return builder.as_markup()
+
+    async def favourite(self,
+                        user_id: int,
+                        page) -> InlineKeyboardMarkup:
+        builder = InlineKeyboardBuilder()
+        
+        status = {
+            True: LazyProxy('messages-working').data,
+            False: LazyProxy('messages-not_working').data
+        }
+
+        from ...database import database
+        neuros = await database.get_favourites(user_id=user_id, 
+                                               page=page,
+                                               per_page=6)
+        for neuro in neuros[0]:            
+            neuro_info = await database.get_neuro(neuro)
+            
+            text = LazyProxy(f'buttons-{neuro_info.code_name}').data + f" ({status[neuro_info.is_active]})"
+
+            callback_data = Callback.Neuro(category=neuro_info.category,
+                                           name=neuro_info.code_name,
+                                           provider=neuro_info.provider).pack()
+            builder.add(InlineKeyboardButton(text=text, callback_data=callback_data))
+        
+        builder.adjust(2, repeat=True)
+            
+        pagination = self._pagination(data_object=Callback.FavouritePagination,
+                                      pages_count=neuros[1],
+                                      current_page=page,
+                                      user_id=user_id)
+        
+        builder.row(*pagination)
+
+        builder.row(self.back(callback_data=Callback.StartMenu.choose_neuro,
+                              as_button=True))
         return builder.as_markup()

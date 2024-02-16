@@ -14,6 +14,10 @@ buttons-back = ⬅️ 返回
 buttons-text = 📝 文本
 buttons-image = 🖼 图片
 buttons-audio = 🎵 音频
+buttons-favourite = 🌟 收藏的神经网络
+
+buttons-add_fav = ➕ 添加到收藏夹
+buttons-remove_fav = ➖ 从收藏夹中移除
 
 buttons-capybara = 💧 Capybara AI
 buttons-zephyr = 💝 Zephyr [BETA]

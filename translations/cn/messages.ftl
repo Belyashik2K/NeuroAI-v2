@@ -26,6 +26,16 @@ messages-choose_language = 🌐 <b>切换语言</b>
 
 messages-lang_set = 🎉 语言已成功更改！
 
+```Favourite neuros```
+
+messages-favourite_neuro = 🌟 <b>喜爱的神经网络</b>
+    <i>请选择您喜爱的神经网络之一</i>
+
+messages-no_favourite = 🌟 <b>喜爱的神经网络</b>
+    😕 <i>您目前没有喜爱的神经网络</i>
+
+    <i>要将神经网络添加到收藏夹，请在菜单中选择<code>{ $select_neuro }</code>，然后按下按钮</i> <code>{ $favourite_button }</code>
+
 ```Profile info```
 
 messages-my_profile = 👤 <b>我的帐户</b>

@@ -14,6 +14,7 @@ class Callback:
         stats = 'stats'
         about = 'about'
         admin = 'admin'
+        favourite = 'favourite'
 
     class Settings:
         set_language = "set_language"
@@ -31,6 +32,14 @@ class Callback:
 
     class Category(CallbackData, prefix="category", sep="_"):
         name: str
+        page: int
+
+    class Favourite(CallbackData, prefix="favourite"):
+        category: str
+        neuro_name: str
+        action: str
+        
+    class FavouritePagination(CallbackData, prefix="favourite_pagination"):
         page: int
 
     class Neuro(CallbackData, prefix="neuro"):

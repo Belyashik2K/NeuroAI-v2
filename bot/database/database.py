@@ -1,17 +1,15 @@
 import datetime
 
-from typing import AsyncGenerator, Optional, Tuple, Any, Dict
+from typing import AsyncGenerator, Optional, Any
 
 from sqlalchemy.ext.asyncio import create_async_engine, async_sessionmaker, AsyncSession
-from sqlalchemy import select, update, insert, func
+from sqlalchemy import select, update, insert, func, delete
 
 from contextlib import asynccontextmanager
 
-from aiogram_i18n import LazyProxy
-
 from ..config import config
-from ..enums import Locale, Category
-from .models import User, Neuro, Settings, Chat
+from ..enums import Locale, Category, Actions
+from .models import User, Neuro, Settings, Favourite
 from ..neuros.neuros_info import NeuroInfo
 
 
@@ -270,3 +268,55 @@ class Database:
                 await session.execute(stmt)
                 await session.commit()
             return settings.is_maintenance
+
+    async def is_favourite(self, user_id: int, neuro_name: str) -> bool:
+        """Check if neuro is in user's favourite."""
+        async with self.session() as session:
+            stmt = select(Favourite).where(Favourite.user_id == user_id).where(Favourite.neuro_name == neuro_name)
+            result = await session.execute(stmt)
+            return bool(result.scalar_one_or_none())
+        
+    async def favourite_actions(self, 
+                                user_id: int, 
+                                neuro_name: str, 
+                                action: str) -> bool:
+        """Add or remove neuro from user's favourite."""
+        async with self.session() as session:
+            if action == Actions.ADD:
+                stmt = insert(Favourite).values(user_id=user_id, neuro_name=neuro_name)
+            else:
+                stmt = delete(Favourite).where(Favourite.user_id == user_id).where(Favourite.neuro_name == neuro_name)
+            await session.execute(stmt)
+            await session.commit()
+        return await self.is_favourite(user_id, neuro_name)
+    
+    async def get_favourites(self, 
+                             user_id: int,
+                             page: int,
+                             per_page: int) -> list[str]:
+        """Get user's favourite neuros."""
+        
+        async with self.session() as session:
+            stmt = select(Favourite.neuro_name
+                        ).where(Favourite.user_id == user_id
+                        ).offset((page - 1) * per_page
+                        ).limit(per_page)
+            result = await session.execute(stmt)
+            on_page = result.scalars().all()
+            
+            stmt = select(func.count(Favourite.neuro_name)
+                        ).where(Favourite.user_id == user_id)
+            result = await session.execute(stmt)
+            count = result.scalar_one_or_none()
+            
+            pages_count = count // per_page + 1 if (count % per_page and count) else count // per_page
+            
+            return on_page, pages_count
+        
+    async def favourite_count(self, user_id: int) -> int:
+        """Get user's favourite neuros count."""
+        async with self.session() as session:
+            stmt = select(func.count(Favourite.neuro_name)).where(Favourite.user_id == user_id)
+            result = await session.execute(stmt)
+            return result.scalar_one_or_none()
+            

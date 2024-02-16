@@ -26,6 +26,16 @@ messages-choose_language = 🌐 <b>Sprache ändern</b>
 
 messages-lang_set = 🎉 Sprache erfolgreich geändert!
 
+```Favourite neuros```
+
+messages-favourite_neuro = 🌟 <b>Favorisierte neuronale Netzwerke</b>
+    <i>Wählen Sie eines Ihrer favorisierten neuronalen Netzwerke aus</i>
+
+messages-no_favourite = 🌟 <b>Favorisierte neuronale Netzwerke</b>
+    😕 <i>Sie haben derzeit keine favorisierten neuronalen Netzwerke</i>
+
+    <i>Um ein neuronales Netzwerk zu den Favoriten hinzuzufügen, wählen Sie es im Menü <code>{ $select_neuro }</code> aus und drücken Sie die Taste</i> <code>{ $favourite_button }</code>
+
 ```Profile info```
 
 messages-my_profile = 👤 <b>Mein Konto</b>

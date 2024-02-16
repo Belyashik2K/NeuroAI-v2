@@ -14,6 +14,10 @@ buttons-back = ⬅️ אחורה
 buttons-text = 📝 טקסט
 buttons-image = 🖼 תמונות
 buttons-audio = 🎵 אודיו
+buttons-favourite = 🌟 רשתות עצבים מועדפות
+
+buttons-add_fav = ➕ הוסף למועדפים
+buttons-remove_fav = ➖ הסר מהמועדפים
 
 buttons-capybara = 💧 Capybara AI
 buttons-zephyr = 💝 Zephyr [BETA]
