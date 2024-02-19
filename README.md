@@ -1,9 +1,9 @@
 ![NeuroAI v2](https://github.com/Belyashik2K/NeuroAI-v2/assets/126521808/33972e93-4b25-4dae-8a22-1934d753b847)
-> [Telegram-бот](https://t.me/NeuroAItbot) для взаимодействия с нейросетями посредством [FutureForge API](https://api.futureforge.dev/docs#/) и [VisionCraft API](https://visioncraft-rs24.koyeb.app/docs). Обновлённая версия [NeuroAI](https://t.me/NeuroAIchannel).
+> [Telegram-бот](https://t.me/NeuroAItbot) для взаимодействия с нейросетями посредством [FutureForge API](https://api.futureforge.dev/docs#/) и [VisionCraft API](https://api.visioncraft.top/docs). Обновлённая версия [NeuroAI](https://t.me/NeuroAIchannel).
 
 # > Russian
 ## О боте
-**Обновлённая** версия [NeuroAI](https://t.me/NeuroAIchannel) - бота, **окончательно** потерявшего шанс на существование после 31 июля 2023 года. Работает на основе **бесплатного** [FutureForge API](https://api.futureforge.dev/docs#/) и [VisionCraft API](https://visioncraft-rs24.koyeb.app/docs), поэтому распространяется **абсолютно бесплатно** и **не имеет никаких коммерческих целей**.
+**Обновлённая** версия [NeuroAI](https://t.me/NeuroAIchannel) - бота, **окончательно** потерявшего шанс на существование после 31 июля 2023 года. Работает на основе **бесплатного** [FutureForge API](https://api.futureforge.dev/docs#/) и [VisionCraft API](https://api.visioncraft.top/docs), поэтому распространяется **абсолютно бесплатно** и **не имеет никаких коммерческих целей**.
 
 Данный [бот](https://t.me/NeuroAItbot), **базирующийся** на передовых **нейросетях**, создан для того, чтобы **упростить** ваше **взаимодействие** с **разнообразными** **аспектами** искусственного интеллекта. С легкостью и без лишних сложностей [NeuroAI v2](https://t.me/NeuroAItbot) поможет вам **освоить** возможности **текстовых**, **графических** и **звуковых** нейросетей. С его помощью вы можете **генерировать** различные виды **контента**, от **текстов** и идей до **изображений** и **звуков**. Создавайте **уникальные** **статьи**, **рассказы**, **посты** в социальных сетях или даже просто генерируйте **идеи** для вашего **проекта** или **бизнеса**. Создавайте идеи для **дизайна**, **фотографий**, **иллюстраций**, **логотипов** или **артов**. [NeuroAI v2](https://t.me/NeuroAItbot) поможет вам вдохновиться и создать **уникальные** визуальные концепции. Обрабатывайте **аудиофайлы**, генерируйте **речь** или **аудиодорожки** для ваших **проектов**, **видео** или **мультимедийных** приложений.  **Неважно**, **новичок** ли вы или **опытный** пользователь, наш бот предоставляет **интуитивно** **понятные** **интерфейсы**.
 
@@ -44,7 +44,7 @@
     * _Иврит_
 * Режим **чата/одиночного запроса** для текстовых нейросетей, **поддержка** и **обработка** **изображений**
 * Написан на **новейшей** версии **aiogram - v3.3.0**
-* Полностью **асинхронная** работа с [FutureForge API](https://api.futureforge.dev/docs), [VisionCraft API](https://visioncraft-rs24.koyeb.app/docs) и базой данных с помощью **SQLAlchemy**
+* Полностью **асинхронная** работа с [FutureForge API](https://api.futureforge.dev/docs), [VisionCraft API](https://api.visioncraft.top/docs) и базой данных с помощью **SQLAlchemy**
 * **Анти-флуд**
 * **Уведомления** **администраторам** об **ошибках** и **новых пользователях**
 * **Многофункциональное** меню администратора с возможностью **ручного отключения/включения нейросетей**, системой выдачи админских **привилегий**, возможность **бана** пользователей и **включение/отключение режима технических работ**, **многофункциональное** меню **рассылки**
@@ -132,12 +132,12 @@ docker-compose up
 ## Ссылки
 * [Автор бота](https://t.me/belyashik2k)
 * [FutureForge API](https://api.futureforge.dev/docs)
-* [VisionCraft API](https://visioncraft-rs24.koyeb.app/docs)
+* [VisionCraft API](https://api.visioncraft.top/docs)
 * [Пример бота](https://t.me/NeuroAItbot)
 
 # > English
 ## About the Bot
-The **updated** version of [NeuroAI](https://t.me/NeuroAIchannel) bot, which has **finally** lost its chance of existence after July 31, 2023. It operates based on the **free** [FutureForge API](https://api.futureforge.dev/docs#/) and [VisionCraft API](https://visioncraft-rs24.koyeb.app/docs), so it is distributed **completely free** and has **no commercial purposes**.
+The **updated** version of [NeuroAI](https://t.me/NeuroAIchannel) bot, which has **finally** lost its chance of existence after July 31, 2023. It operates based on the **free** [FutureForge API](https://api.futureforge.dev/docs#/) and [VisionCraft API](https://api.visioncraft.top/docs), so it is distributed **completely free** and has **no commercial purposes**.
 
 This bot, **based** on advanced **neural networks**, is designed to **simplify** your **interaction** with various **aspects** of artificial intelligence. With ease and without unnecessary complexity, [NeuroAI v2](https://t.me/NeuroAItbot) will help you **master** the capabilities of **text**, **graphic**, and **audio** neural networks. With its assistance, you can **generate** various types of **content**, from **text** and ideas to **images** and **sounds**. Create **unique** **articles**, **stories**, and **posts** on social media, or simply generate ideas for your **projects** or **business**. Generate ideas for **design**, **photos**, **illustrations**, **logos**, or **art**. [NeuroAI v2](https://t.me/NeuroAItbot) will inspire you and help create **unique** visual concepts. Process **audio files**, generate **speech**, or create **audio tracks** for your **projects**, **videos**, or **multimedia** applications. Whether you are a **novice** or an **experienced** user, our bot provides **intuitive** and **user-friendly** interfaces.
 
@@ -178,7 +178,7 @@ I express **special** **gratitude** to the [author](https://t.me/futureforge_cha
     * _Hebrew_
 * **Chat/single request mode** for text neural networks, **support** and **processing** of **images**
 * Written in the **latest** version of **aiogram - v3.3.0**
-* Fully **asynchronous** operation with [FutureForge API](https://api.futureforge.dev/docs), [VisionCraft API](https://visioncraft-rs24.koyeb.app/docs) and database using **SQLAlchemy**
+* Fully **asynchronous** operation with [FutureForge API](https://api.futureforge.dev/docs), [VisionCraft API](https://api.visioncraft.top/docs) and database using **SQLAlchemy**
 * **Anti-flood** mechanism
 * **Notifications** to **administrators** about **errors** and **new users**
 * **Multifunctional** administrator menu with the ability to **manually disable/enable neural networks**, a system for granting admin **privileges**, the ability to **ban** users, and **enable/disable maintenance mode**, **multifunctional** **broadcast menu**
@@ -267,5 +267,5 @@ docker-compose up
 ## Links
 * [Bot Author](https://t.me/belyashik2k)
 * [FutureForge API](https://api.futureforge.dev/docs)
-* [VisionCraft API](https://visioncraft-rs24.koyeb.app/docs)
+* [VisionCraft API](https://api.visioncraft.top/docs)
 * [Bot Example](https://t.me/NeuroAItbot)
