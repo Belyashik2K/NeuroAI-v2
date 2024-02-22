@@ -3,7 +3,7 @@
 
 # > Russian
 ## Внимание!
-У данного проекта нет и не будет никаких криптовалют. Всё, что есть на просторах интернета - скам-токены. Не ведитесь на мошенников.
+**_У данного проекта нет и не будет никаких криптовалют. Всё, что есть на просторах интернета - скам-токены. Не ведитесь на мошенников._**
 ## О боте
 **Обновлённая** версия [NeuroAI](https://t.me/NeuroAIchannel) - бота, **окончательно** потерявшего шанс на существование после 31 июля 2023 года. Работает на основе **бесплатного** [FutureForge API](https://api.futureforge.dev/docs#/) и [VisionCraft API](https://api.visioncraft.top/docs), поэтому распространяется **абсолютно бесплатно** и **не имеет никаких коммерческих целей**.
 
@@ -139,7 +139,7 @@ docker-compose up
 
 # > English
 ## Attention!
-This project does not have and will not have any cryptocurrencies. Everything that exists on the internet are scam tokens. Don't fall for scammers.
+**_This project does not have and will not have any cryptocurrencies. Everything that exists on the internet are scam tokens. Don't fall for scammers._**
 ## About the Bot
 The **updated** version of [NeuroAI](https://t.me/NeuroAIchannel) bot, which has **finally** lost its chance of existence after July 31, 2023. It operates based on the **free** [FutureForge API](https://api.futureforge.dev/docs#/) and [VisionCraft API](https://api.visioncraft.top/docs), so it is distributed **completely free** and has **no commercial purposes**.
 
