@@ -252,7 +252,7 @@ class InlineKeyboards:
         future_forge = InlineKeyboardButton(text=LazyProxy('buttons-future_forge'),
                                             url="https://api.futureforge.dev/docs")
         vision_craft = InlineKeyboardButton(text=LazyProxy('buttons-vision_craft'),
-                                            url="https://https://api.visioncraft.top/docs")
+                                            url="https://api.visioncraft.top/docs")
         source = InlineKeyboardButton(text=LazyProxy('buttons-source'),
                                       url="https://github.com/Belyashik2K/NeuroAI-v2")
 
