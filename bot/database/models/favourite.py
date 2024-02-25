@@ -1,5 +1,3 @@
-import datetime
-
 from sqlalchemy import (Integer,
                         String,
                         BigInteger)
@@ -20,4 +18,6 @@ class Favourite(Base):
     user_id: Mapped[int] = Column(BigInteger, nullable=False)
     neuro_name: Mapped[str] = Column(String(255), nullable=False)
     
+    def __repr__(self) -> str:
+        return f'Favourite(id={self.id}, user_id={self.user_id}, neuro_name={self.neuro_name})'
     
