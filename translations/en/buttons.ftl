@@ -30,6 +30,7 @@ buttons-LZLV = ☺️ LZLV 70B
 buttons-pygmalion = 🐽 Pygmalion
 buttons-airoboros = 💨 Airboros
 buttons-dolphin = 🐬 Dolphin
+buttons-gemma = 👑 Gemma
 
 buttons-juggernaut = 🦾 JuggernautXL V7
 buttons-dynavision = 👁️ DynaVisionXL

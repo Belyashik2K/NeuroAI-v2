@@ -22,6 +22,7 @@ class Neuro:
     YICHAT = 'yichat'
     DOLPHIN = 'dolphin'
     CHRONOSHERMES = "chronoshermes"
+    GEMMA = 'gemma'
 
     # From FutureForgeAPI
     PLAYGROUND = 'playground'
