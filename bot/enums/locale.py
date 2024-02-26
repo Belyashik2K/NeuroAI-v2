@@ -5,8 +5,8 @@ class Locale:
     EN = "en"
     RU = "ru"
     DE = "de"
-    UA = "ua"
-    CN = 'cn'
+    UA = "uk"
+    CN = 'zh'
     HE = 'he'
     DEFAULT = EN
 
