@@ -84,7 +84,8 @@ class VisionCraft(VisionCraftRequest):
             Neuro.AIRBOROS: "airoboros-l2-70b-gpt4-1.4.1",
             Neuro.YICHAT: "Yi-34B-Chat",
             Neuro.DOLPHIN: "dolphin-2.6-mixtral-8x7b",
-            Neuro.CHRONOSHERMES: "chronos-hermes-13b-v2"
+            Neuro.CHRONOSHERMES: "chronos-hermes-13b-v2",
+            Neuro.GEMMA: 'gemma-7b'
         }
 
         self._xl_neuros = {
