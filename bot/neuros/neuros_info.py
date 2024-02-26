@@ -17,7 +17,7 @@ class NeuroInfo:
         },
         Provider.VISIONCRAFT: {
             Category.TEXT: [Neuro.LZLV, Neuro.PYGMALION, 
-                            Neuro.AIRBOROS, Neuro.DOLPHIN],
+                            Neuro.AIRBOROS, Neuro.DOLPHIN, Neuro.GEMMA],
             Category.IMAGE: [Neuro.GOUFENG, Neuro.ABSOLUTEREALITY, Neuro.AMIREAL,
                              Neuro.ANALOGDIFFUSION, Neuro.ANYTHING,
                              Neuro.ABYSSORANGEMIX, Neuro.BLAZINGDRIVE,
