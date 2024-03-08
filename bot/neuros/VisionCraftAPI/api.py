@@ -9,7 +9,7 @@ class VisionCraft(VisionCraftRequest):
     def __init__(self) -> None:
         super().__init__()
 
-        self._URL = 'https://api.visioncraft.top/'
+        self._URL = 'https://visioncraft.top/'
         self._METHOD = 'POST'
 
         self.__KEY = config.VISION_CRAFT_API_KEY.get_secret_value()
