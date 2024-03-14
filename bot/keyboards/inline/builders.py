@@ -82,6 +82,17 @@ class InlineKeyboards:
             return back
         builder.add(back)
         return builder.as_markup()
+    
+    def tech_supp(self) -> InlineKeyboardMarkup:
+        builder = InlineKeyboardBuilder()
+        
+        url = "https://t.me/{}".format(config.technical_support[1:])
+
+        tech_supp = InlineKeyboardButton(text=LazyProxy('buttons-technical_support'),
+                                        url=url)
+        builder.add(tech_supp)
+        builder.row(self.close(True))
+        return builder.as_markup()
 
     async def close_or_again(self,
                              neuro: str) -> InlineKeyboardMarkup:

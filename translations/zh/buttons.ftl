@@ -105,6 +105,7 @@ buttons-channel = 📢 我们的频道
 buttons-future_forge = 🧑‍💻 FutureForge API
 buttons-vision_craft = 🧑‍💻 VisionCraft API
 buttons-source = 💻 源代码
+buttons-technical_support = 🆘 技术支持
 
 buttons-mailing = 📨 邮件订阅
 buttons-find_user = 🔍 查找用户

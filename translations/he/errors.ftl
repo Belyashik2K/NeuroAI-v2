@@ -23,6 +23,12 @@ errors-unknown_command = 😔 לצערי, אני לא מכיר פקודה כזו
 
     הקלדו /start לחזרה לתפריט הראשי או בחרו באחת מהכפתורים למטה.
 
+errors-limit_exceeded = 😔 מצטערים, עקב <b>גישה חינמית</b> ל-API, הבוט <b>חייב להישאר תחת ההגבלות שהוצבו</b> על מספר הבקשות לשנייה.
+
+    <i>נסו לבצע את הבקשה שוב מאוחר יותר.</i>
+
+    ⚠️ אם <b>רוצים לתמוך כלכלית</b> בפרוייקט ולרכוש מנוי <b>פרימיום</b> ל-API, ניתן לעשות זאת על ידי שליחת הודעה פרטית לתמיכה טכנית באמצעות ה<b>כפתור למטה</b>. <b>תודה רבה! ❤️</b>
+
 errors-maintenance = 🔧 הבוט כרגע נמצא בתחזוקה טכנית. יש לנסות שוב מאוחר יותר.
 
 errors-no = 🫣 נראה לי שאין צורך...

@@ -23,6 +23,12 @@ errors-unknown_command = 😔 Leider kenne ich diesen Befehl nicht...
 
     Geben Sie /start ein, um zum Hauptmenü zurückzukehren, oder wählen Sie eine der unten stehenden Tasten aus.
 
+errors-limit_exceeded = 😔 Leider, aufgrund des <b>kostenlosen</b> Zugangs zur API, ist der Bot <b>verpflichtet, die festgelegten Beschränkungen</b> für die Anzahl der Anfragen pro Sekunde einzuhalten.
+
+    <i>Bitte versuchen Sie Ihre Anfrage später erneut.</i>
+
+    ⚠️ Wenn Sie das Projekt finanziell unterstützen <b>möchten, um ein Premium-Abonnement</b> für die API zu erwerben, können Sie dies tun, indem Sie eine private Nachricht an den technischen Support über den <b>unten stehenden Button</b> senden. <b>Vielen Dank! ❤️</b>
+
 errors-maintenance = 🔧 Der Bot wird gewartet. Versuchen Sie es später erneut.
 
 errors-no = 🫣 Ich denke, es ist nicht notwendig...

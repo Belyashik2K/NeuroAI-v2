@@ -105,6 +105,7 @@ buttons-channel = 📢 Наш канал
 buttons-future_forge = 🧑‍💻 FutureForge API
 buttons-vision_craft = 🧑‍💻 VisionCraft API
 buttons-source = 💻 Вихідний код
+buttons-technical_support = 🆘 Технічна підтримка
 
 buttons-mailing = 📨 Розсилка
 buttons-find_user = 🔍 Знайти користувача

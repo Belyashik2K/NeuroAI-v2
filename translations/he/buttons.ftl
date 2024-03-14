@@ -105,6 +105,7 @@ buttons-channel = 📢 הערוץ שלנו
 buttons-future_forge = 🧑‍💻 FutureForge API
 buttons-vision_craft = 🧑‍💻 VisionCraft API
 buttons-source = 💻 קוד מקור
+buttons-technical_support = 🆘 תמיכה טכנית
 
 buttons-mailing = 📨 רישום לעדכונים
 buttons-find_user = 🔍 מציאת משתמש

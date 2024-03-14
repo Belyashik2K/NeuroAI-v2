@@ -23,6 +23,12 @@ errors-unknown_command = 😔 Unfortunately, I don't know that command...
 
     Enter /start to return to the main menu or choose one of the buttons below.
 
+errors-limit_exceeded = 😔 Unfortunately, due to <b>free</b> access to the API, the bot is <b>required to adhere to the set restrictions</b> on the number of requests per second.
+
+    <i>Please try your request again later.</i>
+
+    ⚠️ If you <b>would like to financially support</b> the project to acquire a <b>premium subscription</b> to the API, you can do so by sending a private message to technical support using the <b>button below</b>. <b>Thank you! ❤️</b>
+
 errors-maintenance = 🔧 The bot is undergoing maintenance. Please try again later.
 
 errors-no = 🫣 I think it's not worth it...

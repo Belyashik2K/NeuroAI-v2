@@ -108,6 +108,7 @@ buttons-channel = 📢 Our channel
 buttons-future_forge = 🧑‍💻 FutureForge API
 buttons-vision_craft = 🧑‍💻 VisionCraft API
 buttons-source = 💻 Source сode
+buttons-technical_support = 🆘 Technical support
 
 buttons-mailing = 📨 Mailing
 buttons-find_user = 🔍 Find user
