@@ -14,7 +14,7 @@ messages-info = 🙋 欢迎来到神经网络世界，{ $name }！
     — 以<b>对话</b>或<b>单一消息</b>格式回答你的问题
     — 根据指定的请求生成<b>照片</b>
     — 根据指定的请求生成音频文件并翻译它们
-    — <b>绝对免费</b>，基于 <a href="https://api.futureforge.dev/docs">API FutureForge</a> 和 <a href="https://visioncraft-rs24.koyeb.app/docs">API VisionCraft</a> 运行
+    — <b>绝对免费</b>，基于 <a href="https://api.futureforge.dev/docs">API FutureForge</a> 和 <a href="https://api.visioncraft.top/docs">API VisionCraft</a> 运行
     — 具有 <b>开放源代码</b>，你可以在我的 <a href="https://github.com/Belyashik2K/NeuroAI-v2">GitHub 仓库</a> 中找到
 
     🆘 技术支持 >>> { $technical_support }

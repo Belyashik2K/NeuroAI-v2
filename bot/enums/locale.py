@@ -8,6 +8,7 @@ class Locale:
     UA = "uk"
     CN = 'zh'
     HE = 'he'
+    BASE = 'base'
     DEFAULT = EN
 
     DATA_LIST = [EN, RU, DE, UA, CN, HE]

@@ -14,7 +14,7 @@ messages-info = 🙋 Welcome to the world of neural networks, { $name }!
     — I answer your questions in a <b>dialogue</b> or <b>single-message</b> format
     — I generate <b>photos</b> based on a given request
     — I generate audio files based on a given request and translate them
-    — <b>Absolutely free</b> and operates based on <a href="https://api.futureforge.dev/docs">API FutureForge</a> and <a href="https://visioncraft-rs24.koyeb.app/docs">API VisionCraft</a>
+    — <b>Absolutely free</b> and operates based on <a href="https://api.futureforge.dev/docs">API FutureForge</a> and <a href="https://api.visioncraft.top/docs">API VisionCraft</a>
     — I have <b>open-source</b> code that you can find in my repository on <a href="https://github.com/Belyashik2K/NeuroAI-v2">GitHub</a>
 
     🆘 Technical Support >>> { $technical_support }

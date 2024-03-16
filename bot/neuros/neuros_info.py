@@ -2,16 +2,16 @@ from ..enums import Neuro, Provider, Category
 
 
 class NeuroInfo:
-    not_working = [Neuro.ENHANCE, Neuro.DALLE3, Neuro.BENDER,
-                   Neuro.MIDJOURNEYV6]
+    not_working = [Neuro.DALLE3, Neuro.BENDER,
+                   Neuro.MIDJOURNEYV6, Neuro.MIDJOURNEYV4]
     neuros_alph = {
         Provider.FUTUREFORGE: {
             Category.TEXT: [Neuro.CHATGPT, Neuro.CLAUDE, Neuro.GOOGLE,
                             Neuro.LLAMA, Neuro.MISTRAL, Neuro.SOLAR,
                             Neuro.GEMINI, Neuro.GPT4],
             Category.IMAGE: [Neuro.PLAYGROUND,
-                             Neuro.MIDJOURNEYV4, Neuro.MIDJOURNEYV6,
-                             Neuro.ENHANCE, Neuro.VIDEODIFFUSION,
+                             Neuro.MIDJOURNEYV6,
+                             Neuro.VIDEODIFFUSION,
                              Neuro.DALLE3, Neuro.TENCENTMAKER, Neuro.SDXL],
             Category.AUDIO: [Neuro.WHISPER, Neuro.BENDER],
         },
@@ -38,6 +38,7 @@ class NeuroInfo:
                              Neuro.REDSHIFTDIFFUSION, Neuro.REVANIMATED,
                              Neuro.RUNDIFFUSIONFX, Neuro.SHONINSBEAUTIFUL,
                              Neuro.THEALLYSMIX, Neuro.TIMELESS, Neuro.TOONYOU,
+                             Neuro.ENHANCE
                              ],
         }
     }

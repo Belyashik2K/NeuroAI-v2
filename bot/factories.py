@@ -29,11 +29,11 @@ class Factory:
             core=FluentRuntimeCore(
                 path="translations/{locale}",
                 raise_key_error=False,
-                locales_map={Locale.RU: Locale.EN,
-                             Locale.DE: Locale.EN,
-                             Locale.UA: Locale.EN,
-                             Locale.CN: Locale.EN,
-                             Locale.HE: Locale.EN},
+                locales_map={Locale.RU: Locale.BASE,
+                             Locale.DE: Locale.BASE,
+                             Locale.UA: Locale.BASE,
+                             Locale.CN: Locale.BASE,
+                             Locale.HE: Locale.BASE},
             ),
             manager=UserManager())
         i18n_middleware.setup(self.__dp)

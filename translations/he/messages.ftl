@@ -14,7 +14,7 @@ messages-info = 🙋 ברוך הבא לעולם הרשתות העצביות, { $
     — מגיב לשאלות שלך בפורמט של <b>דיאלוג</b> או <b>הודעה יחידה</b>
     — יוצר <b>תמונות</b> לפי בקשה
     — יוצר קבצי <b>אודיו</b> לפי בקשה ומתרגם אותם
-    — <b>כולא כלום בחינם</b> ופועל על פי <a href="https://api.futureforge.dev/docs">API FutureForge</a> ו-<a href="https://visioncraft-rs24.koyeb.app/docs">API VisionCraft</a>
+    — <b>כולא כלום בחינם</b> ופועל על פי <a href="https://api.futureforge.dev/docs">API FutureForge</a> ו-<a href="https://api.visioncraft.top/docs">API VisionCraft</a>
     — כולל <b>קוד פתוח</b>, שאתה יכול למצוא במאגר הקוד שלי ב- <a href="https://github.com/Belyashik2K/NeuroAI-v2">GitHub</a>
 
     🆘 תמיכה טכנית >>> { $technical_support }

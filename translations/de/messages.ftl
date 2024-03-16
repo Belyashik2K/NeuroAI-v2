@@ -14,7 +14,7 @@ messages-info = 🙋 Willkommen in der Welt der neuronalen Netze, { $name }!
     — Ich antworte auf deine Fragen im Format eines <b>Dialogs</b> oder einer <b>einzigen Nachricht</b>
     — Ich generiere <b>Fotos</b> auf Anfrage
     — Ich generiere Audio-Dateien auf Anfrage und übersetze sie
-    — <b>Absolut kostenlos</b> und funktioniert auf Basis von <a href="https://api.futureforge.dev/docs">API FutureForge</a> und <a href="https://visioncraft-rs24.koyeb.app/docs">API VisionCraft</a>
+    — <b>Absolut kostenlos</b> und funktioniert auf Basis von <a href="https://api.futureforge.dev/docs">API FutureForge</a> und <a href="https://api.visioncraft.top/docs">API VisionCraft</a>
     — Ich habe <b>offenen</b> Quellcode, den du in meinem Repository auf <a href="https://github.com/Belyashik2K/NeuroAI-v2">GitHub</a> finden kannst
 
     🆘 Technischer Support >>> { $technical_support }
