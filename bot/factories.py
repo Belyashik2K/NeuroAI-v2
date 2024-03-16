@@ -30,6 +30,7 @@ class Factory:
                 path="translations/{locale}",
                 raise_key_error=False,
                 locales_map={Locale.RU: Locale.BASE,
+                             Locale.EN: Locale.BASE,
                              Locale.DE: Locale.BASE,
                              Locale.UA: Locale.BASE,
                              Locale.CN: Locale.BASE,
