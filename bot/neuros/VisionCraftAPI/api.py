@@ -1,4 +1,5 @@
-from typing import List
+import base64
+import aiohttp
 
 from .request import VisionCraftRequest
 from ...config import config
@@ -234,12 +235,16 @@ class VisionCraft(VisionCraftRequest):
     async def image2image(self,
                           image_url: str,
                           prompt: str) -> bytes:
+        
+        async with aiohttp.ClientSession() as session:
+            async with session.get(image_url) as response:
+                bytes_ = await response.read()
+
         data = {
-            "image": image_url,
-            "mask": "None",
+            "image": base64.b64encode(bytes_).decode('utf-8'),
             "token": self.__KEY,
             "prompt": prompt,
-            "negative_prompt": self.__negative,
+            "negative_prompt": "bad quality",
             "scheduler": "DDIM",
             "steps": 50,
             "strength": 0.8,
