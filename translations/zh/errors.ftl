@@ -31,4 +31,8 @@ errors-limit_exceeded = 😔 很抱歉，由于API的<b>免费</b>访问，机�
 
 errors-maintenance = 🔧 机器人正在进行技术维护。请稍后重试。
 
+errors-cant_view_photo = 🫣 很抱歉，模型 <code>{ $neuro }</code> 无法查看照片...
+
+    <i>您可以提出文字问题或选择 <code>{ $llava }</code> 模型查看照片。</i>
+
 errors-no = 🫣 我觉得不应该...

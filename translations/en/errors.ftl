@@ -31,4 +31,8 @@ errors-limit_exceeded = 😔 Unfortunately, due to <b>free</b> access to the API
 
 errors-maintenance = 🔧 The bot is undergoing maintenance. Please try again later.
 
+errors-cant_view_photo = 🫣 Unfortunately, the model <code>{ $neuro }</code> cannot view photos...
+
+    <i>You can ask a text question or choose the <code>{ $llava }</code> model to view photos.</i>
+
 errors-no = 🫣 I think it's not worth it...

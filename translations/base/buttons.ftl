@@ -10,10 +10,12 @@ buttons-pygmalion = 🐽 Pygmalion
 buttons-airoboros = 💨 Airboros
 buttons-dolphin = 🐬 Dolphin
 buttons-gemma = 👑 Gemma
+buttons-llava = 🌋 LLaVA
 
 buttons-juggernaut = 🦾 JuggernautXL V7
 buttons-dynavision = 👁️ DynaVisionXL
 buttons-animeart = 🧝🏻‍♀️ AnimeArt
+buttons-cascade = 🌊 Stable Cascade
 buttons-guofeng3 = 🌅 Guofeng 3
 buttons-absolutereality = 👱‍♂️ AbsoluteReality
 buttons-amIReal = 🤖 amIReal

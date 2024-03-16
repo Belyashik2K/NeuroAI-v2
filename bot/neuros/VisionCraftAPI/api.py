@@ -85,14 +85,16 @@ class VisionCraft(VisionCraftRequest):
             Neuro.YICHAT: "Yi-34B-Chat",
             Neuro.DOLPHIN: "dolphin-2.6-mixtral-8x7b",
             Neuro.CHRONOSHERMES: "chronos-hermes-13b-v2",
-            Neuro.GEMMA: 'gemma-7b'
+            Neuro.GEMMA: 'gemma-7b',
+            Neuro.LLAVA: "llava-1.5-7b-hf"
         }
 
         self._xl_neuros = {
             Neuro.SDXL: "sdxl-base",
             Neuro.JUGGERNAUT: "juggernaut-xl-V7",
             Neuro.DYNAVISION: "dynavision-xl-all-in-one-stylized",
-            Neuro.ANIMEART: "anime-art-diffusion-xl"
+            Neuro.ANIMEART: "anime-art-diffusion-xl",
+            Neuro.CASCADE: "stable-cascade"
         }
 
     @staticmethod
@@ -158,11 +160,11 @@ class VisionCraft(VisionCraftRequest):
             "nsfw_filter": False
         }
 
-        result = await self._request(neuro=neuro,
+        result = await self._upscale_request(neuro=neuro,
                                      uri=self._URL + 'generate-xl',
                                      method=self._METHOD,
                                      json=data)
-        return result['images'][0]
+        return result
 
     async def enchance_image(self,
                              neuro: str,

@@ -12,12 +12,13 @@ class NeuroInfo:
             Category.IMAGE: [Neuro.PLAYGROUND,
                              Neuro.MIDJOURNEYV6,
                              Neuro.VIDEODIFFUSION,Neuro.MIDJOURNEYV4,
-                             Neuro.DALLE3, Neuro.TENCENTMAKER, Neuro.SDXL],
+                             Neuro.DALLE3, Neuro.TENCENTMAKER],
             Category.AUDIO: [Neuro.BENDER],
         },
         Provider.VISIONCRAFT: {
             Category.TEXT: [Neuro.LZLV, Neuro.PYGMALION, 
-                            Neuro.AIRBOROS, Neuro.DOLPHIN, Neuro.GEMMA],
+                            Neuro.AIRBOROS, Neuro.DOLPHIN, Neuro.GEMMA,
+                            Neuro.LLAVA],
             Category.IMAGE: [Neuro.GOUFENG, Neuro.ABSOLUTEREALITY, Neuro.AMIREAL,
                              Neuro.ANALOGDIFFUSION, Neuro.ANYTHING,
                              Neuro.ABYSSORANGEMIX, Neuro.BLAZINGDRIVE,
@@ -38,8 +39,8 @@ class NeuroInfo:
                              Neuro.REDSHIFTDIFFUSION, Neuro.REVANIMATED,
                              Neuro.RUNDIFFUSIONFX, Neuro.SHONINSBEAUTIFUL,
                              Neuro.THEALLYSMIX, Neuro.TIMELESS, Neuro.TOONYOU,
-                             Neuro.ENHANCE
-                             ],
+                             Neuro.ENHANCE, Neuro.SDXL, Neuro.JUGGERNAUT,
+                             Neuro.DYNAVISION, Neuro.ANIMEART, Neuro.CASCADE],
             Category.AUDIO: [Neuro.WHISPER],
         }
     }

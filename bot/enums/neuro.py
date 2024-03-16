@@ -23,6 +23,7 @@ class Neuro:
     DOLPHIN = 'dolphin'
     CHRONOSHERMES = "chronoshermes"
     GEMMA = 'gemma'
+    LLAVA = 'llava'
 
     # From FutureForgeAPI
     PLAYGROUND = 'playground'
@@ -37,6 +38,7 @@ class Neuro:
     JUGGERNAUT = 'juggernaut'
     DYNAVISION = 'dynavision'
     ANIMEART = 'animeart'
+    CASCADE = 'cascade'
     GOUFENG = 'guofeng3'
     ABSOLUTEREALITY = 'absolutereality'
     AMIREAL = 'amIReal'

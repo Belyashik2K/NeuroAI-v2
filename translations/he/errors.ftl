@@ -31,4 +31,8 @@ errors-limit_exceeded = 😔 מצטערים, עקב <b>גישה חינמית</b>
 
 errors-maintenance = 🔧 הבוט כרגע נמצא בתחזוקה טכנית. יש לנסות שוב מאוחר יותר.
 
+errors-cant_view_photo = 🫣 לצערנו, המודל <code>{ $neuro }</code> אינו יכול להציג תמונות...
+
+    <i>ניתן לשאול שאלת טקסט או לבחור את המודל <code>{ $llava }</code> כדי להציג תמונות.</i>
+
 errors-no = 🫣 נראה לי שאין צורך...

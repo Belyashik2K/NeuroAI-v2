@@ -40,7 +40,8 @@ async def one_request(message: types.Message, user: User, state: FSMContext, i18
             result = await vision.chatting(neuro=_data['neuro'],
                                            messages=Chatting.prepare_messages(content=message.text,
                                                                               role=Role.USER,
-                                                                              message_list=[]))
+                                                                              message_list=[],
+                                                                              neuro=_data['neuro']))
         formatting['result'] = result[0]
         try:
             await message.bot.delete_message(chat_id=message.chat.id,
@@ -81,26 +82,46 @@ async def chat_mode(call: types.CallbackQuery, callback_data: data.Mode,
     await state.set_state(NeuroRequest.chating)
 
 
-@router.message(NeuroRequest.chating, F.text)
+@router.message(NeuroRequest.chating, F.text | F.photo)
 async def chatting(message: types.Message, user: User, state: FSMContext, i18n: I18nContext):
+    _data = await state.get_data()
+
+    
     if message.text == LazyProxy("buttons-stop_chatting").data:
         await state.clear()
         await message.delete()
         await message.bot.send_message(message.chat.id, i18n.messages.stop_chatting(),
                                        reply_markup=reply.menu(user=user))
         return
-
-    _data = await state.get_data()
+    
     text = message.text
+    url = ""
+
+    if message.photo and _data['neuro'] == Neuro.LLAVA:
+        photo = await message.bot.get_file(message.photo[-1].file_id)
+        text = message.caption if message.caption else "What is on the photo?"
+        url = Links.get_file_url(photo.file_path)
+    elif message.photo and _data['neuro'] != Neuro.LLAVA:
+        names = {
+            "neuro": LazyProxy(f"buttons-{_data['neuro']}").data,
+            "llava": LazyProxy(f"buttons-{Neuro.LLAVA}").data
+        }
+        async with ChatActionSender.typing(bot=message.bot, chat_id=message.chat.id):
+            await message.reply(i18n.errors.cant_view_photo(**names))
+        await state.set_state(NeuroRequest.chating)
+        return 
+
     m = await message.bot.send_message(message.chat.id, i18n.messages.in_work(), parse_mode=ParseMode.MARKDOWN)
     async with ChatActionSender.typing(bot=message.bot, chat_id=message.chat.id):
         if _data['provider'] == Provider.FUTUREFORGE:
             result = await future.text_neuro(neuro=_data['neuro'], message=text, mode=_data['mode'],
                                              chat_code=_data['chat_code'])
         else:
-            messages = Chatting.prepare_messages(content=message.text,
+            messages = Chatting.prepare_messages(content=text,
                                                  role=Role.USER,
-                                                 message_list=_data['chat_cache'])
+                                                 message_list=_data['chat_cache'],
+                                                 neuro=_data['neuro'],
+                                                 image_url=url)
             result = await vision.chatting(neuro=_data['neuro'],
                                            messages=messages)
         await message.bot.delete_message(chat_id=message.chat.id, message_id=m.message_id)
@@ -110,7 +131,8 @@ async def chatting(message: types.Message, user: User, state: FSMContext, i18n: 
             if _data['provider'] == Provider.VISIONCRAFT:
                 with_assistant = Chatting.prepare_messages(content=result[0],
                                                            role=Role.ASSISTANT,
-                                                           message_list=messages)
+                                                           message_list=messages,
+                                                           neuro=_data['neuro'],)
                 await state.update_data(chat_cache=with_assistant)
         except Exception:
             try:
@@ -154,11 +176,13 @@ async def image_request(message: types.Message, user: User, state: FSMContext, i
     await state.clear()
     result = await func(_data['neuro'], prompt)
     await message.bot.delete_message(message.chat.id, _data['message_id'])
-    if type(result) == str:
-        if not result.endswith(".mp4"):
+    if type(result) in [str, bytes]:
+        temp = result if type(result) == str else 'bytes'
+        if not temp.endswith(".mp4"):
             async with ChatActionSender.upload_photo(bot=message.bot, chat_id=message.chat.id):
+                photo_obj = types.URLInputFile(result, filename='photo.png') if type(result) == str else types.BufferedInputFile(result, filename='photo.png')
                 await message.bot.send_photo(chat_id=message.chat.id,
-                                             photo=types.URLInputFile(result, filename='photo.png'),
+                                             photo=photo_obj,
                                              caption=i18n.messages.image_result(**formatting),
                                              reply_markup=await inline.close_or_again(_data['neuro']),
                                              parse_mode=ParseMode.MARKDOWN)
