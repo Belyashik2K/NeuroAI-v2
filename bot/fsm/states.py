@@ -10,6 +10,8 @@ class NeuroRequest(StatesGroup):
     midjourneyv6 = State()
     enchance_image = State()
     chating = State()
+    t2g = State()
+    i2i = State()
 
 
 class AdminPanel(StatesGroup):

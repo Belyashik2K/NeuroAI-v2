@@ -1,4 +1,5 @@
-from typing import List
+import base64
+import aiohttp
 
 from .request import VisionCraftRequest
 from ...config import config
@@ -85,14 +86,16 @@ class VisionCraft(VisionCraftRequest):
             Neuro.YICHAT: "Yi-34B-Chat",
             Neuro.DOLPHIN: "dolphin-2.6-mixtral-8x7b",
             Neuro.CHRONOSHERMES: "chronos-hermes-13b-v2",
-            Neuro.GEMMA: 'gemma-7b'
+            Neuro.GEMMA: 'gemma-7b',
+            Neuro.LLAVA: "llava-1.5-7b-hf"
         }
 
         self._xl_neuros = {
             Neuro.SDXL: "sdxl-base",
             Neuro.JUGGERNAUT: "juggernaut-xl-V7",
             Neuro.DYNAVISION: "dynavision-xl-all-in-one-stylized",
-            Neuro.ANIMEART: "anime-art-diffusion-xl"
+            Neuro.ANIMEART: "anime-art-diffusion-xl",
+            Neuro.CASCADE: "stable-cascade"
         }
 
     @staticmethod
@@ -158,11 +161,11 @@ class VisionCraft(VisionCraftRequest):
             "nsfw_filter": False
         }
 
-        result = await self._request(neuro=neuro,
+        result = await self._upscale_request(neuro=neuro,
                                      uri=self._URL + 'generate-xl',
                                      method=self._METHOD,
                                      json=data)
-        return result['images'][0]
+        return result
 
     async def enchance_image(self,
                              neuro: str,
@@ -194,3 +197,62 @@ class VisionCraft(VisionCraftRequest):
         if result['status'] == 'success':
             return result['image']
         return False
+    
+    
+    async def whisper(self,
+                      audio: str,
+                      task: str) -> str:
+        data = {
+            "audio": audio,
+            "task": task,
+            "token": self.__KEY,
+            "language": "auto"
+        }
+        
+        result = await self._request(neuro=Neuro.WHISPER,
+                                    uri=self._URL + 'whisper',
+                                    method=self._METHOD,
+                                    json=data)
+        return result['text']
+    
+    async def text2gif(self,
+                       text: str) -> str:
+        data = {
+            "sampler": "DPM++ 2M",
+            "prompt": text,
+            "negative_prompt": self.__negative,
+            "token": self.__KEY,
+            "cfg_scale": 10,
+            "steps": 50,
+    }
+        
+        result = await self._request(neuro=Neuro.T2G,
+                                    uri=self._URL + 'generate-gif',
+                                    method=self._METHOD,
+                                    json=data)
+        return result["images"][0]
+
+    async def image2image(self,
+                          image_url: str,
+                          prompt: str) -> bytes:
+        
+        async with aiohttp.ClientSession() as session:
+            async with session.get(image_url) as response:
+                bytes_ = await response.read()
+
+        data = {
+            "image": base64.b64encode(bytes_).decode('utf-8'),
+            "token": self.__KEY,
+            "prompt": prompt,
+            "negative_prompt": "bad quality",
+            "scheduler": "DDIM",
+            "steps": 50,
+            "strength": 0.8,
+            "refiner": "expert_ensemble_refiner"
+        }
+        
+        result = await self._upscale_request(neuro=Neuro.I2I,
+                                            uri=self._URL + 'img2img',
+                                            method=self._METHOD,
+                                            json=data)
+        return result

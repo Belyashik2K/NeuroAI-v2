@@ -31,4 +31,8 @@ errors-limit_exceeded = 😔 Leider, aufgrund des <b>kostenlosen</b> Zugangs zur
 
 errors-maintenance = 🔧 Der Bot wird gewartet. Versuchen Sie es später erneut.
 
+errors-cant_view_photo = 🫣 Leider kann das Modell <code>{ $neuro }</code> keine Fotos anzeigen...
+
+    <i>Sie können eine Textfrage stellen oder das Modell <code>{ $llava }</code> auswählen, um Fotos anzuzeigen.</i>
+
 errors-no = 🫣 Ich denke, es ist nicht notwendig...

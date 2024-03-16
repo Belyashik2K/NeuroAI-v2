@@ -14,7 +14,7 @@ messages-info = 🙋 ברוך הבא לעולם הרשתות העצביות, { $
     — מגיב לשאלות שלך בפורמט של <b>דיאלוג</b> או <b>הודעה יחידה</b>
     — יוצר <b>תמונות</b> לפי בקשה
     — יוצר קבצי <b>אודיו</b> לפי בקשה ומתרגם אותם
-    — <b>כולא כלום בחינם</b> ופועל על פי <a href="https://api.futureforge.dev/docs">API FutureForge</a> ו-<a href="https://visioncraft-rs24.koyeb.app/docs">API VisionCraft</a>
+    — <b>כולא כלום בחינם</b> ופועל על פי <a href="https://api.futureforge.dev/docs">API FutureForge</a> ו-<a href="https://api.visioncraft.top/docs">API VisionCraft</a>
     — כולל <b>קוד פתוח</b>, שאתה יכול למצוא במאגר הקוד שלי ב- <a href="https://github.com/Belyashik2K/NeuroAI-v2">GitHub</a>
 
     🆘 תמיכה טכנית >>> { $technical_support }
@@ -134,9 +134,16 @@ messages-sdv_video = 🤖 <i>הרשת הנבחרת:</i> <code>{ $neuro }</code>
 
     <b>שלח תמונה שברצונך להנפיק אנימציה</b> או לחץ על <code>⬅️ אחורה</code> כדי לבטל את הבקשה.
 
-messages-whisper_voice = 🤖 <i>הרשת הנבחרת:</i> <code>{ $neuro }</code>
+messages-whisper_voice = 🤖 <i>רשת הנוירונים שנבחרה:</i> <code>{ $neuro }</code>
+    <i>❓ מצב הנבחר:</i> <code>{ $mode }</code>
 
-    <b>שלח קובץ אודיו שברצונך לתרגם לטקסט</b> או לחץ על <code>⬅️ אחורה</code> כדי לבטל את הבקשה.
+    <b>שלח את קובץ האודיו לעיבוד</b> או לחץ על הכפתור <code>⬅️ אחורה</code> כדי לבטל את הבקשה.
+
+messages-whisper_mode = 🤖 <i>רשת הנוירונים שנבחרה:</i> <code>{ $neuro }</code>
+
+    <b>בחר את מצב הפעולה</b>
+
+    ⚠️ <i>תרגום טקסט מאודיו תומך רק בשפה האנגלית!</i>
 
 messages-bender_voice = 🤖 <i>הרשת הנבחרת:</i> <code>{ $neuro }</code>
 
@@ -160,6 +167,16 @@ messages-image_processing = 🤖 <i>הרשת הנבחרת:</i> <code>{ $neuro }<
 messages-other_processing = 🤖 <i>הרשת הנבחרת:</i> <code>{ $neuro }</code>
 
     😌 <i>מעבד את הבקשה, אנא המתן...</i>
+
+messages-whisper_processing = 🤖 <i>רשת הנוירונים שנבחרה:</i> <code>{ $neuro }</code>
+    <i>❓ מצב הנבחר:</i> <code>{ $mode }</code>
+
+    😌 <i>מעבד את הבקשה, אנא המתן...</i>
+
+messages-whisper_result = 🤖 <i>רשת הנוירונים שנבחרה:</i> <code>{ $neuro }</code>
+    <i>❓ מצב הנבחר:</i> <code>{ $mode }</code>
+
+    <i>תגובת הרשת הנוירונית:</i> <code>{ $result }</code>
 
 messages-image_result = 🤖 _הרשת הנבחרת:_ `{ $neuro }`
 

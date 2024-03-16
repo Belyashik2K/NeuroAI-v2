@@ -30,7 +30,7 @@ class VisionCraftRequest(HTTPClient):
                                **kwargs) -> bytes:
         async with ClientSession() as session:
             async with session.request(method, uri, **kwargs) as response:
-                await self._check_status_code(await response.json(), response.status, neuro, uri, kwargs)
+                await self._check_status_code(await response.read(), response.status, neuro, uri, kwargs)
                 return await response.read()
 
     async def _check_status_code(self,

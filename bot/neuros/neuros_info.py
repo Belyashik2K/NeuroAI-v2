@@ -2,22 +2,26 @@ from ..enums import Neuro, Provider, Category
 
 
 class NeuroInfo:
-    not_working = [Neuro.ENHANCE, Neuro.DALLE3, Neuro.BENDER,
-                   Neuro.MIDJOURNEYV6]
+    not_working = [Neuro.DALLE3, Neuro.BENDER,
+                   Neuro.MIDJOURNEYV6, Neuro.MIDJOURNEYV4,
+                   Neuro.CHATGPT, Neuro.CLAUDE, Neuro.GOOGLE,
+                   Neuro.LLAMA, Neuro.MISTRAL, Neuro.SOLAR,
+                   Neuro.GEMINI, Neuro.GPT4]
     neuros_alph = {
         Provider.FUTUREFORGE: {
             Category.TEXT: [Neuro.CHATGPT, Neuro.CLAUDE, Neuro.GOOGLE,
                             Neuro.LLAMA, Neuro.MISTRAL, Neuro.SOLAR,
                             Neuro.GEMINI, Neuro.GPT4],
             Category.IMAGE: [Neuro.PLAYGROUND,
-                             Neuro.MIDJOURNEYV4, Neuro.MIDJOURNEYV6,
-                             Neuro.ENHANCE, Neuro.VIDEODIFFUSION,
-                             Neuro.DALLE3, Neuro.TENCENTMAKER, Neuro.SDXL],
-            Category.AUDIO: [Neuro.WHISPER, Neuro.BENDER],
+                             Neuro.MIDJOURNEYV6,
+                             Neuro.VIDEODIFFUSION,Neuro.MIDJOURNEYV4,
+                             Neuro.DALLE3, Neuro.TENCENTMAKER],
+            Category.AUDIO: [Neuro.BENDER],
         },
         Provider.VISIONCRAFT: {
             Category.TEXT: [Neuro.LZLV, Neuro.PYGMALION, 
-                            Neuro.AIRBOROS, Neuro.DOLPHIN, Neuro.GEMMA],
+                            Neuro.AIRBOROS, Neuro.DOLPHIN, Neuro.GEMMA,
+                            Neuro.LLAVA],
             Category.IMAGE: [Neuro.GOUFENG, Neuro.ABSOLUTEREALITY, Neuro.AMIREAL,
                              Neuro.ANALOGDIFFUSION, Neuro.ANYTHING,
                              Neuro.ABYSSORANGEMIX, Neuro.BLAZINGDRIVE,
@@ -38,6 +42,9 @@ class NeuroInfo:
                              Neuro.REDSHIFTDIFFUSION, Neuro.REVANIMATED,
                              Neuro.RUNDIFFUSIONFX, Neuro.SHONINSBEAUTIFUL,
                              Neuro.THEALLYSMIX, Neuro.TIMELESS, Neuro.TOONYOU,
-                             ],
+                             Neuro.ENHANCE, Neuro.SDXL, Neuro.JUGGERNAUT,
+                             Neuro.DYNAVISION, Neuro.ANIMEART, Neuro.CASCADE,
+                             Neuro.T2G, Neuro.I2I],
+            Category.AUDIO: [Neuro.WHISPER],
         }
     }

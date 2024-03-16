@@ -14,7 +14,7 @@ messages-info = 🙋 Willkommen in der Welt der neuronalen Netze, { $name }!
     — Ich antworte auf deine Fragen im Format eines <b>Dialogs</b> oder einer <b>einzigen Nachricht</b>
     — Ich generiere <b>Fotos</b> auf Anfrage
     — Ich generiere Audio-Dateien auf Anfrage und übersetze sie
-    — <b>Absolut kostenlos</b> und funktioniert auf Basis von <a href="https://api.futureforge.dev/docs">API FutureForge</a> und <a href="https://visioncraft-rs24.koyeb.app/docs">API VisionCraft</a>
+    — <b>Absolut kostenlos</b> und funktioniert auf Basis von <a href="https://api.futureforge.dev/docs">API FutureForge</a> und <a href="https://api.visioncraft.top/docs">API VisionCraft</a>
     — Ich habe <b>offenen</b> Quellcode, den du in meinem Repository auf <a href="https://github.com/Belyashik2K/NeuroAI-v2">GitHub</a> finden kannst
 
     🆘 Technischer Support >>> { $technical_support }
@@ -135,8 +135,15 @@ messages-sdv_video = 🤖 <i>Ausgewähltes neuronales Netzwerk:</i> <code>{ $neu
     <b>Senden Sie ein Foto, das animiert werden soll</b> oder drücken Sie die Taste <code>⬅️ Zurück</code>, um die Anfrage abzubrechen.
 
 messages-whisper_voice = 🤖 <i>Ausgewähltes neuronales Netzwerk:</i> <code>{ $neuro }</code>
+    <i>❓ Ausgewählter Modus:</i> <code>{ $mode }</code>
 
-    <b>Senden Sie eine Audio-Datei, die in Text übersetzt werden soll</b> oder drücken Sie die Taste <code>⬅️ Zurück</code>, um die Anfrage abzubrechen.
+    <b>Senden Sie die Audiodatei zur Verarbeitung</b> oder drücken Sie die Taste <code>⬅️ Zurück</code>, um die Anfrage abzubrechen.
+
+messages-whisper_mode = 🤖 <i>Ausgewähltes neuronales Netzwerk:</i> <code>{ $neuro }</code>
+
+    <b>Wählen Sie den Betriebsmodus aus</b>
+
+    ⚠️ <i>Die Übersetzung von Text aus Audio unterstützt nur die englische Sprache!</i>
 
 messages-bender_voice = 🤖 <i>Ausgewähltes neuronales Netzwerk:</i> <code>{ $neuro }</code>
 
@@ -160,6 +167,16 @@ messages-image_processing = 🤖 <i>Ausgewähltes neuronales Netzwerk:</i> <code
 messages-other_processing = 🤖 <i>Ausgewähltes neuronales Netzwerk:</i> <code>{ $neuro }</code>
 
     😌 <i>Verarbeitung der Anfrage, bitte warten...</i>
+
+messages-whisper_processing = 🤖 <i>Ausgewähltes neuronales Netzwerk:</i> <code>{ $neuro }</code>
+    <i>❓ Ausgewählter Modus:</i> <code>{ $mode }</code>
+
+    😌 <i>Verarbeitung der Anfrage, bitte warten...</i>
+
+messages-whisper_result = 🤖 <i>Ausgewähltes neuronales Netzwerk:</i> <code>{ $neuro }</code>
+    <i>❓ Ausgewählter Modus:</i> <code>{ $mode }</code>
+
+    <i>Antwort des neuronalen Netzwerks:</i> <code>{ $result }</code>
 
 messages-image_result = 🤖 _Ausgewähltes neuronales Netzwerk:_ `{ $neuro }`
 

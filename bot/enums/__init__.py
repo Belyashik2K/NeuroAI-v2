@@ -5,3 +5,4 @@ from .category import Category
 from .provider import Provider
 from .mode import Mode
 from .actions import Actions
+from .task import Task

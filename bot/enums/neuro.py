@@ -23,6 +23,7 @@ class Neuro:
     DOLPHIN = 'dolphin'
     CHRONOSHERMES = "chronoshermes"
     GEMMA = 'gemma'
+    LLAVA = 'llava'
 
     # From FutureForgeAPI
     PLAYGROUND = 'playground'
@@ -33,10 +34,13 @@ class Neuro:
     TENCENTMAKER = 'tencentmaker'
     MIDJOURNEYV6 = 'midjourneyv6'
     # From VisionCraftAPI
+    T2G = 't2g'
+    I2I = 'i2i'
     SDXL = 'stable'
     JUGGERNAUT = 'juggernaut'
     DYNAVISION = 'dynavision'
     ANIMEART = 'animeart'
+    CASCADE = 'cascade'
     GOUFENG = 'guofeng3'
     ABSOLUTEREALITY = 'absolutereality'
     AMIREAL = 'amIReal'

@@ -6,7 +6,7 @@ from aiogram_i18n import LazyProxy
 from aiogram.types import Message, CallbackQuery
 from aiogram_i18n.types import InlineKeyboardButton, InlineKeyboardMarkup
 
-from ...enums import Locale, Mode, Category, Actions
+from ...enums import Locale, Mode, Category, Actions, Task
 from ...database.models import User
 from ...config import config
 
@@ -380,4 +380,19 @@ class InlineKeyboards:
 
         builder.row(self.back(callback_data=Callback.StartMenu.choose_neuro,
                               as_button=True))
+        return builder.as_markup()
+    
+    def whisper_modes(self):
+        builder = InlineKeyboardBuilder()
+        
+        transcription = InlineKeyboardButton(text=LazyProxy('buttons-transcribe'),
+                                            callback_data=Callback.Mode(type_=Task.TRANSCRIBE).pack())
+        translation = InlineKeyboardButton(text=LazyProxy('buttons-translate'),
+                                            callback_data=Callback.Mode(type_=Task.TRANSLATE).pack())
+
+        builder.add(transcription, translation)
+        builder.row(self.back(callback_data=Callback.Category(name=Category.AUDIO,
+                                                              page=1).pack(), 
+                              as_button=True))
+        
         return builder.as_markup()
