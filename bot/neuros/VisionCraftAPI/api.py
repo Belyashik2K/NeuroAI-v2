@@ -248,7 +248,7 @@ class VisionCraft(VisionCraftRequest):
             "scheduler": "DDIM",
             "steps": 50,
             "strength": 0.8,
-            "refiner": "base_image_refiner"
+            "refiner": "expert_ensemble_refiner"
         }
         
         result = await self._upscale_request(neuro=Neuro.I2I,
