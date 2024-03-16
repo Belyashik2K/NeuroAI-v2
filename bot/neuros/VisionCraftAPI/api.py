@@ -194,3 +194,20 @@ class VisionCraft(VisionCraftRequest):
         if result['status'] == 'success':
             return result['image']
         return False
+    
+    
+    async def whisper(self,
+                      audio: str,
+                      task: str):
+        data = {
+            "audio": audio,
+            "task": task,
+            "token": self.__KEY,
+            "language": "auto"
+        }
+        
+        result = await self._request(neuro=Neuro.WHISPER,
+                                    uri=self._URL + 'whisper',
+                                    method=self._METHOD,
+                                    json=data)
+        return result['text']

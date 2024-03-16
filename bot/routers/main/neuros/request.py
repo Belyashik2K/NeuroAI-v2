@@ -232,23 +232,26 @@ async def bender_request(message: types.Message, user: User, state: FSMContext, 
     await state.clear()
 
 
-@router.message(NeuroRequest.whisper, F.audio)
+@router.message(NeuroRequest.whisper, F.voice | F.audio)
 async def whisper_voice(message: types.Message, user: User, state: FSMContext, i18n: I18nContext):
     data = await state.get_data()
+    file = message.voice or message.audio
     formatting = {
         "neuro": LazyProxy(f"buttons-{data['neuro']}").data,
+        "mode": LazyProxy(f"buttons-{data['w_mode']}").data,
     }
+    
     await message.delete()
-    await message.bot.edit_message_text(i18n.messages.other_processing(**formatting),
+    await message.bot.edit_message_text(i18n.messages.whisper_processing(**formatting),
                                         chat_id=message.chat.id,
                                         message_id=data['message_id'])
-    audio = await message.bot.get_file(message.audio.file_id)
+    audio = await message.bot.get_file(file.file_id)
     url = Links.get_file_url(audio.file_path)
-    result = await future.whisper_neuro(neuro=data['neuro'], file_url=url)
+    result = await vision.whisper(audio=url, task=data['w_mode'])
+    formatting['result'] = result.strip()
     await message.bot.edit_message_text(chat_id=message.chat.id,
                                         message_id=data['message_id'],
-                                        text=i18n.messages.other_result(**formatting) + '\n\n' + i18n.messages.answer(
-                                            result=result),
+                                        text=i18n.messages.whisper_result(**formatting),
                                         reply_markup=await inline.close_or_again(data['neuro']))
     await database.update_user(user_id=user.user_id, request_counter=user.request_counter + 1)
 

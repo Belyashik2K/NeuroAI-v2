@@ -22,6 +22,9 @@ buttons-remove_fav = ➖ Видалити з обраних
 buttons-one_request = 🔥 Одиночний запит
 buttons-chat = 👥 Чат-бот
 
+buttons-transcribe = 🙊 Розшифровка
+buttons-translate = 🌍 Переклад розшифровки
+
 buttons-channel = 📢 Наш канал
 buttons-future_forge = 🧑‍💻 FutureForge API
 buttons-vision_craft = 🧑‍💻 VisionCraft API

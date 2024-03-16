@@ -134,9 +134,16 @@ messages-sdv_video = 🤖 <i>已选择神经网络：</i> <code>{ $neuro }</code
 
     <b>发送您想要制作动画的照片</b> 或点击 <code>⬅️ 返回</code> 取消请求。
 
-messages-whisper_voice = 🤖 <i>已选择神经网络：</i> <code>{ $neuro }</code>
+messages-whisper_voice = 🤖 <i>选择的神经网络：</i> <code>{ $neuro }</code>
+    <i>❓ 选择的模式：</i> <code>{ $mode }</code>
 
-    <b>发送要转换为文本的音频文件</b> 或点击 <code>⬅️ 返回</code> 取消请求。
+    <b>发送要处理的音频文件</b> 或按下按钮 <code>⬅️ 返回</code> 取消请求。
+
+messages-whisper_mode = 🤖 <i>选择的神经网络：</i> <code>{ $neuro }</code>
+
+    <b>选择工作模式</b>
+
+    ⚠️ <i>从音频翻译文本仅支持英语！</i>
 
 messages-bender_voice = 🤖 <i>已选择神经网络：</i> <code>{ $neuro }</code>
 
@@ -160,6 +167,16 @@ messages-image_processing = 🤖 <i>已选择神经网络：</i> <code>{ $neuro 
 messages-other_processing = 🤖 <i>已选择神经网络：</i> <code>{ $neuro }</code>
 
     😌 <i>处理请求中，请稍候...</i>
+
+messages-whisper_processing = 🤖 <i>选择的神经网络：</i> <code>{ $neuro }</code>
+    <i>❓ 选择的模式：</i> <code>{ $mode }</code>
+
+    😌 <i>正在处理请求，请稍候...</i>
+
+messages-whisper_result = 🤖 <i>选择的神经网络：</i> <code>{ $neuro }</code>
+    <i>❓ 选择的模式：</i> <code>{ $mode }</code>
+
+    <i>神经网络响应：</i> <code>{ $result }</code>
 
 messages-image_result = 🤖 _已选择神经网络:_ `{ $neuro }`
 

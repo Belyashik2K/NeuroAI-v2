@@ -22,6 +22,9 @@ buttons-remove_fav = ➖ הסר מהמועדפים
 buttons-one_request = 🔥 בקשה יחידה
 buttons-chat = 👥 צ'אט-בוט
 
+buttons-transcribe = 🙊 פירוש
+buttons-translate = 🌍 תרגום של פירוש
+
 buttons-channel = 📢 הערוץ שלנו
 buttons-future_forge = 🧑‍💻 FutureForge API
 buttons-vision_craft = 🧑‍💻 VisionCraft API

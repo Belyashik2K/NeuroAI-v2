@@ -22,6 +22,9 @@ buttons-remove_fav = ➖ 从收藏夹中移除
 buttons-one_request = 🔥 单次请求
 buttons-chat = 👥 聊天机器人
 
+buttons-transcribe = 🙊 翻译
+buttons-translate = 🌍 翻译解密
+
 buttons-channel = 📢 我们的频道
 buttons-future_forge = 🧑‍💻 FutureForge API
 buttons-vision_craft = 🧑‍💻 VisionCraft API

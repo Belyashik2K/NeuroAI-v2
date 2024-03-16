@@ -31,6 +31,9 @@ buttons-gemini = 📚 Google Gemini Pro
 buttons-one_request = 🔥 Одиночный запрос
 buttons-chat = 👥 Чат-бот
 
+buttons-transcribe = 🙊 Расшифровка
+buttons-translate = 🌍 Перевод расшифровки
+
 buttons-channel = 📢 Наш канал
 buttons-future_forge = 🧑‍💻 FutureForge API
 buttons-vision_craft = 🧑‍💻 VisionCraft API

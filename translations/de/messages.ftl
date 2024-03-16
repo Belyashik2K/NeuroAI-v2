@@ -135,8 +135,15 @@ messages-sdv_video = 🤖 <i>Ausgewähltes neuronales Netzwerk:</i> <code>{ $neu
     <b>Senden Sie ein Foto, das animiert werden soll</b> oder drücken Sie die Taste <code>⬅️ Zurück</code>, um die Anfrage abzubrechen.
 
 messages-whisper_voice = 🤖 <i>Ausgewähltes neuronales Netzwerk:</i> <code>{ $neuro }</code>
+    <i>❓ Ausgewählter Modus:</i> <code>{ $mode }</code>
 
-    <b>Senden Sie eine Audio-Datei, die in Text übersetzt werden soll</b> oder drücken Sie die Taste <code>⬅️ Zurück</code>, um die Anfrage abzubrechen.
+    <b>Senden Sie die Audiodatei zur Verarbeitung</b> oder drücken Sie die Taste <code>⬅️ Zurück</code>, um die Anfrage abzubrechen.
+
+messages-whisper_mode = 🤖 <i>Ausgewähltes neuronales Netzwerk:</i> <code>{ $neuro }</code>
+
+    <b>Wählen Sie den Betriebsmodus aus</b>
+
+    ⚠️ <i>Die Übersetzung von Text aus Audio unterstützt nur die englische Sprache!</i>
 
 messages-bender_voice = 🤖 <i>Ausgewähltes neuronales Netzwerk:</i> <code>{ $neuro }</code>
 
@@ -160,6 +167,16 @@ messages-image_processing = 🤖 <i>Ausgewähltes neuronales Netzwerk:</i> <code
 messages-other_processing = 🤖 <i>Ausgewähltes neuronales Netzwerk:</i> <code>{ $neuro }</code>
 
     😌 <i>Verarbeitung der Anfrage, bitte warten...</i>
+
+messages-whisper_processing = 🤖 <i>Ausgewähltes neuronales Netzwerk:</i> <code>{ $neuro }</code>
+    <i>❓ Ausgewählter Modus:</i> <code>{ $mode }</code>
+
+    😌 <i>Verarbeitung der Anfrage, bitte warten...</i>
+
+messages-whisper_result = 🤖 <i>Ausgewähltes neuronales Netzwerk:</i> <code>{ $neuro }</code>
+    <i>❓ Ausgewählter Modus:</i> <code>{ $mode }</code>
+
+    <i>Antwort des neuronalen Netzwerks:</i> <code>{ $result }</code>
 
 messages-image_result = 🤖 _Ausgewähltes neuronales Netzwerk:_ `{ $neuro }`
 

@@ -22,6 +22,9 @@ buttons-remove_fav = ➖ Remove from favorites
 buttons-one_request = 🔥 Single request
 buttons-chat = 👥 Chatbot
 
+buttons-transcribe = 🙊 Transcription
+buttons-translate = 🌍 Translation of transcription
+
 buttons-channel = 📢 Our channel
 buttons-future_forge = 🧑‍💻 FutureForge API
 buttons-vision_craft = 🧑‍💻 VisionCraft API

@@ -135,14 +135,36 @@ async def start_gen_audio(call: types.CallbackQuery, callback_data: data.Neuro,
 
     choices = {
         Neuro.BENDER: LazyProxy('messages-bender_voice', neuro=neuro).data,
-        Neuro.WHISPER: LazyProxy('messages-whisper_voice', neuro=neuro).data,
+        Neuro.WHISPER: LazyProxy('messages-whisper_mode', neuro=neuro).data,
     }
 
-    await call.message.edit_text(choices[callback_data.name],
-                                 reply_markup=inline.image_or_voice(category=Category.AUDIO,
-                                                                    neuro_name=callback_data.name,
-                                                                    in_favourite=await database.is_favourite(user.user_id, callback_data.name),
-                                                                    page=_data.get('page', 1),
-                                                                    from_fav=_data.get('from_fav', False)))
+    if Neuro.BENDER == callback_data.name:
+        await call.message.edit_text(choices[callback_data.name],
+                                    reply_markup=inline.image_or_voice(category=Category.AUDIO,
+                                                                        neuro_name=callback_data.name,
+                                                                        in_favourite=await database.is_favourite(user.user_id, callback_data.name),
+                                                                        page=_data.get('page', 1),
+                                                                        from_fav=_data.get('from_fav', False)))
+        await state.set_state(NeuroRequest.bender)
+    else:
+        await call.message.edit_text(choices[callback_data.name],
+                                     reply_markup=inline.whisper_modes())
     await state.update_data(neuro=callback_data.name, message_id=call.message.message_id)
-    await state.set_state(NeuroRequest.bender if callback_data.name == Neuro.BENDER else NeuroRequest.whisper)
+
+
+@router.callback_query(data.Mode.filter(F.type_.in_([Task.TRANSCRIBE, Task.TRANSLATE])))
+async def await_whisper(call: types.CallbackQuery, state: FSMContext, i18n: I18nContext, callback_data: data.Mode):
+    _data = await state.get_data()
+    
+    data_ = {
+        'neuro': LazyProxy(f'buttons-{_data["neuro"]}').data,
+        'mode': LazyProxy(f'buttons-{callback_data.type_}').data
+    }
+    
+    neuro_info = await database.get_neuro(_data['neuro'])
+    await call.message.edit_text(i18n.messages.whisper_voice(**data_), 
+                                 reply_markup=inline.back(data.Neuro(provider=neuro_info.provider,
+                                                                    category=neuro_info.category,
+                                                                    name=neuro_info.code_name).pack()))
+    await state.set_state(NeuroRequest.whisper)
+    await state.update_data(message_id=call.message.message_id, w_mode=callback_data.type_)

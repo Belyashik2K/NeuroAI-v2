@@ -11,9 +11,9 @@ class NeuroInfo:
                             Neuro.GEMINI, Neuro.GPT4],
             Category.IMAGE: [Neuro.PLAYGROUND,
                              Neuro.MIDJOURNEYV6,
-                             Neuro.VIDEODIFFUSION,
+                             Neuro.VIDEODIFFUSION,Neuro.MIDJOURNEYV4,
                              Neuro.DALLE3, Neuro.TENCENTMAKER, Neuro.SDXL],
-            Category.AUDIO: [Neuro.WHISPER, Neuro.BENDER],
+            Category.AUDIO: [Neuro.BENDER],
         },
         Provider.VISIONCRAFT: {
             Category.TEXT: [Neuro.LZLV, Neuro.PYGMALION, 
@@ -40,5 +40,6 @@ class NeuroInfo:
                              Neuro.THEALLYSMIX, Neuro.TIMELESS, Neuro.TOONYOU,
                              Neuro.ENHANCE
                              ],
+            Category.AUDIO: [Neuro.WHISPER],
         }
     }

@@ -134,9 +134,16 @@ messages-sdv_video = 🤖 <i>הרשת הנבחרת:</i> <code>{ $neuro }</code>
 
     <b>שלח תמונה שברצונך להנפיק אנימציה</b> או לחץ על <code>⬅️ אחורה</code> כדי לבטל את הבקשה.
 
-messages-whisper_voice = 🤖 <i>הרשת הנבחרת:</i> <code>{ $neuro }</code>
+messages-whisper_voice = 🤖 <i>רשת הנוירונים שנבחרה:</i> <code>{ $neuro }</code>
+    <i>❓ מצב הנבחר:</i> <code>{ $mode }</code>
 
-    <b>שלח קובץ אודיו שברצונך לתרגם לטקסט</b> או לחץ על <code>⬅️ אחורה</code> כדי לבטל את הבקשה.
+    <b>שלח את קובץ האודיו לעיבוד</b> או לחץ על הכפתור <code>⬅️ אחורה</code> כדי לבטל את הבקשה.
+
+messages-whisper_mode = 🤖 <i>רשת הנוירונים שנבחרה:</i> <code>{ $neuro }</code>
+
+    <b>בחר את מצב הפעולה</b>
+
+    ⚠️ <i>תרגום טקסט מאודיו תומך רק בשפה האנגלית!</i>
 
 messages-bender_voice = 🤖 <i>הרשת הנבחרת:</i> <code>{ $neuro }</code>
 
@@ -160,6 +167,16 @@ messages-image_processing = 🤖 <i>הרשת הנבחרת:</i> <code>{ $neuro }<
 messages-other_processing = 🤖 <i>הרשת הנבחרת:</i> <code>{ $neuro }</code>
 
     😌 <i>מעבד את הבקשה, אנא המתן...</i>
+
+messages-whisper_processing = 🤖 <i>רשת הנוירונים שנבחרה:</i> <code>{ $neuro }</code>
+    <i>❓ מצב הנבחר:</i> <code>{ $mode }</code>
+
+    😌 <i>מעבד את הבקשה, אנא המתן...</i>
+
+messages-whisper_result = 🤖 <i>רשת הנוירונים שנבחרה:</i> <code>{ $neuro }</code>
+    <i>❓ מצב הנבחר:</i> <code>{ $mode }</code>
+
+    <i>תגובת הרשת הנוירונית:</i> <code>{ $result }</code>
 
 messages-image_result = 🤖 _הרשת הנבחרת:_ `{ $neuro }`
 
