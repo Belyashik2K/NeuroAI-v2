@@ -34,6 +34,8 @@ class Neuro:
     TENCENTMAKER = 'tencentmaker'
     MIDJOURNEYV6 = 'midjourneyv6'
     # From VisionCraftAPI
+    T2G = 't2g'
+    I2I = 'i2i'
     SDXL = 'stable'
     JUGGERNAUT = 'juggernaut'
     DYNAVISION = 'dynavision'

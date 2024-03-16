@@ -43,7 +43,8 @@ class NeuroInfo:
                              Neuro.RUNDIFFUSIONFX, Neuro.SHONINSBEAUTIFUL,
                              Neuro.THEALLYSMIX, Neuro.TIMELESS, Neuro.TOONYOU,
                              Neuro.ENHANCE, Neuro.SDXL, Neuro.JUGGERNAUT,
-                             Neuro.DYNAVISION, Neuro.ANIMEART, Neuro.CASCADE],
+                             Neuro.DYNAVISION, Neuro.ANIMEART, Neuro.CASCADE,
+                             Neuro.T2G, Neuro.I2I],
             Category.AUDIO: [Neuro.WHISPER],
         }
     }

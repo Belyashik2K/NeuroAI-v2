@@ -334,3 +334,49 @@ async def midjourneyv6(message: types.Message, user: User, state: FSMContext, i1
     await database.update_user(user_id=user.user_id,
                                request_counter=user.request_counter + 1)
     await state.clear()
+
+@router.message(NeuroRequest.t2g, F.text)
+async def t2g(message: types.Message, user: User, state: FSMContext, i18n: I18nContext):
+    await message.delete()
+    data = await state.get_data()
+    formatting = {
+        "neuro": LazyProxy(f"buttons-{data['neuro']}").data,
+        'prompt': message.text
+    }
+    await message.bot.edit_message_text(i18n.messages.image_processing(**formatting),
+                                        chat_id=message.chat.id,
+                                        message_id=data['message_id'])
+    result = await vision.text2gif(message.text)
+    await message.bot.delete_message(message.chat.id, data['message_id'])
+    async with ChatActionSender.upload_video(bot=message.bot, chat_id=message.chat.id):
+        await message.bot.send_animation(chat_id=message.chat.id,
+                                     animation=types.URLInputFile(result, filename='file.gif'),
+                                     caption=i18n.messages.image_result(**formatting),
+                                     reply_markup=await inline.close_or_again(data['neuro']),
+                                     parse_mode=ParseMode.MARKDOWN)
+    await database.update_user(user_id=user.user_id, request_counter=user.request_counter + 1)
+    await state.clear()
+    
+@router.message(NeuroRequest.i2i, F.photo & F.caption)
+async def i2i(message: types.Message, user: User, state: FSMContext, i18n: I18nContext):
+    await message.delete()
+    data = await state.get_data()
+    formatting = {
+        "neuro": LazyProxy(f"buttons-{data['neuro']}").data,
+        'prompt': message.caption
+    }
+    await message.bot.edit_message_text(i18n.messages.image_processing(**formatting),
+                                        chat_id=message.chat.id,
+                                        message_id=data['message_id'])
+    photo = await message.bot.get_file(message.photo[-1].file_id)
+    url = Links.get_file_url(photo.file_path)
+    result = await vision.image2image(image_url=url, prompt=message.caption)
+    await message.bot.delete_message(message.chat.id, data['message_id'])
+    async with ChatActionSender.upload_photo(bot=message.bot, chat_id=message.chat.id):
+        await message.bot.send_photo(chat_id=message.chat.id,
+                                     photo=types.BufferedInputFile(result, filename='photo.png'),
+                                     caption=i18n.messages.image_result(**formatting),
+                                     reply_markup=await inline.close_or_again(data['neuro']),
+                                     parse_mode=ParseMode.MARKDOWN)
+    await database.update_user(user_id=user.user_id, request_counter=user.request_counter + 1)
+    await state.clear()

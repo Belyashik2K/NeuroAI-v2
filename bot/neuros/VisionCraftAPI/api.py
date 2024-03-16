@@ -200,7 +200,7 @@ class VisionCraft(VisionCraftRequest):
     
     async def whisper(self,
                       audio: str,
-                      task: str):
+                      task: str) -> str:
         data = {
             "audio": audio,
             "task": task,
@@ -213,3 +213,41 @@ class VisionCraft(VisionCraftRequest):
                                     method=self._METHOD,
                                     json=data)
         return result['text']
+    
+    async def text2gif(self,
+                       text: str) -> str:
+        data = {
+            "sampler": "DPM++ 2M",
+            "prompt": text,
+            "negative_prompt": self.__negative,
+            "token": self.__KEY,
+            "cfg_scale": 10,
+            "steps": 50,
+    }
+        
+        result = await self._request(neuro=Neuro.T2G,
+                                    uri=self._URL + 'generate-gif',
+                                    method=self._METHOD,
+                                    json=data)
+        return result["images"][0]
+
+    async def image2image(self,
+                          image_url: str,
+                          prompt: str) -> bytes:
+        data = {
+            "image": image_url,
+            "mask": "None",
+            "token": self.__KEY,
+            "prompt": prompt,
+            "negative_prompt": self.__negative,
+            "scheduler": "DDIM",
+            "steps": 50,
+            "strength": 0.8,
+            "refiner": "base_image_refiner"
+        }
+        
+        result = await self._upscale_request(neuro=Neuro.I2I,
+                                            uri=self._URL + 'img2img',
+                                            method=self._METHOD,
+                                            json=data)
+        return result

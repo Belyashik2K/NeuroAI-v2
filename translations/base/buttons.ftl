@@ -12,6 +12,9 @@ buttons-dolphin = 🐬 Dolphin
 buttons-gemma = 👑 Gemma
 buttons-llava = 🌋 LLaVA
 
+buttons-t2g = ✍️ Text2GIF
+buttons-i2i = 📸 SD Image2Image
+
 buttons-juggernaut = 🦾 JuggernautXL V7
 buttons-dynavision = 👁️ DynaVisionXL
 buttons-animeart = 🧝🏻‍♀️ AnimeArt

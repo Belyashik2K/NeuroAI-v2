@@ -19,15 +19,6 @@ buttons-favourite = 🌟 Избранные нейросети
 buttons-add_fav = ➕ Добавить в избранное
 buttons-remove_fav = ➖ Удалить из избранного
 
-buttons-gpt4 = 🔥 ChatGPT (GPT 4)
-buttons-gpt = 💭 ChatGPT (GPT 3.5)
-buttons-claude = ☁️ Claude AI
-buttons-google = 📱 Google AI
-buttons-llama = 🦙 LLaMA AI
-buttons-mistral = 💻 Mistral AI (Medium)
-buttons-solar = 🌤 Solar AI
-buttons-gemini = 📚 Google Gemini Pro
-
 buttons-one_request = 🔥 Одиночный запрос
 buttons-chat = 👥 Чат-бот
 
