@@ -60,6 +60,7 @@ messages-stats = ✨ <b>Statistiken</b>
 messages-about = 💬 <b>Über den Service</b>
     <i>Grundlegende Informationen und Links</i>
 
+    🤖 Gesamtanzahl der neuronalen Netze: <code>{ $neuro_count }</code>
     🆘 Technischer Support: { $support }
     🥀 Zusammenarbeit: { $ads }
 
