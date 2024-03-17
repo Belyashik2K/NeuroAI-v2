@@ -81,3 +81,5 @@ buttons-tencentmaker = 🖌 TencentARC PhotoMaker
 buttons-sdv = 📹 StableDiffusion Video
 buttons-whisper = 🎤 Whisper V3
 buttons-bender = 🗣️ RachelVoice
+buttons-opus = 🦾 Claude 3 Opus
+buttons-sonnet = 🎼 Claude 3 Sonnet
