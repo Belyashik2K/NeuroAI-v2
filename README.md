@@ -31,11 +31,6 @@
     * _TencentARC PhotoMaker_
     * _Whisper V3_
     * **_И многие другие..._**
-  * **В ожидании восстановления работоспособности на стороне [FutureForge API](https://api.futureforge.dev/docs#/)**
-    * _EnhanceImage_
-    * _DALL·E 3_
-    * _HighResolutionControlnetTile_
-    * _Midjourney V6_
 * **Мультиязычность** бота на основе библиотеки **aiogram_i18n** + **fluent.runtime**
   * **Доступные языки**
     * _Русский_
@@ -167,11 +162,6 @@ I express **special** **gratitude** to the [author](https://t.me/futureforge_cha
     * _TencentARC PhotoMaker_
     * _Whisper V3_
     * **_And many others..._**
-  * **Awaiting restoration of functionality on the [FutureForge API](https://api.futureforge.dev/docs#/) side**
-    * _EnhanceImage_
-    * _DALL·E 3_
-    * _HighResolutionControlnetTile_
-    * _Midjourney V6_
 * **Multilingual** bot based on the **aiogram_i18n** library + **fluent.runtime**
   * **Available languages**
     * _Russian_
