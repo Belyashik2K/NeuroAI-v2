@@ -65,7 +65,7 @@ buttons-toonyou = 🌈 ToonYou
 
 buttons-gpt4 = 🔥 ChatGPT (GPT 4)
 buttons-gpt = 💭 ChatGPT (GPT 3.5)
-buttons-claude = ☁️ Claude AI
+buttons-claude = ☁️ Claude 2
 buttons-google = 📱 Google AI
 buttons-llama = 🦙 LLaMA AI
 buttons-mistral = 💻 Mistral AI (Medium)
