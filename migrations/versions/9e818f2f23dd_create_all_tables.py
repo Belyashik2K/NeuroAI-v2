@@ -55,7 +55,7 @@ def upgrade() -> None:
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('user_id', sa.BigInteger(), nullable=False),
     sa.Column('full_name', sa.String(length=255), nullable=False),
-    sa.Column('username', sa.String(length=255), nullable=False),
+    sa.Column('username', sa.String(length=255), nullable=True),
     sa.Column('registered_at', sa.DateTime(), server_default=sa.text('(CURRENT_TIMESTAMP)'), nullable=False),
     sa.Column('last_activity', sa.DateTime(), server_default=sa.text('(CURRENT_TIMESTAMP)'), nullable=False),
     sa.Column('request_counter', sa.BigInteger(), nullable=False),
