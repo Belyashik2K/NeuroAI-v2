@@ -17,7 +17,7 @@ class FutureForge(FutureForgeRequest):
         self._neuros = {
             Neuro.CHATGPT: 'gpt-3-5',
             Neuro.GPT4: 'gpt-4',
-            Neuro.CLAUDE: 'claude-instant',
+            Neuro.CLAUDE: 'Claude-2-100k',
             Neuro.GOOGLE: 'google-palm',
             Neuro.LLAMA: 'llama-2-70b',
             Neuro.GEMINI: 'gemini-pro',
