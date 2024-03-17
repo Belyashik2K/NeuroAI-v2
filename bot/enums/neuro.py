@@ -8,6 +8,8 @@ class Neuro:
     MISTRAL = 'mistral'
     SOLAR = 'solar'
     GPT4 = 'gpt4'
+    OPUS = 'opus'
+    SONNET = 'sonnet'
     # From VisionCraftAPI
     CAPYBARA = 'capybara'
     ZEPHYR = 'zephyr'

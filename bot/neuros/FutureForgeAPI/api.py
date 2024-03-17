@@ -22,7 +22,9 @@ class FutureForge(FutureForgeRequest):
             Neuro.LLAMA: 'llama-2-70b',
             Neuro.GEMINI: 'gemini-pro',
             Neuro.MISTRAL: 'mistral-medium',
-            Neuro.SOLAR: 'solar-0-70b'
+            Neuro.SOLAR: 'solar-0-70b',
+            Neuro.OPUS: 'Claude-3-Opus-200k',
+            Neuro.SONNET: 'Claude-3-Sonnet-200k'
         }
 
         self._image_neuros = {
