@@ -13,6 +13,17 @@ class FutureForge(FutureForgeRequest):
 
         self._URL = 'https://api.futureforge.dev/'
         self._METHOD = 'POST'
+        
+        self.__negative = """Ugly, Disfigured, Deformed, Low quality,
+                            Pixelated, Blurry, Grains, Text, 
+                            Watermark, Signature, Out of frame, 
+                            Disproportioned, Bad proportions, Gross proportions, 
+                            Bad anatomy, Duplicate, Cropped, Extra hands, 
+                            Extra arms, Extra legs, Extra fingers, 
+                            Extra limbs, Long neck, Mutation, Mutilated, 
+                            Mutated hands, Poorly drawn face, Poorly drawn hands, 
+                            Missing hands, Missing arms, Missing legs, Missing fingers, 
+                            Low resolution, Morbid."""
 
         self._neuros = {
             Neuro.CHATGPT: 'gpt-3-5',
@@ -29,7 +40,7 @@ class FutureForge(FutureForgeRequest):
 
         self._image_neuros = {
             Neuro.SDXL: 'image/sdxl',
-            Neuro.PLAYGROUND: 'image/playgroundv2',
+            Neuro.PLAYGROUND: 'image/playgroundv2-5',
             Neuro.MIDJOURNEYV4: 'image/openjourneyv4',
             Neuro.VIDEODIFFUSION: 'svd',
             Neuro.DALLE3: 'image/dalle3',
@@ -94,7 +105,7 @@ class FutureForge(FutureForgeRequest):
         params = {}
         if neuro == Neuro.PLAYGROUND:
             params['prompt'] = prompt
-            params['negative_prompt'] = 'not'
+            params['negative_prompt'] = self.__negative
         elif neuro == Neuro.DALLE3:
             params['prompt'] = prompt
         else:
