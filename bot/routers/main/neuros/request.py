@@ -192,6 +192,7 @@ async def image_request(message: types.Message, user: User, state: FSMContext, i
                                              video=types.URLInputFile(result, filename='video.mp4'),
                                              caption=i18n.messages.other_result(**formatting),
                                              reply_markup=await inline.close_or_again(_data['neuro']))
+        await database.update_user(user_id=user.user_id, request_counter=user.request_counter + 1)
     else:
         async with ChatActionSender.upload_photo(bot=message.bot, chat_id=message.chat.id):
             photos = list()
@@ -203,7 +204,7 @@ async def image_request(message: types.Message, user: User, state: FSMContext, i
                                  text=i18n.messages.image_result(**formatting),
                                  reply_markup=await inline.close_or_again(_data['neuro']),
                                  parse_mode=ParseMode.MARKDOWN)
-    await database.update_user(user_id=user.user_id, request_counter=user.request_counter + 1)
+        await database.update_user(user_id=user.user_id, request_counter=user.request_counter + 4)
 
 
 @router.message(NeuroRequest.enchance_image, F.photo)
