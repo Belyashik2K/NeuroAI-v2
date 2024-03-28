@@ -88,8 +88,8 @@ class VisionCraft(VisionCraftRequest):
             Neuro.CHRONOSHERMES: "chronos-hermes-13b-v2",
             Neuro.GEMMA: 'gemma-7b',
             Neuro.LLAVA: "llava-1.5-7b-hf",
-            Neuro.GPT4: "gpt-4-32k",
-            Neuro.CHATGPT: "gpt-3.5-turbo-16k",
+            Neuro.GPT4: "gpt-4",
+            Neuro.CHATGPT: "gpt-3.5-turbo",
             Neuro.GEMINI: "gemini-pro",
             Neuro.CLAUDE: "claude-2"
         }
