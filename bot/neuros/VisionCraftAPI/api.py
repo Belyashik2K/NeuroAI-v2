@@ -87,7 +87,11 @@ class VisionCraft(VisionCraftRequest):
             Neuro.DOLPHIN: "dolphin-2.6-mixtral-8x7b",
             Neuro.CHRONOSHERMES: "chronos-hermes-13b-v2",
             Neuro.GEMMA: 'gemma-7b',
-            Neuro.LLAVA: "llava-1.5-7b-hf"
+            Neuro.LLAVA: "llava-1.5-7b-hf",
+            Neuro.GPT4: "gpt-4-32k",
+            Neuro.CHATGPT: "gpt-3.5-turbo-16k",
+            Neuro.GEMINI: "gemini-pro",
+            Neuro.CLAUDE: "claude-2"
         }
 
         self._xl_neuros = {
@@ -110,7 +114,8 @@ class VisionCraft(VisionCraftRequest):
         data = {
             "token": self.__KEY,
             "model": neuro_name,
-            "messages": messages
+            "messages": messages,
+            "max_new_tokens": 10000,
         }
 
         result = await self._request(neuro=neuro,
@@ -119,26 +124,11 @@ class VisionCraft(VisionCraftRequest):
                                      json=data)
         return [self.prepare_answer(answer=result['choices'][0]['message']['content'])]
 
-    async def dalle(self,
-                    prompt):
-        data = {
-        "prompt": prompt,
-        "token": self.__KEY
-        }
-        
-        result = await self._upscale_request(neuro=Neuro.DALLE3,
-                            uri=self._URL + 'dalle',
-                            method=self._METHOD,
-                            json=data)
-        return result
-
     async def image_neuro(self,
                           neuro: str,
                           prompt: str) -> str:
         if neuro in self._image_neuros:
             neuro_name = self._image_neuros[neuro]
-        elif neuro == Neuro.DALLE3:
-            return await self.dalle(prompt=prompt)
         else:
             return await self.xl_image_neuro(neuro=neuro, prompt=prompt)
         data = {"model": neuro_name,
