@@ -87,15 +87,23 @@ class VisionCraft(VisionCraftRequest):
             Neuro.DOLPHIN: "dolphin-2.6-mixtral-8x7b",
             Neuro.CHRONOSHERMES: "chronos-hermes-13b-v2",
             Neuro.GEMMA: 'gemma-7b',
-            Neuro.LLAVA: "llava-1.5-7b-hf"
+            Neuro.LLAVA: "llava-1.5-7b-hf",
+            Neuro.GPT4: "gpt-4",
+            Neuro.CHATGPT: "gpt-3.5-turbo",
+            Neuro.GEMINI: "gemini-pro",
+            Neuro.CLAUDE: "claude-2"
         }
 
         self._xl_neuros = {
             Neuro.SDXL: "sdxl-base",
-            Neuro.JUGGERNAUT: "juggernaut-xl-V7",
-            Neuro.DYNAVISION: "dynavision-xl-all-in-one-stylized",
-            Neuro.ANIMEART: "anime-art-diffusion-xl",
-            Neuro.CASCADE: "stable-cascade"
+            Neuro.JUGGERNAUT: "juggernautXL",
+            Neuro.DYNAVISION: "dynavisionXL",
+            Neuro.ANIMEART: "animagineXL",
+            Neuro.CASCADE: "stable-cascade",
+            Neuro.DREAMSHAPERXL: "dreamshaperXL",
+            Neuro.REALISMENGINE: "realismEngineSDXL",
+            Neuro.REALVISION: "realvisxl",
+            Neuro.TURBOVISION: "turbovisionXL"
         }
 
     @staticmethod
@@ -110,7 +118,8 @@ class VisionCraft(VisionCraftRequest):
         data = {
             "token": self.__KEY,
             "model": neuro_name,
-            "messages": messages
+            "messages": messages,
+            "max_new_tokens": 10000,
         }
 
         result = await self._request(neuro=neuro,

@@ -6,15 +6,14 @@ class NeuroInfo:
                    Neuro.PLAYGROUND,
                    Neuro.MIDJOURNEYV6,
                    Neuro.VIDEODIFFUSION, Neuro.MIDJOURNEYV4,
-                   Neuro.TENCENTMAKER,
-                   Neuro.CHATGPT, Neuro.CLAUDE, Neuro.GOOGLE,
+                   Neuro.TENCENTMAKER, Neuro.GOOGLE,
                    Neuro.LLAMA, Neuro.MISTRAL, Neuro.SOLAR,
-                   Neuro.GEMINI, Neuro.GPT4, Neuro.SONNET, Neuro.OPUS]
+                   Neuro.SONNET, Neuro.OPUS]
     neuros_alph = {
         Provider.FUTUREFORGE: {
-            Category.TEXT: [Neuro.CHATGPT, Neuro.CLAUDE, Neuro.GOOGLE,
+            Category.TEXT: [Neuro.GOOGLE,
                             Neuro.LLAMA, Neuro.MISTRAL, Neuro.SOLAR,
-                            Neuro.GEMINI, Neuro.GPT4, Neuro.SONNET, Neuro.OPUS],
+                            Neuro.SONNET, Neuro.OPUS],
             Category.IMAGE: [Neuro.PLAYGROUND,
                              Neuro.MIDJOURNEYV6,
                              Neuro.VIDEODIFFUSION,Neuro.MIDJOURNEYV4,
@@ -24,7 +23,8 @@ class NeuroInfo:
         Provider.VISIONCRAFT: {
             Category.TEXT: [Neuro.LZLV, Neuro.PYGMALION, 
                             Neuro.AIRBOROS, Neuro.DOLPHIN, Neuro.GEMMA,
-                            Neuro.LLAVA],
+                            Neuro.LLAVA, Neuro.GEMINI, Neuro.GPT4,
+                            Neuro.CHATGPT, Neuro.CLAUDE],
             Category.IMAGE: [Neuro.GOUFENG, Neuro.ABSOLUTEREALITY, Neuro.AMIREAL,
                              Neuro.ANALOGDIFFUSION, Neuro.ANYTHING,
                              Neuro.ABYSSORANGEMIX, Neuro.BLAZINGDRIVE,
@@ -46,8 +46,10 @@ class NeuroInfo:
                              Neuro.RUNDIFFUSIONFX, Neuro.SHONINSBEAUTIFUL,
                              Neuro.THEALLYSMIX, Neuro.TIMELESS, Neuro.TOONYOU,
                              Neuro.ENHANCE, Neuro.SDXL, Neuro.JUGGERNAUT,
-                             Neuro.DYNAVISION, Neuro.ANIMEART, Neuro.CASCADE,
-                             Neuro.T2G, Neuro.I2I, Neuro.DALLE3],
+                             Neuro.DYNAVISION, Neuro.ANIMEART,
+                             Neuro.T2G, Neuro.I2I, Neuro.DALLE3,
+                             Neuro.DREAMSHAPERXL, Neuro.REALISMENGINE,
+                             Neuro.REALVISION, Neuro.TURBOVISION],
             Category.AUDIO: [Neuro.WHISPER],
         }
     }
