@@ -96,10 +96,14 @@ class VisionCraft(VisionCraftRequest):
 
         self._xl_neuros = {
             Neuro.SDXL: "sdxl-base",
-            Neuro.JUGGERNAUT: "juggernaut-xl-V7",
-            Neuro.DYNAVISION: "dynavision-xl-all-in-one-stylized",
-            Neuro.ANIMEART: "anime-art-diffusion-xl",
-            Neuro.CASCADE: "stable-cascade"
+            Neuro.JUGGERNAUT: "juggernautXL",
+            Neuro.DYNAVISION: "dynavisionXL",
+            Neuro.ANIMEART: "animagineXL",
+            Neuro.CASCADE: "stable-cascade",
+            Neuro.DREAMSHAPERXL: "dreamshaperXL",
+            Neuro.REALISMENGINE: "realismEngineSDXL",
+            Neuro.REALVISION: "realvisxl",
+            Neuro.TURBOVISION: "turbovisionXL"
         }
 
     @staticmethod
@@ -124,11 +128,26 @@ class VisionCraft(VisionCraftRequest):
                                      json=data)
         return [self.prepare_answer(answer=result['choices'][0]['message']['content'])]
 
+    async def dalle(self,
+                    prompt):
+        data = {
+        "prompt": prompt,
+        "token": self.__KEY
+        }
+        
+        result = await self._upscale_request(neuro=Neuro.DALLE3,
+                            uri=self._URL + 'dalle',
+                            method=self._METHOD,
+                            json=data)
+        return result
+
     async def image_neuro(self,
                           neuro: str,
                           prompt: str) -> str:
         if neuro in self._image_neuros:
             neuro_name = self._image_neuros[neuro]
+        elif neuro == Neuro.DALLE3:
+            return await self.dalle(prompt=prompt)
         else:
             return await self.xl_image_neuro(neuro=neuro, prompt=prompt)
         data = {"model": neuro_name,

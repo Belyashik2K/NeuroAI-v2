@@ -17,8 +17,13 @@ buttons-i2i = 📸 SD Image2Image
 
 buttons-juggernaut = 🦾 JuggernautXL V7
 buttons-dynavision = 👁️ DynaVisionXL
-buttons-animeart = 🧝🏻‍♀️ AnimeArt
+buttons-animeart = 🧝🏻‍♀️ AnimagineXL
 buttons-cascade = 🌊 Stable Cascade
+buttons-dreamshaperxl = ✨ DreamshaperXL
+buttons-realismengine = 👑 RealismEngineXL
+buttons-realvision = ❤️‍🔥 RealVisionXL
+buttons-turbovision = 🚀 TurboVisionXL
+
 buttons-guofeng3 = 🌅 Guofeng 3
 buttons-absolutereality = 👱‍♂️ AbsoluteReality
 buttons-amIReal = 🤖 amIReal

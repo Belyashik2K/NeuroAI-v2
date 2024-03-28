@@ -47,7 +47,9 @@ class NeuroInfo:
                              Neuro.THEALLYSMIX, Neuro.TIMELESS, Neuro.TOONYOU,
                              Neuro.ENHANCE, Neuro.SDXL, Neuro.JUGGERNAUT,
                              Neuro.DYNAVISION, Neuro.ANIMEART, Neuro.CASCADE,
-                             Neuro.T2G, Neuro.I2I, Neuro.DALLE3],
+                             Neuro.T2G, Neuro.I2I, Neuro.DALLE3,
+                             Neuro.DREAMSHAPERXL, Neuro.REALISMENGINE,
+                             Neuro.REALVISION, Neuro.TURBOVISION],
             Category.AUDIO: [Neuro.WHISPER],
         }
     }
