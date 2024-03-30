@@ -224,11 +224,11 @@ async def enchance_image(message: types.Message, user: User, state: FSMContext, 
     image = await vision.enchance_image(neuro=_data['neuro'],
                                         photo_url=url)
     await message.bot.delete_message(message.chat.id, _data['message_id'])
-    async with ChatActionSender.upload_photo(bot=message.bot, chat_id=message.chat.id):
-        await message.bot.send_photo(chat_id=message.chat.id,
-                                     photo=types.BufferedInputFile(image, filename='photo.png'),
-                                     caption=i18n.messages.other_result(**formatting),
-                                     reply_markup=await inline.close_or_again(_data['neuro']))
+    async with ChatActionSender.upload_document(bot=message.bot, chat_id=message.chat.id):
+        await message.bot.send_document(chat_id=message.chat.id,
+                                        document=types.BufferedInputFile(image, filename='photo.png'),
+                                        caption=i18n.messages.other_result(**formatting),
+                                        reply_markup=await inline.close_or_again(_data['neuro']))
     await database.update_user(user_id=user.user_id, request_counter=user.request_counter + 1)
     await state.clear()
 
