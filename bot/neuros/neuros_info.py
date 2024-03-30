@@ -8,7 +8,8 @@ class NeuroInfo:
                    Neuro.VIDEODIFFUSION, Neuro.MIDJOURNEYV4,
                    Neuro.TENCENTMAKER, Neuro.GOOGLE,
                    Neuro.LLAMA, Neuro.MISTRAL, Neuro.SOLAR,
-                   Neuro.SONNET, Neuro.OPUS]
+                   Neuro.SONNET, Neuro.OPUS,Neuro.GEMINI, 
+                   Neuro.GPT4, Neuro.CHATGPT, Neuro.CLAUDE]
     neuros_alph = {
         Provider.FUTUREFORGE: {
             Category.TEXT: [Neuro.GOOGLE,
