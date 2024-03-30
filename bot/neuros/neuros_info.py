@@ -2,21 +2,18 @@ from ..enums import Neuro, Provider, Category
 
 
 class NeuroInfo:
-    not_working = [Neuro.BENDER,
-                   Neuro.PLAYGROUND,
-                   Neuro.MIDJOURNEYV6,
+    not_working = [Neuro.BENDER, Neuro.MIDJOURNEYV6,
                    Neuro.VIDEODIFFUSION, Neuro.MIDJOURNEYV4,
-                   Neuro.TENCENTMAKER, Neuro.GOOGLE,
-                   Neuro.LLAMA, Neuro.MISTRAL, Neuro.SOLAR,
-                   Neuro.SONNET, Neuro.OPUS,Neuro.GEMINI, 
-                   Neuro.GPT4, Neuro.CHATGPT, Neuro.CLAUDE]
+                   Neuro.TENCENTMAKER, 
+                   Neuro.GOOGLE, Neuro.LLAMA, 
+                   Neuro.MISTRAL, Neuro.SOLAR, 
+                   Neuro.OPUS]
     neuros_alph = {
         Provider.FUTUREFORGE: {
-            Category.TEXT: [Neuro.GOOGLE,
-                            Neuro.LLAMA, Neuro.MISTRAL, Neuro.SOLAR,
-                            Neuro.SONNET, Neuro.OPUS],
-            Category.IMAGE: [Neuro.PLAYGROUND,
-                             Neuro.MIDJOURNEYV6,
+            Category.TEXT: [Neuro.GOOGLE, Neuro.LLAMA, 
+                            Neuro.MISTRAL, Neuro.SOLAR,
+                            Neuro.OPUS],
+            Category.IMAGE: [Neuro.MIDJOURNEYV6,
                              Neuro.VIDEODIFFUSION,Neuro.MIDJOURNEYV4,
                              Neuro.TENCENTMAKER],
             Category.AUDIO: [Neuro.BENDER],
@@ -25,7 +22,9 @@ class NeuroInfo:
             Category.TEXT: [Neuro.LZLV, Neuro.PYGMALION, 
                             Neuro.AIRBOROS, Neuro.DOLPHIN, Neuro.GEMMA,
                             Neuro.LLAVA, Neuro.GEMINI, Neuro.GPT4,
-                            Neuro.CHATGPT, Neuro.CLAUDE],
+                            Neuro.CHATGPT, Neuro.CLAUDE, Neuro.SONNET,
+                            Neuro.GEMINI, Neuro.GPT4, Neuro.CHATGPT, Neuro.CLAUDE,
+                            Neuro.SONNET, Neuro.HAIKU],
             Category.IMAGE: [Neuro.GOUFENG, Neuro.ABSOLUTEREALITY, Neuro.AMIREAL,
                              Neuro.ANALOGDIFFUSION, Neuro.ANYTHING,
                              Neuro.ABYSSORANGEMIX, Neuro.BLAZINGDRIVE,
@@ -50,7 +49,8 @@ class NeuroInfo:
                              Neuro.DYNAVISION, Neuro.ANIMEART,
                              Neuro.T2G, Neuro.I2I, Neuro.DALLE3,
                              Neuro.DREAMSHAPERXL, Neuro.REALISMENGINE,
-                             Neuro.REALVISION, Neuro.TURBOVISION],
+                             Neuro.REALVISION, Neuro.TURBOVISION, 
+                             Neuro.PLAYGROUND],
             Category.AUDIO: [Neuro.WHISPER],
         }
     }
