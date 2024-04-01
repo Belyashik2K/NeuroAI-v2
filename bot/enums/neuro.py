@@ -26,6 +26,7 @@ class Neuro:
     CHRONOSHERMES = "chronoshermes"
     GEMMA = 'gemma'
     LLAVA = 'llava'
+    HAIKU = 'haiku'
 
     # From FutureForgeAPI
     PLAYGROUND = 'playground'

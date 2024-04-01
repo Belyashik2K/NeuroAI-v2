@@ -1,6 +1,7 @@
 *\__pycache__
 *.db
 .env
+.env.test
 .venv
 *.pyc
 logging/*

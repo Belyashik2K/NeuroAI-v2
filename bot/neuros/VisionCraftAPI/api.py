@@ -91,7 +91,9 @@ class VisionCraft(VisionCraftRequest):
             Neuro.GPT4: "gpt-4",
             Neuro.CHATGPT: "gpt-3.5-turbo",
             Neuro.GEMINI: "gemini-pro",
-            Neuro.CLAUDE: "claude-2"
+            Neuro.CLAUDE: "claude-instant",
+            Neuro.SONNET: "claude-3-sonnet",
+            Neuro.HAIKU: "claude-3-haiku"
         }
 
         self._xl_neuros = {
@@ -103,7 +105,8 @@ class VisionCraft(VisionCraftRequest):
             Neuro.DREAMSHAPERXL: "dreamshaperXL",
             Neuro.REALISMENGINE: "realismEngineSDXL",
             Neuro.REALVISION: "realvisxl",
-            Neuro.TURBOVISION: "turbovisionXL"
+            Neuro.TURBOVISION: "turbovisionXL",
+            Neuro.PLAYGROUND: "playground-V2.5"
         }
 
     @staticmethod

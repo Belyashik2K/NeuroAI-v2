@@ -11,6 +11,7 @@ buttons-airoboros = 💨 Airboros
 buttons-dolphin = 🐬 Dolphin
 buttons-gemma = 👑 Gemma
 buttons-llava = 🌋 LLaVA
+buttons-haiku = 🐕 Claude 3 Haiku
 
 buttons-t2g = ✍️ Text2GIF
 buttons-i2i = 📸 SD Image2Image
