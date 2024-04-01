@@ -15,8 +15,8 @@
 Выражаю **отдельную** **благодарность** [автору](https://t.me/futureforge_channel) FutureForge API и [авторам](https://t.me/visioncraft_channel) VisionCraft API за разработку таких грандиозных проектов! Спасибо!
 
 ## Преимущества
-* **74** нейросети, из которых на данный момент **полностью работают** **70**
-  * **Работают**
+* **78** нейросетей, из которых на данный момент **полностью работают** **68**
+  * **Доступные нейросети**
     * _ChatGPT (GPT 4)_
     * _ChatGPT (GPT 3.5)_
     * _Claude AI_ **(Сlaude 2, Claude 3 Opus and Sonnet!)**
@@ -147,8 +147,8 @@ The bot is **completely asynchronous** and runs on version **aiogram v3.x.x**. F
 I express **special** **gratitude** to the [author](https://t.me/futureforge_channel) of the FutureForge API and the [authors](https://t.me/visioncraft_channel) of the VisionCraft API for developing such grand projects! Thank you!
 
 ## Advantages
-* **74** neural networks, of which **70 are currently fully operational**
-  * **Working**
+* **78** neural networks, of which **68 are currently fully operational**
+  * **Available neuros**
     * _ChatGPT (GPT 4)_
     * _ChatGPT (GPT 3.5)_
     * _Claude AI_ **(Сlaude 2, Claude 3 Opus and Sonnet!)**
