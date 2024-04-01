@@ -19,7 +19,7 @@
   * **Доступные нейросети**
     * _ChatGPT (GPT 4)_
     * _ChatGPT (GPT 3.5)_
-    * _Claude AI_ **(Сlaude 2, Claude 3 Opus and Sonnet!)**
+    * _Claude AI_ **(Сlaude 2, Claude 3 Opus, Haiku and Sonnet!)**
     * _Google AI_
     * _LLaMA AI_
     * _Mistral AI (Medium)_
@@ -151,7 +151,7 @@ I express **special** **gratitude** to the [author](https://t.me/futureforge_cha
   * **Available neuros**
     * _ChatGPT (GPT 4)_
     * _ChatGPT (GPT 3.5)_
-    * _Claude AI_ **(Сlaude 2, Claude 3 Opus and Sonnet!)**
+    * _Claude AI_ **(Сlaude 2, Claude 3 Opus, Haiku and Sonnet!)**
     * _Google AI_
     * _LLaMA AI_
     * _Mistral AI (Medium)_
