@@ -19,5 +19,8 @@ async def setup():
         datefmt='%d-%b-%y %H:%M:%S'
     )
 
+    print("NeuroAI v2 by Belyashik2K ❤️‍🔥")
+    print("Portfolio >>> https://b2k.tech")
+    print("———————————————————————————————")
     print("Bot {} started at @{}".format(bot_info.full_name, bot_info.username))
     print("Link >>> https://t.me/", bot_info.username, sep="")
