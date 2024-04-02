@@ -21,6 +21,10 @@ async def timeout_error(error: ErrorEvent, i18n: I18nContext, user: User):
 @router.errors()
 async def handle_some_error(error: ErrorEvent, i18n: I18nContext, user: User):
     logging.error(error.exception)
+    
+    if not str(error.exception):
+        return
+    
     await sender.error_notify(user_id=user.user_id,
                               mention=error.update.message.from_user.mention_html(),
                               exception=error.exception)
