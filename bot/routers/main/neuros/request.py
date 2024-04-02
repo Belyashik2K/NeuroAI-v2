@@ -16,6 +16,7 @@ from ....keyboards import inline, data, reply
 from ....utils.check_exception import ExceptionChecker
 from ....utils.links import Links
 from ....utils.chatting import Chatting
+from ....utils.text_helper import TextHelper
 
 router: Final[Router] = Router(name=__name__)
 
@@ -167,7 +168,7 @@ async def image_request(message: types.Message, user: User, state: FSMContext, i
         text = i18n.messages.other_processing(neuro=formatting['neuro'])
         func = neuros[_data['neuro']]
     else:
-        prompt = message.text
+        prompt = TextHelper.prepaire_text(message.text)
         text = i18n.messages.image_processing(neuro=formatting['neuro'], prompt=prompt)
         func = future.image_neuro if _data['provider'] == Provider.FUTUREFORGE else vision.image_neuro
     formatting['prompt'] = prompt
