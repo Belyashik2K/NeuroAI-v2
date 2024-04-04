@@ -186,7 +186,8 @@ class VisionCraft(VisionCraftRequest):
             "cfg_scale": 10,
             "watermark": False,
             "nsfw_filter": False,
-            "image_count": 4
+            "image_count": 4,
+            "sampler": "DPM++ 3M SDE Karras"
         }
 
         result = await self._request(neuro=neuro,
