@@ -185,14 +185,16 @@ class VisionCraft(VisionCraftRequest):
             "steps": 30,
             "cfg_scale": 10,
             "watermark": False,
-            "nsfw_filter": False
+            "nsfw_filter": False,
+            "image_count": 4,
+            "sampler": "DPM++ 3M SDE Karras"
         }
 
-        result = await self._upscale_request(neuro=neuro,
+        result = await self._request(neuro=neuro,
                                      uri=self._URL + 'generate-xl',
                                      method=self._METHOD,
                                      json=data)
-        return result
+        return result['images']
 
     async def enchance_image(self,
                              neuro: str,
