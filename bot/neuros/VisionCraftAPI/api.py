@@ -118,16 +118,22 @@ class VisionCraft(VisionCraftRequest):
                        messages: list
                        ) -> list[str]:
         neuro_name = self._llm_neuros[neuro]
+        
+        headers = {
+            "Content-Type": "application/json",
+            "Authorization": "Bearer " + self.__KEY,
+        }
+        
         data = {
-            "token": self.__KEY,
             "model": neuro_name,
             "messages": messages,
-            "max_new_tokens": 10000,
+            "max_tokens": 4096,
         }
 
         result = await self._request(neuro=neuro,
-                                     uri=self._URL + 'llm',
+                                     uri=self._URL + 'v1/chat/completions',
                                      method=self._METHOD,
+                                     headers=headers,
                                      json=data)
         return [self.prepare_answer(answer=result['choices'][0]['message']['content'])]
 

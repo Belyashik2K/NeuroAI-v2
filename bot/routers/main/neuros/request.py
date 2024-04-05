@@ -38,11 +38,12 @@ async def one_request(message: types.Message, user: User, state: FSMContext, i18
         if _data['provider'] == Provider.FUTUREFORGE:
             result = await future.text_neuro(neuro=_data['neuro'], message=message.text, mode=_data['mode'])
         else:
+            messages = await Chatting.prepare_messages(content=message.text,
+                                                       role=Role.USER,
+                                                        message_list=[],
+                                                        neuro=_data['neuro'])
             result = await vision.chatting(neuro=_data['neuro'],
-                                           messages=Chatting.prepare_messages(content=message.text,
-                                                                              role=Role.USER,
-                                                                              message_list=[],
-                                                                              neuro=_data['neuro']))
+                                           messages=messages)
         formatting['result'] = result[0]
         try:
             await message.bot.delete_message(chat_id=message.chat.id,
@@ -96,7 +97,7 @@ async def chatting(message: types.Message, user: User, state: FSMContext, i18n: 
         return
     
     text = message.text
-    url = ""
+    url = "" if _data['neuro'] != Neuro.LLAVA else "to_delete"
 
     if message.photo and _data['neuro'] == Neuro.LLAVA:
         photo = await message.bot.get_file(message.photo[-1].file_id)
@@ -118,7 +119,7 @@ async def chatting(message: types.Message, user: User, state: FSMContext, i18n: 
             result = await future.text_neuro(neuro=_data['neuro'], message=text, mode=_data['mode'],
                                              chat_code=_data['chat_code'])
         else:
-            messages = Chatting.prepare_messages(content=text,
+            messages = await Chatting.prepare_messages(content=text,
                                                  role=Role.USER,
                                                  message_list=_data['chat_cache'],
                                                  neuro=_data['neuro'],
@@ -130,7 +131,7 @@ async def chatting(message: types.Message, user: User, state: FSMContext, i18n: 
             await message.reply(text=i18n.messages.chat_answer() + " " + result[0],
                                 parse_mode=ParseMode.MARKDOWN)
             if _data['provider'] == Provider.VISIONCRAFT:
-                with_assistant = Chatting.prepare_messages(content=result[0],
+                with_assistant = await Chatting.prepare_messages(content=result[0],
                                                            role=Role.ASSISTANT,
                                                            message_list=messages,
                                                            neuro=_data['neuro'],)
