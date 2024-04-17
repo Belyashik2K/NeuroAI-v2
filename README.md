@@ -15,10 +15,9 @@
 Выражаю **отдельную** **благодарность** [автору](https://t.me/futureforge_channel) FutureForge API и [авторам](https://t.me/visioncraft_channel) VisionCraft API за разработку таких грандиозных проектов! Спасибо!
 
 ## Преимущества
-* **81** нейросеть
+* **83** нейросети
   * **Доступные нейросети**
-    * _ChatGPT (GPT 4)_
-    * _ChatGPT (GPT 3.5)_
+    * _ChatGPT (GPT 3.5 + Web)_
     * _Claude AI_ **(Сlaude 2, Claude 3 Opus, Haiku and Sonnet!)**
     * _Google AI_
     * _LLaMA AI_
@@ -26,7 +25,7 @@
     * _Solar AI_
     * _Google Gemini Pro_
     * _StableDiffusionXL_
-    * _Playground v2_
+    * _Playground v2.5_
     * _Midjourney V4_
     * _StableDiffusion Video_
     * _TencentARC PhotoMaker_
@@ -147,10 +146,9 @@ The bot is **completely asynchronous** and runs on version **aiogram v3.x.x**. F
 I express **special** **gratitude** to the [author](https://t.me/futureforge_channel) of the FutureForge API and the [authors](https://t.me/visioncraft_channel) of the VisionCraft API for developing such grand projects! Thank you!
 
 ## Advantages
-* **81** neural networks
+* **83** neural networks
   * **Available neuros**
-    * _ChatGPT (GPT 4)_
-    * _ChatGPT (GPT 3.5)_
+    * _ChatGPT (GPT 3.5 + Web)_
     * _Claude AI_ **(Сlaude 2, Claude 3 Opus, Haiku and Sonnet!)**
     * _Google AI_
     * _LLaMA AI_
@@ -158,7 +156,7 @@ I express **special** **gratitude** to the [author](https://t.me/futureforge_cha
     * _Solar AI_
     * _Google Gemini Pro_
     * _StableDiffusionXL_
-    * _Playground v2_
+    * _Playground v2.5_
     * _Midjourney V4_
     * _StableDiffusion Video_
     * _TencentARC PhotoMaker_
