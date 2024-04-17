@@ -75,7 +75,7 @@ class VisionCraft(VisionCraftRequest):
 
         self._llm_neuros = {
             Neuro.CAPYBARA: "nous-capybara-7b",
-            Neuro.ZEPHYR: "zephyr-7b-beta",
+            Neuro.ZEPHYR: "zephyr-orpo-141b-A35b-v0.1",
             Neuro.OPENCHAT: "openchat_3.5",
             Neuro.MYTHOMIST: "mythomist-7b",
             Neuro.CINEMATIKA: "cinematika-7b",
@@ -90,14 +90,16 @@ class VisionCraft(VisionCraftRequest):
             Neuro.GEMMA: 'gemma-1.1-7b-it',
             Neuro.LLAVA: "llava-1.5-7b-hf",
             Neuro.GPT4: "gpt-4",
-            Neuro.CHATGPT: "gpt-3.5-turbo",
+            Neuro.CHATGPT: "gpt-3.5-turbo-16k",
             Neuro.GEMINI: "gemini-pro",
             Neuro.CLAUDE: "claude-instant",
             Neuro.SONNET: "claude-3-sonnet",
             Neuro.HAIKU: "claude-3-haiku",
             Neuro.MIXTRAL: "Mixtral-8x7B-Instruct-v0.1",
             Neuro.STARCODER: "starcoder2-15b",
-            Neuro.DBRX: "dbrx-instruct"
+            Neuro.DBRX: "dbrx-instruct",
+            Neuro.NETGPT: "net-gpt-3.5-turbo",
+            Neuro.WIZARD: "WizardLM-2-8x22B"
         }
 
         self._xl_neuros = {

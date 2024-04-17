@@ -1,5 +1,5 @@
 buttons-capybara = 💧 Capybara AI
-buttons-zephyr = 💝 Zephyr [BETA]
+buttons-zephyr = 💝 Zephyr 141B
 buttons-openchat = 🗽 OpenChat
 buttons-mythomist = 🌌 Mythomist
 buttons-cinematika = 🎬 Cinematika
@@ -15,6 +15,8 @@ buttons-haiku = 🐕 Claude 3 Haiku
 buttons-starcoder = ✨ Starcoder
 buttons-dbrx = 🧱 DBRX Instruct
 buttons-mixtral = 🌄 Mixtral Instruct
+buttons-netgpt = 🌎 Web ChatGPT (GPT 3.5)
+buttons-microsoftwizard = 🧙🏻‍♂️ Microsoft Wizard
 
 buttons-t2g = ✍️ Text2GIF
 buttons-i2i = 📸 SD Image2Image
