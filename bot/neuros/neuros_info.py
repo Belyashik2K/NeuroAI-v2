@@ -21,9 +21,8 @@ class NeuroInfo:
         Provider.VISIONCRAFT: {
             Category.TEXT: [Neuro.LZLV, Neuro.PYGMALION, 
                             Neuro.AIRBOROS, Neuro.DOLPHIN, Neuro.GEMMA,
-                            Neuro.LLAVA, Neuro.GEMINI, Neuro.GPT4,
-                            Neuro.CHATGPT, Neuro.CLAUDE, Neuro.SONNET,
-                            Neuro.GEMINI, Neuro.CHATGPT, Neuro.CLAUDE,
+                            Neuro.LLAVA, Neuro.GEMINI,
+                            Neuro.CHATGPT, Neuro.CLAUDE,
                             Neuro.SONNET, Neuro.HAIKU, Neuro.OPENCHAT,
                             Neuro.STARCODER, Neuro.DBRX, Neuro.MIXTRAL,
                             Neuro.NETGPT, Neuro.WIZARD, Neuro.ZEPHYR],
