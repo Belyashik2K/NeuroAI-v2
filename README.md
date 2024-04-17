@@ -1,5 +1,5 @@
 ![NeuroAI v2](https://github.com/Belyashik2K/NeuroAI-v2/assets/126521808/33972e93-4b25-4dae-8a22-1934d753b847)
-> [Telegram-бот](https://t.me/NeuroAItbot) для взаимодействия с нейросетями посредством [FutureForge API](https://api.futureforge.dev/docs#/) и [VisionCraft API](https://api.visioncraft.top/docs). Обновлённая версия [NeuroAI](https://t.me/NeuroAIchannel).
+> [Telegram-бот](https://t.me/NeuroAItbot) для взаимодействия с нейросетями посредством [FutureForge API](https://api.futureforge.dev/docs#/) и [VisionCraft API](https://api.visioncraft.top/docs). Обновлённая версия [NeuroAI](https://t.me/NeuroAIchannel). Призёр [Всероссийского конкурса open source проектов 2023/2024](https://talent.kruzhok.org/opensource).
 
 # > Russian
 ## Внимание!
