@@ -38,11 +38,15 @@ class VisionCraftRequest(HTTPClient):
                 return await response.read()
 
     async def _check_status_code(self,
-                                 text: str,
+                                 text: dict,
                                  status_code: int,
                                  neuro: str,
                                  uri: str,
                                  kwargs: dict) -> None:
+        
+        if text.get('error'):
+            raise VisionCraftError(f"Error while requesting {uri} with {kwargs}")
+        
         if status_code != 200:
             from ...database import database
             if status_code != 403:

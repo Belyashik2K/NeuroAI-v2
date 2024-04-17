@@ -10,6 +10,8 @@ class Neuro:
     GPT4 = 'gpt4'
     OPUS = 'opus'
     SONNET = 'sonnet'
+    NETGPT = 'netgpt'
+    WIZARD = 'microsoftwizard'
     # From VisionCraftAPI
     CAPYBARA = 'capybara'
     ZEPHYR = 'zephyr'
