@@ -2,7 +2,7 @@ from ..enums import Neuro, Provider, Category
 
 
 class NeuroInfo:
-    not_working = [Neuro.BENDER, Neuro.MIDJOURNEYV6,
+    not_working = [Neuro.BENDER,
                    Neuro.VIDEODIFFUSION,
                    Neuro.TENCENTMAKER, 
                    Neuro.GOOGLE, Neuro.LLAMA, 
@@ -13,8 +13,7 @@ class NeuroInfo:
             Category.TEXT: [Neuro.GOOGLE, Neuro.LLAMA, 
                             Neuro.MISTRAL, Neuro.SOLAR,
                             Neuro.OPUS],
-            Category.IMAGE: [Neuro.MIDJOURNEYV6,
-                             Neuro.VIDEODIFFUSION,
+            Category.IMAGE: [Neuro.VIDEODIFFUSION,
                              Neuro.TENCENTMAKER],
             Category.AUDIO: [Neuro.BENDER],
         },
@@ -50,8 +49,7 @@ class NeuroInfo:
                              Neuro.DYNAVISION, Neuro.ANIMEART,
                              Neuro.T2G, Neuro.I2I, Neuro.MIDJOURNEYV4,
                              Neuro.DREAMSHAPERXL, Neuro.REALISMENGINE,
-                             Neuro.REALVISION, Neuro.TURBOVISION, 
-                             Neuro.PLAYGROUND],
+                             Neuro.REALVISION, Neuro.TURBOVISION, Neuro.MIDJOURNEYV6],
             Category.AUDIO: [Neuro.WHISPER],
         }
     }

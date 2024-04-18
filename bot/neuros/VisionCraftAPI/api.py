@@ -1,3 +1,4 @@
+import asyncio
 import base64
 import aiohttp
 
@@ -144,7 +145,7 @@ class VisionCraft(VisionCraftRequest):
         return [self.prepare_answer(answer=result['choices'][0]['message']['content'])]
 
     async def dalle(self,
-                    prompt):
+                    prompt: str) -> bytes:
         data = {
         "prompt": prompt,
         "token": self.__KEY
@@ -155,6 +156,35 @@ class VisionCraft(VisionCraftRequest):
                             method=self._METHOD,
                             json=data)
         return result
+    
+    async def midjourney(self,
+                         prompt: str) -> str:
+        
+        data = {
+            "prompt": prompt,
+            "token": self.__KEY
+        }
+        
+        answer = await self._request(neuro=Neuro.MIDJOURNEYV6,
+                                      uri=self._URL + "midjourney",
+                                      method=self._METHOD,
+                                      json=data)
+        task_id = answer['data']
+        photo_url = str()
+        
+        data = {
+            "task_id": str(task_id),
+            "token": self.__KEY
+            }
+        
+        while not photo_url:
+            result: dict = await self._request(neuro=Neuro.MIDJOURNEYV6,
+                                                uri=self._URL + "midjourney/result",
+                                                method=self._METHOD,
+                                                json=data)
+            photo_url = result.get("URL", "")
+            await asyncio.sleep(15)   
+        return photo_url
 
     async def image_neuro(self,
                           neuro: str,
@@ -163,6 +193,8 @@ class VisionCraft(VisionCraftRequest):
             neuro_name = self._image_neuros[neuro]
         elif neuro == Neuro.DALLE3:
             return await self.dalle(prompt=prompt)
+        elif neuro == Neuro.MIDJOURNEYV6:
+            return await self.midjourney(prompt=prompt)
         else:
             return await self.xl_image_neuro(neuro=neuro, prompt=prompt)
         data = {"model": neuro_name,

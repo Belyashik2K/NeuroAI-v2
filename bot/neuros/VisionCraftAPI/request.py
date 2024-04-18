@@ -44,7 +44,7 @@ class VisionCraftRequest(HTTPClient):
                                  uri: str,
                                  kwargs: dict) -> None:
         
-        if text.get('error'):
+        if type(text) == dict and text.get('error'):
             raise VisionCraftError(f"Error while requesting {uri} with {kwargs}")
         
         if status_code != 200:

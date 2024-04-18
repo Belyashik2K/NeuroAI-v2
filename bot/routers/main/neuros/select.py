@@ -151,7 +151,6 @@ async def start_gen_image(call: types.CallbackQuery, callback_data: data.Neuro,
 
     states = {
         Neuro.TENCENTMAKER: NeuroRequest.tencentmaker,
-        Neuro.MIDJOURNEYV6: NeuroRequest.midjourneyv6,
         Neuro.ENHANCE: NeuroRequest.enchance_image
     }
 
