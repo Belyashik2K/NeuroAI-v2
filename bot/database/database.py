@@ -75,6 +75,12 @@ class Database:
                 stmt = insert(Settings).values(is_maintenance=False)
                 await session.execute(stmt)
                 await session.commit()
+                
+    async def delete_old_models(self) -> None:
+        """Delete old models from database."""
+        async with self.session() as session:
+            ...
+            
 
     async def select_for_pagination(self,
                                     model: User,

@@ -28,50 +28,55 @@ class VisionCraft(VisionCraftRequest):
                             Low resolution, Morbid."""
 
         self._image_neuros = {
-            Neuro.GOUFENG: "3guofeng3_v3.4",
-            Neuro.ABSOLUTEREALITY: "absolutereality_v1.8.1",
-            Neuro.AMIREAL: "amIReal_v4.1",
-            Neuro.ANALOGDIFFUSION: "analog_diffusion_v1",
-            Neuro.ANYTHING: "anything_V5",
-            Neuro.ABYSSORANGEMIX: "abyss_orangemix_v3",
-            Neuro.BLAZINGDRIVE: "blazing_drive_v10g",
-            Neuro.CETUSMIX: "cetusmix_v35",
-            Neuro.CHILDRENSSTORIES3D: "childrensStories_v1_3D",
-            Neuro.CHILDRENSSTORIESSEMI: "childrensStories_v1_SemiReal",
-            Neuro.CHILDRENSSTORIESTOON: "childrensStories_v1_ToonAnime",
-            Neuro.COUNTERFEIT: "Counterfeit_v3.0",
-            Neuro.CUTEYUKIMIX: "cuteyukimix_midchapter3",
-            Neuro.CYBERREALISTIC: "cyberrealistic_v3.3",
-            Neuro.DALCEFO: "dalcefo_v4",
-            Neuro.DELIBERATE2: "deliberate_v3",
-            Neuro.DREAMLIKEANIME: "dreamlike_anime_v1.0",
-            Neuro.DREAMLIKEDIFFUSION: "dreamlike_diffusion_v1.0",
-            Neuro.DREAMLIKEPHOTOREAL: "dreamlike_photoreal_v2.0",
-            Neuro.DREAMSHAPER: "dreamshaper_v8",
-            Neuro.EOR: "edgeOfRealism_eor_v2.0",
-            Neuro.EIMISANIMEDIFFUSION: "EimisAnimeDiffusion_v1",
-            Neuro.ELLDRETHS: "elldreths-vivid",
-            Neuro.EPICREALISM: "epicrealism_natural_Sin_RC1",
-            Neuro.CANTBELIEVE: "ICantBelieveItsNotPhotography_seco",
-            Neuro.JUGGERNAUTAFTERMATH: "juggernaut_aftermath",
-            Neuro.LOFI: "lofi_v4",
-            Neuro.LYRIEL: "lyriel_v1.6",
-            Neuro.MAJICMIXREALISTIC: "majicmixRealistic_v4",
-            Neuro.MECHAMIX: "mechamix_v1.0",
-            Neuro.MEJINAMIX: "meinamix_v11",
-            Neuro.NEVERENDINGDREAM: "neverendingDream_v1.22",
-            Neuro.PASTELMIXSTYLIZED: "pastelMixStylizedAnime_pruned",
-            Neuro.PORTRAITPLUS: "portraitplus_v1.0",
-            Neuro.PROTOGEN: "protogen_x3.4",
-            Neuro.REALISTICVISION: "Realistic_Vision_v5.0",
-            Neuro.REDSHIFTDIFFUSION: "redshift_diffusion_v1.0",
-            Neuro.REVANIMATED: "revAnimated_v1.2.2",
-            Neuro.RUNDIFFUSIONFX: "rundiffusionFX_photorealistic_v1.0",
-            Neuro.SHONINSBEAUTIFUL: "shoninsBeautiful_v1.0",
-            Neuro.THEALLYSMIX: "theallys_mix_v2",
-            Neuro.TIMELESS: "timeless_v1.0",
-            Neuro.TOONYOU: "toonyou_beta6",
-            Neuro.MIDJOURNEYV4: "openjourney_v4"
+            Neuro.GOUFENG: "4GuoFeng4XL-v12fp32",
+            Neuro.ABSOLUTEREALITY: "AbsoluteReality-V16",
+            Neuro.AMIREAL: "AmiReal-v44",
+            Neuro.ANYTHING: "Anything-45",
+            Neuro.ABYSSORANGEMIX: "nabyssorange-v1",
+            Neuro.BLAZINGDRIVE: "BlazingDriveRealistic-_V01e",
+            Neuro.CETUSMIX: "AniCetus-V1",
+            Neuro.COUNTERFEIT: "xmattarcounterfeitmix-v10",
+            Neuro.CUTEYUKIMIX: "CuteYukiMixadorablestyle-v40",
+            Neuro.CYBERREALISTIC: "Cyberrealistic-V42",
+            Neuro.DELIBERATE2: "Deliberate-v6",
+            Neuro.DREAMSHAPER: "DreamShaper-8",
+            Neuro.EOR: "EdgeOfRealism-V20",
+            Neuro.EIMISANIMEDIFFUSION: "EimisAnimeDiffusion-V20",
+            Neuro.ELLDRETHS: "ElldrethsVividMix-v10",
+            Neuro.EPICREALISM: "EpiCRealism-pureEvo",
+            Neuro.CANTBELIEVE: "ICBINP-ICantBelieveItsNotPhotographyLCM-Final-LCM",
+            Neuro.JUGGERNAUTAFTERMATH: "Juggernaut-Aftermath",
+            Neuro.LOFI: "LOFI-V4",
+            Neuro.LYRIEL: "lyriel_with_resha-v10",
+            Neuro.MAJICMIXREALISTIC: "majicMIXrealistic-v7",
+            Neuro.MEJINAMIX: "MeinaMix-V11",
+            Neuro.PASTELMIXSTYLIZED: "AnimelinerPastelMix-v1",
+            Neuro.PORTRAITPLUS: "FantasyPortraitbyAderek-SDXLF32",
+            Neuro.PROTOGEN: "Protogenything-1",
+            Neuro.REALISTICVISION: "Absoluterealisticvision-V20",
+            Neuro.RUNDIFFUSIONFX: "RunDiffusionFXphotorealistic-1",
+            Neuro.SHONINSBEAUTIFUL: "ShoninPhotoreal-v1",
+            Neuro.TIMELESS: "CopaxTimelessXLV5-V5",
+            Neuro.SDXL: "StableDiffusionXLSDXL-base09",
+            Neuro.JUGGERNAUT: "JuggernautXLTensorArtExclusive-75RD",
+            Neuro.ANIMEART: "AnimagineXL-V3",
+            Neuro.DREAMSHAPERXL: "DreamShaperXL10-alpha2",
+            Neuro.REALISMENGINE: "RealismEngineSDXL-v30",
+            Neuro.TURBOVISION: "TurboVisionXL-SuperFastXLbasedonnewSDXLTurbo-3-5stepqualityoutputathighresolutions-TVXL-V2",
+            # Neuro.PLAYGROUND: "playground-V2.5"
+            Neuro.MEINAHENT: "MeinaHentai",
+            Neuro.LUCIDDREAM: "LucidDreamRealistic-v10",
+            Neuro.CAMELLA: "CamelliaMix-V3",
+            Neuro.KIZUKI: "Kizuki-AnimeHentai-V3",
+            Neuro.DIVINE: "DivineAnimeMix-v2",
+            Neuro.CREEPY: "2D_CreepySDXL-v11",
+            Neuro.RETROANIME: "TQ-RetroAnime-v10",
+            Neuro.SDXLMIDJOURNEY: "MidjourneyV10-Stable",
+            Neuro.VOIDMIX: "VoidMix-V5",
+            Neuro.ARCHINTER: "architecture_Interior_SDlife_Chiasedamme_V40-40",
+            Neuro.THINKDIFF: "ThinkDiffusionXL-10",
+            Neuro.CYBERTOKYO: "CyberTokyoXL-1",
+            Neuro.REALBOY: "RealboyDarkness-10"     
         }
 
         self._llm_neuros = {
@@ -104,16 +109,6 @@ class VisionCraft(VisionCraftRequest):
         }
 
         self._xl_neuros = {
-            Neuro.SDXL: "sdxl-base",
-            Neuro.JUGGERNAUT: "juggernautXL",
-            Neuro.DYNAVISION: "dynavisionXL",
-            Neuro.ANIMEART: "animagineXL",
-            Neuro.CASCADE: "stable-cascade",
-            Neuro.DREAMSHAPERXL: "dreamshaperXL",
-            Neuro.REALISMENGINE: "realismEngineSDXL",
-            Neuro.REALVISION: "realvisxl",
-            Neuro.TURBOVISION: "turbovisionXL",
-            Neuro.PLAYGROUND: "playground-V2.5"
         }
 
     @staticmethod
@@ -189,31 +184,27 @@ class VisionCraft(VisionCraftRequest):
     async def image_neuro(self,
                           neuro: str,
                           prompt: str) -> str:
-        if neuro in self._image_neuros:
-            neuro_name = self._image_neuros[neuro]
-        elif neuro == Neuro.DALLE3:
-            return await self.dalle(prompt=prompt)
-        elif neuro == Neuro.MIDJOURNEYV6:
-            return await self.midjourney(prompt=prompt)
-        else:
-            return await self.xl_image_neuro(neuro=neuro, prompt=prompt)
-        data = {"model": neuro_name,
+        # if neuro in self._image_neuros:
+        #     neuro_name = self._image_neuros[neuro]
+        # elif neuro == Neuro.DALLE3:
+        #     return await self.dalle(prompt=prompt)
+        # elif neuro == Neuro.MIDJOURNEYV6:
+        #     return await self.midjourney(prompt=prompt)
+        # else:
+        #     return await self.xl_image_neuro(neuro=neuro, prompt=prompt)
+        data = {"model": self._image_neuros[neuro],
                 "sampler": "DPM++ 2M",
                 "prompt": prompt,
                 "negative_prompt": self.__negative,
-                "image_count": 4,
                 "token": self.__KEY,
                 "cfg_scale": 10,
                 "steps": 30,
-                "loras": {"more_details_v10": "more_details_v10"},
-                "watermark": False,
-                "nsfw_filter": False
                 }
-        result = await self._request(neuro=neuro,
-                                     uri=self._URL + 'generate',
+        result = await self._upscale_request(neuro=neuro,
+                                     uri=self._URL + 'sd',
                                      method=self._METHOD,
                                      json=data)
-        return result['images']
+        return result
 
     async def xl_image_neuro(self,
                              neuro: str,

@@ -362,12 +362,13 @@ class InlineKeyboards:
         for neuro in neuros[0]:            
             neuro_info = await database.get_neuro(neuro)
             
-            text = LazyProxy(f'buttons-{neuro_info.code_name}').data + f" ({status[neuro_info.is_active]})"
+            if neuro_info:
+                text = LazyProxy(f'buttons-{neuro_info.code_name}').data + f" ({status[neuro_info.is_active]})"
 
-            callback_data = Callback.Neuro(category=neuro_info.category,
+                callback_data = Callback.Neuro(category=neuro_info.category,
                                            name=neuro_info.code_name,
                                            provider=neuro_info.provider).pack()
-            builder.add(InlineKeyboardButton(text=text, callback_data=callback_data))
+                builder.add(InlineKeyboardButton(text=text, callback_data=callback_data))
         
         builder.adjust(2, repeat=True)
             

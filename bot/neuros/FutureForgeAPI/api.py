@@ -41,7 +41,6 @@ class FutureForge(FutureForgeRequest):
         self._image_neuros = {
             Neuro.SDXL: 'image/sdxl',
             Neuro.PLAYGROUND: 'image/playgroundv2-5',
-            Neuro.MIDJOURNEYV4: 'image/openjourneyv4',
             Neuro.VIDEODIFFUSION: 'svd',
             Neuro.DALLE3: 'image/dalle3',
             Neuro.ENHANCE: 'image/enhance-image',
